@@ -1,0 +1,1653 @@
+﻿
+@{
+    /**/
+    ViewBag.Title = "SetIntoOrOut";
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    /*table tbody tr:hover {
+        background-color: #e4e4e4
+    }*/
+    tbody {
+        height: 170px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        text-align: center;
+    }
+
+    ul li a:hover {
+        background-color: #e4e4e4;
+    }
+
+    .focus {
+        background-color: #e4e4e4
+    }
+</style>
+<div class="fleftContent">
+    <div  class="Inout_div1">
+        <div class="row">
+            <div class="col-lg-12" style="height:40px">
+                <div class="bs-component">
+                    <div class="alert alert-dismissible" style="float:left;width:100%">
+                        <div style="width:40%;float:left">
+                            <div style="width:20%;float:left;margin-top:9px">
+                                <label>停车场：</label>
+                            </div>
+                            <div style="width:80%;float:left">
+                                <select id="ParkLotSelect" class="form-control" style="width:167px;height:36px;font-size:12px;">
+                                    <option value="">=请选择=</option>
+                                </select>
+                            </div>
+                        </div>
+                        @*<div style="width:12%;float:left;text-align:left">
+                                <span> 今日收费金额:</span>
+                                <label style="color:#0092ff;font-size:22px">
+                                    20.00
+                                </label>
+                            </div>
+                            <div style="width:10%;float:left;text-align:left">
+                                <span>
+                                    剩余车位：
+                                </span>
+                                <label style="color:#47b44a;font-size:22px">888</label>
+                            </div>*@
+                        <div style="width:50%;float:left;text-align:right">
+                            <a class="btn btn-info icon-btn mr-10" style="color:#0092ff;background-color:#ffffff;width:86px" onclick="OpenSetGateKeep()">应急处理</a>
+                            <a class="btn btn-info icon-btn mr-10" style="color:#e8f6ff;background-color:#0092ff;width:86px" onclick="GateCatchRefresh()">刷新</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-2" style="">
+                <div class="bs-component" style="border:1px solid #e7e9ed;width:95%;margin-left:12px">
+                    <div class="Inout_div3">
+                        <label style="line-height:34px;margin-left:10px;font-size:15px">车道列表</label>
+                    </div>
+                    <div class="tree Inout_div2"  >
+                        <ul id="nav_ul">
+                            <li style="list-style-type:none; margin-left:-30px">
+                                <i class="fas fa-caret-down btn1">
+                                    <img src="~/picture/caret-down-solid.svg" style="width:20px;height:20px" />
+                                </i>
+                                <span class="btn btn1">入口车道</span>
+                                <ul id="app-menu1" onclick="" class="app-menu3" style="margin-left:-22px"></ul>
+                            </li>
+                            <li style="list-style-type:none;margin-left:-30px">
+                                <i class="fas fa-caret-down btn2">
+                                    <img src="~/picture/caret-down-solid.svg" style="width:20px;height:20px" />
+                                </i>
+                                <span class="btn btn2">出口车道</span>
+                                <ul id="app-menu2" class="app-menu3" style="margin-left:-22px"></ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10" style="">
+                <div class="bs-component">
+                    <div class="Inout_div4">
+                        <div style="float:left;width:100%;height:100%">
+                            <img src="" class="img-rounded" style="width:100%;height:80% " id="ImgUrl" />
+                        </div> 
+                    </div>
+                    <div style="width:39%;float:left;">
+                        <div style="border:1px solid #eff3f6;width:100%;float:left;margin:0px 10px 10px 10px">
+                            <div  class="Inout_div6">
+                                <div style="width:90%;margin:25px">
+                                    <div style="width:100%;float:left;height:40px">
+                                        <div style="width:20%;float:left;">
+                                            车牌号码：
+                                        </div>
+                                        <div style="width:80%;float:left;text-align:left">
+                                            <div style="width:60%;float:left;"> <label id="lblCarNo"></label></div>
+                                            <div style="width:40%;color:#0092ff;float:left;display:none;" id="div_revise">
+                                                <a onclick="OpenCorrectCarNo()">
+                                                    <img src="~/picture/revise.png" />
+                                                    车牌修正
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;float:left;height:40px">
+                                        <div style="width:20%;float:left;">
+                                            车辆类型：
+                                        </div>
+                                        <div style="width:80%;float:left;text-align:left">
+                                            <label id="lblCarTypeName"></label>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;float:left;height:40px">
+                                        <div style="width:20%;float:left;padding:3px" id="lblt_horoughfare">
+                                            入口通道：
+                                        </div>
+                                        <div style="width:80%;float:left;padding:3px;text-align:left">
+                                            <label id="lbldrivewayName"></label>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;float:left;height:40px;">
+                                        <div style="width:20%;float:left;padding:3px" id="lbl_tiem">
+                                            入场时间：
+                                        </div>
+                                        <div style="width:80%;float:left;padding:3px;text-align:left">
+                                            <label id="EventTime"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:100%;float:left;"></div>
+                            <div style="display:none" id="div_cost">
+
+
+                                <div style="height:100px">
+                                    <div style="width:100%;float:left;height:10px">
+                                    </div>
+                                    <div style="width:100%;float:left;text-align:center;height:35px">
+                                        <div style="width:25%;float:left;">停车费用：</div>
+                                        <div style="width:25%;float:left;">优惠金额： </div>
+                                        <div style="width:25%;float:left;">应缴费用：</div>
+                                        <div style="width:25%;float:left;">已缴费用： </div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;text-align:center;font-size:20px">
+                                    <div style="width:25%;float:left;color:#ff0000"><label id="parkingFee">0.00</label></div>
+                                    <div style="width:25%;float:left;"><label id="discountAmount">0.00</label> </div>
+                                    <div style="width:25%;float:left;"><label id="actualAmount">0.00</label></div>
+                                    <div style="width:25%;float:left;"><label id="paymentAmount">0.00</label> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width:100%;float:left;text-align:center;">
+                            <button class="btn" id="button_New" style="background-color:#ffffff;border:1px solid #0092ff;color:#0092ff;" type="button" onclick="PhotographCar()">重拍</button>
+                            <button id="button_Gate" class="btn" style="background-color:#0092ff;color:#e8f6ff;" type="button" onclick="SetOpenGate()">手动开闸</button>
+                            <button id="button_InRecord" class="btn" style="background-color:#0092ff;color:#e8f6ff;" type="button" onclick="AddInRecord()">入场补录</button>
+                            <button class="btn" id="button_free" style="background-color:#0092ff;color:#e8f6ff;" type="button" onclick="SetOpenGate()">免费开闸</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="width:100%;height:20px;background-color:#eff3f6">
+</div>
+
+<div class="row" style="">
+    <div class="col-lg-12">
+        <div style="width:100%;float:left;height:280px ">
+            <div style="width:100%;float:left;padding:15px;word-wrap: break-word;word-break: break-all;overflow: hidden;">
+                <div style="float:left;line-height:22px;margin-top:-5px">
+                    <img src="~/picture/ActiveItem.png" />
+                    <label style="font-size:18px;width:110px;font-weight:bold">入场记录</label>
+                </div>
+                @*<div style="float:left;width:20%; ">
+                        <label style="float:left;width:25%;line-height:32px">识别车牌</label>
+                        <input type="text" class="form-control" style="width:133px;float:left;width:65%" />
+                    </div>
+                    <div style="float:left;width:20%">
+
+                        <label style="float:left;width:30%;line-height:32px">修正车牌号</label><input type="text" class="form-control" style="width:133px;float:left;width:70%" />
+                    </div>
+                    <div style="float:left;width:15%;text-align:center ">
+                        <label>车类型</label>
+                        <select id="exampleSelect1" class="form-control2" style="width:137px;height:36px;font-size:12px;">
+                            <option value="请选择">请选择</option>
+                        </select>
+                    </div>
+                    <div style="float:left;width:15%;text-align:center ">
+                        <label>通道名称</label>
+                        <select id="exampleSelect1" class="form-control2" style="width:137px;height:36px;font-size:12px;">
+                            <option value="">=请选择=</option>
+                        </select>
+                    </div>
+                    <div style="float:left;width:15%;text-align:center ">
+                        <button class="btn" style="background-color:#0092ff;color:#e8f6ff;width:86px" type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">搜索</button>
+                        <button style="width:86px;background-color:#d7d8d9;color:#686767" class="btn " type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">重置</button>
+                    </div>*@
+            </div>
+            @*<hr style="float:left;width:98%" />*@
+            <div class="table-responsive" style="width:98%;margin-left:1%;border:1px  solid #dee2e6;margin-top:-10px">
+                @*<table class="">
+                        <thead>
+                            <tr>
+                                <th>入场图片</th>
+                                <th>Color</th>
+                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Color</th>
+                                <th>Description</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_DriveWay">
+                        </tbody>
+                    </table>*@
+                <table class="table table-condensed" style="text-align:center; border-collapse: collapse;margin-bottom: 0rem;">
+                    <tbody id="" style="text-align:center; ">
+                        <tr style="font-size:14px;background-color:#e8f6ff;text-align:center">
+                            <td style="width:16%" id="In_picture">入场图片</td>
+                            <td style="width:16%">识别车牌号</td>
+                            @*<td>修正车牌号</td>*@
+                            <td style="width:16%">车类型</td>
+                            <td style="width:16%">通道名称</td>
+                            <td style="width:17%" id="In_time">入场时间</td>
+                            <td style="width:19%">备注</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="Inout_div5">
+                    <table class="table table-striped" style="text-align:center; border-collapse: collapse; ">
+                        <tbody id="tbody_DriveWay" style="text-align:center; "></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 免费开闸 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header header title_background-color">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">请输入车牌信息</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" style="margin-left:50px;">
+                        <div style="width:100%;float:left;">
+                            <div style="width:20%;float:left;text-align:right;">
+                                <label for="txt_departmentname">车牌号：</label>
+                            </div>
+                            <div style="width:80%;float:left;">
+                                <label id="OpenGate_ParkingCode"></label>
+                            </div>
+                        </div>
+                        <div style="width:100%;float:left;">
+                            <div style="width:20%;float:left;text-align:right;margin-top:7px">
+                                <label>开闸理由：</label>
+                            </div>
+                            <div style="width:80%;float:left">
+                                <select id="u3747_input" class="form-control" style="width:120px;height:35px">
+                                    <option value="重要访客">重要访客</option>
+                                    <option value="无法识别">无法识别</option>
+                                    <option value="识别不开闸">识别不开闸</option>
+                                    <option value="其它">其它</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" value="" id="ParkingCode" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="SetOpenGate()" style="background-color:#0092ff"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 入场补录 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header header title_background-color">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">请输入车牌信息</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" style="margin-left:50px;">
+                        <label for="txt_departmentname" style="margin-left:-12px">当前车场：</label>
+                        <label id="parkName"></label>
+                        <input type="hidden" id="ParkingCode2" />
+                    </div>
+                    <div class="form-group" style="margin-left:50px;height:30px;">
+                        <div style="width:15%;float:left;margin-top:7px">
+                            <label for="txt_departmentname" style="">车牌号：</label>
+                        </div>
+                        <div style="width:20%;float:left">
+                            <select class="form-control" id="CarNo_1" style="width:70px;height:35px">
+                                <option value="京">京</option>
+                                <option value="沪">沪</option>
+                                <option value="浙">浙</option>
+                                <option value="苏">苏</option>
+                                <option value="粤" selected="selected">粤</option>
+                                <option value="鲁">鲁</option>
+                                <option value="晋">晋</option>
+                                <option value="冀">冀</option>
+                                <option value="豫">豫</option>
+                                <option value="川">川</option>
+                                <option value="渝">渝</option>
+                                <option value="辽">辽</option>
+                                <option value="吉">吉</option>
+                                <option value="黑">黑</option>
+                                <option value="皖">皖</option>
+                                <option value="鄂">鄂</option>
+                                <option value="津">津</option>
+                                <option value="贵">贵</option>
+                                <option value="云">云</option>
+                                <option value="桂">桂</option>
+                                <option value="琼">琼</option>
+                                <option value="青">青</option>
+                                <option value="新">新</option>
+                                <option value="藏">藏</option>
+                                <option value="蒙">蒙</option>
+                                <option value="宁">宁</option>
+                                <option value="甘">甘</option>
+                                <option value="陕">陕</option>
+                                <option value="闽">闽</option>
+                                <option value="赣">赣</option>
+                                <option value="湘">湘</option>
+                            </select>
+                        </div>
+                        <div style="width:20%;float:left">
+                            <select class="form-control" id="CarNo_2" style="width:70px;height:35px">
+                                <option value="A">A</option>
+                                <option value="B" selected="selected">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                                <option value="J">J</option>
+                                <option value="K">K</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="N">N</option>
+                                <option value="P">P</option>
+                                <option value="Q">Q</option>
+                                <option value="R">R</option>
+                                <option value="S">S</option>
+                                <option value="T">T</option>
+                                <option value="U">U</option>
+                                <option value="V">V</option>
+                                <option value="W">W</option>
+                                <option value="X">X</option>
+                                <option value="Y">Y</option>
+                                <option value="Z">Z</option>
+                            </select>
+                        </div>
+                        <div style="width:40%;float:left">
+                            <input type="text" id="CarNo_3" class="form-control input-sm" style="width:140px;height:35px" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:50px;height:30px">
+                        <div style="width:20%;float:left;margin-left:-13px;margin-top:7px">
+                            <label for="txt_departmentname">车类型：</label>
+                        </div>
+                        <div style="width:80%;float:left">
+                            <select id="CarTypeModel" class="form-control" style="height:35px;width:190px;margin-left:-5px">
+                                <option value="">=请选择=</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:50px;height:30px">
+                        <div style="width:20%;float:left;margin-left:-13px;margin-top:7px">
+                            <label for="txt_departmentname">入场时间：</label>
+                        </div>
+                        <div style="width:80%;float:left">
+                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:220px;float:left;margin-left:-20px">
+                                <input class="form-control" size="16" type="text" value="" readonly id="MinInTime" style="background-color:#ffffff">
+                                <span class="input-group-addon" style="background-color:#ffffff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:50px;">
+                        <div style="width:20%;float:left;margin-left:-15px;margin-top:7px">
+                            <label for="txt_departmentname">开闸原因：</label>
+                        </div>
+                        <div style="width:60%;float:left">
+                            <select id="u3747_input" class="form-control" style="width:190px;height:35px">
+                                <option value="重要访客">重要访客</option>
+                                <option value="无法识别">无法识别</option>
+                                <option value="识别不开闸">识别不开闸</option>
+                                <option value="其它">其它</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" value="" id="ParkingCode" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="SetAddInRecord()" style="background-color:#0092ff"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 修正车牌 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="myModa3" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header header title_background-color">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">请输入车牌信息</h3>
+                </div>
+                <div class="modal-body">
+                    @*<div style="width:100%;float:left;margin-left:55px">
+                            <label for="txt_departmentname">原车牌：</label>
+                            <label id="update_OldCarNo"></label>
+                        </div>*@
+
+                    <div style="width:70%;float:left;height:40px;margin-left:15%">
+                        <label style="line-height:22px;float:left;width:25%;text-align:right">原车牌：</label>
+                        <input class="form-control input-sm" id="Original_CarNo" type="text" style="width:200px;float:left;width:60%">
+                    </div>
+                    <div style="width:70%;float:left;margin-left:15%">
+                        <label style="line-height:22px;float:left;width:25%;text-align:right">新车牌：</label>
+                        <input class="form-control input-sm" id="New_CarNo" type="text" style="width:200px;float:left;width:60%">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="CorrectCarNo()" style="background-color:#0092ff"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 查看大图 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="ShowImage_Form" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-body" style="margin-left: -30%;margin-top:50px;">
+                <img src="~/picture/camera.png" id="ShowImage" style="width:700px; height:450px" />
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- 设置车道闸口锁定 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="myModa4" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header header title_background-color">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">设置车道闸口锁定</h3>
+                </div>
+                <div class="modal-body">
+                    <div style="width:100%;float:left;font-size:12px">
+                        <div style="width:27%;float:left">
+                            <div style="width:25%;float:left;margin-top:5px">
+                                <span>全选</span>
+                            </div>
+                            <div style="width:68%;float:left">
+                                <select id="select_All" class="form-control" style="padding: 0px 0px;">
+                                    <option value="">=请选择=</option>
+                                    <option value="0">正常</option>
+                                    <option value="1">开闸锁定</option>
+                                    <option value="2">关闸锁定</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="width:34%;float:left">
+                            <div style="width:37%;float:left;margin-top:5px">
+                                <span>入口全选</span>
+                            </div>
+                            <div style="width:60%;float:left">
+                                <select id="select_Into" class="form-control" style="padding: 0px 0px;">
+                                    <option value="">=请选择=</option>
+                                    <option value="0">正常</option>
+                                    <option value="1">开闸锁定</option>
+                                    <option value="2">关闸锁定</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="width:35%;float:left">
+                            <div style="width:40%;float:left;margin-top:5px">
+                                <span>
+                                    出口全选
+                                </span>
+                            </div>
+                            <div style="width:60%;float:left">
+
+                                <select id="select_Out" class="form-control" style="padding: 0px 0px;">
+                                    <option value="">=请选择=</option>
+                                    <option value="0">正常</option>
+                                    <option value="1">开闸锁定</option>
+                                    <option value="2">关闸锁定</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:100%;float:left;height:10px"></div>
+                    <div style="width:100%;float:left;">
+                        <div class="table-responsive" style="width:48%;overflow:auto;height:200px;float:left;margin-left:1px">
+                            <table class="table  table-bordered table-striped3" style="text-align:center;cursor: default;" onmouseover="this.style.cursor='hand'">
+                                <tr style="font-size:14px;background-color:#e8f6ff;height:25px;">
+                                    <td>入口车道</td>
+                                    <td>状态</td>
+                                </tr>
+                                <tbody id="tbody_SetGateKeep1" style="text-align:center;font-size:14px;height:25px;"></tbody>
+                            </table>
+                        </div>
+                        <div class="table-responsive" style="width:48%;overflow:auto;height:200px;float:left">
+                            <table class="table  table-bordered table-striped3" style="text-align:center;cursor: default;" onmouseover="this.style.cursor='hand'">
+                                <tr style="font-size:14px;background-color:#e8f6ff;height:25px;">
+                                    <td>出口车道</td>
+                                    <td>状态</td>
+                                </tr>
+                                <tbody id="tbody_SetGateKeep2" style="text-align:center;font-size:14px;height:25px;"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="SetGateKeep()" style="background-color:#0092ff"> 保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="DriveWayMAC" value="" />
+<input type="hidden" id="IsInOut" value="" />
+<input type="hidden" id="DrivewayGuid" value="" />
+<script type="text/javascript">
+    var RoleGuidList = "";
+    var json = "";
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    var ProjectGuid = $.cookie("ProjectGuid");
+    $(document).ready(function () {
+        _div.style.display = 'block';
+        $("#ImgUrl").attr('src', "/picture/Nopicture.png");  //图片
+        $("#div_revise").hide();
+        $("#button_Gate").hide();
+        $("#button_InRecord").hide();
+        $("#div_cost").hide();
+        $("#div_revise").hide();
+        $("#button_New").hide();
+        $("#button_free").hide();
+
+        $(".btn1").click(function () {
+            $("#app-menu1").toggle();
+        });
+        $(".btn2").click(function () {
+            $("#app-menu2").toggle();
+        });
+        GetParkLotList();
+        
+    });
+    function initDriveWayListOnclick() {
+        $('.app-menu3 li').click(function () {
+            $('.focus').removeClass('focus');
+            $(this).addClass('focus');
+        });
+    }
+
+    //日期格式初始化
+    $('.form_date').datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        format: 'yyyy-mm-dd hh:mm:ss',
+        language: 'zh-CN',//显示中文
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        today: '今天',
+        suffix: [],
+        meridiem: [],
+        weekStart: 1,
+        format: 'yyyy-mm-dd'
+    });
+
+    //Select要触发的事件
+    $("#ParkLotSelect").change(function () {
+        _div.style.display = 'block';
+        $("#ImgUrl").attr('src', "/picture/Nopicture.png");  //图片
+        $("#lblCarNo").text("");
+        $("#lblCarTypeName").text("");
+        $("#EventTime").text("");
+        $("#lbldrivewayName").text("");
+        var ParkingCode = $("#ParkLotSelect").val();
+        $("#DriveWayMAC").val("");
+        $("#IsInOut").val("");
+        $("#DrivewayGuid").val("");
+        if (ParkingCode != "") {
+            GetDriveWayList(ParkingCode);
+        }
+        else {
+            _div.style.display = 'none';
+        }
+       
+    });
+
+    function GetDriveWay() {
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetDriveWay?Guid=" + ParkingCode,
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    for (var key in json) {
+                        var guid = json[key].Guid;
+                        var carTypeName = json[key].CarTypeName;
+                        if (carTypeGuid == guid) {
+                            $("#CarTypeGuid").append("<option value='" + guid + "' selected='selected'>" + carTypeName + "</option>");
+                        }
+                        else {
+                            $("#CarTypeGuid").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    //获取角色权限api/Personnel/GetRolePermission?Guid={Guid}
+    function GetRolePermission() {
+        var RoleGuid = $.cookie("RoleGuid");
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + RoleGuid,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            async: false,
+            success: function (data) {
+                if (data.ParkingCodeList) {
+                    data.ParkingCodeList = [...(new Set(data.ParkingCodeList))]
+                }
+                if (data.IsSuccess == true) {
+                    RoleGuidList = data.ParkingCodeList;
+                }
+            },
+        })
+    }
+
+    //获取车场
+    function GetParkLotList() {
+        GetRolePermission();
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=' + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    for (var key in json) {
+                        var parkCode = json[key].ParkCode;
+                        for (var roleGuidList in RoleGuidList) {
+                            if (RoleGuidList[roleGuidList] == parkCode) {
+                                var parkName = json[key].ParkName;
+                                if (json[key].Existence == true) {
+                                    $("#ParkLotSelect").append("<option value='" + parkCode + "' >" + parkName + "</option>");
+                                }
+                            }
+                        }
+                    }
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+
+    //获取车道列表
+    function GetDriveWayList(ParkingCode) {
+        if (ParkingCode == "") {
+            return null;
+        }
+        var GateKeepList = "";
+        // 获取车道是否开闸锁定
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetGateKeep?ParkingCode=' + ParkingCode + "&projectGuid=" + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    GateKeepList = data.Result;
+                }
+
+            }
+        }
+        );
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetDriveWayList?ParkingCode=' + ParkingCode,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    json = data.Result;
+                    var html1 = "";
+                    var html2 = "";
+                    $("#app-menu1").empty();
+                    $("#app-menu2").empty();
+                    for (var key in json) {
+                        var DrivewayType = json[key].Type;
+                        var drivewayName = json[key].DrivewayName;
+                        var guid = json[key].Guid;
+                        //$("#DriveWayMAC").val(json[key].deviceMacAddress);
+                        $("#DrivewayGuid").val(guid);
+                        if (DrivewayType == 0) {
+                            var count = 0;
+                            if (GateKeepList.List != "") {
+                                for (var arr in GateKeepList.List) {
+                                    var GateKeepGuid = GateKeepList.List[arr].DrivewayGuid;
+                                    var gateState = GateKeepList.List[arr].GateState;
+                                    if (guid == GateKeepGuid) {
+                                        //if (gateState == 1) {
+                                        //    count++;
+                                        //    html1 = html1 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                        //        '<span >' +
+                                        //        "<a href='#' style='text-decoration:none;margin-left:60px;line-height7:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",1)'>" + drivewayName + "</a><a style='background-color: #ff0000;color:#ffffff;margin-left: 10px;'>开闸锁定</a>" +
+                                        //        '</span>' +
+                                        //        ' </li>';
+                                        //} 
+                                        switch (gateState) {
+                                            case 1:
+                                                count++;
+                                                html1 = html1 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                                    '<span >' +
+                                                    "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",0)'>" + drivewayName + "</a><a style='background-color: #ff0000;color:#ffffff;margin-left: 10px;'>开闸锁定</a>" +
+                                                    '</span>' +
+                                                    ' </li>';
+                                                break
+                                            case 2:
+                                                count++;
+                                                html1 = html1 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                                    '<span >' +
+                                                    "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",0)'>" + drivewayName + "</a><a style='background-color: #ff0000;color:#ffffff;margin-left: 10px;'>关闭锁定</a>" +
+                                                    '</span>' +
+                                                    ' </li>';
+                                                break
+                                         
+                                        } 
+                                    }
+                                }
+                            }
+                            if (count == 0) {
+                                html1 = html1 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                    '<span >' +
+                                    "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",1)'>" + drivewayName + "</a>" +
+                                    '</span>' +
+                                    ' </li>';
+                            }
+                        }
+                        else {
+                            var count = 0;
+                            if (GateKeepList.List != "") {
+                                for (var arr in GateKeepList.List) {
+                                    var GateKeepGuid = GateKeepList.List[arr].DrivewayGuid;
+                                    var gateState = GateKeepList.List[arr].GateState;
+                                    if (guid == GateKeepGuid) {
+                                        switch (gateState) { 
+                                            case 1:
+                                                count++;
+                                                html2 = html2 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                                    '<span >' +
+                                                    "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",0)'>" + drivewayName + "</a><a style='background-color: #ff0000;color:#ffffff;margin-left: 10px;'>开闸锁定</a>" +
+                                                    '</span>' +
+                                                    ' </li>';
+                                                break
+                                            case 2:
+                                                count++;
+                                                html2 = html2 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                                    '<span >' +
+                                                    "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",0)'>" + drivewayName + "</a><a style='background-color: #ff0000;color:#ffffff;margin-left: 10px;'>关闭锁定</a>" +
+                                                    '</span>' +
+                                                    ' </li>';
+                                                break
+                                            
+                                        }
+
+
+                                        //if (gateState == 1) {
+                                          
+                                        //}
+                                        //if (gateState == 1) {
+                                        //    count++;
+                                        //    html2 = html2 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                        //        '<span >' +
+                                        //        "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px;' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",0)'>" + drivewayName + "</a><a style='background-color: #ff0000;color:#ffffff;margin-left: 10px;'>开闸锁定</a>" +
+                                        //        '</span>' +
+                                        //        ' </li>';
+                                        //}
+                                    }
+                                }
+                            }
+                            if (count == 0) {
+                                html2 = html2 + '<li style="list-style-type:none;height:33px;width:230px;margin-left:-46px">' +
+                                    '<span >' +
+                                    "<a href='#' style='text-decoration:none;margin-left:60px;line-height:32px' onclick='menu_right(\"" + guid + "\",\"" + drivewayName + "\",\"" + json[key].DeviceMacAddress + "\",\"" + ParkingCode + "\",0)'>" + drivewayName + "</a>" +
+                                    '</span>' +
+                                    ' </li>';
+                            }
+
+                        }
+                    }
+                    $("#app-menu1").append(html1);
+                    $("#app-menu2").append(html2);
+                    initDriveWayListOnclick();
+                    _div.style.display = 'none';
+                }
+            }
+        })
+    }
+
+
+    //获取选择车道半小时内经过的车辆列表
+    function menu_right(guid, drivewayName, deviceMacAddress, ParkingCode, type) {
+        _div.style.display = 'block';
+        $("#DriveWayMAC").val(deviceMacAddress);
+        $("#ImgUrl").attr('src', "/picture/Nopicture.png");  //图片
+        $("#lblCarNo").text("");
+        $("#lblCarTypeName").text("");
+        $("#EventTime").text("");
+        $("#lbldrivewayName").text("");
+        if (type == 1) { //入口
+            $("#button_Gate").hide();
+            $("#button_InRecord").hide();
+            $("#div_cost").hide();
+            $("#IsInOut").val("入口");
+            $("#IsInOut").val("入口");
+            $("#div_revise").hide();
+            $("#lblt_horoughfare").html("入口通道:");
+            $("#lbl_tiem").html("入场时间");
+            $("#ImgUrl").attr('src', "/picture/Nopicture.png");  //图片
+            $("#In_picture").html("入场图片");
+            $("#In_time").html("入场时间");
+        }
+        else { //出口
+            $("#IsInOut").val("出口");
+            $("#div_revise").hide();
+            $("#button_free").hide();
+            $("#button_InRecord").hide();
+            $("#button_Gate").hide();
+            $("#button_New").hide();
+            $("#div_cost").hide();
+            $("#lblt_horoughfare").html("出口通道");
+            $("#lbl_tiem").html("出场时间");
+            $("#ImgUrl").attr('src', "/picture/Nopicture1.png");  //图片
+            $("#In_picture").html("出场图片");
+            $("#In_time").html("出场时间");
+            //$("#button_New").css("display", "block");
+            //$("#button_free").css("display", "block");
+
+        }
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetDriveWayHalfHourCars?drivewayguid=" + guid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                $("#tbody_DriveWay").text("");
+                
+                //if (data == null) {
+                //    _div.style.display = 'none';
+                //    return;
+                //}
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    var html = "";
+                    var index = 0;
+                    for (var key in json) {
+                        index++;
+                        var CarTypeGuid = json[key].CarTypeGuid;
+                        var DriveWayMAC = json[key].DriveWayMAC;
+                        var CarNo = json[key].CarNo;
+                        var ImgUrl = json[key].ImgUrl;
+                        var EventTime = json[key].EventTime;
+                        var dateee = new Date(EventTime).toJSON();
+                        var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+                       // var CarTypeGuid = json[key].CarTypeGuid;
+                        var Remark = json[key].Remark;
+                        $("#ImgUrl").attr('src', "/picture/Nopicture.png");  //图片
+                        $("#lblCarNo").text("");
+
+                        var CarTypeName = "";
+                        $.ajaxSettings.async = false;
+                        $.ajax({
+                            url: "/Home/Maps/ParkLot/GetCarType?Guid=" + CarTypeGuid,
+                            dataType: '',
+                            method: '',
+                            contentType: '',
+                            success: function (data2) {
+                                if (data2.IsSuccess == true) {
+                                    var json = data2.Result;
+                                    if (data2.Result != null) {
+
+
+                                        //$("#lblCarTypeName").text(json.carTypeName);
+                                        CarTypeName = json.CarTypeName;
+                                    }
+                                }
+                            }
+                        })
+                        $("#lblCarTypeName").text("");
+                        $("#DriveWayMAC").val(DriveWayMAC);
+                        $("#lbldrivewayName").text("");
+                        $("#EventTime").text("");
+                        html = html + "<tr style='font-size:15px;line-height:22px;' onclick='clickHandler(\"" + ImgUrl + "\",\"" + CarNo + "\",\"" + CarTypeName + "\",\"" + date + "\",\"" + drivewayName + "\",\"" + ParkingCode + "\",\"" + CarNo + "\")' >";
+                        html = html + "<td style='width:16%'><img src=" + ImgUrl + " style='width:30px;height:30px 'onclick='javascript:showimage(\"" + ImgUrl + "\")' onmouseover='this.style.cursor =\"pointer\"; this.style.cursor =\"hand\"';  onmouseout='this.style.cursor=\"default\"'></td>" +
+                            "<td style='width:16%'>" + CarNo + "</td>" +
+                            "<td style='width:16%'>" + CarTypeName + "</td>" +
+                            "<td style='width:16%'>" + drivewayName + "</td>" +
+                            "<td style='width:17%'>" + date + "</td>" +
+                            "<td style='width:19%'>" + Remark + "</td>" +
+                            "</tr>";
+                    }
+
+                    $("#tbody_DriveWay").append(html);
+                }
+                _div.style.display = 'none';
+            }
+        })
+       
+    }
+
+    //显示大图
+    function showimage(source) {
+        $("#ShowImage").attr('src', source);  //图片
+        $("#ShowImage_Form").modal();
+    }
+    //获取停车费用信息
+    function GetTempCarParkingInfo(parkingCode, carNumber) {
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetTempCarParkingInfo?parkingCode=" + parkingCode + "&carNumber=" + carNumber,
+            dataType: 'json',
+            method: 'get',
+            success: function (data) {
+                if (data.IsSuccess == true && data.Result != null) {
+                    //车牌号码
+                    //var carNumber = data.Result.CarNumber
+                    //停车费用
+                    var parkingFee = data.Result.ParkingFee
+                    //应缴费用
+                    var actualAmount = data.Result.ActualAmount
+                    //优惠金额
+                    var discountAmount = data.Result.DiscountAmount
+                    //已缴费用
+                    var paymentAmount = data.Result.PaymentAmount
+                    $("#parkingFee").html(parkingFee)
+                    $("#actualAmount").html(actualAmount)
+                    $("#discountAmount").html(discountAmount)
+                    $("#paymentAmount").html(paymentAmount)
+                }
+            }
+        })
+    }
+
+    //根据ID获取车类型
+    function CarTypeModel(CarTypeGuid) {
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarType?Guid=" + CarTypeGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    $("#lblCarTypeName").text(json.CarTypeName);
+                    //$message('d', json.carTypeName)
+                }
+            }
+        })
+
+    }
+
+    //单击事件改变车牌信息
+    function clickHandler(ImgUrl, CarNo, CarTypeName, date, drivewayName) {
+        _div.style.display = 'block';
+        $("#div_revise").css("display", "block");
+        $("#ImgUrl").attr('src', ImgUrl);  //图片
+        $("#lblCarNo").text(CarNo);
+        $("#lblCarTypeName").text(CarTypeName);
+        $("#EventTime").text(date);
+        $("#lbldrivewayName").text(drivewayName);
+        $("#button_New").hide();
+        $("#button_free").hide();
+        $("#button_Gate").hide();
+        $("#button_InRecord").hide();
+        if ($("#IsInOut").val() == "出口") {
+            $("#div_cost").show();
+            $("#lblt_horoughfare").html("出口通道");
+            $("#lbl_tiem").html("出场时间");
+            if (ImgUrl == "") {
+                $("#ImgUrl").attr('src', "/picture/Nopicture1.png");  //图片
+            } else {
+                if (ImgUrl == "/picture/shownocapture.png") {
+                    $("#ImgUrl").attr('src', "/picture/nocapture.png");  //图片
+                }
+                else {
+                    $("#ImgUrl").attr('src', ImgUrl);  //图片
+                }
+            }
+
+            $("#In_picture").html("出场图片");
+            $("#In_time").html("出场时间");
+        } else {
+            $("#div_cost").hide();
+            $("#lblt_horoughfare").html("入口通道");
+            $("#lbl_tiem").html("入场时间");
+            if (ImgUrl == "") {
+                $("#ImgUrl").attr('src', "/picture/Nopicture1.png");  //图片
+            } else {
+                if (ImgUrl == "/picture/shownocapture.png") {
+                    $("#ImgUrl").attr('src', "/picture/nocapture.png");  //图片
+                }
+                else {
+                    $("#ImgUrl").attr('src', ImgUrl);  //图片
+                }
+
+            }
+
+            //$("#ImgUrl").attr('src', "/picture/Nopicture.png");  //图片
+            $("#In_picture").html("入场图片");
+            $("#In_time").html("入场时间");
+
+
+        }
+
+        _div.style.display = 'none';
+    }
+    //刷新
+    function Update() {
+        _div.style.display = 'block';
+        parent.$('#mainIframe').attr('src', "/Home/Trans/SetIntoOrOut");
+        _div.style.display = 'none';
+    }
+    //手动开闸
+    function OpenGate() {
+        _div.style.display = 'block';
+        var lblCarNo = $("#lblCarNo").text();
+        $("#OpenGate_ParkingCode").text(lblCarNo);
+        $('#myModal').modal();
+        _div.style.display = 'none';
+    }
+    //提交免费开闸
+    function SetOpenGate() {
+        _div.style.display = 'block';
+        var ParkLotSelect = $("#ParkLotSelect").val();
+        var DeviceMacAddress = $("#DriveWayMAC").val();
+        var data = {
+            "ParkingCode": ParkLotSelect,
+            "DeviceMacAddress": DeviceMacAddress,
+            "ProjectGuid": ProjectGuid
+        };
+        $.post("/Home/Maps/ParkLot/OpenGate", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "手动开闸成功！")
+            }
+            else {
+                $message('d', result.MessageContent)
+            }
+        });
+        _div.style.display = 'none';
+    }
+
+    //入场补录
+    function AddInRecord() {
+        _div.style.display = 'block';
+        var ParkLotSelect = $("#ParkLotSelect").find("option:selected").text();
+        var ParkCode = $("#ParkLotSelect").val();
+        CarTypeModel(ParkCode)
+        $("#parkName").text(ParkLotSelect);
+        $('#myModa2').modal();
+        _div.style.display = 'none';
+    }
+    //打开修正车牌
+    function OpenCorrectCarNo() {
+        //var lblCarNo = $("#lblCarNo").text();
+        //$("#update_OldCarNo").text(lblCarNo)
+        _div.style.display = 'block';
+        $('#myModa3').modal();
+        _div.style.display = 'none';
+    }
+
+    //重拍
+    function PhotographCar() {
+        _div.style.display = 'block';
+        var ParkLotSelect = $("#ParkLotSelect").val();
+        var DeviceMacAddress = $("#DriveWayMAC").val();
+        var data = {
+            "ParkingCode": ParkLotSelect,
+            "DeviceMacAddress": DeviceMacAddress,
+            "ProjectGuid": ProjectGuid
+        };
+        $.post("/Home/Maps/ParkLot/PhotographCar", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "重拍成功！")
+            }
+            else {
+                $message('d', result.MessageContent)
+            }
+        });
+        _div.style.display = 'none';
+
+    }
+    //修正车牌
+    function CorrectCarNo() {
+        _div.style.display = 'block';
+        var Original_CarNo = $("#Original_CarNo").val();
+        var New_CarNo = $("#New_CarNo").val();
+        var ParkingCode = $("#ParkLotSelect").val();
+        var DeviceMacAddress = $("#DriveWayMAC").val();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        //var NewCarNo = $("#update_NewCarNo").val();
+        //if (NewCarNo == "") {
+        //    return $message('d', "新车牌不能为空！")
+        //}
+        // var ProjectGuid = $.cookie("ProjectGuid");
+        //var OldCarNo = $("#update_OldCarNo").text();
+        var url = "";  //修改
+        var data = {};
+        if ($("#IsInOut").val() == "出口") {
+            url = "/Home/Maps/ParkLot/CarNumberRepush";  //修改
+            data = {
+                "DriveWayMAC": DeviceMacAddress,
+                "ParkingCode": ParkingCode,
+                "OldCarNo": Original_CarNo,//原车牌
+                "NewCarNo": New_CarNo
+            };
+
+        }
+        else {
+            url = "/Home/Maps/ParkLot/CorrectCarNo";  //修正
+            data = {
+                "ProjectGuid": ProjectGuid,
+                "ParkingCode": ParkingCode,
+                "OldCarNo": Original_CarNo,//原车牌
+                "NewCarNo": New_CarNo
+            };
+
+        }
+
+        $.post(url, data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "修改成功！")
+            }
+            else {
+                $message('d', result.MessageContent)
+            }
+        });
+        _div.style.display = 'none';
+    }
+
+    //保存入场记录
+    function SetAddInRecord() {
+        _div.style.display = 'block';
+        var ParkLotSelect = $("#ParkLotSelect").val();
+        var CarNo = $("#CarNo_1").val() + $("#CarNo_2").val() + $("#CarNo_3").val();
+        var CarTypeModel = $("#CarTypeModel").val();
+        var MinInTime = $("#MinInTime").val();
+        var DrivewayGuid = $("#DrivewayGuid").val();
+        var data = {
+            "ParkingCode": ParkLotSelect,
+            "CarNo": CarNo,
+            "InTime": MinInTime,
+            "CarTypeGuid": CarTypeModel,
+            "DrivewayGuid": DrivewayGuid,
+            "ProjectGuid": ProjectGuid
+        };
+
+        $.post("/Home/Maps/ParkLot/AddInRecord", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "补录入场记录成功！")
+            }
+            else {
+                $message('d', result.MessageContent)
+            }
+        });
+        _div.style.display = 'none';
+    }
+
+    //车类型
+    function CarTypeModel(CarTypeGuid) {
+        if (CarTypeGuid != "") {
+            $.ajax({
+                url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + CarTypeGuid + '&projectGuid=' + $.cookie("ProjectGuid"),
+                dataType: '',
+                method: '',
+                contentType: '',
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        var json = data.Result;
+                        $("#CarTypeModel").find("option").remove();
+                        for (var key in json) {
+                            var carTypeGuid = json[key].Guid;
+                            var carTypeName = json[key].CarTypeName;
+                            $("#CarTypeModel").append("<option value='" + carTypeGuid + "' >" + carTypeName + "</option>");
+
+                        }
+
+                    }
+                }
+            })
+        }
+        else {
+            $("#CarTypeModel").find("option").remove();
+            $("#CarTypeModel").append("<option value='' >=请选择=</option>");
+        }
+
+    }
+
+    //应急处理
+    function OpenSetGateKeep() {
+        _div.style.display = 'block';
+        var ParkingCode = $("#ParkLotSelect").val();
+        if (ParkingCode != "") {
+            GetGateKeep(ParkingCode, 0, 0);
+            $('#myModa4').modal();
+        }
+        else {
+           $message('d', "请先选择停车场")
+        }
+        _div.style.display = 'none';
+    }
+
+    //获取当前所有停车场车道列表
+    function GetGateKeep(ParkingCode, isIntoOut, status) {
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetGateKeep?ParkingCode=' + ParkingCode + "&projectGuid=" + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                var html1 = "";
+                var html2 = "";
+                if (data.IsSuccess == true) {
+                    $("#tbody_SetGateKeep1").empty();
+                    $("#tbody_SetGateKeep2").empty();
+                    var json_data = data.Result;
+                    var list = json_data.List;
+                    for (var key in json) {
+                        var drivewayName = json[key].DrivewayName;
+                        var DrivewayGuid = json[key].Guid;
+                        var DeviceMacAddress = json[key].DeviceMacAddress;
+                        var GateState = json[key].Type;
+                        if (json[key].Type == 0) //入口
+                        {
+                            html1 = html1 + "<tr><td>" + drivewayName + "</td>" +
+                                "<td>" +
+                                "<select id='" + DrivewayGuid + "' class='select_GateKeepList form-control' name='name_GateKeepList'   style='padding: 0px 0px;'>";
+
+                            if (status == 1) {
+                                switch (isIntoOut) {
+                                    case 0:
+                                        html1 = html1 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                        break;
+                                    case 1:
+                                        html1 = html1 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' selected='selected' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                        break;
+                                    default:
+                                        html1 = html1 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' selected='selected' >关闭锁定</option>";
+                                }
+                            }
+
+                            else {
+                                if (json_data.List != "") {
+                                    var count = 0;
+                                    for (var arr in list) {
+                                        var GateKeepGuid = list[arr].DrivewayGuid;
+                                        if (DrivewayGuid == list[arr].DrivewayGuid) {
+                                            count++;
+                                            switch (list[arr].GateState) {
+                                                case 0:
+                                                    html1 = html1 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                                    break;
+                                                case 1:
+                                                    html1 = html1 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                                        " <option value='" + DrivewayGuid + "' selected='selected' >开闸锁定</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                                    break;
+                                                default:
+                                                    html1 = html1 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                                        " <option value='" + DrivewayGuid + "' selected='selected' >关闭锁定</option>";
+                                            }
+                                            break;
+                                        }
+
+                                    }
+                                    if (count == 0) {
+                                        html1 = html1 + "<option value='" + DrivewayGuid + "' selected='selected'>正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                    }
+                                }
+                                else {
+                                    html1 = html1 + " <option value='" + DrivewayGuid + "' selected='selected'>正常</option>" +
+                                        " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                        " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+
+                                }
+                            }
+                            html1 = html1 + "</select></td>";
+                        }
+                        else {  //出口
+
+                            html2 = html2 + "<tr><td>" + drivewayName + "</td>" +
+                                "<td>" +
+                                "<select id='" + DrivewayGuid + "' class='select_GateKeepList form-control' name='name_GateKeepList' style='padding: 0px 0px;'>";
+
+                            if (status == 2) {
+                                switch (isIntoOut) {
+                                    case 0:
+                                        html2 = html2 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                        break;
+                                    case 1:
+                                        html2 = html2 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' selected='selected' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                        break;
+                                    default:
+                                        html2 = html2 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "'  >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' selected='selected' >关闭锁定</option>";
+                                }
+                            }
+                            else {
+                                if (json_data.List != "") {
+                                    var count = 0;
+                                    for (var arr in list) {
+                                        if (DrivewayGuid == list[arr].DrivewayGuid) {
+                                            count++;
+                                            switch (list[arr].GateState) {
+                                                case 0:
+                                                    html2 = html2 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                                    break;
+                                                case 1:
+                                                    html2 = html2 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                                        " <option value='" + DrivewayGuid + "' selected='selected' >开闸锁定</option>" +
+                                                        " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                                    break;
+                                                default:
+                                                    html2 = html2 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                                                        " <option value='" + DrivewayGuid + "'  >开闸锁定</option>" +
+                                                        " <option value='" + DrivewayGuid + "' selected='selected' >关闭锁定</option>";
+                                            }
+                                            break;
+                                        }
+                                    }
+
+                                    if (count == 0) {
+                                        html2 = html2 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                    }
+                                }
+                                else {
+                                    html2 = html2 + "<option value='" + DrivewayGuid + "'  selected='selected' >正常</option>" +
+                                        " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                                        " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                                }
+                            }
+                            html2 = html2 + "</select></td>";
+                        }
+                    }
+                    $("#tbody_SetGateKeep1").append(html1);
+                    $("#tbody_SetGateKeep2").append(html2);
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+
+
+    //设置车道闸口锁定
+    function SetGateKeep() {
+        _div.style.display = 'block';
+        var ParkingCode = $("#ParkLotSelect").val();
+        var jsonarray = [];
+
+        $("select[name='name_GateKeepList'] option:selected").each(function (i) {
+            var DrivewayGuid = $(this).val();
+            var GateState = $(this).text();
+            var macAddress = $(this).attr('macAddress');
+            var GateStateName = "";
+            var deviceMacAddress = "";
+            switch (GateState) {
+                case "正常":
+                    GateStateName = 0;
+                    break
+                case "开闸锁定":
+                    GateStateName = 1;
+                    break
+                default:
+                    GateStateName = 2;
+            }
+
+            $.ajax({
+                url: "/Home/Maps/ParkLot/GetDriveWay?Guid=" + DrivewayGuid,
+                dataType: '',
+                method: '',
+                contentType: '',
+                async: false,
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        var json = data.Result;
+                        deviceMacAddress = json.DeviceMacAddress;
+
+                    }
+                }
+            })
+            jsonarray.push({
+                DrivewayGuid: DrivewayGuid,
+                DeviceMacAddress: deviceMacAddress,
+                GateState: GateStateName
+            })
+        });
+        var postData = {
+            "ParkingCode": ParkingCode,
+            "GateKeepList": JSON.stringify(jsonarray),
+            "ProjectGuid": ProjectGuid
+        };
+
+        $.post("/Home/Maps/ParkLot/SetGateKeep", postData, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "设置车道闸口锁定成功！")
+                GetDriveWayList(ParkingCode);
+            }
+            else {
+                $message('d', "设置车道闸口锁定不成功！")
+            }
+        })
+        _div.style.display = 'none';
+    }
+
+    //设置车道闸口锁定 - (全选)
+    $("#select_All").change(function () {
+        _div.style.display = 'block';
+        var select_all = $("#select_All").find("option:selected").val();  //全选
+        var select_Into = $("#select_Into").find("option:selected").val();  //入场
+
+        $("#tbody_SetGateKeep1").empty();
+        $("#tbody_SetGateKeep2").empty();
+        var html1 = "";
+        var html2 = "";
+        for (var key in json) {
+            var drivewayName = json[key].DrivewayName;
+            var DrivewayGuid = json[key].Guid;
+            var DeviceMacAddress = json[key].DeviceMacAddress;
+            var GateState = json[key].Type;
+            if (json[key].Type == 0) //入口
+            {
+                html1 = html1 + "<tr><td>" + drivewayName + "</td>" +
+                    "<td>" +
+                    "<select id='" + DrivewayGuid + "' class='select_GateKeepList form-control' name='name_GateKeepList'   style='padding: 0px 0px;'>";
+
+                switch (select_all) {
+                    case "0":
+                        html1 = html1 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                        break;
+                    case "1":
+                        html1 = html1 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                            " <option value='" + DrivewayGuid + "' selected='selected' >开闸锁定</option>" +
+                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                        break;
+                    default:
+                        html1 = html1 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                            " <option value='" + DrivewayGuid + "'  >开闸锁定</option>" +
+                            " <option value='" + DrivewayGuid + "' selected='selected' >关闭锁定</option>";
+                }
+                if (select_Into)
+
+                    html1 = html1 + "</select></td>";
+            }
+            else {
+                html2 = html2 + "<tr><td>" + drivewayName + "</td>" +
+                    "<td>" +
+                    "<select id='" + DrivewayGuid + "' class='select_GateKeepList form-control' name='name_GateKeepList' style='padding: 0px 0px;'>";
+                switch (select_all)
+                {
+                    case "0":
+                        html2 = html2 + " <option value='" + DrivewayGuid + "' selected='selected' >正常</option>" +
+                            " <option value='" + DrivewayGuid + "' >开闸锁定</option>" +
+                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                        break;
+                    case "1":
+                        html2 = html2 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                            " <option value='" + DrivewayGuid + "' selected='selected' >开闸锁定</option>" +
+                            " <option value='" + DrivewayGuid + "' >关闭锁定</option>";
+                        break;
+                    default:
+                        html2 = html2 + " <option value='" + DrivewayGuid + "' >正常</option>" +
+                            " <option value='" + DrivewayGuid + "'  >开闸锁定</option>" +
+                            " <option value='" + DrivewayGuid + "' selected='selected' >关闭锁定</option>";
+                }
+                html2 = html2 + "</select></td>";
+            }
+        }
+        $("#tbody_SetGateKeep1").append(html1);
+        $("#tbody_SetGateKeep2").append(html2);
+        _div.style.display = 'none';
+    });
+    //设置车道闸口锁定 - (入场)
+    $("#select_Into").change(function () {
+        var ParkingCode = $("#ParkLotSelect").val();
+        var select_Into = 0;
+        select_Into = parseInt($("#select_Into").find("option:selected").val());  //入场
+        if (select_Into != 0) {
+            GetGateKeep(ParkingCode, select_Into, 1)
+        }
+        
+    });
+    //设置车道闸口锁定 - (出场)
+    $("#select_Out").change(function () {
+        _div.style.display = 'block';
+        var ParkingCode = $("#ParkLotSelect").val();
+        var select_Out = 0;
+        select_Out = parseInt($("#select_Out").find("option:selected").val());  //出场
+        if (select_Out != 0) {
+            GetGateKeep(ParkingCode, select_Out, 2)
+        }
+        _div.style.display = 'none';
+    });
+
+    //刷新 车道拦截数据刷新
+    function GateCatchRefresh() {
+        _div.style.display = 'block';
+        var ParkingCode = $("#ParkLotSelect").val();
+        var DriveWayMAC = $("#DriveWayMAC").val();
+        if (DriveWayMAC == "") {
+            _div.style.display = 'none';
+            return;
+        }
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GateCatchRefresh?deviceMacAddress=" + DriveWayMAC,
+            dataType: 'json',
+            method: 'get',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+
+                    var obj = data.Result;
+                    if (obj !== null) {
+                        $("#lblCarNo").text(obj.CarNo);
+                        $("#lblCarTypeName").text(obj.CarTypeName)
+                        $("#lbldrivewayName").text(obj.DrivewayName)
+                        $("#ImgUrl").attr('src', obj.ImgUrl);  //图片
+                        $("#button_New").show();
+                        $("#button_free").show();
+                        //获取费用
+                        if (DriveWayMAC == "") {
+                            _div.style.display = 'none';
+                            return $message('d', "设备不能为空！");
+                        }
+                        if ($("#IsInOut").val() == "出口") {
+                            $("#div_revise").show();
+                            $("#button_Gate").show();
+                            $("#button_InRecord").show();
+                            $("#div_cost").show();
+                            $("#IsInOut").val("出口");
+                            $("#div_revise").hide();
+                            $("#button_New").show();
+                            $("#button_free").show();
+                        }
+                        if ($("#IsInOut").val() == "入口") {
+                            $("#div_revise").hide();
+
+                        }
+                        else {
+                            $("#div_revise").show();
+                        }
+                        GetTempCarParkingInfo(ParkingCode, obj.CarNo)
+
+                    }
+                    _div.style.display = 'none';
+                }
+                else {
+                    $message('d', data.MessageContent);
+                    _div.style.display = 'none';
+                }
+            }
+        })
+    
+    }
+</script>
+
+
+

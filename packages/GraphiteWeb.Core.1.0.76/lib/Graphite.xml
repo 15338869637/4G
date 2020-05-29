@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Graphite</name>
+    </assembly>
+    <members>
+        <member name="F:Graphite.Writers.RedirectType.MovedPermanently">
+            <summary>
+            301 This response code means that URI of requested resource 
+            has been changed. Probably, new URI would be given in the response.
+            </summary>
+        </member>
+        <member name="F:Graphite.Writers.RedirectType.Found">
+            <summary>
+            302 This response code means that URI of requested resource has 
+            been changed temporarily. New changes in the URI might be made 
+            in the future. Therefore, this same URI should be used by the 
+            client in future requests.
+            </summary>
+        </member>
+        <member name="F:Graphite.Writers.RedirectType.SeeOther">
+            <summary>
+            303 Server sent this response to directing client to get 
+            requested resource to another URI with an GET request.
+            </summary>
+        </member>
+        <member name="F:Graphite.Writers.RedirectType.NotModified">
+            <summary>
+            304 This is used for caching purposes. It is telling to client that 
+            response has not been modified. So, client can continue to 
+            use same cached version of response.
+            </summary>
+        </member>
+        <member name="F:Graphite.Writers.RedirectType.UseProxy">
+            <summary>
+            305 DEPRICATED Was defined in a previous version of the HTTP specification 
+            to indicate that a requested response must be accessed by a proxy. It has 
+            been deprecated due to security concerns regarding in-band 
+            configuration of a proxy.
+            </summary>
+        </member>
+        <member name="F:Graphite.Writers.RedirectType.TemporaryRedirect">
+            <summary>
+            307	Server sent this response to directing client to get requested resource 
+            to another URI with same method that used prior request. This has the same 
+            semantic than the 302 Found HTTP response code, with the exception that the 
+            user agent must not change the HTTP method used: if a POST was used in 
+            the first request, a POST must be used in the second request.
+            </summary>
+        </member>
+        <member name="F:Graphite.Writers.RedirectType.PermanentRedirect">
+            <summary>
+            308	This means that the resource is now permanently located at another URI, 
+            specified by the Location: HTTP Response header. This has the same semantics 
+            as the 301 Moved Permanently HTTP response code, with the exception that the 
+            user agent must not change the HTTP method used: if a POST was used in 
+            the first request, a POST must be used in the second request.
+            </summary>
+        </member>
+        <member name="M:Graphite.Writers.Redirect.PermanentlyTo(System.String)">
+            <summary>
+            301 This response code means that URI of requested resource 
+            has been changed. Probably, new URI would be given in the response.
+            </summary>
+        </member>
+        <member name="M:Graphite.Writers.Redirect.TemporarilyTo(System.String)">
+            <summary>
+            302 This response code means that URI of requested resource has 
+            been changed temporarily. New changes in the URI might be made 
+            in the future. Therefore, this same URI should be used by the 
+            client in future requests.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureWebApi(System.Action{System.Web.Http.HttpConfiguration})">
+            <summary>
+            Allows you to configure Web Api.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureJsonNet(System.Action{Newtonsoft.Json.JsonSerializerSettings})">
+            <summary>
+            Allows you to configure Json.NET.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.IncludeTypeAssembly``1">
+            <summary>
+            Includes the assembly of the specified type.
+            This call is additive, so you can specify multiple assemblies.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.IncludeTypeAssembly(System.Type)">
+            <summary>
+            Includes the assembly of the specified type.
+            This call is additive, so you can specify multiple assemblies..
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.IncludeThisAssembly">
+            <summary>
+            Includes the current assemby.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.IncludeAssemblies(System.Reflection.Assembly[])">
+            <summary>
+            Includes the specified assemblies.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ClearAssemblies">
+            <summary>
+            Clears the default assemblies.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.DisableMetrics">
+            <summary>
+            Disables the built in metrics.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ReturnErrorMessages">
+            <summary>
+            Returns the stack trace of unhandled exceptions.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ReturnErrorMessagesInDebugMode">
+            <summary>
+            Returns the stack trace of unhandled exceptions
+            when calling assembly is in debug mode.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ReturnErrorMessagesInDebugMode``1">
+            <summary>
+            Returns the stack trace of unhandled exceptions
+            when type assembly is in debug mode.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.EnableDiagnostics">
+            <summary>
+            Enables the diagnostics page.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.EnableDiagnosticsInDebugMode">
+            <summary>
+            Enables the diagnostics page when the
+            calling assembly is in debug mode.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.EnableDiagnosticsInDebugMode``1">
+            <summary>
+            Enables the diagnostics page when the 
+            type assembly is in debug mode.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithDiagnosticsAtUrl(System.String)">
+            <summary>
+            Sets the url of the diagnostics page.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithDownloadBufferSizeOf(System.Int32)">
+            <summary>
+            Specifies the download buffer size in bytes. The default is 1MB.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithUnhandledExceptionStatusText(System.String)">
+            <summary>
+            Specifies the status text returned by an unhandled exception.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithDefaultStatusCode(System.Net.HttpStatusCode)">
+            <summary>
+            Specifies the default status code, the default is 204 (no content).
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.DisableDefaultErrorHandler">
+            <summary>
+            Disables the default error handler.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.UseContainer(Graphite.DependencyInjection.IContainer)">
+            <summary>
+            Specifies the IoC container to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.UseContainer``1">
+            <summary>
+            Specifies the IoC container to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithPathProvider``1">
+            <summary>
+            Specifies the path provider to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithPathProvider``1(``0)">
+            <summary>
+            Specifies the path provider to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithRequestPropertyProvider``1">
+            <summary>
+            Specifies the request properties provider to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithRequestPropertyProvider``1(``0)">
+            <summary>
+            Specifies the request properties provider to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithInitializer``1">
+            <summary>
+            Specifies the initializer to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithInitializer``1(``0)">
+            <summary>
+            Specifies the initializer to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithRouteMapper``1">
+            <summary>
+            Specifies the route mapper to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithRouteMapper``1(``0)">
+            <summary>
+            Specifies the route mapper to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithInlineConstraintResolver``1">
+            <summary>
+            Specifies the inline constraint resolver to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithInlineConstraintResolver``1(``0)">
+            <summary>
+            Specifies the inline constraint resolver to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithInlineConstraintBuilder``1">
+            <summary>
+            Specifies the inline constraint builder to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithInlineConstraintBuilder``1(``0)">
+            <summary>
+            Specifies the inline constraint builder to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithTypeCache``1">
+            <summary>
+            Specifies the type cache to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithTypeCache``1(``0)">
+            <summary>
+            Specifies the type cache to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithUnhandledExceptionHandler``1">
+            <summary>
+            Specifies the catch all exception handler. This is NOT something 
+            you would generally override and is NOT the appropriate place for 
+            app and request error handling and logging. That should be done 
+            at the app level (e.g. Global.asax) and with a behavior respectively.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithUnhandledExceptionHandler``1(``0)">
+            <summary>
+            Specifies the catch all exception handler. This is NOT something 
+            you would generally override and is NOT the appropriate place for 
+            app and request error handling and logging. That should be done 
+            at the app level (e.g. Global.asax) and with a behavior respectively.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithActionInvoker``1">
+            <summary>
+            Specifies the action invoker to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithActionInvoker``1(``0)">
+            <summary>
+            Specifies the action invoker to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithBehaviorChainInvoker``1">
+            <summary>
+            Specifies the behavior chain invoker to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithBehaviorChainInvoker``1(``0)">
+            <summary>
+            Specifies the behavior chain invoker to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithBehaviorChain``1">
+            <summary>
+            Specifies the behavior chain to use.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithDefaultBehavior``1">
+            <summary>
+            Specifies the last behavior in the chain.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureHttpMethods(System.Action{Graphite.Http.HttpMethods})">
+            <summary>
+            Configure http methods.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithUrlAlias(System.Func{Graphite.Actions.ActionMethod,Graphite.Routing.Url,System.String}[])">
+            <summary>
+            Adds url aliases.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithUrlPrefix(System.String)">
+            <summary>
+            Adds a prefix to all urls.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.FilterHandlersBy(System.Func{Graphite.Configuration,Graphite.Reflection.TypeDescriptor,System.Boolean})">
+            <summary>
+            Specifies the handler filter.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.OnlyIncludeHandlersUnder``1">
+            <summary>
+            Only includes handlers under the namespace of the specified type.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithHandlerNameRegex(System.String)">
+            <summary>
+            Specifies the regex used to identify handlers e.g. "Handler$".
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.FilterActionsBy(System.Func{Graphite.Configuration,Graphite.Reflection.MethodDescriptor,System.Boolean})">
+            <summary>
+            Specifies the action filter.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithActionRegex(System.Func{Graphite.Configuration,System.String})">
+            <summary>
+            Specifies the regex used to identify actions. The http method is 
+            pulled from the first capture group by default e.g. "^(Get|Post|...)".
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithHandlerNamespaceRegex(System.String)">
+            <summary>
+            Specifies the regex used to parse the handler namespace. The namespace is 
+            pulled from the first capture group by default e.g. "MyApp\.Handlers\.(.*)".
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ExcludeTypeNamespaceFromUrl``1">
+            <summary>
+            Removes the types namespace from the url.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ExcludeCurrentNamespaceFromUrl">
+            <summary>
+            Removes the calling method's type namespace from the url.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ExcludeTypeNamespaceFromUrl(System.Type)">
+            <summary>
+            Removes the types namespace from the url.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ExcludeNamespaceFromUrl(System.String)">
+            <summary>
+            Removes the namespace from the begining of the url.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.GetActionMethodNameWith(System.Func{Graphite.Configuration,Graphite.Actions.ActionMethod,System.String})">
+            <summary>
+            Gets the portion of the action method name used for routing.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.GetHttpMethodWith(System.Func{Graphite.Configuration,Graphite.Actions.ActionMethod,System.String})">
+            <summary>
+            Gets the http method from the action method name.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureRegistry(System.Action{Graphite.DependencyInjection.Registry})">
+            <summary>
+            Configures the IoC container.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureActionMethodSources(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Actions.IActionMethodSource,Graphite.ConfigurationContext}})">
+            <summary>
+            Configures action method sources.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureActionSources(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Actions.IActionSource,Graphite.ConfigurationContext}})">
+            <summary>
+            Configures action sources.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureActionDecorators(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Actions.IActionDecorator,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures action decorators.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureRouteConventions(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Routing.IRouteConvention,Graphite.Routing.RouteConfigurationContext}})">
+            <summary>
+            Configures route conventions.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureUrlConventions(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Routing.IUrlConvention,Graphite.Routing.UrlConfigurationContext}})">
+            <summary>
+            Configures url conventions.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureHttpRouteDecorators(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Routing.IHttpRouteDecorator,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures http route decorators.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureRequestReaders(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Readers.IRequestReader,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures request readers.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureRequestBinders(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Binding.IRequestBinder,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures request binders.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureValueMappers(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Binding.IValueMapper,Graphite.Binding.ValueMapperConfigurationContext}})">
+            <summary>
+            Configures value mappers.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureResponseWriters(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Writers.IResponseWriter,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures response writers.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureBehaviors(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Behaviors.IBehavior,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures behaviors.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.ConfigureAuthenticators(System.Action{Graphite.Extensibility.PluginDefinitions{Graphite.Authentication.IAuthenticator,Graphite.Actions.ActionConfigurationContext}})">
+            <summary>
+            Configures authenticators.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithDefaultAuthenticationRealm(System.String)">
+            <summary>
+            Sets the default authentication realm.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.WithDefaultUnauthorizedStatusMessage(System.String)">
+            <summary>
+            Sets the default unauthorized status message.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindHeaders">
+            <summary>
+            Binds header values to action parameters.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindHeadersByNamingConvention">
+            <summary>
+            Binds header values to action parameters by convention.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindHeadersByAttribute">
+            <summary>
+            Binds header values to action parameters by attribute.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindCookies">
+            <summary>
+            Binds cookie values to action parameters.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindCookiesByNamingConvention">
+            <summary>
+            Binds cookie values to action parameters by convention.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindCookiesByByAttriubute">
+            <summary>
+            Binds cookie values to action parameters by attribute.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindRequestInfo">
+            <summary>
+            Binds request info values to action parameters.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindRequestInfoByAttribute">
+            <summary>
+            Binds request info values to action parameters by convention.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindContainer">
+            <summary>
+            Binds container values to action parameters.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindContainerByAttribute">
+            <summary>
+            Binds container values to action parameters by attribute.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.BindComplexTypeProperties">
+            <summary>
+            Binds request parameters to the first level of 
+            properties of a complex action parameter type.
+            </summary>
+        </member>
+        <member name="M:Graphite.ConfigurationDsl.AutomaticallyConstrainUrlParameterByType">
+            <summary>
+            Automatically constrain url parameters by type.
+            </summary>
+        </member>
+    </members>
+</doc>

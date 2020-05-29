@@ -1,0 +1,27 @@
+{
+    "TotalCount": 0,
+    "NextToken": "string",
+    "PaperCouponList": [
+      {
+        "Id": "string",
+        "ParkingRecordCode": "string",
+        "ParkingCode": "string",
+        "LicensePlate": "string",
+        "CarType": "string",
+        "AdmissionDate": "2019-07-12T01:40:24.432Z",
+        "BillingStartTime": "2019-07-12T01:40:24.432Z",
+        "BillingDeadline": "2019-07-12T01:40:24.432Z",
+        "DealNo": "string",
+        "LongStop": 0,
+        "DeductionAmount": 0,
+        "PreferentialAmount": 0,
+        "Balance": 0,
+        "Remark": "string",
+        "ConsumeOperator": "string"
+      }
+    ],
+    "Redirect": "string",
+    "IsSuccess": true,
+    "MessageCode": 0,
+    "MessageContent": "string"
+  }

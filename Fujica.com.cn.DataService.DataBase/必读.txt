@@ -1,0 +1,3 @@
+﻿所有操作数据库的具体业务都必须继承自IBaseDataBaseOperate接口
+IExtenDataBaseOperate接口仅在上述接口约定的方法下无法满足时候,
+添加自己的扩展方法并继承，根据需求实现

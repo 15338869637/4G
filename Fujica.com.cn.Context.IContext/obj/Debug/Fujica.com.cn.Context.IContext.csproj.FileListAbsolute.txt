@@ -1,0 +1,10 @@
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\bin\Debug\Fujica.com.cn.Context.IContext.dll
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\bin\Debug\Fujica.com.cn.Context.IContext.pdb
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\bin\Debug\Fujica.com.cn.Context.Model.dll
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\bin\Debug\Fujica.com.cn.Context.Model.pdb
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\bin\Debug\Fujica.com.cn.Context.Model.xml
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\obj\Debug\Fujica.com.cn.Context.IContext.csprojAssemblyReference.cache
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\obj\Debug\Fujica.com.cn.Context.IContext.csproj.CoreCompileInputs.cache
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\obj\Debug\Fujica.com.cn.Context.IContext.csproj.CopyComplete
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\obj\Debug\Fujica.com.cn.Context.IContext.dll
+D:\Fujica.com.cn.4GCamera\Fujica.com.cn.Context.IContext\obj\Debug\Fujica.com.cn.Context.IContext.pdb

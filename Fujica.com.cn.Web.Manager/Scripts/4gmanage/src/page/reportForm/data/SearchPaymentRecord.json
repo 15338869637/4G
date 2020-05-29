@@ -1,0 +1,39 @@
+{
+    "TotalCount": 0,
+    "NextToken": "string",
+    "PaperCouponList": [
+      {
+        "Id": "string",
+        "ParkingRecordCode": "string",
+        "ParkingCode": "string",
+        "LicensePlate": "string",
+        "CarType": "string",
+        "AdmissionDate": "2019-07-10T05:32:36.424Z",
+        "BillingStartTime": "2019-07-09T05:32:36.424Z",
+        "BillingDeadline": "2019-07-10T05:32:36.424Z",
+        "PaymentTime": "2019-07-10T05:32:36.424Z",
+        "UserCode": "string",
+        "OpenId": "string",
+        "DealNo": "string",
+        "PhoneNumber": "string",
+        "Subject": "string",
+        "Body": "string",
+        "AmountReceivable": 0,
+        "AmountReceived": 0,
+        "AuthCode": "string",
+        "PaymentType": 99,
+        "OrderType": 10,
+        "TollOperator": "string",
+        "Remarks": "string",
+        "OrderStauts": 1,
+        "InvoiceCode": "string",
+        "InvoiceState": 0,
+        "InvoiceTime": "2019-07-10T05:32:36.424Z",
+        "FreeAdmission": 0
+      }
+    ],
+    "Redirect": "string",
+    "IsSuccess": true,
+    "MessageCode": 0,
+    "MessageContent": "string"
+  }

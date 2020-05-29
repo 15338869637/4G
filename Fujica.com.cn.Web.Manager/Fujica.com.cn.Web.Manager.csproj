@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DEEB5FD3-D5C8-4928-BA48-418CE24DB323}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fujica.com.cn.Web.Manager</RootNamespace>
+    <AssemblyName>Fujica.com.cn.Web.Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tools.1.0.0.0\lib\net40\Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\ball-beat.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-timepicker.css" />
+    <Content Include="Content\bootstrap-timepicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapValidator.css" />
+    <Content Include="Content\build.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Content\loading-all.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="picture\ActiveItem.png" />
+    <Content Include="picture\Add.png" />
+    <Content Include="picture\addcarNo.svg" />
+    <Content Include="picture\addicon.png" />
+    <Content Include="picture\bar1.png" />
+    <Content Include="picture\bar2.png" />
+    <Content Include="picture\bar3.png" />
+    <Content Include="picture\cancel.png" />
+    <Content Include="picture\camera.png" />
+    <Content Include="picture\cancel.png" />
+    <Content Include="picture\car.png" />
+    <Content Include="picture\caret-down-solid.svg" />
+    <Content Include="picture\caret-up-solid.svg" />
+    <Content Include="picture\carmode.jpg" />
+    <Content Include="picture\car_sel.png" />
+    <Content Include="picture\edit-solid.svg" />
+    <Content Include="picture\Ellipse.png" />
+    <Content Include="picture\empty.png" />
+    <Content Include="picture\homePage.png" />
+    <Content Include="picture\House_sel.png" />
+    <Content Include="picture\icon_mima.png" />
+    <Content Include="picture\icon_suer.png" />
+    <Content Include="picture\loader.gif" />
+    <Content Include="picture\logo.png" />
+    <Content Include="picture\nocapture.png" />
+    <Content Include="picture\oval.png" />
+    <Content Include="picture\Nopicture.png" />
+    <Content Include="picture\Nopicture1.png" />
+    <Content Include="picture\parkLot.png" />
+    <Content Include="picture\park_sel.png" />
+    <Content Include="picture\report.png" />
+    <Content Include="picture\report_sel.png" />
+    <Content Include="picture\shownocapture.png" />
+    <Content Include="picture\success.png" />
+    <Content Include="picture\revise.png" />
+    <Content Include="picture\success.png" />
+    <Content Include="picture\success_ico.png" />
+    <Content Include="picture\synchronization.png" />
+    <Content Include="picture\system.png" />
+    <Content Include="picture\system_sel.png" />
+    <Content Include="picture\time.png" />
+    <Content Include="picture\tuichu.png" />
+    <Content Include="picture\User.png" />
+    <Content Include="picture\UserIcon.png" />
+    <Content Include="picture\User_sel.png" />
+    <Content Include="picture\bywh.png" />
+    <Content Include="picture\delete.png" />
+    <Content Include="picture\czzn.png" />
+    <Content Include="picture\anquanshuju.png" />
+    <Content Include="picture\increase.png" />
+    <Content Include="picture\warning_ico.png" />
+    <Content Include="picture\zuobianlan.png" />
+    <Content Include="picture\home.png" />
+    <Content Include="picture\edit.png" />
+    <Content Include="picture\jiangdichengben.png" />
+    <Content Include="picture\gxgl.png" />
+    <Content Include="Scripts\4gmanage\.eslintrc.js" />
+    <Content Include="Scripts\4gmanage\.postcssrc.js" />
+    <Content Include="Scripts\4gmanage\build\build.js" />
+    <Content Include="Scripts\4gmanage\build\check-versions.js" />
+    <Content Include="Scripts\4gmanage\build\logo.png" />
+    <Content Include="Scripts\4gmanage\build\rootpageset.js" />
+    <Content Include="Scripts\4gmanage\build\utils.js" />
+    <Content Include="Scripts\4gmanage\build\vue-loader.conf.js" />
+    <Content Include="Scripts\4gmanage\build\webpack.base.conf.js" />
+    <Content Include="Scripts\4gmanage\build\webpack.dev.conf.js" />
+    <Content Include="Scripts\4gmanage\build\webpack.prod.conf.js" />
+    <Content Include="Scripts\4gmanage\config\dev.env.js" />
+    <Content Include="Scripts\4gmanage\config\index.js" />
+    <Content Include="Scripts\4gmanage\config\prod.env.js" />
+    <Content Include="Scripts\4gmanage\index.html" />
+    <Content Include="Scripts\4gmanage\src\assets\logo.png" />
+    <Content Include="Scripts\4gmanage\src\config\elementUI.js" />
+    <Content Include="Scripts\4gmanage\src\config\system.js" />
+    <Content Include="Scripts\4gmanage\src\main.js" />
+    <Content Include="Scripts\4gmanage\src\router\cardmanage.js" />
+    <Content Include="Scripts\4gmanage\src\router\index.js" />
+    <Content Include="Scripts\4gmanage\src\router\system.js" />
+    <Content Include="Scripts\4gmanage\src\servers\rxios.js" />
+    <Content Include="Scripts\4gmanage\src\store\cardmanage.js" />
+    <Content Include="Scripts\4gmanage\src\store\index.js" />
+    <Content Include="Scripts\4gmanage\src\store\system.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\bootstrap-timepicker.js" />
+    <Content Include="Scripts\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Properties\PublishProfiles\4GWebManagerFile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrapValidator.js" />
+    <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.min.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.datetimepicker.full.js" />
+    <Content Include="Scripts\jquery.serializejson.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\1.11.3\jquery.min.js" />
+    <Content Include="Scripts\JSBus\Bus.js" />
+    <Content Include="Scripts\JSBus\Bus.min.js" />
+    <Content Include="Scripts\JSBus\LocalStorageQueue.js" />
+    <Content Include="Scripts\JSBus\LocalStorageQueue.min.js" />
+    <Content Include="Scripts\JSBus\LocalStorageStore.js" />
+    <Content Include="Scripts\JSBus\LocalStorageStore.min.js" />
+    <Content Include="Scripts\loading.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugins\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\plugins\bootstrap-notify.min.js" />
+    <Content Include="Scripts\plugins\chart.js" />
+    <Content Include="Scripts\plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\plugins\fullcalendar.min.js" />
+    <Content Include="Scripts\plugins\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\plugins\jquery.dataTables.min.js" />
+    <Content Include="Scripts\plugins\jquery.vmap.min.js" />
+    <Content Include="Scripts\plugins\jquery.vmap.sampledata.js" />
+    <Content Include="Scripts\plugins\jquery.vmap.world.js" />
+    <Content Include="Scripts\plugins\moment.min.js" />
+    <Content Include="Scripts\plugins\pace.min.js" />
+    <Content Include="Scripts\plugins\select2.min.js" />
+    <Content Include="Scripts\plugins\sweetalert.min.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\static\css\app.css" />
+    <Content Include="Scripts\static\js\app.js" />
+    <Content Include="Scripts\static\js\manifest.js" />
+    <Content Include="Scripts\static\js\vendor.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="FollowMysqlHelper.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestFujicaInterface.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\4GWebManager.pubxml" />
+    <Content Include="Views\AddNewParkLot.cshtml" />
+    <Content Include="Views\EditSetDefaultCarType.cshtml" />
+    <Content Include="Views\layout.cshtml" />
+    <Content Include="Views\ParklotIndex.cshtml" />
+    <Content Include="Views\ParkLotList.cshtml" />
+    <Content Include="Views\Parklot_Add.cshtml" />
+    <Content Include="Views\ParkLot_AddBillingTemplate.cshtml" />
+    <Content Include="Views\ParkLot_Blackadd.cshtml" />
+    <Content Include="Views\ParkLot_Blacklist.cshtml" />
+    <Content Include="Views\ParkLot_SetBillingTemplate.cshtml" />
+    <Content Include="Views\ParkLot_SetOther.cshtml" />
+    <Content Include="Views\SetDefaultCarType.cshtml" />
+    <Content Include="Views\SetIntoOrOut.cshtml" />
+    <Content Include="Views\AddNewGatherAccount.cshtml" />
+    <Content Include="Views\ParkLot_Entryrecord.cshtml" />
+    <Content Include="Views\ParkLot_Freeswitch.cshtml" />
+    <Content Include="Views\Parklot_Manualopening.cshtml" />
+    <Content Include="Views\ParkLot_CorrectCarNo.cshtml" />
+    <Content Include="Views\PresenceOfVehicle.cshtml" />
+    <Content Include="Scripts\4gmanage\.babelrc" />
+    <Content Include="Scripts\4gmanage\.editorconfig" />
+    <Content Include="Scripts\4gmanage\.eslintignore" />
+    <Content Include="Scripts\4gmanage\.gitignore" />
+    <Content Include="Scripts\4gmanage\package.json" />
+    <Content Include="Scripts\4gmanage\README.md" />
+    <Content Include="Scripts\4gmanage\src\App.vue" />
+    <Content Include="Scripts\4gmanage\src\components\Btns.vue" />
+    <Content Include="Scripts\4gmanage\src\components\HelloWorld.vue" />
+    <Content Include="Scripts\4gmanage\src\components\Pagination.vue" />
+    <Content Include="Scripts\4gmanage\src\components\Title.vue" />
+    <Content Include="Scripts\4gmanage\src\page\CardManage\MonthCard.vue" />
+    <Content Include="Scripts\4gmanage\src\page\CardManage\SetCard.1.vue" />
+    <Content Include="Scripts\4gmanage\src\page\CardManage\SetCard.vue" />
+    <Content Include="Scripts\4gmanage\src\page\CardManage\ValueCard.vue" />
+    <Content Include="Scripts\4gmanage\src\page\system\Account.vue" />
+    <Content Include="Scripts\4gmanage\src\page\system\Opendoor.vue" />
+    <Content Include="Scripts\4gmanage\src\page\system\OpenDoorAdd.vue" />
+    <Content Include="Scripts\4gmanage\src\page\system\Password.vue" />
+    <Content Include="Scripts\4gmanage\src\page\system\Through.vue" />
+    <Content Include="Scripts\4gmanage\src\page\system\Voice.vue" />
+    <Content Include="Scripts\4gmanage\static\.gitkeep" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\BT_HourlyTollView.cshtml" />
+    <Content Include="Views\BT_HalfHourMoney.cshtml" />
+    <Content Include="Views\BT_HalfHourSectMoney.cshtml" />
+    <Content Include="Views\BT_NewSubparagraphFees.cshtml" />
+    <Content Include="Views\BT_Sect1Money.cshtml" />
+    <Content Include="Views\BT_SecthourMoney.cshtml" />
+    <Content Include="Views\BT_SectMoney.cshtml" />
+    <Content Include="Views\BT_Sectnone2Money.cshtml" />
+    <Content Include="Views\BT_ShenZhengToll.cshtml" />
+    <Content Include="Views\BT_SimplesectMoney.cshtml" />
+    <Content Include="Views\RoleAuthManage.cshtml" />
+    <Content Include="Views\OperaManage.cshtml" />
+    <Content Include="Views\OperaMa_Add.cshtml" />
+    <Content Include="Views\VueSinglePage.cshtml" />
+    <Content Include="Scripts\static\css\app.css.map" />
+    <Content Include="Scripts\static\js\app.js.map" />
+    <Content Include="Scripts\static\js\manifest.js.map" />
+    <Content Include="Scripts\static\js\vendor.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Parklot_Edit.cshtml" />
+    <Content Include="Views\Add_DriveWay.cshtml" />
+    <Content Include="Views\Add_CarType.cshtml" />
+    <Content Include="Views\Add_BillingTemplate.cshtml" />
+    <Content Include="Views\Add_BillingTemplate2.cshtml" />
+    <Content Include="Views\ParkLot_MobileWatchHouse.cshtml" />
+    <Content Include="Scripts\static\fonts\element-icons.ttf" />
+    <Content Include="Scripts\static\fonts\element-icons.woff" />
+    <Content Include="Views\ParkLot_MobileWatchHouse2.cshtml" />
+    <Content Include="Views\Home\RefreshTimeout.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fujica.com.cn.BaseConnect\Fujica.com.cn.BaseConnect.csproj">
+      <Project>{DAE1B3F6-AF79-43AA-A5E6-AECBF277F581}</Project>
+      <Name>Fujica.com.cn.BaseConnect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Context.Model\Fujica.com.cn.Context.Model.csproj">
+      <Project>{190D7431-4D13-470D-A166-AED2E04E90F4}</Project>
+      <Name>Fujica.com.cn.Context.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>12343</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:12343/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

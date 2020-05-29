@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ASP.NET SignalR测试</title>
+    <link rel="stylesheet" href="StockTicker.css" />
+
+</head>
+<body>
+
+    <div id="stockTable">
+        <table border="1">
+            <thead>
+                <tr><th>车场编号</th><th>车场名称</th></tr>
+            </thead>
+            <tbody> 
+            </tbody>
+        </table>
+    </div>
+
+    <!--Script references. -->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.4.1.min.js"></script> 
+    <script src="signalr/hubs"></script> 
+    <script type="text/javascript">
+        $(function () { 
+            //创建集线器代理 chatHub是服务端创建的Hub类
+            var chat = $.connection.chatHub; 
+            //成功连接后，调用服务器getDate方法，手写字母必须小写
+            $.connection.hub.start().done(function () {
+                chat.server.getDate();
+            }) 
+             
+           //服务器broadcastMessage方法 返回的数据
+            chat.client.broadcastMessage = function (data) {
+               //数据显示处理
+            };  
+        });
+
+    </script>
+</body>
+</html>

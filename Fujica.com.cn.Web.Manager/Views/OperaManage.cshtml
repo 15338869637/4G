@@ -1,0 +1,267 @@
+@{
+    /**/
+
+    ViewBag.Title = "OperaManage";
+    Layout = null;
+    //操作员管理
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/common.js"></script>
+<style>
+</style>
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+    <div class="row" style="height:60px;padding-top:25px;">
+        <div class="col-md-2">
+            <label>姓名：</label>
+            <input type="text" name="name" id="user_name" value="" />
+        </div>
+        <div class="col-md-2">
+            <label>手机号：</label>
+            <input type="text" name="tel" id="user_tel" value="" />
+        </div>
+        <div class="col-md-2">
+            <label>角色：</label>
+            <input type="text" name="opera" id="user_opera" value="" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-info" style="width:50px;background-color:#2196F3;" type="submit" id="search">搜索</button>
+            <button class="btn btn-info" style="width:50px;background-color:#b0b0b0;border-color:#b0b0b0" type="submit" id="reset">重置</button>
+        </div>        
+    </div>
+    <hr />
+    <div class="row" style="height:40px;margin-top:10px">
+        <div class="col-sm-12 col-md-2">
+            <div class="dataTables_length" id="sampleTable_length">
+                <div style="width:10%;float:left">
+                    <img src="~/picture/zuobianlan.png" />
+                </div>
+                <div style="width:80%;float:left">
+                    <label style="font-size:20px;font-weight:bold;">操作员列表</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-10" s>
+            <div id="sampleTable_filter" class="dataTables_filter">
+                <a class="btn icon-btn mr-10" style="color:#e8f6ff;height:35px;background-color:#2196F3;" onclick="OpenOperaMa_Add('')"><div style="width:65%;float:left"><label>新增操作员</label></div> </a>                                                                                                                                                                                                                                                                                                       @*<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="sampleTable"></label>*@
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-12">
+            <table style="text-align:center;cursor: default;" onmouseover="this.style.cursor='hand'" class="table table-striped table-bordered " id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                <tbody id="tbody_1">
+                    <tr role="row" style="background-color:#e8f6ff;height:40px;font-weight:bold;font-size:15px">
+                        <td style="background-color:#E8F6FF;">姓名</td>
+                        <td style="background-color:#E8F6FF;">手机号</td>
+                        <td style="background-color:#E8F6FF;">角色</td>
+                        @*<td>创建时间</td>*@
+                        <td style="background-color:#E8F6FF;">操作</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*模态框*@
+<!-- Small modal -->
+<div class="modal fade bs-example-modal-sm resetPasssword" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="width:100%;height:100%;">
+    <div class="modal-dialog modal-sm" role="document" style="margin-left:-500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                重置密码
+            </div>
+            <div class="modal-body">
+                <div>是否重置该操作员密码为系统默认密码fujica？</div>
+                <button class="btn btn-outline-primary" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" onclick="ResetPasssword()" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ResxGetUserList();
+        $("#search").click(function () {
+            clickSearch()
+        })
+        $("#reset").click(function () {
+            $("#user_name").val("");
+            $("#user_tel").val("");
+            $("#user_opera").val("");
+            $("#tbody_1").find("tr").show();
+        })
+        //keyupSearch("#user_name", ".sorting_1")
+        //keyupSearch("#user_tel", ".sorting_2")
+        //keyupSearch("#user_opera", ".sorting_3")
+    });
+    //搜索
+    //prama1 : keyup事件对象
+    //prama2 : td对应类型
+    function keyupSearch(keyUp,sorting) {
+        $(keyUp).keyup(function () {
+            if ($("#user_name").val().trim() == "" && $("#user_tel").val().trim() == "" && $("#user_opera").val().trim() == "") {
+                $("#tbody_1").find("tr").show();
+            }
+            let inpVal = $(keyUp).val().trim();
+
+            let user = $("#tbody_1").find(sorting);
+
+            for (var i = 0; i < user.length; i++) {
+                if (user.eq(i).html().trim() === inpVal) {
+                    user.parent().hide();
+                };
+            }
+            for (var i = 0; i < user.length; i++) {
+                if (user.eq(i).html().trim() === inpVal) {
+                    user.eq(i).parent().show();
+                };
+            }
+        })
+    }
+    //点击搜索
+    function clickSearch() {
+        if ($("#user_name").val().trim() == "" && $("#user_tel").val().trim() == "" && $("#user_opera").val().trim() == "") {
+            $("#tbody_1").find("tr").show();
+            return;
+        }
+        let name = $("#user_name").val().trim();
+        let tel = $("#user_tel").val().trim();
+        let opera = $("#user_opera").val().trim();
+        let user_name = $("#tbody_1").find(".sorting_1");
+        let user_tel = $("#tbody_1").find(".sorting_2");
+        let user_opera = $("#tbody_1").find(".sorting_3");
+
+        for (var i = 0; i < user_name.length; i++) {
+            user_name.parent().hide();
+            //if (user_name.eq(i).html().trim() === name || user_tel.eq(i).html().trim() === tel || user_opera.eq(i).html().trim() === opera) {
+            //    user_name.parent().hide();
+            //} else {
+            //    user_name.parent().show();
+            //};
+        }
+        for (var i = 0; i < user_name.length; i++) {
+            if (user_name.eq(i).html().trim() === name || user_tel.eq(i).html().trim() === tel || user_opera.eq(i).html().trim() === opera) {
+                user_name.eq(i).parent().show();
+            };
+        }
+    }
+
+    //获取操作员列表
+    function ResxGetUserList() {
+        var ProjectGuid = $.cookie("ProjectGuid");
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetUserList?ProjectGuid=" + ProjectGuid,
+            dataType: 'json',
+            type: 'GET',
+            contentType: "application/json;utf-8",
+            async:false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var html = "";
+                    var json = data.UserList;
+                    for (var key in json) {
+                        var Guid = json[key].Guid;
+                        var UserName = json[key].UserName;
+                        var Mobile = json[key].Mobile;
+                        var RoleGuid = json[key].RoleGuid;
+                        var RoleName = json[key].RoleName;
+                        if (RoleName == "超级管理员") {
+
+                        } else {
+                            html = html + '<tr role="row" style="height:50px;font-size:14px;"  id="' + Guid + '">' +
+                                '<td class="sorting_1" style="line-height:34px;">' + UserName + '</td >' +
+                                '<td class="sorting_2" style="line-height:34px;">' + Mobile + '</td>' +
+                                '<td class="sorting_3" style="line-height:34px;">' + RoleName + '</td>' +
+                                //'<td style="line-height:34px;">' + '2019-03-21' + '</td>' +
+                                "<td>" +
+                                " <a class='btn btn-info icon-btn mr-10'  style='color:#e8f6ff;background-color: #2196F3;' onclick='ResetPasssword(\"" + Guid + "\",\"" + ProjectGuid + "\")'>重置密码</a>" +
+                                " <a class='btn btn-info icon-btn mr-10' style='color:#e8f6ff;background-color:#2196F3;' onclick='OpenOperaMa_Add(\"" + UserName + "\",\"" + Mobile + "\",\"" + RoleName + "\",\"" + Guid + "\",\"" + RoleGuid + "\")'>编辑</a>" +
+                                " <a class='btn btn-default' style='color:#e8f6ff;background-color: #b0b0b0;' onclick='RemoveOperator(\"" + Guid + "\",\"" + ProjectGuid + "\")'>删除</a>" +
+                                '</td > ' +
+                                '</tr >';
+                        }
+                    }
+                    $('#tbody_1').append(html);
+                }
+            },
+            error: function (xhr) {
+                // 导致出错的原因较多，以后再研究
+                $message('d', 'error:' + JSON.stringify(xhr));
+            }
+        })
+    };
+
+    //重置密码
+    function ResetPasssword(Guid, ProjectGuid) {
+        var data = {
+            "Guid": Guid,
+            "ProjectGuid": ProjectGuid
+        }
+        $alert({
+            html: "是否重置该操作员密码为系统默认密码fujica？",
+            confirm: function () {
+                $.ajax({
+                    url: "/Home/Maps/Personnel/ResetPasssword",
+                    dataType: 'json',
+                    type: 'put',
+                    data: data,
+                    success: function (data) {
+                        console.log("重置密码")
+                    }
+                })
+            }
+        })
+    }
+
+    //删除操作员
+    function RemoveOperator(Guid, ProjectGuid) {
+        var data = {
+            "Guid": Guid,
+            "ProjectGuid": ProjectGuid
+        }
+        //if (confirm("您确定删除吗？")) {
+        //    $.post("/Home/Maps/Personnel/RemoveOperator", data, function (result) {
+        //        if (result.IsSuccess == true) {
+        //            $("#" + Guid).remove();
+        //            $message('s',"删除成功")
+        //        } else {
+        //            $message('d',result.MessageContent)
+        //        }
+        //    });
+        //}
+        $alert({
+            html: "您确定删除吗？",
+            confirm: function () {
+                $.post("/Home/Maps/Personnel/RemoveOperator", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $("#" + Guid).remove();
+                        $message('s',"删除成功")
+                    } else {
+                        $message('d',result.MessageContent)
+                    }
+                });
+            }
+        })
+    }
+
+    //添加,编辑OperaMa_Add.cshtml
+    function OpenOperaMa_Add(UserName, Mobile, RoleName, Guid, RoleGuid) {
+        var title;
+        UserName == "" ? title = "新增操作员" : title = "修改";
+        parent.$('#mainIframe').attr('src', "/Home/Trans/OperaMa_Add");
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 人事管理</label> > <label style="color:#0092ff">' + title + '</label>' +
+            '<span class="hide" id="paramOpera" UserName="' + UserName + '" Mobile="' + Mobile + '" RoleName="' + RoleName + '" Guid="' + Guid + '" RoleGuid="' + RoleGuid + '"></span>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+    }
+</script>

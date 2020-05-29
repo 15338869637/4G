@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "EditSetDefaultCarType";
+    Layout = null;
+}
+<link href="~/Content/main.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/common.js"></script>
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+    <div class="col-md-12"> 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header" style="height:40px;margin-top:10px">
+                    <h4><img src="/picture/zuobianlan.png"><label id="lbl_tiele" style="margin-left:10px">新增车类</label></h4>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="tile-body">
+			<form class="form-horizontal">
+				<div class="form-group row" style="text-align:right">
+					<label class="control-label col-md-5">车类名称</label>
+					<div class="col-md-3" style="text-align:right;width:50%">
+						<input class="form-control" type="text" id="carTypeName">
+					</div>
+				</div>
+				<div class="form-group row" style="text-align:right">
+					<label class="control-label col-md-5">车类编码</label>
+					<div class="col-md-3" style="text-align:right;width:50%">
+						<input class="form-control" type="text" id="Idx">
+					</div>
+				</div>
+				<div class="form-group row" style="text-align:right">
+					<label class="control-label col-md-5">缴费模式</label>
+					<div class="col-md-5" style="text-align:right">
+						<div class="form-group" style="width:370px">
+							<select class="form-control" id="carType">
+								<option value="">请选择</option>
+								<option value="0">临时车</option>
+								<option value="1">月租车</option>
+								<option value="2">储值车</option>
+								<option value="3">贵宾车</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<input type="hidden" id="guid" />
+				<input type="hidden" id="projectGuid" />
+				<input type="hidden" id="parkCode" />
+			</form>
+        </div>
+        <div class="tile-footer">
+            <div class="row">
+                <div class="col-md-12 " style="text-align:center">
+                    <button class="btn btn-primary" type="button" onclick="Add()" style="width:120px">
+                        <i class="fa fa-fw fa-lg fa-check-circle"></i>确认
+                    </button>&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-secondary" href="#" onclick="back_ParkLot()" style="width:120px">
+                        <i class="fa fa-fw fa-lg fa-times-circle"></i>取消
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var str = location.href; //取得整个地址栏
+            var num = str.indexOf("?")
+            str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+            var arr = str.split("&"); //各个参数放到数组里
+            if (arr.length > 1) {  //大于1 是修改  否则是添加
+                var value = "";
+                for (var i = 0; i < arr.length; i++) {
+                    num = arr[i].indexOf("=");
+                    if (num > 0) {
+                        name = arr[i].substring(0, num);
+                        value = arr[i].substr(num + 1);
+                        $("#" + name).val(decodeURI(value));
+                    }
+                }
+            }
+        });
+        //添加
+        var Add = function () {
+            var carTypeName = $("#carTypeName").val();
+            var carType = $("#carType").val();
+            var ParkingCode = $("#parkCode").val();
+            var projectGuid = $("#projectGuid").val();
+            var guid = $("#guid").val();
+            if (guid == "")  //执行添加
+            {
+                var data = {
+                    "TypeName": carTypeName, "PaymentMode": carType, "ParkingCode": ParkingCode, "ProjectGuid": projectGuid, "Enable": true
+                };
+                $.post("/Home/Maps/ParkLot/AddCarType", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s', "添加成功！")
+                        parent.$('#mainIframe').attr('src', "/Home/Trans/SetDefaultCarType?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+                    }
+                });
+            }
+            else {
+                Edit(carTypeName, carType, ParkingCode, projectGuid, guid);
+            }
+        }
+        //修改
+        function Edit(carTypeName, carType, ParkingCode, projectGuid, guid) {
+            var data = {
+                "TypeName": carTypeName, "PaymentMode": carType, "ParkingCode": ParkingCode, "ProjectGuid": projectGuid, "Guid": guid, "Enable": true
+            };
+            $.post("/Home/Maps/ParkLot/ModifyCarType", data, function (result) {
+                if (result.IsSuccess == true) {
+                    $message('s',"修改成功！")
+                    parent.$('#mainIframe').attr('src', "/Home/Trans/SetDefaultCarType?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+                }
+            });
+        }
+        
+        function back_ParkLot() {
+            var ParkingCode = $("#parkCode").val();
+            var projectGuid = $("#projectGuid").val();
+
+            var html = "<p style='font-style:initial'>" +
+                '<label style = "color:#a3a8ac" > 车场管理 ></label> <a  href="#" onclick="Back()"> 车场设置</a>> <label style="color:#0092ff">车类设置</label>' +
+                '</p >';
+            parent.document.getElementById('app-title').innerHTML = html;
+             parent.$('#mainIframe').attr('src', "/Home/Trans/SetDefaultCarType?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+             
+        }
+
+    </script>

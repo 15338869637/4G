@@ -1,0 +1,5 @@
+Fujica.com.cn.Bussiness.Base 所有业务的基础
+Fujica.com.cn.Bussiness.Model 业务模块内部模型
+Fujica.com.cn.Bussiness.ParkLot 停车场业务
+Fujica.com.cn.Bussiness.Parking 停车业务
+Fujica.com.cn.Bussiness.Toll 算费业务

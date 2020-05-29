@@ -1,0 +1,1283 @@
+﻿
+@{
+    ViewBag.Title = "在场车辆管理";
+    Layout = null;
+}
+
+
+<style>
+
+
+    .title_background-color {
+        background-color: #0092ff
+    }
+
+    .table-striped3 tbody tr td {
+        vertical-align: middle;
+    }
+
+    .btn-default {
+        color: #fff;
+        background-color: #b0b0b0;
+        border-color: transparent;
+    }
+
+    .btn-color {
+        color: #fff
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #0092ff;
+        border-color: #0092ff;
+    }
+
+    .thead {
+        background-color: #e8f6ff;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: #e8f6ff !important;
+    }
+
+    .help-block {
+        white-space: nowrap;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    #sampleTable_wrapper{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .PresenceOfVehicle_div {
+        margin: 0px auto;
+        width: 98%;
+        margin-left: 1%;
+    }
+    .flex-box{
+      display: flex;
+    }
+    .flex-box.center{
+      justify-content: center;
+    }
+    .flex1{
+        flex:1
+    }
+    .empty-ico{
+        background: url('/picture/empty.png') no-repeat;
+        background-size:  100% 100%;
+        width: 60px;
+        height: 60px;
+        padding-top: 60px;
+        line-height: 30px;
+        margin-top: 50px;
+        text-align: center;
+        display: block;
+        color: #ccc;
+        left: 50%;
+        position: absolute;
+    }
+</style>
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrapValidator.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrapValidator.js"></script>
+<!-- <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script> -->
+
+<script src="~/Scripts/jquery.datetimepicker.full.js"></script>
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+
+
+<div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer" style="border:1px solid #e6eaee;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row" style="height:62px">
+                <div style="float:left;width:100%;margin-top:13px">
+                    <div style="float:left;width:18%">
+                        <label style="width:40%;float:left;text-align:right;line-height:30px">
+                            停车场：
+                        </label>
+                        <select aria-controls="sampleTable" class="form-control form-control-sm" id="ParkLotSelect" style="height:35px;width:55%;float:left; ">
+                        </select>
+                    </div>
+                    <div style="float:left;width:13%">
+                        <label style="float:left;line-height:30px">
+                            车牌号：
+                        </label>
+                        <input type="text" id="CarNo" class="form-control" style="float:left;width:55%;height:35px">
+                    </div>
+                    <div style="float:left;width:13%">
+                        <label style="float:left;line-height:30px">
+                            车类型：
+                        </label>
+                        <select id="CarTypeModel" name="sampleTable_length" aria-controls="sampleTable" class="form-control form-control-sm" style="width:100px;height:35px;float:left">
+                            <option value="">=请选择=</option>
+                        </select>
+
+                    </div>
+                    <div style="float:left;line-height:30px">
+                        入场时间：
+                    </div>
+                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:150px;float:left;">
+                        <input class="form-control" size="16" type="text" value="" placeholder="选择日期" id="MinInTime" style="background-color:#fff;width:160px">
+                        <span class="input-group-addon" style="background-color:#fff">
+                            <span class="glyphicon glyphicon-remove">
+                                X
+                            </span>
+                        </span>
+
+                    </div>
+                    <div style="float:left">
+                        -
+                    </div>
+                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:150px;float:left;">
+                        <input class="form-control" size="16" type="text" value="" placeholder="选择日期" id="MaxInTime" style="background-color:#fff;width:160px">
+                        <span class="input-group-addon" style="background-color:#fff">
+                            <span class="glyphicon glyphicon-remove">
+                                X
+                            </span>
+                        </span>
+
+                    </div>
+                    <div style="float:left">
+                        <a class="btn btn-info btn-color" style="color:#fff;width:86px;background-color:#0092ff" onclick="Getquery(1)">搜索</a>
+                        <a class="btn btn-info btn-color" style="color:#fff;width:86px;background-color:#0092ff" onclick="Resetting()">重置</a>
+                        @*<a class="btn btn-info btn-color" style="color:#fff;width:86px" onclick="Resetting()">重置</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="width:100%;height:5px;background-color:#eff3f6; ">
+</div>
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer" style="border:1px solid #e6eaee;">
+    <div class="row" style="height: 40px; margin: 15px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-bottom: 50px;">
+        <div class="" style="width: 90%;">
+            <div class="dataTables_length" id="sampleTable_length">
+                <img src="~/picture/zuobianlan.png" />
+                <label style="font-size:18px;font-weight:bold;margin-left:12px">在场车辆管理</label>
+            </div>
+        </div>
+        <div class="" style="width: 10%;">
+            <div id="sampleTable_filter" class="dataTables_filter">
+                <a class="btn btn-info" onclick="AddInRecord()" style="color:#fff;background-color:#0092ff">入场信息补录</a>
+            </div>
+        </div>
+    </div>
+    <div class="PresenceOfVehicle_div flex1">
+        <div class="col-sm-12 text-left">
+            <table style="cursor: default; width:100%;margin: 0 auto;" class="table table-striped3 table-bordered text-left" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                <tbody id="tbody_content" class="text-center">
+                    <tr role="row" class="thead text-center">
+                        <td>停车场</td>
+                        <td>车牌号</td>
+                        <td>车类型</td>
+                        <td>入场通道</td>
+                        <td>入场时间</td>
+                        <td>停车时长</td>
+                        <td>入场图片</td>
+                        <td>入场备注</td>
+                        <td>操作</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span class="empty-ico">
+                暂无数据
+            </span>
+        </div>
+        <!-- 查看大图 -->
+        <div class="col-sm-12">
+            <div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+                <div class="modal-dialog" role="document" style="margin-left:0px">
+                    <div class="modal-body" style="margin-left: -30%;margin-top:50px;">
+                        <img src="~/picture/camera.png" id="ShowImage" style="width:700px; height:450px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-box center">
+        <div class="dataTables_paginate paging_simple_numbers" id="sampleTable_paginate" style="margin-left:5%">
+            <br />
+            <ul class="pagination">
+
+                <li class="paginate_button page-item active">
+                    <a href="#" aria-controls="sampleTable" data-dt-idx="上一页" tabindex="0" class="page-link" id="Previous_page">上一页</a>
+                </li>
+                <li class="paginate_button page-item ">
+                    <a href="#" aria-controls="sampleTable" data-dt-idx="下一页" tabindex="0" class="page-link" id="next_page">下一页</a>
+                </li>
+            </ul>
+            <div>
+                <input type="hidden" id="page-index" value="" />
+                <input type="hidden" id="page-row" value="" />
+            </div>
+        </div>
+    </div>
+
+
+    <form class="form-horizontal" id="addDepForm" autocomplete="off">
+        <!-- 入场补录 -->
+        <div class="col-sm-12">
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+                <div class="modal-dialog" role="document" style="margin-left:0px">
+
+                    <div class="modal-content">
+                        <div class="modal-header title_background-color">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="div_AddInRecord">新增</h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="float-left" style="width:100%;height:30px">
+                                <div class="float-left text-right" style="width:20%;">
+                                    <label for="txt_departmentname">当前车场：</label>
+                                </div>
+
+                                <div class="float-left" style="width:80%;">
+                                    <label id="parkName"></label>
+                                    <input type="hidden" id="ParkingCode2" />
+                                </div>
+                            </div>
+                            <div class="float-left" style="width:100%;height:40px">
+                                <div class="float-left text-right" style="width:20%;margin-top:6px">
+
+                                    <label for="txt_departmentname"> <span style="color:#ff0000">*</span> 车牌号：</label>
+                                </div>
+                                <div style="width:80%;float:left;">
+                                    @*<div class="float-left" style="width:22%;height:40px">
+                                            <select class="form-control" id="NewCarNo1" style="width:70px;height:35px">
+                                                <option value="京">京</option>
+                                                <option value="沪">沪</option>
+                                                <option value="浙">浙</option>
+                                                <option value="苏">苏</option>
+                                                <option value="粤" selected="selected">粤</option>
+                                                <option value="鲁">鲁</option>
+                                                <option value="晋">晋</option>
+                                                <option value="冀">冀</option>
+                                                <option value="豫">豫</option>
+                                                <option value="川">川</option>
+                                                <option value="渝">渝</option>
+                                                <option value="辽">辽</option>
+                                                <option value="吉">吉</option>
+                                                <option value="黑">黑</option>
+                                                <option value="皖">皖</option>
+                                                <option value="鄂">鄂</option>
+                                                <option value="津">津</option>
+                                                <option value="贵">贵</option>
+                                                <option value="云">云</option>
+                                                <option value="桂">桂</option>
+                                                <option value="琼">琼</option>
+                                                <option value="青">青</option>
+                                                <option value="新">新</option>
+                                                <option value="藏">藏</option>
+                                                <option value="蒙">蒙</option>
+                                                <option value="宁">宁</option>
+                                                <option value="甘">甘</option>
+                                                <option value="陕">陕</option>
+                                                <option value="闽">闽</option>
+                                                <option value="赣">赣</option>
+                                                <option value="湘">湘</option>
+                                            </select>
+                                        </div>
+                                        <div class="float-left" style="width:22%;height:40px">
+                                            <select class="form-control" id="NewCarNo2" style="width:70px;height:35px">
+                                                <option value="A">A</option>
+                                                <option value="B" selected="selected">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="J">J</option>
+                                                <option value="K">K</option>
+                                                <option value="L">L</option>
+                                                <option value="M">M</option>
+                                                <option value="N">N</option>
+                                                <option value="P">P</option>
+                                                <option value="Q">Q</option>
+                                                <option value="R">R</option>
+                                                <option value="S">S</option>
+                                                <option value="T">T</option>
+                                                <option value="U">U</option>
+                                                <option value="V">V</option>
+                                                <option value="W">W</option>
+                                                <option value="X">X</option>
+                                                <option value="Y">Y</option>
+                                                <option value="Z">Z</option>
+                                            </select>
+                                        </div>*@
+                                    <div class="float-left" style="width:100%;height:40px;float:left">
+                                        <div style="float:left;width:68%">
+                                            <input type="text" id="NewCarNo3" class="" style="width:225px;height:35px;float:left" name="lbl_NewCarNo" />
+                                        </div>
+                                        <div style="float:left;width:32%;" id="div_NewCarNo">
+                                            <label style="color:#cc0000;float:left" id="lblCarNo"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-left" style="width:100%;height:40px">
+                                <div style="width:20%;float:left;text-align:right">
+                                    <label for="txt_departmentname" style="line-height:33px">入场时间：</label>
+                                </div>
+                                <div style="width:80%;float:left;">
+                                    <div style="width:68%;float:left">
+                                        <div class="input-group date form_Time col-md-5" data-date="" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:230px;height:30px;float:left;">
+                                            <input class="form-control" size="16" type="text" value="" id="InTime" style="background-color:#fff;margin-left:-15px;width:190px" name="lbl_InTime">
+                                            <span class="input-group-addon" style="background-color:#fff;" id="spanInTime">X<span class="glyphicon glyphicon-remove" style="white-space:nowrap;"></span></span>
+
+                                        </div>
+                                    </div>
+                                    @*<div style="float:left" id="div_NewCarNo">
+                                            <label style="color:#ff0000;float:left" id="lblInTime"></label>
+                                        </div>*@
+                                </div>
+                            </div>
+                            <div class="float-left" style="width:100%;height:40px">
+                                <div style="width:20%;float:left;text-align:right;margin-top:6px">
+                                    <label for="txt_departmentname">车类型：</label>
+                                </div>
+                                <div style="width:80%;float:left;">
+                                    <select id="CarTypeModel2" class="form-control form-control-sm" style="width:230px;height:35px">
+                                        <option value="">=请选择=</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="float-left" style="width:100%;height:40px">
+                                <div style="width:20%;float:left;text-align:right;margin-top:6px">
+                                    <label for="txt_departmentname">入场通道：</label>
+                                </div>
+                                <div style="width:80%;float:left;">
+                                    <select id="DrivewayGuid" class="form-control form-control-sm" style="width:230px;height:35px">
+                                        <option value="">=请选择=</option>
+                                    </select>
+                                    <input type="hidden" value="" id="ParkingCode" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                            <button type="submit" id="btn_Addsubmit" class="btn btn-primary" data-dismiss="modal" onclick="SetAddInRecord()" style="background-color:#0092ff">保存</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 修正车牌 -->
+        <div class="col-sm-12">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document" style="margin-left:0px">
+                    <div class="modal-content">
+                        <div class="modal-header title_background-color">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="myModalLabel">新增</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group" style="margin-left:50px;">
+                                <label for="txt_departmentname">当前车牌号：</label>
+                                <label id="lbl_CarNo"></label>
+                            </div>
+                            <div class="form-group" style="margin-left:50px;">
+
+
+                                @*<div style="width:3%;float:left;">
+                                        <label for="txt_departmentname" style="color:#ff0000">*</label>
+                                    </div>*@
+
+                                <div style="width:25%;float:left;margin-top:10px">
+                                    <label for="txt_departmentname">修正车牌号：</label>
+                                </div>
+                                <div style="float:left;margin-top:10px">
+                                    @*<div class="float-left" style="width:25%;height:40px">
+                                            <select class="form-control" id="CarNo1" style="width:70px;height:35px">
+                                                <option value="京">京</option>
+                                                <option value="沪">沪</option>
+                                                <option value="浙">浙</option>
+                                                <option value="苏">苏</option>
+                                                <option value="粤" selected="selected">粤</option>
+                                                <option value="鲁">鲁</option>
+                                                <option value="晋">晋</option>
+                                                <option value="冀">冀</option>
+                                                <option value="豫">豫</option>
+                                                <option value="川">川</option>
+                                                <option value="渝">渝</option>
+                                                <option value="辽">辽</option>
+                                                <option value="吉">吉</option>
+                                                <option value="黑">黑</option>
+                                                <option value="皖">皖</option>
+                                                <option value="鄂">鄂</option>
+                                                <option value="津">津</option>
+                                                <option value="贵">贵</option>
+                                                <option value="云">云</option>
+                                                <option value="桂">桂</option>
+                                                <option value="琼">琼</option>
+                                                <option value="青">青</option>
+                                                <option value="新">新</option>
+                                                <option value="藏">藏</option>
+                                                <option value="蒙">蒙</option>
+                                                <option value="宁">宁</option>
+                                                <option value="甘">甘</option>
+                                                <option value="陕">陕</option>
+                                                <option value="闽">闽</option>
+                                                <option value="赣">赣</option>
+                                                <option value="湘">湘</option>
+                                            </select>
+                                        </div>*@
+                                    @*<div class="float-left" style="width:25%;height:40px">
+                                            <select class="form-control" id="CarNo2" style="width:70px;height:35px">
+                                                <option value="A">A</option>
+                                                <option value="B" selected="selected">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="J">J</option>
+                                                <option value="K">K</option>
+                                                <option value="L">L</option>
+                                                <option value="M">M</option>
+                                                <option value="N">N</option>
+                                                <option value="P">P</option>
+                                                <option value="Q">Q</option>
+                                                <option value="R">R</option>
+                                                <option value="S">S</option>
+                                                <option value="T">T</option>
+                                                <option value="U">U</option>
+                                                <option value="V">V</option>
+                                                <option value="W">W</option>
+                                                <option value="X">X</option>
+                                                <option value="Y">Y</option>
+                                                <option value="Z">Z</option>
+                                            </select>
+                                        </div>*@
+                                    <div class="float-left" style="height:40px;margin-top:-5px;float:left">
+                                        <div style="float:left;">
+                                            <input type="text" id="CarNo3" class="form-control input-sm" style="width:85%;" name="lblNewCarNo3" />
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;float:left">
+                                        <label style="color:#ff0000" id="lblCarNo3"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" value="" id="ParkingCode" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                            <button type="submit" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="SetreviseCarNo()" style="background-color:#0092ff">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+</div>
+<script type="text/javascript">
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    $(document).ready(function () {
+        // $("#InTime").datetimepicker("setDate", new Date());
+        _div.style.display = 'block';
+        formValidator();
+        GetParkLotList(function () {
+            Getquery(1)
+        });
+        _div.style.display = 'none';
+    })
+    var RoleGuidList = "";
+
+    function formValidator() {
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:
+            {
+                lbl_NewCarNo: {
+                    validators: {
+                        notEmpty: {
+                            message: '.'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '.'
+                        }
+                    }
+                },
+                lblNewCarNo3:
+                {
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '修正车牌号不能为空'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '请输入正确的车牌号'
+                        }
+                    }
+                },
+
+                lbl_InTime: {
+                    trigger: 'change',
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '不能为空'
+                        },
+                        regexp:
+                        { 
+                           // regexp: "^((([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29))\\s+([0-1]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$", 
+                           regexp: /^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/,
+                            message: '请输入正确的格式'
+                        }
+
+
+                    }
+                }
+            }
+        });
+    }
+
+    //日期格式初始化
+    //$('.form_date').datetimepicker({
+    //    //minView: "month", //选择日期后，不会再跳转去选择时分秒
+    //    format: 'yyyy-mm-dd hh:mm:ss',
+    //    language: 'zh-CN',//显示中文
+    //    weekStart: 1,
+    //    todayBtn: 1,
+    //    autoclose: 1,
+    //    todayHighlight: 1,
+    //    startView: 2,
+    //    forceParse: 0,
+    //    showMeridian: 1,
+    //    days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+    //    daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    //    daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+    //    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    //    monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    //    today: '今天',
+    //    suffix: [],
+    //    meridiem: [],
+    //    weekStart: 1
+    //})
+    $('.form_date input').datetimepicker({
+        format: 'Y-m-d H:i:00',
+        step: 15
+    })
+
+
+    //日期格式初始化
+    //$('.form_Time').datetimepicker({
+    //    //minView: "month", //选择日期后，不会再跳转去选择时分秒
+    //    format: 'yyyy-mm-dd hh:mm:ii',
+    //    language: 'zh-CN',//显示中文
+    //    weekStart: 1,
+    //    todayBtn: 1,
+    //    autoclose: 1,
+    //    todayHighlight: 1,
+    //    startView: 2,
+    //    forceParse: 0,
+    //    showMeridian: 1,
+    //    days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+    //    daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    //    daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+    //    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    //    monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    //    today: '今天',
+    //    suffix: [],
+    //    meridiem: [],
+    //    weekStart: 1,
+    //
+    //}).on('changeDate', function (e) {
+    //    var startTime = e.date;
+    //    var myDate = new Date();
+    //    myDate.toLocaleString();        //获取日期与时间
+    //    var str = parseInt(startTime.getTime() - myDate.getTime());
+    //    if (str > 0) {
+    //        $("#lblInTime").text("不能为空");
+    //        $("#InTime").val("");
+    //        return alert("选择时间不能大于当前！")
+    //    } else {
+    //        var d = new Date(startTime);
+    //        var vYear = d.getFullYear();
+    //        var vMon = d.getMonth() + 1;
+    //        var vDay = d.getDate();
+    //        var h = d.getHours();
+    //        var m = d.getMinutes();
+    //        var se = d.getSeconds();
+    //        var s = vYear + '-' + (vMon < 10 ? "0" + vMon : vMon) + '-' + (vDay < 10 ? "0" + vDay : vDay) + " " + (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":00";
+    //
+    //
+    //
+    //        var youWant = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes();
+    //        var tt = d.getMilliseconds();
+    //        var tt = d.getMilliseconds();
+    //        var dd = d.getMinutes();
+    //        $("#InTime").val(s);
+    //        $("#lblInTime").text("");
+    //    }
+    //    //$("#addDepForm").data("bootstrapValidator").validateField('lbl_InTime');
+    //});
+    $('#InTime').datetimepicker({
+        format: 'Y-m-d H:i',
+        maxDate: new Date(),
+        onChangeDateTime: function (date) {
+          console.log('data', date)
+          // if (!data) return;
+          var startTime = date;
+          var myDate = new Date();
+          myDate.toLocaleString();        //获取日期与时间
+          var str = parseInt(startTime.getTime() - myDate.getTime());
+          if (str > 0) {
+              $("#lblInTime").text("不能为空");
+              $("#InTime").val("");
+              return $message('d', "选择时间不能大于当前！")
+          } else {
+              var d = new Date(startTime);
+              var vYear = d.getFullYear();
+              var vMon = d.getMonth() + 1;
+              var vDay = d.getDate();
+              var h = d.getHours();
+              var m = d.getMinutes();
+              var se = d.getSeconds();
+              var s = vYear + '-' + (vMon < 10 ? "0" + vMon : vMon) + '-' + (vDay < 10 ? "0" + vDay : vDay) + " " + (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":00";
+      
+      
+      
+              var youWant = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes();
+              var tt = d.getMilliseconds();
+              var tt = d.getMilliseconds();
+              var dd = d.getMinutes();
+              $("#InTime").val(s);
+              $("#lblInTime").text("");
+          }
+          //$("#addDepForm").data("bootstrapValidator").validateField('lbl_InTime');
+        },
+        step: 15
+    })
+
+    //Select要触发的事件
+    $("#ParkLotSelect").change(function () {
+        _div.style.display = 'block';
+        var ParkingCode = $("#ParkLotSelect").val();
+        if (ParkingCode == "") {
+            _div.style.display = 'none';
+            return
+        }
+        CarTypeModel(ParkingCode, 0);
+        _div.style.display = 'block';
+        Getquery(1);
+    });
+
+    //获取角色权限api/Personnel/GetRolePermission?Guid={Guid}
+    function GetRolePermission() {
+        var RoleGuid = $.cookie("RoleGuid");
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + RoleGuid,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            async: false,
+            success: function (data) {
+                if (data.ParkingCodeList) {
+                    data.ParkingCodeList = [...(new Set(data.ParkingCodeList))]
+                }
+                if (data.IsSuccess == true) {
+                    RoleGuidList = data.ParkingCodeList;
+                }
+            }
+        })
+    }
+
+    //获取车场
+    function GetParkLotList(cb) {
+        GetRolePermission();
+        $("#ParkLotSelect").empty();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=' + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    for (var key in json) {
+                        var parkCode = json[key].ParkCode;
+                        var parkName = json[key].ParkName;
+                        var projectGuid = json[key].ProjectGuid;
+                        for (var roleGuidList in RoleGuidList) {
+                            if (RoleGuidList[roleGuidList] == parkCode) {
+                                if (json[key].Existence == true) {
+                                    $("#ParkLotSelect").append("<option value='" + parkCode + "' >" + parkName + "</option>");
+                                }
+                            }
+                        }
+                    }
+                    if (json.length) {
+                      cb && CarTypeModel($('#ParkLotSelect').val(), 0, cb)
+                    }
+                }
+            }
+        })
+    }
+
+    //车类型
+    var CarTypeName = {}
+    function CarTypeModel(CarTypeGuid, type, cb) {
+        if (CarTypeGuid != "") {
+            $.ajax({
+                url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + CarTypeGuid + '&projectGuid=' + $.cookie("ProjectGuid"),
+                dataType: '',
+                method: '',
+                contentType: '',
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        var json = data.Result;
+                        if (type == 0) {
+                            $("#CarTypeModel").find("option").remove();
+                        }
+                        else {
+                            $("#CarTypeModel2").find("option").remove();
+                        }
+                        $("#CarTypeModel").append("<option value='' selected='selected'>=全部=</option>");
+                        for (var key in json) {
+                            var carTypeGuid = json[key].Guid;
+                            var carTypeName = json[key].CarTypeName;
+                            if (type == 0) {
+                                $("#CarTypeModel").append("<option value='" + json[key].Idx + "' >" + carTypeName + "</option>");
+                                CarTypeName[json[key].Idx] = carTypeName
+                            }
+                            else {
+                                $("#CarTypeModel2").append("<option value='" + carTypeGuid + "' >" + carTypeName + "</option>");
+                            }
+                        }
+                       cb && cb()
+                    }
+                    _div.style.display = 'none';
+                }
+            })
+        }
+        else {
+            $("#CarTypeModel").find("option").remove();
+            $("#CarTypeModel").append("<option value='' >=请选择=</option>");
+        }
+    }
+
+    //查询
+    function Getquery(PageIndex) {
+        _div.style.display = 'block';
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var ParkingCode = $("#ParkLotSelect").val();
+        if (ParkingCode == "") {
+            _div.style.display = 'none';
+            return $message('i',"请选择停车场")
+        }
+        var CarNo = $("#CarNo").val().trim();
+        CarNo && (CarNo = LicensePlate(CarNo))
+        var CarTypeGuid = $("#CarTypeModel").val();
+        //if (CarTypeGuid == "") {
+        //    _div.style.display = 'none';
+        //    return alert("请选择车类型")
+        //}
+        var MaxInTime = $("#MaxInTime").val();
+        var MinInTime = $("#MinInTime").val();
+        var jsonstr = { "ParkingCode": ParkingCode, "PageIndex": PageIndex, "PageSize": 10, "LicensePlate": CarNo, "CarType": CarTypeGuid, "AdmissionDateStartDate": MinInTime, "AdmissionDateEndDate": MaxInTime, FieldSort: 'AdmissionDate', Sort: 1 }
+        let formdata = new FormData()
+        for (const [key, val] of Object.entries(jsonstr)) {
+          formdata.append(key, val)
+        }
+        $.ajax({
+            url: "/Home/Maps/Report/SearchPresentRecord",
+            type: 'POST',
+            cache: false,
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                _div.style.display = 'none';
+                if (data.IsSuccess == true) {
+                    $("#page-index").val(PageIndex)
+                    $("#page-row").val(data.PaperCouponList.length);
+                    var html = "";
+                    var index = 0;
+                    var json = data.PaperCouponList;
+                    $("#tbody_content").html("");
+                    html = html + '<tr role="row"   class="thead">' +
+                        '<td> 停车场</td >' +
+                        '<td>车牌号</td>' +
+                        '<td>车类型</td>' +
+                        '<td>入场通道</td>' +
+                        '<td>入场时间</td>' +
+                        '<td>停车时长</td>' +
+                        '<td>入场图片</td>' +
+                        '<td>入场备注</td>' +
+                        '<td>操作</td>' +
+                        '</tr>';
+                    for (var key in json) {
+                        index++;
+                        var parkName = json[key].ParkName;
+                        var carNo = json[key].LicensePlate;
+                        var guid = json[key].Guid;
+                        var carTypeName = CarTypeName[json[key].CarType];
+                        var entranceName = json[key].Entrance;
+                        var inTime = json[key].AdmissionDate;
+                        var stopLong = LongStop(json[key].AdmissionDate, new Date());
+                        var inImgUrl = json[key].InImgUrl || '';
+                        if (json[key].InImgUrl == "/picture/shownocapture.png") {
+                            inImgUrl = "/picture/nocapture.png";
+                        }
+                        var remark = json[key].Remark;
+                        var dateee = new Date(inTime).toJSON();
+                        var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+                        if (index % 2 == 0) {
+                            html = html + '<tr style="font-size:15px;line-height:22px">';
+                        }
+                        else {
+                            html = html + '<tr style="font-size:15px;background-color:#f3f8fb;line-height:22px">';
+                        }
+                        html = html + '<td  style="vertical-align:middle;">' + parkName + '</td >' +
+                            "<td id=lbl_" + carNo + ">" + carNo + "</td>" +
+                            '<td>' + carTypeName + '</td>' +
+                            '<td>' + entranceName + '</td>' +
+                            '<td>' + date + '</td>' +
+                            '<td>' + stopLong + '</td>' +
+                            "<td><img src=" + json[key].InImgUrl + "  onclick='javascript:showimage(\"" + inImgUrl + "\")' style='width: 25px; height: 25px;' onmouseover='this.style.cursor =\"pointer\"; this.style.cursor =\"hand\"';  onmouseout='this.style.cursor=\"default\"'></img></td>" +
+                            '<td>' + remark + '</td>' +
+                            "<td  style='vertical - align: middle;'><a class='btn btn-info' style='color: #fff;background-color:#0092ff'  onclick='openCorrectCarNo(\"" + ParkingCode + "\",this)'>车牌修正</a> </td>" +
+                            '</tr >';
+                    }
+                    $('#tbody_content').append(html);
+                    if (json.length) {
+                        $('.empty-ico').hide()
+                    } else {
+                        $('.empty-ico').show()
+                    }
+                }
+            },
+            error: function (xhr) {
+                // 导致出错的原因较多，以后再研究
+                $message('d','error:' + JSON.stringify(xhr));
+                _div.style.display = 'none';
+
+            }
+
+
+        })
+        function encodeBase64(mingwen) {
+            // 创建Base64对象
+            var Base64 = { _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", encode: function (e) { var t = ""; var n, r, i, s, o, u, a; var f = 0; e = Base64._utf8_encode(e); while (f < e.length) { n = e.charCodeAt(f++); r = e.charCodeAt(f++); i = e.charCodeAt(f++); s = n >> 2; o = (n & 3) << 4 | r >> 4; u = (r & 15) << 2 | i >> 6; a = i & 63; if (isNaN(r)) { u = a = 64 } else if (isNaN(i)) { a = 64 } t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a) } return t }, decode: function (e) { var t = ""; var n, r, i; var s, o, u, a; var f = 0; e = e.replace(/[^A-Za-z0-9+/=]/g, ""); while (f < e.length) { s = this._keyStr.indexOf(e.charAt(f++)); o = this._keyStr.indexOf(e.charAt(f++)); u = this._keyStr.indexOf(e.charAt(f++)); a = this._keyStr.indexOf(e.charAt(f++)); n = s << 2 | o >> 4; r = (o & 15) << 4 | u >> 2; i = (u & 3) << 6 | a; t = t + String.fromCharCode(n); if (u != 64) { t = t + String.fromCharCode(r) } if (a != 64) { t = t + String.fromCharCode(i) } } t = Base64._utf8_decode(t); return t }, _utf8_encode: function (e) { e = e.replace(/rn/g, "n"); var t = ""; for (var n = 0; n < e.length; n++) { var r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r) } else if (r > 127 && r < 2048) { t += String.fromCharCode(r >> 6 | 192); t += String.fromCharCode(r & 63 | 128) } else { t += String.fromCharCode(r >> 12 | 224); t += String.fromCharCode(r >> 6 & 63 | 128); t += String.fromCharCode(r & 63 | 128) } } return t }, _utf8_decode: function (e) { var t = ""; var n = 0; var r = c1 = c2 = 0; while (n < e.length) { r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r); n++ } else if (r > 191 && r < 224) { c2 = e.charCodeAt(n + 1); t += String.fromCharCode((r & 31) << 6 | c2 & 63); n += 2 } else { c2 = e.charCodeAt(n + 1); c3 = e.charCodeAt(n + 2); t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63); n += 3 } } return t } }
+            var encodedString = Base64.encode(mingwen)
+            return encodedString;
+        }
+
+    };
+    
+    // 停留时间
+    function LongStop(s, e) {
+      let sta = new Date(s).getTime()
+      let end = new Date(e).getTime()
+      let stopTime = end - sta
+      let H = parseInt(stopTime / (1000 * 60 * 60))
+      let M = parseInt(stopTime % (1000 * 60 * 60) / (1000 * 60))
+      let S = parseInt(stopTime % (1000 * 60) / (1000))
+      return `${H}小时${M}分`
+    }
+
+    //修正车牌
+    function openCorrectCarNo(ParkingCode, html) {
+        _div.style.display = 'block';
+
+
+        var OldCarNo = $(html).parent().parent().find("td:eq(1)").html();
+
+
+        $("#lbl_CarNo").text(OldCarNo);
+        $("#ParkingCode").val(ParkingCode);
+        $("#myModalLabel").text("修正车牌");
+        $('#myModal').modal();
+        $("#btn_submit").removeAttr("disabled");
+        $("#lblCarNo3").text("");
+        $("#CarNo3").val("");
+        //移除上次的校验配置
+        $("#addDepForm").data('bootstrapValidator').destroy();
+        $('#addDepForm').data('bootstrapValidator', null);
+        //重新添加校验
+        formValidator();
+        _div.style.display = 'none';
+
+    }
+
+    //入场补录
+    function AddInRecord() {
+        _div.style.display = 'block';
+        var parkName = $('#ParkLotSelect').find("option:selected").text();
+        var ParkingCode = $("#ParkLotSelect").val();
+        if (ParkingCode == "") {
+            _div.style.display = 'none';
+            return $messsage('i',"请先选中车场")
+        }
+        $("#ParkingCode2").val(ParkingCode);
+        CarTypeModel(ParkingCode, 1);
+        GetGetDriveWayList(ParkingCode)
+        $("#parkName").text(parkName);
+        $("#NewCarNo3").val("");
+        $("#div_AddInRecord").text("入场信息补录");
+        $("#btn_Addsubmit").removeAttr("disabled");
+        $("#InTime").val("");
+        $("#lblCarNo").text("");
+        //移除上次的校验配置
+        $("#addDepForm").data('bootstrapValidator').destroy();
+        $('#addDepForm').data('bootstrapValidator', null);
+        //重新添加校验
+        formValidator();
+        $('#myModal2').modal();
+    }
+
+    //显示大图
+    function showimage(source) {
+        _div.style.display = 'block';
+        $("#ShowImage").attr('src', source);  //图片
+        $("#myModal88").modal();
+        _div.style.display = 'none';
+    }
+
+    //修正车牌
+    function SetreviseCarNo() {
+        _div.style.display = 'block';
+        var CarNo3 = $("#CarNo3").val();
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            //if (CarNo3 == "") {
+            //    $("#lblCarNo3").text("不能为空");
+            //}
+            _div.style.display = 'none';
+            return;
+        }
+        //else {
+        //    var is = 0;
+        //    if (CarNo3 == "") {
+        //        is++;
+        //        $("#lblCarNo").text("不能为空");
+        //    }
+        //    if (is != 0) {
+        //        $('form').data('bootstrapValidator').validate();
+        //        if ($('form').data('bootstrapValidator').isValid()) {
+        //            _div.style.display = 'none';
+        //            return;
+        //        }
+        //    }
+        var ParkingCode = $("#ParkingCode").val()
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var OldCarNo = $("#lbl_CarNo").text();
+        var ParkingCode = $("#ParkingCode").val();
+        var data = {
+            "ProjectGuid": ProjectGuid, "ParkingCode": ParkingCode, "OldCarNo": OldCarNo, "NewCarNo": CarNo3, "Operator": $.cookie("UserName")
+        };
+        $.post("/Home/Maps/ParkLot/CorrectCarNo", data, function (result) {
+            var PageIndex = parseFloat($("#page-index").val());
+            if (result.IsSuccess == true) {
+                var ee = $("#lbl_" + OldCarNo).text();
+                $("#lbl_" + OldCarNo).text(CarNo3);
+                $("#lbl_" + OldCarNo).attr("id", "lbl_" + CarNo3);
+                $message('s',"修改成功！")
+                //  Getquery(PageIndex);
+                $('#myModal').modal('hide');//隐藏modal
+                _div.style.display = 'none';
+            }
+            else {
+                $message('d',result.MessageContent);
+                //Getquery(PageIndex);
+                _div.style.display = 'none';
+            }
+
+        });
+        // }
+    }
+
+    //GET
+    function GetGetDriveWayList(ParkingCode) {
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetDriveWayList?ParkingCode=" + ParkingCode,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    $("#DrivewayGuid").find("option").remove();
+                    for (var key in json) {
+                        var drivewayName = json[key].DrivewayName;
+                        var type = json[key].Type;
+                        var guid = json[key].Guid;
+                        if (type == 0) {
+                            $("#DrivewayGuid").append("<option value='" + guid + "' >" + drivewayName + "</option>");
+                        }
+
+                    }
+
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+    //重置
+    function Resetting() {
+        GetParkLotList();
+        CarTypeModel("", 0);
+        $("#CarNo").val("");
+        $("#MinInTime").val("");
+        $("#MaxInTime").val("");
+
+    }
+
+    //添加入场补录
+    function SetAddInRecord() {
+        _div.style.display = 'block';
+        var CarNo3 = $("#NewCarNo3").val();
+        var InTime = $("#InTime").val();
+        var is = 0;
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            _div.style.display = 'none';
+            if (CarNo3 == "") {
+                $("#lblCarNo").text("不能为空");
+
+            }
+            //if (CarNo3 == "") {
+            //    $("#lblCarNo").text("不能为空");
+            //}
+            //if (InTime == "") {
+            //    $("#lblInTime").text("不能为空");
+            //}
+
+            return;
+        }
+        //else {
+        //    if (CarNo3 == "") {
+        //        is++;
+        //        $("#lblCarNo").text("不能为空");
+        //    }
+
+        //    if (InTime == "") {
+        //        is++;
+        //        $("#lblInTime").text("不能为空");
+        //    }
+        //    if (is != 0) {
+        //        $('form').data('bootstrapValidator').validate();
+        //        if ($('form').data('bootstrapValidator').isValid()) {
+        //            _div.style.display = 'none';
+        //            return;
+        //        }
+        //    }
+
+        //}
+        //var CarNo1 = $("#NewCarNo1").val();
+        //var CarNo2 = $("#NewCarNo2").val();
+
+        var NewCarNo = CarNo3;
+        var CarTypeGuid = $("#CarTypeModel2").val();
+
+        var DrivewayGuid = $("#DrivewayGuid").val();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var ParkingCode = $("#ParkingCode2").val();
+        var ImgUrl = "/picture/shownocapture.png";
+        // $("#div_NewCarNo").css("display", "none");
+        // $("#lblCarNo").text("不能为空");
+        var data = {
+            "ProjectGuid": ProjectGuid, 
+            "ParkingCode": ParkingCode, 
+            "CarNo": NewCarNo, 
+            "InTime": InTime, 
+            "CarTypeGuid": CarTypeGuid, 
+            "DrivewayGuid": DrivewayGuid, 
+            "Entrance": $("#DrivewayGuid option:selected").text(),
+            "Operator": $.cookie("UserName"),
+            "ImgUrl": ImgUrl
+        };
+        $.post("/Home/Maps/ParkLot/AddInRecord", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s',"入场补录成功！")
+                var PageIndex = parseFloat($("#page-index").val());
+                Getquery(PageIndex);
+                $('#myModal2').modal('hide');//隐藏modal
+                _div.style.display = 'none';
+            }
+            else {
+                _div.style.display = 'none';
+                $message('d',result.MessageContent);
+            }
+        });
+
+    }
+
+
+    //上一页
+    $("#Previous_page").click(function () {
+        _div.style.display = 'block';
+        if ($("#page-index").val() != 1) {
+            var PageIndex = parseFloat($("#page-index").val()) - 1;
+            Getquery(PageIndex);
+        }
+        _div.style.display = 'none';
+    });
+
+    //下一页
+    $("#next_page").click(function () {
+        _div.style.display = 'block';
+        var PageIndex = parseFloat($("#page-index").val()) + 1;
+        var row = $("#page-row").val();
+        if (parseFloat(row) >= 10) {
+            Getquery(PageIndex);
+        }
+        _div.style.display = 'none';
+    });
+    //判断车牌正则式
+    $("#NewCarNo3").bind('input propertychange', function () {
+        var CarNo3 = $("#NewCarNo3").val();
+        if (CarNo3 != "") {
+            $("#lblCarNo").text("");
+        }
+        else {
+            $("#lblCarNo").text("不能为空");
+        }
+        var exp = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/;
+        var reg = CarNo3.match(exp);
+        if (reg == null) {
+            $("#btn_submit").attr("disabled", "disabled");
+            $("#lblCarNo").text("请输入正确的车牌号");
+            return;
+        }
+        else {
+            $("#lblCarNo").text("");
+            $("#btn_submit").removeAttr("disabled");
+            return true;
+        }
+
+    });
+
+
+    ////判断车牌正则式
+    //$("#CarNo3").bind('input propertychange', function () {
+    //    var name = $(this).val();
+    //    if (name == "") {
+    //        $("#lblCarNo3").text("不能为空");
+    //        $("#btn_submit").attr("disabled", "disabled");
+    //        return true;
+    //    }
+
+
+    //    // var exp = /[^0-9|a-z]/;
+    //    var exp = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/;
+    //    var reg = name.match(exp);
+    //    if (reg == null) {
+    //        $("#btn_submit").attr("disabled", "disabled");
+    //        $("#lblCarNo3").text("请输入正确的车牌号");
+    //        return;
+    //    }
+    //    else {
+    //        $("#lblCarNo3").text("");
+    //        $("#btn_submit").removeAttr("disabled");
+    //        return true;
+    //    }
+    //});
+
+    ////判断时间正则式
+    //$('#InTime').focus(function () {
+    //    var date = $(this).val().trim();
+
+    //    if ($(this).val().trim() == '') {
+
+    //        $("#lblInTime").text("不能为空");
+    //    }
+
+    //    else {
+    //        $("#btn_Addsubmit").removeAttr("disabled");
+    //    }
+
+    //    $("#lblInTime").text("");
+
+    //    var exp = /^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/;
+    //    var reg = date.match(exp);
+    //    if (reg == null)
+    //    {
+    //        $("#lblInTime").text("请输入正确的车牌号");
+    //    }
+    //    else {
+    //        $("#btn_Addsubmit").removeAttr("disabled");
+    //    }
+
+
+
+    //});
+    ////判断时间正则式
+    //$('#InTime').blur(function () {
+    //    if ($(this).val().trim() == '')
+    //        $("#lblInTime").text("不能为空");
+    //    else
+    //        $("#btn_Addsubmit").removeAttr("disabled");
+    //    $("#lblInTime").text("");
+    //});
+    //$('#spanInTime').focus(function () {
+    //    if ($("#InTime").val().trim() == '')
+    //        $("#lblInTime").text("不能为空");
+    //    else
+    //        $("#btn_Addsubmit").removeAttr("disabled");
+    //    $("#lblInTime").text("");
+    //});
+    ////判断时间正则式
+
+    //$('#spanInTime').click(function () {
+    //    if ($("#InTime").val().trim() == '')
+    //        $("#lblInTime").text("不能为空");
+    //    else
+    //        $("#btn_Addsubmit").removeAttr("disabled");
+    //    $("#lblInTime").text("");
+    //})
+
+    // 模糊查询车牌添加通配符
+    function LicensePlate(carNo) {
+      let str = carNo.trim()
+      let re = /^[\u4e00-\u9fa5]/
+      if (re.test(str)) {
+        return carNo + '*'
+      } else {
+        return '?*' + carNo + '*'
+      }
+    }
+
+
+
+
+</script>

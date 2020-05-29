@@ -1,0 +1,182 @@
+
+@{
+    /**/
+    Layout = null;
+    ViewBag.Title = "OperaMa_Add";
+}
+<link href="~/Content/main.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/common.js"></script>
+<style>
+    .tl {
+        text-align: right
+    }
+</style>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header" style="height:40px;margin-top:10px">
+                <h4><img src="/picture/zuobianlan.png"><label id="lbl_tiele" style="margin-left:10px"></label></h4>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="tile-body" style="width:50%;margin-left:25%">
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <label class="control-label col-md-5 tl">
+                    姓名
+                </label>
+                <div class="col-md-5">
+                    <input class="form-control" type="text" placeholder="" id="UserName" name="UserName">
+                </div>
+            </div>
+            @*<div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        密码
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" type="text" placeholder="" id="UserPswd" name="UserPswd">
+                    </div>
+                </div>*@
+            <div class="form-group row">
+                <label class="control-label col-md-5 tl">
+                    手机号
+                </label>
+                <div class="col-md-5">
+                    <input class="form-control" type="text" placeholder="" id="Mobile" name="Mobile">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-5 tl">
+                    角色
+                </label>
+                <div class="col-md-5">
+                    <select class="form-control" id="RoleGuid" name="RoleGuid"></select>
+                    <span style="color:darkred">默认初始密码为fujica</span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="tile-footer" style="margin-left:50%">
+        <div class="row">
+            <div class="col-md-11 ">
+                <a class="btn btn-secondary" href="#" onclick="back_OperaManage()" style="width:120px">
+                    返回
+                </a>
+                <button class="btn btn-primary" type="button" onclick="AddNewOperator()" style="width:120px">
+                    确认
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetRoleList()
+        //var ProjectGuid = $.cookie("ProjectGuid");
+        var UserName = parent.$("#paramOpera").attr("UserName")
+        var Mobile = parent.$("#paramOpera").attr("Mobile")
+        //var RoleName = parent.$("#paramOpera").attr("RoleName")
+        var Guid = parent.$("#paramOpera").attr("Guid")
+        var RoleGuid = parent.$("#paramOpera").attr("RoleGuid")
+        if (UserName == "") {
+            $("#lbl_tiele").text("新增操作员");
+            $("#Mobile").remove("disabled")
+        }
+        else {
+            $("#lbl_tiele").text("编辑");
+            $("#UserName").val(UserName)
+            $("#UserName").attr("guid", Guid);
+            $("#Mobile").val(Mobile);
+            $("#Mobile").attr("disabled", "disabled");
+            $("#RoleGuid option[value=" + RoleGuid + "]").prop("selected", true);
+        }
+    })
+
+    //获取角色列表
+    function GetRoleList() {
+        var projectGuid = $.cookie("ProjectGuid")
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRoleList?ProjectGuid=" + projectGuid,
+            dataType: 'json',
+            method: 'GET',
+            async: false,
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                if (res.IsSuccess == true) {
+                    var json = res.RoleList;
+                    var html = '';
+                    for (var key in json) {
+                        var roleName = json[key].RoleName;
+                        var guid = json[key].Guid;
+                        //onclick="GetRolePermission(\'' + guid +'\')"
+                        if (roleName != "超级管理员") {
+                            html += '<option value="' + guid + '">' + roleName + '</option>'
+                        }
+                    }
+                    $("#RoleGuid").html(html);
+                }
+                else {
+                    //预留错误信息
+                }
+            }
+        })
+    }
+
+    //新建操作员
+    function AddNewOperator() {
+        var ajax, title, guid;
+        var projectGuid = $.cookie("ProjectGuid");
+        var userPswd = "fujica";
+        var userName = $("#UserName").val();
+        var mobile = $("#Mobile").val();
+        var roleGuid = $("#RoleGuid option:selected").val();
+        if (userName == '') {
+            $message('i','请填写姓名')
+            return
+        }
+        if (mobile == '') {
+            $message('i','请填写手机号')
+            return
+        }
+        if(!(/^1[3456789]\d{9}$/.test(mobile))){
+            $message('i','请填写正确手机号')
+            return
+        }
+        parent.$("#paramOpera").attr("UserName") == "" ? (ajax = "AddNewOperator", title = "新建成功！", guid = null) : (ajax = "ModifyOperator", title = "修改成功！", guid = $("#UserName").attr("guid"));
+        $.ajax({
+            url: "/Home/Maps/Personnel/" + ajax,
+            dataType: 'json',
+            method: 'POST',
+            data: {
+                ProjectGuid: projectGuid,
+                UserPswd: userPswd,
+                UserName: userName,
+                Mobile: mobile,
+                RoleGuid: roleGuid,
+                Guid: guid
+            },
+            success: function (res) {
+                if (res.IsSuccess === true) {
+                    $("#UserName").val("");
+                    $("#Mobile").val("");
+                    $message('s', title)
+                    parent.$('#mainIframe').attr('src', "/Home/Trans/OperaManage");
+                } else {
+                    $message('d', res.MessageContent)
+                }
+            }
+        })
+    }
+
+    function back_OperaManage() {
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 人事管理 > 操作员管理" +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/OperaManage");
+    }
+</script>

@@ -1,0 +1,716 @@
+﻿
+@{
+    ViewBag.Title = "ParkLot_SetBillingTemplate";
+    Layout = null;
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/plugins/pace.min.js"></script>
+<script type="text/javascript" src="~/Scripts/plugins/chart.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/jquery.serializejson.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    a {
+        font-size: 12px;
+    }
+
+    #car0List, #car2List {
+        list-style: none;
+        padding: 0;
+    }
+
+        #car0List li, #car2List li {
+            padding-top: 10px;
+            list-style: none;
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+            cursor: pointer;
+            color: #6C7A8B;
+        }
+
+            #car0List li span, #car2List li span {
+                font-size: 12px;
+                padding-left: 50px;
+                border-left: 2px solid #fff;
+                height: 20px;
+                display: block;
+                line-height: 20px;
+            }
+
+    .border_b {
+        border-left: 2px solid #0092FF !important;
+    }
+
+    .bgc_b {
+        background-color: #E8F6FF !important;
+    }
+    .flex-box {
+        display: flex;
+    }
+    .flex-box.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-box.space-between {
+        justify-content: space-between;
+    }
+
+    .flex-box .flex1 {
+        flex: 1;
+        position: relative;
+    }
+    .steps{
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-left: 16.6%;
+    }
+    .steps .steps-title{
+        width: 120px;
+        text-align: center;
+        display: inline-block;
+        margin-left: -60px;
+    }
+    .steps .flex1{
+        height: 50px;
+    }
+    .steps .icon{
+        bottom: 0;
+        width: 100%;
+        border-bottom: 4px solid;
+        position: absolute;
+    }
+    .steps .icon:after{
+        content:'';
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #e8e8e8ed;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: -8px;
+        margin-left: -7px;
+    }
+    .steps .icon.gray{
+       border-color: #e8e8e8ed;
+    }
+    .steps .icon.blue{
+       border-color: #0093ff;
+    }
+    .steps .start .icon{
+        right: 0;
+    }
+    .steps .end .icon{
+        left:0;
+        border-color: #fff;
+    }
+    .steps .curr{
+        color: #00a5ff;
+    }
+    .steps .curr .icon:after{
+      content:'';
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background: url('/picture/Ellipse.png');
+      position: absolute;
+      bottom: 0;
+      margin-bottom: -13px;
+      margin-left: -12px;
+    }
+    .steps .start .icon:after{
+        left: 0%;
+    }
+    .steps .end .icon:after{
+        left: 0%;
+    }
+</style>
+
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+     
+    <div class="row" style="margin:30px auto 20px">
+        <!-- <img src="~/picture/bar3.png" style="margin-left:16%" /> -->
+        <div class="flex-box center steps">
+            <div class="flex1 start curr">
+                <span class="steps-title">设置车场基本信息</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 curr">
+                <span class="steps-title">添加车道和设备</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 curr">
+                <span class="steps-title">设置车类型</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 curr">
+                <span class="steps-title">计费模板设置</span>
+                <div class="icon gray"></div>
+            </div>
+            <div class="flex1 end ">
+                <span class="steps-title">延期金额设置</span>
+                <div class="icon gray"></div>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top:5px"/>
+    <div class="row" style="margin-bottom: 2rem;">
+        <div class="col-lg-12">
+            <div class="bs-component">
+                @*<ul class="nav nav-tabs">
+            <li class="nav-item active" id="liA"><a class="nav-link" data-toggle="tab" href="#home" style="font-size: 12px;">计费模板设置</a></li>
+            <li class="nav-item" id="liB"><a class="nav-link" data-toggle="tab" href="#profile" style="font-size: 12px;">固定车延期金额设置</a></li>
+        </ul>*@
+                <div class="tab-content Add_BillingTemplate_div" id="myTabContent" >
+                    <div class="tab-pane active" id="home" style="width:100%;">
+                        <div class="row" style="height:55px;line-height:55px;">
+                            <div class="col-sm-10 col-md-2">
+                                <div class="dataTables_length" id="" style="padding-left: 15px;">
+                                    <img src="~/picture/zuobianlan.png" />
+                                    <label class="parkName" style="font-size:18px;font-weight:bold;margin-left:12px">富士智能停车场</label>
+                                </div>
+                            </div>
+                            <div class="col-md-1" style="width:110px;float:left">
+                                <label class="control-label " style="font-size: 12px;">请选择计费方式</label>
+                            </div>
+                            <div class="col-md-1" style="width:140px;float:left;margin-top:12px;">
+                                <select class="selectpicker" name="TemplateIndex" id="TemplateIndex" data-width="140px" onchange="GetBilTemp()" style="height:30px;font-size:12px;" autocomplete="off">
+                                    <option id="1" value="1">按小时计费</option>
+                                    <option id="2" value="2">分段计费</option>
+                                    <option id="3" value="3">深圳商业收费</option>
+                                    <option id="4" value="4">按半小时收费</option>
+                                    <option id="5" value="5">简易分段收费</option>
+                                    <option id="6" value="6">分段按小时收费</option>
+                                    <option id="7" value="7">无分段半小时收费</option>
+                                    <option id="8" value="8">半小时收费</option>
+                                    <option id="9" value="9">新分段收费标准</option>
+                                    <option id="10" value="10">分段按15分钟收费</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:10px;">
+                            <div class="col-lg-2">
+                                <div class="bs-component" style="border:1px solid #e7e9ed;width:95%;margin-left:12px">
+                                    <div style="width:100%;height:35px;background-color:#f3f8fb;line-height:22px">
+                                        <label style="line-height:34px;margin-left:10px;font-size:15px">车类型</label>
+                                    </div>
+                                    <div class="tree" style="width:100%;overflow-x:hidden;overflow-y:auto;height:350px;padding-top:10px;">
+                                        <ul style="padding:0;width:120%;">
+                                            <li style="list-style-type:none;margin-left:10px;">
+                                                <i class="fas fa-caret-down btn1">
+                                                    <img src="~/picture/caret-down-solid.svg" style="width:20px;height:20px" />
+                                                </i>
+                                                <span class=" ">临时车</span>
+                                                <ul id="car0List" style="height:auto;width:100%;margin-left:-10px;" class=""></ul>
+                                            </li>
+
+                                            <li style="list-style-type:none;margin-left:10px;">
+                                                <i class="fas fa-caret-down btn2">
+                                                    <img src="~/picture/caret-down-solid.svg" style="width:20px;height:20px" />
+                                                </i>
+                                                <span class=" ">储值车</span>
+                                                <ul id="car2List" style="height:auto;width:100%;margin-left:-10px;" class=""></ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="panel" style="width:95%;float:left;height:510px;margin-bottom:0;">
+                                    <iframe id="Tollcontext" name="TollcontextName" style="width:100%;height:100%;margin-left:30px;" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                    </div>
+                    <div class="form-group" style="width:100%;float:left;margin-top:10px;">
+                        <div class="col-lg-8 col-lg-offset-4">
+                            <button class="btn btn-default" type="reset" style=" color: #747474;background-color: #D7D8D9; width:120px;" onclick="back_ParkLot()">返回</button>&nbsp;&nbsp;
+                            <button class="btn btn-primary" style="width:120px;background-color:#0092FF" type="submit" id="SaveBtn" onclick="Nextstep()">跳过</button>&nbsp;&nbsp;
+                            <button class="btn btn-primary" style="width:120px;background-color:#0092FF" type="submit" id="SaveBtn" onclick="SaveBtn()">下一步</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="profile" style="height:14px;">
+                        @*<p>
+                <div class="col-md-12">
+
+                    <div class="row" style="height:55px">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="sampleTable_length">
+                                <img src="~/picture/zuobianlan.png" />
+                                <label class="parkName" style="font-size:18px;font-weight:bold;margin-left:12px">富士智能停车场</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6" style="text-align:right">
+                            <div id="sampleTable_filter" class="dataTables_filter">
+                                <a class="btn btn-info" onclick="showAdd()" style="color:#fff"> <img src="~/picture/increase.png" />&nbsp;&nbsp;<span>新添数据</span></a>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </p>*@
+                        <input type="hidden" id="projectGuid" value="" />
+                        <input type="hidden" id="parkingCode" value="" />
+                        <input type="hidden" id="parkName" value="" />
+                        <input type="hidden" id="navtabs" value="" />
+                        @*<div class="tile-footer">
+                <div class="row">
+                    <div class="col-md-10" style="text-align:center">
+
+                        <a class="btn " href="#" onclick="back_ParkLot()" style="width:120px;margin-left:30%;background-color:#D7D8D9;color:#575656">
+                            返回
+                        </a>
+
+                    </div>
+                </div>
+            </div>*@
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+<!-- Google analytics script-->
+<script type="text/javascript">
+    var tabs = "";
+    var PostponeTemplateList = ""; 
+    var projectGuid = $.cookie("")
+    var ProjectGuid = $.cookie("ProjectGuid");
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    $(document).ready(function () {
+        _div.style.display = 'block';
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 0) {  //大于1 是修改  否则是添加
+            var value = "";
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    $("#" + name).val(decodeURI(value));
+                }
+            }
+        } 
+        GetCarTypeList()
+        var tabs = $("#navtabs").val();
+        if (tabs != "") {
+            $('#liA').removeClass('active');
+            $('#liB').addClass('active');
+            $('#home').removeClass('active');
+            $('#profile').addClass('active');
+        }
+        _div.style.display = 'block';
+        GetParkLot();
+    })
+
+    function GetParkLot() {
+        var ParkingCode = $("#parkingCode").val(); 
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetParkLot?ParkingCode=" + ParkingCode,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) { 
+                    $(".parkName").html(data.Result.parkName)
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+      
+    //新添数据
+    function Add() { 
+        _div.style.display = 'block';
+        var parkCode = $("#parkingCode").val(); 
+        var url = ("/Home/Trans/ParkLot_AddBillingTemplate?projectGuid=" + ProjectGuid + "&parkingCode=" + parkCode);
+        parent.$('#mainIframe').attr('src', url);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理</label>  > <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>><a href="#" style="color:#9a9c9e" onclick="back_ParkLot()">计费设置</a>  > <label style="color:#0092ff">添加</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    } 
+
+    //删除
+    function Delete(CarTypeGuid, projectGuid, key, months, amount, operateUser, parkCode) {
+        var data = {
+            "CarTypeGuid": CarTypeGuid,
+            "ParkingCode": parkCode,
+            "ProjectGuid": projectGuid,
+            "Months": months,
+            "Amount": amount,
+            "OperateUser": operateUser
+        };
+        $alert({
+            html: "您确定删除吗？",
+            confirm: function () {
+                _div.style.display = 'block';
+                $.post("/Home/Maps/ParkLot/RemovePostponeTemplate", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s', "删除成功！")
+                        $("#Id_" + key).remove();
+                        _div.style.display = 'none';
+                    }
+                    else {
+                        $message('d', result.MessageContent);
+                        _div.style.display = 'none';
+                        return;
+                    }
+                });
+            }
+        })
+    }
+
+    //获取车类列表
+    function GetCarTypeList() {
+        var parkCode = $("#parkingCode").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + parkCode + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    if (data.Result.length == 0) {
+                        $message('d', "请先设置车类")
+                        history.back(-1);
+                        return;
+                    }
+                    var json = data.Result;
+                    for (var key in json) {
+                        var guid = json[key].Guid;
+                        var carTypeName = json[key].CarTypeName;
+                        var carType = json[key].CarType;
+                        if (json[key].CarType == 0) {
+                            var html0 = '<li class="guidLi" carType="' + carType + '" guid="' + guid + '">' +
+                                '<span guid="' + guid + '"><a href="javascript:;" style="text-decoration: none;">' + carTypeName + '</a></span>' +
+                                '</li>';
+                            $("#car0List").append(html0);
+                        } else if (json[key].carType == 2) {
+                            var html2 = '<li class="guidLi" carType="' + carType + '" guid="' + guid + '">' +
+                                '<span guid="' + guid + '"><a href="javascript:;" style="text-decoration: none;">' + carTypeName + '</a></span>' +
+                                '</li>';
+                            $("#car2List").append(html2);
+                        }
+                    }
+                    $(".tree .guidLi").click(function () {
+                        $(".tree .guidLi span a").css("color", "#000");
+                        $(".tree .guidLi span").removeClass("border_b");
+                        $(".tree .guidLi").removeClass("bgc_b");
+                        $(this).find("a").css("color", "#0092FF")
+                            .end().find("span").addClass("border_b")
+                            .end().addClass("bgc_b");
+                        GetBillingTemplate()
+                    })
+                    $(".tree .guidLi").eq(0).trigger("click");
+                }
+                  _div.style.display = 'none';
+            }
+        })
+    }
+
+    //添加
+    //获取计费模板
+    function GetBillingTemplate() {
+        var carTypeGuid = $(".guidLi .border_b").attr("guid");
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetBillingTemplate?CarTypeGuid=" + carTypeGuid,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                var val = res.Result ? res.Result.ChargeMode : 1;
+                switch (val) {
+                    case 1: //按小时计费
+                        var url = ("/Home/Trans/BT_HourlyTollView?carTypeGuid=" + carTypeGuid);
+                        parent.$("iframe").contents().find("#Tollcontext").attr('src', url);
+                        $('#TemplateIndex option').eq(0).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 2: //分段计费
+                        var url = ("/Home/Trans/BT_SectMoney?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(1).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 3: //深圳商业收费
+                        var url = ("/Home/Trans/BT_ShenZhengToll?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(2).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 4: //按半小时收费
+                        var url = ("/Home/Trans/BT_HalfHourMoney?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(3).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 5: //简易分段收费
+                        var url = ("/Home/Trans/BT_SimplesectMoney?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(4).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 6: //分段按小时计费
+                        var url = ("/Home/Trans/BT_SecthourMoney?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(5).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 7: //无分段半小时收费
+                        var url = ("/Home/Trans/BT_Sectnone2Money?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(6).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 8: //半小时收费
+                        var url = ("/Home/Trans/BT_HalfHourSectMoney?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(7).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 9: //新分段收费标准
+                        var url = ("/Home/Trans/BT_NewSubparagraphFees?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(8).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                    case 10: //分段按15分钟收费
+                        var url = ("/Home/Trans/BT_Sect1Money?carTypeGuid=" + carTypeGuid);
+                        parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                        $('#TemplateIndex option').eq(9).prop("selected", true).siblings().prop("selected", false)
+                        break;
+                }
+            }
+        })
+
+    }
+
+    //计费模板静态跳转
+    function GetBilTemp() {
+        _div.style.display = 'block';
+        var carTypeGuid = $(".guidLi .border_b").attr("guid");
+        var val = $('#TemplateIndex option:selected').val();
+        switch (val || "1") {
+            case "1": //按小时计费
+                var url = ("/Home/Trans/BT_HourlyTollView?carTypeGuid=" + carTypeGuid);
+                parent.$("iframe").contents().find("#Tollcontext").attr('src', url);
+                break;
+            case "2": //分段计费
+                var url = ("/Home/Trans/BT_SectMoney?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "3": //深圳商业收费
+                var url = ("/Home/Trans/BT_ShenZhengToll?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "4": //按半小时收费
+                var url = ("/Home/Trans/BT_HalfHourMoney?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "5": //简易分段收费
+                var url = ("/Home/Trans/BT_SimplesectMoney?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "6": //分段按小时计费
+                var url = ("/Home/Trans/BT_SecthourMoney?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "7": //无分段半小时收费
+                var url = ("/Home/Trans/BT_Sectnone2Money?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "8": //半小时收费
+                var url = ("/Home/Trans/BT_HalfHourSectMoney?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "9": //新分段收费标准
+                var url = ("/Home/Trans/BT_NewSubparagraphFees?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+            case "10": //分段按15分钟收费
+                var url = ("/Home/Trans/BT_Sect1Money?carTypeGuid=" + carTypeGuid);
+                parent.$('iframe').contents().find('#Tollcontext').attr('src', url);
+                break;
+        }
+
+        _div.style.display = 'none';
+    }
+
+    //新增计费模板
+    function AddBillingTemplate() {
+        _div.style.display = 'block';
+        var texttemplateJson = $(window.frames["TollcontextName"].document).find("#form").serialize();
+        if (/=(&|$)/.test(texttemplateJson)) {
+            $message('d', "值不能为空");
+            return false;
+        }
+        var parkCode = $("#parkingCode").val();
+        var chargeMode = $('#TemplateIndex option:selected').val(); 
+        var projectGuid = $.cookie("ProjectGuid");
+       
+        var carTypeGuid = $(".guidLi .border_b").attr("guid");
+        //获取iframe内的DOM
+        var templateJson = $(window.frames["TollcontextName"].document).find("#form").serializeJSON();
+        var dataTemJSON = JSON.stringify(templateJson).replace(/"/g, '\\"');
+        //dataTemJSON = "[" + dataTemJSON + "]";
+        var dataObj = {
+            ParkingCode: parkCode,
+            CarTypeGuid: carTypeGuid,
+            TemplateJson: dataTemJSON,
+            ChargeMode: chargeMode,
+            ProjectGuid: projectGuid
+        };
+
+        $.ajax({
+            method: 'POST',
+            url: "/Home/Maps/ParkLot/AddBillingTemplate",
+            dataType: 'json',
+            data: dataObj,
+            success: function (data) {
+                if (data.IsSuccess == true) { 
+                    $message('s', "设置成功！")
+                    var parkCode = $("#parkingCode").val();
+                    parent.$('#mainIframe').attr('src', "/Home/Trans/Add_BillingTemplate2?parkingCode=" + parkCode);
+                    var html = "<p style='font-style:initial'>" +
+                        '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+                        '</p >';
+                    parent.document.getElementById('app-title').innerHTML = html;
+                } else if (data.IsSuccess == false) {
+                    $message('d', data.MessageContent)
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+
+    //修改计费模板
+    function ModifyBillingTemplate() {
+        var texttemplateJson = $(window.frames["TollcontextName"].document).find("#form").serialize();
+        if (/=(&|$)/.test(texttemplateJson)) {
+            $message('d', "值不能为空");
+            return false;
+        }
+        var parkCode = $("#parkingCode").val();
+        var chargeMode = $('#TemplateIndex option:selected').val();
+     //   var projectGuid = $("#projectGuid").val();
+        var projectGuid = $.cookie("ProjectGuid");
+        var carTypeGuid = $(".guidLi .border_b").attr("guid");
+        //获取iframe内的DOM
+        var templateJson = $(window.frames["TollcontextName"].document).find("#form").serializeJSON();
+        var dataTemJSON = JSON.stringify(templateJson).replace(/"/g, '\\"');
+        var dataObj = {
+            ParkingCode: parkCode,
+            CarTypeGuid: carTypeGuid,
+            TemplateJson: dataTemJSON,
+            ChargeMode: chargeMode,
+            ProjectGuid: projectGuid
+        };
+
+        $.ajax({
+            method: 'POST',
+            url: "/Home/Maps/ParkLot/ModifyBillingTemplate",
+            dataType: 'json',
+            data: dataObj,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    $message('s', "设置成功！")
+                    var parkCode = $("#parkingCode").val();
+                    parent.$('#mainIframe').attr('src', "/Home/Trans/Add_BillingTemplate2?parkingCode=" + parkCode);
+                    var html = "<p style='font-style:initial'>" +
+                        '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+                        '</p >';
+                    parent.document.getElementById('app-title').innerHTML = html;
+                } else if (data.IsSuccess == false) {
+                    $message('d', data.MessageContent)
+                }
+                _div.style.display = 'none';
+
+            }
+        })
+    }
+
+    //删除计费模板
+    function RemoveBillingTemplate() {
+        _div.style.display = 'block';
+        var parkCode = $("#parkingCode").val();
+        var chargeMode = $('#TemplateIndex option:selected').val();
+       // var projectGuid = $("#projectGuid").val();
+        var projectGuid = $.cookie("ProjectGuid");
+        var carTypeGuid = $(".guidLi .border_b").attr("guid");
+        //获取iframe内的DOM
+        var templateJson = $(window.frames["TollcontextName"].document).find("#form").serialize();
+
+        var dataObj = {
+            ParkingCode: parkCode,
+            CarTypeGuid: carTypeGuid,
+            TemplateJson: templateJson,
+            ChargeMode: chargeMode,
+            ProjectGuid: projectGuid
+        };
+        $.ajax({
+            url: "/Home/Maps/ParkLot/RemoveBillingTemplate",
+            data: dataObj,
+            dataType: 'json',
+            method: 'POST',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    $message('s', "保存成功！")
+                } else if (data.IsSuccess == false) {
+                    $message('d', data.MessageContent)
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+
+    //SaveBtn提交flag
+    function SaveBtn() {
+        _div.style.display = 'block';
+        if ($(window.frames["TollcontextName"].document).find("#form").attr("flag") == "0") {
+            AddBillingTemplate()
+        } else if ($(window.frames["TollcontextName"].document).find("#form").attr("flag") == "1") {
+            ModifyBillingTemplate()
+        }
+        _div.style.display = 'none';
+    }
+
+    //返回车场页面
+    function back_ParkLot() {
+        _div.style.display = 'block';
+        var parkCode = $("#parkingCode").val(); 
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Add_CarType?parkCode=" + parkCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    }
+    //跳过
+    function Nextstep() { 
+        _div.style.display = 'block';
+        var parkCode = $("#parkingCode").val();
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Add_BillingTemplate2?parkingCode=" + parkCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    }
+
+</script>

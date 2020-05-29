@@ -1,0 +1,1308 @@
+﻿<html>
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8" />
+    <title>欢迎登录车场管理平台</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <style>
+        .download_button {
+            background-color: #259af2;
+            border: none;
+            color: white;
+            padding: 5px 13px;
+        }
+
+        input {
+            font-size: 20px;
+        }
+
+        .button {
+            background-color: #259af2; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .topaside {
+            height: 80px;
+            width: 100%;
+            background-color: #ffffff
+        }
+
+        .header {
+            height: 340px;
+            width: 100%;
+            background-image: url(/picture/homePage.png );
+            background-size: auto, auto;
+            background-repeat: no-repeat;
+            background-repeat: repeat-x;
+            background-repeat: repeat-y;
+        }
+
+        .wrapper {
+            /*height: 580px;*/
+            width: 100%;
+            /*border: 1px solid black;*/
+            text-align: center;
+        }
+
+        .down {
+            /* width: 50%; */
+            height: 500px;
+            padding:0 30px 30px;
+            /*border: 1px solid #999;*/
+            margin-left: 24%;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        .exampleinput {
+            top: 30px;
+            width: 320px;
+            height: 280px;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            position:absolute;
+            right: 0;
+            background-color: #ffffff
+        }
+
+        .exampleinput_top {
+            margin-top: 10px;
+        }
+
+        .img_div {
+            background-image: url(/picture/20181227113030.png)
+        }
+
+        .announcement {
+            width: 100%;
+            height: 60px;
+            padding: 15px;
+            border: 1px solid #999;
+            margin: 0 auto;
+            margin-top: 18px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .announcement-list {
+            margin-left: 20px;
+            padding: 0 10px;
+        }
+        .announcement-list > div {
+            margin-right: 20px;
+
+        }
+        .announcement-list .notice::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #259af2;
+            margin-right: 5px;
+        }
+        .announcement-list .new::after {
+            content: 'new';
+            display: inline-block;
+            background: red;
+            color:#fff;
+            padding: 0px 2px;
+            font-size: 12px;
+            margin-left: 5px;
+            line-height: 12px;
+            position: relative;
+            top: -4px;
+        }
+        .flex-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flex1{
+            flex:1;
+        }
+        .footer1 {
+            width: 100%;
+            margin-top: 40px;
+            height: 80px;
+        }
+
+        .footer3 {
+            width: 100%;
+            margin-top: 10px;
+            height: 40px;
+        }
+
+        .footer4 {
+            width: 100%;
+            margin-top: 50px;
+            background-image: url(/picture/czzn.png);
+            height: 105px;
+        }
+
+        .footer5 {
+            width: 89%;
+        }
+
+        .footer6 {
+            width: 9%;
+            margin-top: 25px
+        }
+
+        .footer7 {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 12px;
+            line-height: 30px;
+            color:#cecece;
+        }
+
+        .footer8 {
+            width: 100%;
+        }
+
+        .footer5_font {
+            color: #ffffff;
+            font-size: 24px;
+            margin-left: 100px;
+            text-align: left;
+            margin-top: 25px
+        }
+
+        .footer6_font {
+            color: #CCC;
+            margin-left: 100px;
+            text-align: left
+        }
+
+        .footer2 {
+            width: 24%;
+        }
+
+        .footer9 {
+            width: 10%;
+        }
+
+        .footer10 {
+            width: 15%;
+        }
+
+        .footer11 {
+            width: 30%;
+        }
+
+        .font12 {
+            font-size: 8;
+        }
+
+        .font_img {
+            margin-top: 20px;
+            width: 100%;
+            height: 95px;
+        }
+
+        .square {
+            width: 15px;
+            height: 15px;
+            background: #259af2;
+        }
+
+        .square_font {
+            color: #FFF
+        }
+
+        .Occupation {
+            width: 50px;
+            height: 50px;
+        }
+
+        .square2 {
+            width: 35px;
+            height: 20px;
+            background: #f83b4d;
+        }
+
+        .font_weight {
+            font-weight: bold
+        }
+
+        .align {
+            width: 200px;
+            height: 30px;
+            margin-left: 20px;
+            padding: 3px;
+            margin: 1px
+        }
+
+        .marginleft {
+            padding: 10px;
+        }
+
+        .marginleft1 {
+            /* margin-left: -105px; */
+            text-align: left;
+            padding: 10px 0; 
+        }
+
+        .img_2 {
+            margin-left: 150px;
+            vertical-align: middle;
+            margin-top: 10px
+        }
+        /*
+         *这是单独为hello mui准备的个性化css，可以覆盖标准mui的css定义；
+         * 在实际项目开发时，建议为App单独写一个css文件，从而实现项目的自定义皮肤功能；
+         *
+         * */
+        /* 基础样式 */
+
+        /** {
+            font-family: Microsoft JhengHei;
+        }*/
+        p, h1, h2, h3, h4, body, ul, li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #424242;
+        }
+
+        img {
+            pointer-events: none;
+        }
+
+        .m5 {
+            margin: 5px;
+        }
+
+        .m10 {
+            margin: 10px;
+        }
+
+        .m15 {
+            margin: 15px;
+        }
+
+        .m20 {
+            margin: 20px;
+        }
+
+        .m30 {
+            margin: 30px;
+        }
+
+        .mt5 {
+            margin-top: 5px;
+        }
+
+        .mt10 {
+            margin-top: 10px;
+        }
+
+        .mt15 {
+            margin-top: 15px;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
+        .mt30 {
+            margin-top: 30px;
+        }
+
+        .mb5 {
+            margin-bottom: 5px;
+        }
+
+        .mb10 {
+            margin-bottom: 10px;
+        }
+
+        .mb15 {
+            margin-bottom: 15px;
+        }
+
+        .mb20 {
+            margin-bottom: 20px;
+        }
+
+        .mb30 {
+            margin-bottom: 30px;
+        }
+
+        .ml5 {
+            margin-left: 5px;
+        }
+
+        .ml10 {
+            margin-left: 10px;
+        }
+
+        .ml15 {
+            margin-left: 15px;
+        }
+
+        .ml20 {
+            margin-left: 20px;
+        }
+
+        .ml30 {
+            margin-left: 30px;
+        }
+
+        .mr5 {
+            margin-right: 5px;
+        }
+
+        .mr10 {
+            margin-right: 10px;
+        }
+
+        .mr15 {
+            margin-right: 15px;
+        }
+
+        .mr20 {
+            margin-right: 20px;
+        }
+
+        .mr30 {
+            margin-right: 30px;
+        }
+
+        .p15 {
+            padding: 10px 15px;
+        }
+
+        .p10 {
+            padding: 10px;
+        }
+
+        .p20 {
+            padding: 20px;
+        }
+
+        .p30 {
+            padding: 30px;
+        }
+
+        .pt5 {
+            padding-top: 5px;
+        }
+
+        .pt10 {
+            padding-top: 10px;
+        }
+
+        .pt15 {
+            padding-top: 15px;
+        }
+
+        .pt20 {
+            padding-top: 20px;
+        }
+
+        .pt30 {
+            padding-top: 30px;
+        }
+
+        .pt40 {
+            padding-top: 40px;
+        }
+
+
+        .pb5 {
+            padding-bottom: 5px;
+        }
+
+        .pb10 {
+            padding-bottom: 10px;
+        }
+
+        .pb15 {
+            padding-bottom: 15px;
+        }
+
+        .pb20 {
+            padding-bottom: 20px;
+        }
+
+        .pb30 {
+            padding-bottom: 30px;
+        }
+
+
+        .pl5 {
+            padding-left: 5px;
+        }
+
+        .pl10 {
+            padding-left: 10px;
+        }
+
+        .pl15 {
+            padding-left: 15px;
+        }
+
+        .pl20 {
+            padding-left: 20px;
+        }
+        /*.pl30{padding-left:30px;}*/
+
+
+        .pr5 {
+            padding-right: 5px;
+        }
+
+        .pr10 {
+            padding-right: 10px;
+        }
+
+        .pr15 {
+            padding-right: 15px;
+        }
+
+        .pr20 {
+            padding-right: 20px;
+        }
+
+        .pr30 {
+            padding-right: 30px;
+        }
+
+        .block {
+            display: block;
+        }
+
+        /* h1---h6 */
+        h1, h2, h3, h4 {
+            font-weight: normal;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        h4 {
+            font-size: 14px;
+        }
+        /* font */
+        .f12 {
+            font-size: 12px;
+        }
+
+        .f14 {
+            font-size: 14px;
+        }
+
+        .f16 {
+            font-size: 16px;
+        }
+
+        .f18 {
+            font-size: 18px;
+        }
+
+        .f20 {
+            font-size: 20px;
+        }
+
+        .f24 {
+            font-size: 24px;
+        }
+
+        .f30 {
+            font-size: 30px;
+        }
+        /*font color*/
+        a:link, a:visited, a:hover {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .cW, a.cW:link, a.cW:visited, a.cW:hover {
+            color: #FFF;
+        }
+
+        .cG, a.cG:link, a.cG:visited, a.cG:hover {
+            color: #45c01a;
+        }
+
+        .cR, a.cR:link, a.cR:visited, a.cR:hover {
+            color: #ff3333;
+        }
+
+        .cY, a.cY:link, a.cY:visited, a.cY:hover {
+            color: #ff7b33;
+        }
+
+        .cC, a.cC:link, a.cC:visited, a.cC:hover {
+            color: #CCC;
+        }
+
+        .c9, a.c9:link, a.c9:visited, a.c9:hover {
+            color: #999;
+        }
+
+        .c6, a.c6:link, a.c6:visited, a.c6:hover {
+            color: #666;
+        }
+
+        .c3, a.c3:link, a.c3:visited, a.c3:hover {
+            color: #333;
+        }
+
+        /*background color*/
+        .bg-w {
+            background: #fff;
+        }
+
+        .bg_B {
+            background: #80c9e1;
+        }
+
+        .bg_R {
+            background: #ff3333;
+        }
+
+        .bg-eee {
+            background: #eee;
+        }
+
+        .bg-yellow {
+            background: #ffffcc;
+        }
+
+        /*font align*/
+        .tl {
+            text-align: left;
+        }
+
+        .tc {
+            text-align: center;
+        }
+
+        .tr {
+            text-align: right;
+        }
+
+        .tb {
+            font-weight: bold;
+        }
+        /* layout */
+        .fb {
+            font-weight: bold;
+        }
+
+        .fn {
+            font-weight: normal;
+        }
+
+        .t2 {
+            text-indent: 2em;
+        }
+
+        .lh120 {
+            line-height: 120%
+        }
+
+        .lh150 {
+            line-height: 150%
+        }
+
+        .lh180 {
+            line-height: 180%
+        }
+
+        .lh200 {
+            line-height: 200%
+        }
+
+        .unl {
+            text-decoration: underline;
+        }
+
+        .no_unl {
+            text-decoration: none;
+        }
+
+        .vm {
+            vertical-align: middle;
+        }
+
+        .pr {
+            position: relative;
+        }
+
+        .pa {
+            position: absolute;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clearfix:before, .clearfix:after {
+            display: table;
+            content: ' ';
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .radius_50 {
+            border-radius: 50%;
+        }
+
+        .tip {
+            background: #ff3333;
+            width: 100%;
+            z-index: 2;
+        }
+
+            .tip a {
+                color: #ff3333;
+                padding: 5px 15px;
+                border-radius: 20px;
+                background: #fff;
+            }
+
+            .tip div {
+                line-height: 29px;
+            }
+
+        .back {
+            background: url() no-repeat center;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .link_1 img, .link_2 img {
+            width: 33vw;
+        }
+
+        .link_1 {
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 3;
+        }
+
+        .link_2 {
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 3;
+        }
+
+        .link_3 {
+            bottom: 34px;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 5;
+            background: rgba(0,0,0,.7);
+            padding: 13px 14px;
+            border-radius: 50%;
+        }
+
+        .index-footer {
+            background: #fff;
+            bottom: 0;
+            z-index: 4;
+            width: 100vw;
+        }
+
+            .index-footer a {
+                padding: 5px 10px;
+                border: 1px solid #ddd;
+            }
+
+        .money {
+            padding-top: 20vh;
+        }
+
+            .money h1 {
+                font-size: 1.5rem
+            }
+
+                .money h1 span {
+                    font-size: 2rem
+                }
+
+        .btn-large {
+            font-size: 17px;
+            display: block;
+            width: 100%;
+            padding: 13px 0;
+            color: #fff;
+            border: 1px solid #343d4a;
+            background-color: #343d4a;
+        }
+
+            .btn-large:disabled {
+                border: 1px solid #333;
+                background-color: #ccc;
+            }
+
+        .btn-small {
+            font-size: 16px;
+            padding: 11px 25px;
+            color: #fff;
+            border: 1px solid #343d4a;
+            background-color: #343d4a;
+        }
+
+        .btn-small-nomarl {
+            font-size: 16px;
+            padding: 10px 25px;
+            color: #333;
+            border: 1px solid #ccc;
+            background-color: #ddd;
+        }
+
+        button, input[type=button], input[type=reset], input[type=submit] {
+            cursor: pointer;
+            -webkit-transition: all;
+            transition: all;
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            -webkit-transition-duration: .2s;
+            transition-duration: .2s;
+            text-align: center;
+            color: #333;
+            border-radius: 3px;
+        }
+
+        button, input[type=text], input[type=number] {
+            outline: none;
+        }
+
+        .btn-footer {
+            position: absolute;
+            width: 100vw;
+            bottom: 0;
+            box-shadow: 0 0 25px rgba(0,0,0,.3);
+        }
+
+            .btn-footer div {
+                line-height: 41px;
+            }
+
+        .card {
+            margin: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #ff3333;
+        }
+
+        .card-d {
+            line-height: 27px;
+        }
+
+        .mui-table-view {
+            position: relative;
+            list-style: none;
+            background-color: #fff;
+        }
+
+        .mui-table-view-cell {
+            position: relative;
+            overflow: hidden;
+            -webkit-touch-callout: none;
+            transform-style: preserve-3d;
+        }
+
+            .mui-table-view-cell a {
+                display: block;
+                padding: 20px 15px;
+            }
+
+            .mui-table-view-cell span {
+                position: absolute;
+                right: 40px;
+                color: #999;
+            }
+
+            .mui-table-view-cell i {
+                position: absolute;
+                right: 15px;
+            }
+
+            .mui-table-view-cell:after {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 15px;
+                right: 15px;
+                height: 1px;
+                content: '';
+                -webkit-transform: scaleY(.5);
+                transform: scaleY(.5);
+                background-color: #c8c7cc;
+            }
+
+        ul.select-list {
+            padding: 10px 30px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+            ul.select-list li {
+                flex: 1;
+                border: 1px solid #f7b731;
+                flex: 0 0 47%;
+                height: 70px;
+                box-sizing: border-box;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                line-height: 70px;
+            }
+
+                ul.select-list li.is-active {
+                    color: #FF3333;
+                    border: 1px solid #FF3333;
+                }
+
+        .select-more {
+            text-align: left;
+            line-height: 1;
+            padding: 10px;
+        }
+
+            .select-more span.c9 {
+                text-decoration: line-through;
+            }
+
+        .share {
+            border: 1px solid #FF3333;
+            color: #FF3333;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        ul.select-list li.this-active {
+            color: #fff;
+            border: 1px solid #FF3333;
+            background: #FF3333;
+        }
+
+        .inputGroup {
+            display: block;
+            position: relative;
+        }
+
+            .inputGroup label {
+                padding: 12px 30px;
+                display: block;
+                text-align: left;
+                color: #3C454C;
+                cursor: pointer;
+                position: relative;
+                z-index: 2;
+                -webkit-transition: color 200ms ease-in;
+                transition: color 200ms ease-in;
+                overflow: hidden;
+            }
+
+                .inputGroup label:after {
+                    width: 25px;
+                    height: 25px;
+                    content: '';
+                    border: 2px solid #D1D7DC;
+                    background-color: #fff;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: 2px 3px;
+                    border-radius: 50%;
+                    z-index: 2;
+                    position: absolute;
+                    right: 30px;
+                    top: 50%;
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    -webkit-transition: all 200ms ease-in;
+                    transition: all 200ms ease-in;
+                }
+
+            .inputGroup input:checked ~ label:before {
+                -webkit-transform: translate(-50%, -50%) scale3d(56, 56, 1);
+                transform: translate(-50%, -50%) scale3d(56, 56, 1);
+                opacity: 1;
+            }
+
+            .inputGroup input:checked ~ label:after {
+                background-color: #FF3333;
+                border-color: #FF3333;
+            }
+
+            .inputGroup input {
+                width: 25px;
+                height: 25px;
+                -webkit-box-ordinal-group: 2;
+                -ms-flex-order: 1;
+                order: 1;
+                z-index: 2;
+                position: absolute;
+                right: 30px;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                cursor: pointer;
+                visibility: hidden;
+            }
+
+        .showback {
+            background: rgba(0,0,0,.5);
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+
+        .win {
+            position: absolute;
+            top: 15%;
+            left: 10%;
+            right: 10%;
+            height: 200px;
+            border-radius: 5px;
+            background: #fff;
+            z-index: 4;
+            display: none;
+        }
+
+            .win .money-writer:after {
+                content: '元';
+                z-index: 6;
+                position: absolute;
+                right: 0px;
+                top: 1.2em;
+            }
+
+            .win .money-writer input {
+                line-height: 3em;
+                font-size: 20px;
+                border: none;
+                border-bottom: 1px solid #ccc;
+                width: 100%;
+            }
+        .main-box {
+            width: 1100px;
+            position:relative;
+            margin: 0 auto;
+        }
+        #loginForm{
+            width: 250px;
+            margin: 0px auto;
+        }
+        #loginForm .input-style{
+            margin-top: 10px;
+            position: relative;
+        }
+        #loginForm .input-style input.align{
+            width: 100%;
+            height: 40px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            padding-left: 40px;
+            line-height: 40px;
+        }
+        #loginForm .input-style i{
+            width: 25px;
+            height: 25px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            margin-top: -14px;
+        }
+        #loginForm .input-style i.user-ico{
+            background: url('/picture/icon_suer.png') no-repeat center;
+        }
+        #loginForm .input-style i.password-ico{
+            background: url('/picture/icon_mima.png') no-repeat center;
+        }
+        #loginForm .button.SetLogin {
+            display: block;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="topaside">
+        <img src="~/picture/logo.png" class="img_2" />
+    </div>
+    <div class="header">
+        <div class="main-box">
+            <div class="exampleinput">
+                <div class="exampleinput_top">
+                    <form id="loginForm" autocomplete="new-password">
+                        <div class="marginleft" style="font-size: 20px;font-weight: bold;">登录</div>
+                        <div class="input-style">
+                            <i class="user-ico"></i>
+                            <Input id="txtusername" autocomplete="new-password" type="text" style="font-size:12px" maxlength="32" placeholder="用户名" class="align" onkeypress="if(event.keyCode==13) focusNextInput(this);" />
+                        </div>
+                        <Input type="password" value="" style="display: none" />
+                        <div class="input-style">
+                            <i class="password-ico"></i>
+                            <Input id="txtuserpswd" type="password" autocomplete="new-password" style="font-size:12px" maxlength="32" placeholder="密码" class="align" onkeypress="if(event.keyCode==13) focusNextInput(this);" />
+                        </div>
+                        <div class="marginleft1" style="font-size:14px">
+                            <input type="checkbox" id="remember" style="position: relative;top:2px"/>
+                            <label for="remember">记住我</label>
+                        </div>
+                        @*<Button class="button SetLogin" style="width:200px" id="login">登录</Button>*@ 
+                        <a href="#" class="button SetLogin"  style="color:white"  id="login">登录</a>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="wrapper main-box">
+        <div class="announcement">
+            <!-- <div class="footer10 fl">系统公告</div>
+            <div class="square fl footer9"> </div>
+            <div class="fl footer10">平台更新维护通知</div>
+            <div class="footer10 fl square2 square_font">new</div>
+            <div class="fl Occupation"></div>
+            <div class="square footer11 fl"></div>
+            <div class="fl footer10">平台更新维护通知</div>
+            <div class="footer10 fl square2 square_font">new</div>
+            <div class="footer11 fl tr"><a href="#">查看更多></a></div> -->
+            <div class="announcement-content flex1">
+                <div class="announcement-tit" style="font-weight: bold">系统公告</div>
+                <div class="announcement-list flex1">
+                    <div class="fl notice">平台更新维护通知</div>
+                    <div class="fl notice new">最新维护通知</div>
+                </div>
+            </div>
+            <div class="announcement-all">
+                <a href="#">查看更多<span style="
+                    font-family: cursive;
+                    margin-left: 5px;
+                ">&gt;</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="down main-box">
+        <div style="text-align:center;height:70px;width:100% ;margin-top:40px;font-size: 18px;font-weight: bold" class="fl">
+            <p>云管理平台优势</p>
+            <span style="display:inline-block;height: 3px;width: 80px;background-color: #259af2;margin-top: 4px;"></span>
+        </div>
+        <div class="footer1 flex-box">
+            <div class="flex1 flex-box">
+                <img src='/picture/jiangdichengben.png' alt="" />
+            </div>
+            <div class="flex1 flex-box">
+                <img src='/picture/anquanshuju.png' alt="" />
+            </div>
+            <div class="flex1 flex-box">
+                <img src='/picture/bywh.png' alt="" />
+            </div>
+            <div class="flex1 flex-box">
+                <img src="/picture/gxgl.png" />
+            </div>
+        </div>
+        <div class="footer3 flex-box">
+            <div class="flex1 flex-box">
+                <p class="font_weight">降低成本</p>
+            </div>
+            <div class="flex1 flex-box">
+                <p class="font_weight">数据安全</p>
+            </div>
+            <div class="flex1 flex-box">
+                <p class="font_weight">管理高效</p>
+            </div>
+            <div class="flex1 flex-box">
+                <p class="font_weight">便于维护</p>
+            </div>
+        </div>
+        <div style="width: 100%" class="flex-box">
+            <div class="flex1 flex-box">
+                <p class="font12" style="text-align: center">无需配置岗亭人员<br />有效降低人工管理成本</p>
+            </div>
+            <div class="flex1 flex-box" style="text-align: center">
+                <p class="font12">平台数据私有化<br />资金和信息更加安全</p>
+            </div>
+            <div class="flex1 flex-box" style="text-align: center">
+                <p class="font12 ">多个停车场统一管控<br />提升管理效率并增加营收</p>
+            </div>
+            <div class="flex1 flex-box" style="text-align: center">
+                <p class="font12">系统升级无需安装<br />系统故障可远程维护</p>
+            </div>
+        </div>
+        <div class="footer4">
+            <div class="footer5 fl">
+                <p class="footer5_font">平台操作指南</p>
+                <p class="footer6_font">常见操作问题答疑，如对平台使用有疑问可点此查看，也可点击右侧下载按钮下载使用说明。</p>
+            </div>
+            <div class="flex-box fl" style="height: 100%">
+                <button class="download_button" style="font-size: 16px;line-height:30px;">立即下载</button>
+                @*<Button type="button" style="background-color: #259af2;color:white">立即下</Button>*@
+            </div>
+        </div>
+        <div class="footer7" style="height:50px;color:#cecece;">
+            <p>全国统一客服热线：400-700-4008    总机：0755－86020909   传真：0755－86020900</p>
+            <p id="copyright">Copyright © 2004-2019</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 重定向到父窗口
+        if(self!=top){
+            parent.window.location.replace(window.location.href)
+        }
+        $('#copyright').html('Copyright © 2004-' + new Date().toJSON().substring(0,4))
+        ///回车键触发
+        $(document).keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#login").trigger("click");
+            }
+        }); 
+ 
+        $(function () {
+            $(".SetLogin").click(function () {
+                var data = {
+                    "username":
+                        $('#txtusername').val(), "pswword": $('#txtuserpswd').val()
+                };
+                ajaxObject(data);
+            })
+        })  
+        function ajaxObject(data) {
+            $.post("/Home/Login", data, function (result) {
+
+                if (result.IsSuccess) {
+                    //存储信息到cookies
+                    var oRemember = document.getElementById('remember');
+                    if (oRemember.checked) {
+                        $.cookie("txtusername", data.username, { path: '/' })
+                        $.cookie("txtuserpswd", data.pswword, { path: '/' })
+                    } else {
+                        $.cookie("txtusername", '', { path: '/' })
+                        $.cookie("txtuserpswd", '', { path: '/' })
+                    }
+                   SetCookie(result.UserGuid, result.ProjectGuid, result.UserName, result.RoleGuid, result.IsAdmin, result.ApiUrl);
+                    //跳转到主页面
+                    window.location.href = '/Home/Trans/layout';
+                } else {
+                    $message('d', "登录失败，请检查您的手机号与密码是否正确");
+                }
+            });
+        }
+
+
+        //JS操作cookies方法!
+        //写cookies
+        function SetCookie(UserGuid, ProjectGuid, UserName, RoleGuid, IsAdmin, ApiUrl) {
+            $.cookie('ProjectGuid', ProjectGuid, { path: '/' });
+            $.cookie('UserName', decodeURI(UserName), { path: '/' });
+            $.cookie('UserGuid', UserGuid, { path: '/' });
+            $.cookie('RoleGuid', RoleGuid, { path: '/' });
+            $.cookie('ApiUrl', ApiUrl, { path: '/' });
+        }
+
+            window.onload = function () {
+                var oForm = document.getElementById('loginForm');
+                var oUser = document.getElementById('txtusername');
+                var oPswd = document.getElementById('txtuserpswd');
+                var oRemember = document.getElementById('remember');
+                //页面初始化时，如果帐号密码cookie存在则填充
+                //if (getCookie('txtusername') && getCookie('txtuserpswd')) {
+                //    oUser.value = getCookie('txtusername');
+                //    oPswd.value = getCookie('txtuserpswd');
+                //    oRemember.checked = true;
+                //}
+                if ($.cookie("txtusername")  && $.cookie("txtuserpswd")) {
+                    oUser.value = $.cookie("txtusername");
+                    oPswd.value = $.cookie("txtuserpswd");
+                    oRemember.checked = true;
+                }
+
+
+                //复选框勾选状态发生改变时，如果未勾选则清除cookie
+                oRemember.onchange = function () {
+                    if (!this.checked) {
+                        delCookie('txtusername');
+                        delCookie('txtuserpswd');
+                    }
+                };
+                //表单提交事件触发时，如果复选框是勾选状态则保存cookie
+                oForm.onsubmit = function () {
+                    if (remember.checked) {
+                        setCookie('txtusername', oUser.value, 1); //保存帐号到cookie，有效期7天
+                        setCookie('txtuserpswd', oPswd.value, 1); //保存密码到cookie，有效期7天
+                    }
+                    else {
+                        delCookie('txtusername');
+                        delCookie('txtuserpswd');
+                    }
+                };
+            };
+            //设置cookie
+            function setCookie(name, value, day) {
+                var date = new Date();
+                date.setDate(date.getDate() + day);
+                document.cookie = name + '=' + value + ';expires=' + date;
+            };
+            //获取cookie
+            function getCookie(name) {
+                var arr = $.cookie(name);
+                //var reg = RegExp(name + '=([^;]+)');
+                //var arr = document.cookie.match(reg);
+                if (arr) {
+                    return arr;
+                } else {
+                    return '';
+                }
+            };
+            //删除cookie
+            function delCookie(name) {
+                setCookie(name, null, -1);
+            };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{190D7431-4D13-470D-A166-AED2E04E90F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fujica.com.cn.Context.Model</RootNamespace>
+    <AssemblyName>Fujica.com.cn.Context.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Fujica.com.cn.Context.Model.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tools.1.0.0.0\lib\net40\Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonEnum.cs" />
+    <Compile Include="DrivewayConnStatusModel.cs" />
+    <Compile Include="FreeOpenGateModel.cs" />
+    <Compile Include="ActiveScanningModel.cs" />
+    <Compile Include="ActiveScanningResponseModel.cs" />
+    <Compile Include="AddRecordModel.cs" />
+    <Compile Include="CaptureInOutModel.cs" />
+    <Compile Include="CardServiceModel.cs" />
+    <Compile Include="APIAccessModel.cs" />
+    <Compile Include="BillingTemplateModel.cs" />
+    <Compile Include="BlacklistModel.cs" />
+    <Compile Include="CarNumberRepushModel.cs" />
+    <Compile Include="CarTypeModel.cs" />
+    <Compile Include="CityCodeModel.cs" />
+    <Compile Include="CorrectCarnoModel.cs" />
+    <Compile Include="EntryOriginalModel.cs" />
+    <Compile Include="ExitTempCarPayModel.cs" />
+    <Compile Include="FunctionPointModel.cs" />
+    <Compile Include="GateCatchModel.cs" />
+    <Compile Include="GateKeepModel.cs" />
+    <Compile Include="GatherAccountModel.cs" />
+    <Compile Include="DrivewayModel.cs" />
+    <Compile Include="IBaseModel.cs" />
+    <Compile Include="MenuModel.cs" />
+    <Compile Include="MonthCarModel.cs" />
+    <Compile Include="OfflineTemporaryCardPayModel.cs" />
+    <Compile Include="OpenGateRecordModel.cs" />
+    <Compile Include="OpenGateReasonModel.cs" />
+    <Compile Include="OpenGateRecordRequsst.cs" />
+    <Compile Include="ParkLotModel.cs" />
+    <Compile Include="PassiveScanningModel.cs" />
+    <Compile Include="PassiveScanningResponseModel.cs" />
+    <Compile Include="PermanentTemplateModel.cs" />
+    <Compile Include="PresenceOfVehicleModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolePermissionModel.cs" />
+    <Compile Include="SpaceNumberModel.cs" />
+    <Compile Include="TempCarParkingModel.cs" />
+    <Compile Include="TrafficRestrictionModel.cs" />
+    <Compile Include="UserAccountModel.cs" />
+    <Compile Include="ValueCardFeeModel.cs" />
+    <Compile Include="ValueCarModel.cs" />
+    <Compile Include="VehicleInModel.cs" />
+    <Compile Include="VehicleInOutModel.cs" />
+    <Compile Include="VehicleoutModel.cs" />
+    <Compile Include="VoiceCommandModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="必读.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

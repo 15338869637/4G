@@ -1,0 +1,799 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/Content/main.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    .tl {
+        text-align: left;
+    }
+    .flex-box {
+        display: flex;
+    }
+    .flex-box.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-box.space-between {
+        justify-content: space-between;
+    }
+
+    .flex-box .flex1 {
+        flex: 1;
+        position: relative;
+    }
+    .steps{
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-left: 16.6%;
+    }
+    .steps .steps-title{
+        width: 120px;
+        text-align: center;
+        display: inline-block;
+        margin-left: -60px;
+    }
+    .steps .flex1{
+        height: 50px;
+    }
+    .steps .icon{
+        bottom: 0;
+        width: 100%;
+        border-bottom: 4px solid;
+        position: absolute;
+    }
+    .steps .icon:after{
+        content:'';
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #e8e8e8ed;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: -8px;
+        margin-left: -7px;
+    }
+    .steps .icon.gray{
+       border-color: #e8e8e8ed;
+    }
+    .steps .icon.blue{
+       border-color: #0093ff;
+    }
+    .steps .start .icon{
+        right: 0;
+    }
+    .steps .end .icon{
+        left:0;
+        border-color: #fff;
+    }
+    .steps .curr{
+        color: #00a5ff;
+    }
+    .steps .curr .icon:after{
+      content:'';
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background: url('/picture/Ellipse.png');
+      position: absolute;
+      bottom: 0;
+      margin-bottom: -13px;
+      margin-left: -12px;
+    }
+    .steps .start .icon:after{
+        left: 0%;
+    }
+    .steps .end .icon:after{
+        left: 0%;
+    }
+</style>
+<body>
+    <div class="ModifyDriveWay_div">
+        <!-- 内容 -->
+        <div class="row" style="margin: 30px 15% 0;">
+            <!-- <img src="~/picture/bar1.png" style="margin-left:16%" /> -->
+            <div class="flex-box center steps">
+                <div class="flex1 start curr">
+                    <span class="steps-title">设置车场基本信息</span>
+                    <div class="icon blue"></div>
+                </div>
+                <div class="flex1 curr">
+                    <span class="steps-title">添加车道和设备</span>
+                    <div class="icon gray"></div>
+                </div>
+                <div class="flex1 ">
+                    <span class="steps-title">设置车类型</span>
+                    <div class="icon gray"></div>
+                </div>
+                <div class="flex1 ">
+                    <span class="steps-title">计费模板设置</span>
+                    <div class="icon gray"></div>
+                </div>
+                <div class="flex1 end ">
+                    <span class="steps-title">延期金额设置</span>
+                    <div class="icon gray"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="content" style="width:99%;margin-left:5px">
+            <div class="col-md-3" id="ParkLot_Add" style="display:none">
+                <div class="bs-component">
+                    <div class="modal" style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content" style="border:1px solid #d9d9d9">
+                                <div class="modal-header" style="padding:5px;background-color:#f3f8fb">
+                                    <div style="width:70%;float:left">
+
+                                    </div>
+                                    <div style="width:30%;float:left">
+                                        <div style="width:50%;float:left;">
+                                            <a onclick="hide()" href="#" style="color:#ff0000">
+                                                <span>取消</span>
+                                                <img src="~/picture/cancel.png" />
+                                            </a>
+                                        </div>
+                                        <div style="width:50%;float:left;">
+                                            <a href="#" onclick="Add()" style="color:#03af19" id="a_add">
+                                                <span>确定</span>
+                                                <img src="~/picture/success.png" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-body" style="padding:1px">
+                                    <div class="form-group row" style="text-align:center">
+
+                                        <div class="col-md-6 tl">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="text-align:center">
+                                        <label class="control-label col-md-4" style="text-align:right">车道名称:</label>
+                                        <div class="col-md-6 tl">
+                                            <input type="text" id="DriveWayName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="text-align:center">
+                                        <label class="control-label col-md-4" style="text-align:right">车道模式:</label>
+                                        <div class="col-md-6 tl">
+                                            <select id="DrivewayType">
+                                                <option value="1">出口</option>
+                                                <option value="0">入口</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row" style="text-align:center">
+                                        <label class="control-label col-md-4" style="text-align:right">关联设备名称:</label>
+                                        <div class="col-md-6 tl">
+                                            <input type="text" id="DeviceName" />
+                                        </div>
+                                    </div><p></p><p></p>
+                                    <div class="form-group row" style="text-align:center;">
+                                        <label class="control-label col-md-4" style="text-align:right">相机MAC地址:</label>
+                                        <div class="col-md-6 tl">
+                                            <input type="text" id="DeviceMACAddress" />
+                                        </div>
+                                    </div><p></p><p></p>
+                                    <div class="form-group row" style="text-align:center">
+                                        <label class="control-label col-md-4" style="text-align:right">设备类型:</label>
+                                        <div class="col-md-6 tl">
+                                            @*<input type="text" id="DeviceAccount" />*@
+                                            <select id="DeviceAccount">
+                                                <option value="tz26">tz26</option>
+                                                <option value="tz27">tz27</option>
+                                                <option value="显示屏">显示屏</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p></p><p></p>
+                                    <div class="form-group row" style="text-align:center" id="div_DeviceEntranceURI">
+                                        <label class="control-label col-md-4" style="text-align:right">设备IP地址:</label>
+                                        <div class="col-md-6 tl">
+                                            <input type="text" id="DeviceEntranceURI" />
+                                            <label style="color:#ff0000" id="lblDeviceEntranceURI"></label>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group row" style="text-align:center">
+                                            <label class="control-label col-md-4" style="text-align:right">设备验证口令:</label>
+                                            <div class="col-md-6 tl">
+                                                <input type="text" id="DeviceVerification" />
+                                            </div>
+                                        </div>*@
+
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="ParkLot_onclick">
+                <div class="bs-component">
+                    <div class="modal" style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;">
+                        <div class="modal-dialog" role="document" style="border:1px dashed #808080">
+                            <div class="modal-content">
+                                <div style="padding:5px;background-color:#ffffff;height:28px">
+                                </div>
+                                <div class="modal-body" style="padding:1px">
+                                    <form class="form-horizontal">
+                                        <a onclick="ShowNewParLot()">
+                                            <div class="form-group row" style="text-align:center;height:36px">
+                                                <div class="col-md-10 ">
+
+                                                </div>
+                                            </div>
+                                            <div style="margin-left:33px">
+                                                <div class="form-group row" style="text-align:center">
+                                                    <div class="col-md-10 ">
+                                                        <img src="~/picture/Add.png" style="width:100px;height:100px;" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-10 " style="text-align:center">
+                                                        <label>
+                                                            继续添加
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" style="text-align:center;height:61px">
+                                                <div class="col-md-10 ">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 " style="text-align:center; width:100%">
+                <a class="btn" href="#" onclick="back_ParkLot()" style="width:120px;background-color:#d7d8d9;color:#808080">
+                    返回
+                </a>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="button" onclick="Nextstep()" style="width:120px;background-color:#0092ff">
+                    下一步
+                </button>
+                @*<button class="btn btn-primary" type="button" onclick="Nextstep()" style="width:120px;background-color:#0092ff">
+                        下一步
+                    </button>*@
+            </div>
+            <input type="hidden" id="ParkingCode" value="" />
+            <input type="hidden" id="guid" value="" />
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    parent.scrollTo(0, 0);
+    $(document).ready(function () {
+        _div.style.display = 'block';
+        var value = "";
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 0) {  //大于1 是修改  否则是添加
+
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    if (name == "ParkingCode") {
+                        value = value.replace(/#/g, '');
+                        //value.replace("#","新字符串")
+                        $("#ParkingCode").val(value)
+                    }
+                }
+            }
+        }
+        GetDriveWayList(value)
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\" style='color:#9a9c9e'> 车场设置</a> ><label style='color:#0092ff'>车道设置</label>" +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+
+    });
+    //删除
+    function ondelete(Guid, projectGuid, parkCode) {
+        var data = {
+            "Guid": Guid,
+            "ParkingCode": parkCode,
+            "ProjectGuid": projectGuid
+        };
+        $alert({
+            html: "您确定删除吗？",
+            confirm: function () {
+                $.post("/Home/Maps/ParkLot/RemoveDriveWay", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s', "删除成功！")
+                        $("#" + Guid).remove();
+                    }
+                    else {
+                        $message('d', result.MessageContent)
+                    }
+                });
+            }
+        })
+    }
+    //保存修改
+    function Sava(guid) {
+        _div.style.display = 'block';
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var ParkingCode = $("#ParkingCode").val();
+        var DriveWayName = $("#input_drivewayName_" + guid).val();
+        if (DriveWayName == "") {
+            $message('d', "车道名称不能为空");
+            _div.style.display = 'none';
+            return;
+        }
+
+        var DrivewayType = $("#selectDrivewayType_" + guid).val();
+        var DeviceName = $("#inputdeviceName_" + guid).val();
+        if (DeviceName == "") {
+            $message('d', "关联设备名称不能为空");
+            _div.style.display = 'none';
+            return
+        }
+        var DeviceMACAddress = $("#inputdeviceMacAddress_" + guid).val();
+        if (DeviceMACAddress == "") {
+            $message('d', "关联设备名称不能为空");
+            _div.style.display = 'none';
+            return
+        }
+
+        var DeviceEntranceURI = $("#inputdeviceEntranceURI_" + guid).val();
+        var DeviceAccount = $("#inputdeviceAccount_" + guid).val();
+        if (DeviceAccount == "tz27") {
+            if (DeviceEntranceURI == "") {
+                $message('d', "设备IP地址不能为空");
+                _div.style.display = 'none';
+                return
+
+            }
+        }
+        DeviceMACAddress = DeviceMACAddress.toLowerCase();
+        DeviceMACAddress = DeviceMACAddress.replace('"', '');
+        DeviceMACAddress = DeviceMACAddress.replace("'", '');
+        // var DeviceVerification = $("#inputdeviceVerification_" + guid).val();
+        var DeviceVerification = "";
+        var Guid = guid;
+        var data = {
+            "Guid": Guid, "DriveWayName": DriveWayName, "DrivewayType": DrivewayType, "ParkingCode": ParkingCode, "DeviceName": DeviceName, "DeviceMACAddress": DeviceMACAddress, "DeviceEntranceURI": DeviceEntranceURI, "DeviceAccount": DeviceAccount, "DeviceVerification": DeviceVerification, "ProjectGuid": ProjectGuid
+        };
+        $.post("/Home/Maps/ParkLot/ModifyDriveWay", data, function (result) {
+            if (result.IsSuccess) {
+                //var guid = "";
+                //  var html_content = assemblehtml(projectGuid, parkCode, guid, DriveWayName, DrivewayType, DeviceName, DeviceMACAddress, DeviceEntranceURI, DeviceAccount, DeviceVerification);
+                //$("#content").prepend(html_content);
+                GetDriveWayList(ParkingCode)
+                _div.style.display = 'none';
+            }
+            else {
+                $message('d', result.MessageContent)
+                _div.style.display = 'none';
+
+            }
+
+        });
+    }
+
+    //取消编辑
+    function Cancel(guid) {
+        _div.style.display = 'block';
+        $("#lbl_drivewayName_" + guid).css('display', 'block');
+        $("#input_drivewayName_" + guid).css('display', 'none');
+        $("#lbl_DrivewayTypeName_" + guid).css('display', 'block');
+        $("#selectDrivewayType_" + guid).css('display', 'none');
+        $("#lbldeviceName_" + guid).css('display', 'block');
+        $("#inputdeviceName_" + guid).css('display', 'none');
+        $("#lbldeviceMacAddress_" + guid).css('display', 'block');
+        $("#inputdeviceMacAddress_" + guid).css('display', 'none');
+        $("#lbldeviceEntranceURI_" + guid).css('display', 'block');
+        $("#inputdeviceEntranceURI_" + guid).css('display', 'none');
+        $("#lbldeviceAccount_" + guid).css('display', 'block');
+        $("#inputdeviceAccount_" + guid).css('display', 'none');
+        $("#lbldeviceVerification_" + guid).css('display', 'block');
+        $("#inputdeviceVerification_" + guid).css('display', 'none');
+        $("#div1_" + guid).css('display', 'block');
+        $("#div2_" + guid).css('display', 'none');
+        $("#div3_" + guid).css('display', 'none');
+        $("#div4_" + guid).css('display', 'block');
+        window.parent.window.scrollTo(0, 300);
+        _div.style.display = 'none';
+    }
+    //修改
+    function Edit(guid) {
+        _div.style.display = 'block';
+        $("#guid").val(guid);
+        var val = $("#lbl_DrivewayTypeName_" + guid).text();
+        var select = document.getElementById("selectDrivewayType_" + guid);
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].text == val) {
+                select.options[i].selected = true;
+                break;
+            }
+        }
+        $("#lbl_drivewayName_" + guid).css('display', 'none');
+        $("#input_drivewayName_" + guid).css('display', 'block');
+        $("#lbl_DrivewayTypeName_" + guid).css('display', 'none');
+        $("#selectDrivewayType_" + guid).css('display', 'block');
+        $("#lbldeviceName_" + guid).css('display', 'none');
+        $("#inputdeviceName_" + guid).css('display', 'block');
+        $("#lbldeviceMacAddress_" + guid).css('display', 'none');
+        $("#inputdeviceMacAddress_" + guid).css('display', 'block');
+        $("#lbldeviceEntranceURI_" + guid).css('display', 'none');
+        $("#inputdeviceEntranceURI_" + guid).css('display', 'block');
+        $("#lbldeviceAccount_" + guid).css('display', 'none');
+        $("#inputdeviceAccount_" + guid).css('display', 'block');
+        $("#lbldeviceVerification_" + guid).css('display', 'none');
+        //  $("#inputdeviceVerification_" + guid).css('display', 'block');
+
+        var val = $("#lbldeviceAccount_" + guid).text();
+        var select = document.getElementById("inputdeviceAccount_" + guid);
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].text == val) {
+                select.options[i].selected = true;
+                break;
+            }
+        }
+
+        $("#div1_" + guid).css('display', 'none');
+        $("#div2_" + guid).css('display', 'block');
+        $("#div3_" + guid).css('display', 'block');
+        $("#div4_" + guid).css('display', 'none');
+        _div.style.display = 'none';
+
+    }
+
+    var html_content = "";
+    function hide() {
+        $("#ParkLot_Add").hide();
+    }
+    function ShowNewParLot() {
+        _div.style.display = 'block';
+        $("#DriveWayName").val("");
+        $("#DeviceName").val("");
+        $("#DeviceMACAddress").val("");
+        $("#DeviceEntranceURI").val("");
+        $("#ParkLot_Add").show();
+        _div.style.display = 'none';
+    }
+
+    var Add = function () {
+        _div.style.display = 'block';
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var ParkingCode = $("#ParkingCode").val();
+        var DriveWayName = $("#DriveWayName").val();
+        if (DriveWayName == "") {
+            $message('d', "车道名称不能为空")
+            _div.style.display = 'none';
+            return;
+        }
+        var DrivewayType = $("#DrivewayType").val();
+        var DeviceName = $("#DeviceName").val();
+        if (DeviceName == "") {
+            $message('d', "关联设备名称不能为空")
+            _div.style.display = 'none';
+            return
+        }
+        var DeviceMACAddress = $("#DeviceMACAddress").val();
+        if (DeviceMACAddress == "") {
+
+            $message('d', "相机MAC地址不能为空")
+            _div.style.display = 'none';
+            return;
+        }
+        DeviceMACAddress = DeviceMACAddress.toLowerCase();
+        DeviceMACAddress = DeviceMACAddress.replace('"', '');
+        DeviceMACAddress = DeviceMACAddress.replace("'", ''); 
+        var DeviceEntranceURI = $("#DeviceEntranceURI").val(); 
+        var DeviceAccount = $("#DeviceAccount").val();
+        if (DeviceAccount == "") {
+            if (DeviceEntranceURI == "") {
+                $message('d', "设备IP地址不能为空");
+                _div.style.display = 'none';
+                return;
+            }
+        }
+        // var DeviceVerification = $("#DeviceVerification").val();
+        var DeviceVerification = "";
+        var data = {
+            "DriveWayName": DriveWayName, "DrivewayType": DrivewayType, "ParkingCode": ParkingCode, "DeviceName": DeviceName, "DeviceMACAddress": DeviceMACAddress, "DeviceEntranceURI": DeviceEntranceURI, "DeviceAccount": DeviceAccount, "DeviceVerification": DeviceVerification, "ProjectGuid": ProjectGuid
+        };
+        $.post("/Home/Maps/ParkLot/AddNewDriveWay", data, function (result) {
+            if (result.IsSuccess == true) {
+                GetDriveWayList(ParkingCode);
+                _div.style.display = 'none';
+            }
+            else {
+                $message('d', result.MessageContent);
+                _div.style.display = 'none';
+            }
+
+        });
+    }
+     
+    function assemblehtml(projectGuid, parkCode, guid, drivewayName, DrivewayTypeName, deviceName, deviceMacAddress, deviceEntranceURI, deviceAccount, deviceVerification) {
+        var css =""
+        if (deviceAccount == "tz27") {
+            css = "display: none;";
+        }
+        var html_content = "<div class='col-md-3' id='" + guid + "'>" +
+            "<div class='bs-component' >" +
+            " <div class='modal' style='position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;'>" +
+            " <div class='modal-dialog' role='document'>" +
+            "<div class='modal-content'style='border: 1px solid #d9d9d9' >" +
+            " <div class='modal-header' style='padding:5px;background-color:#f3f8fb'>" +
+            " <div style='width:75%;float:left'>" +
+            "<div style='color:#0092ff; margin-left:12px'>正常连接</div>" +
+            "</div>" +
+            "<div style='width:35%;float:left'>" +
+            "<div style='width: 50%; float: left' id='div4_" + guid + "'>" +
+            "<a href='#' onclick='Edit(\"" + guid + "\")'>" +
+            "<img src='/picture/edit.png'/>" +
+            "</a>" +
+            "</div>" +
+            "<div style='width: 50%; float: left' id='div1_" + guid + "'>" +
+
+            "<a href='#' onclick='ondelete(\"" + guid + "\",\"" + projectGuid + "\",\"" + parkCode + "\")'>" +
+            "<img src='/picture/delete.png'/>" +
+            "</a>" +
+            "</div>" +
+            "<div style='width: 50%;display:none; float: left' id='div3_" + guid + "'>" +
+            "<a onclick='Cancel(\"" + guid + "\")' href='#'>" +
+            "<span>取消</span>" +
+            '<img src="/picture/cancel.png"/>' +
+            '</a>' +
+            "</div>" +
+            "<div style='width: 50%;display:none; float: left' id='div2_" + guid + "'>" +
+            "<a href='#' onclick='Sava(\"" + guid + "\")' id='a_sava'>" +
+            "保存" +
+            "<img src='/picture/success.png'/>" +
+            "</a>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='modal-body' style='padding:1px'>" +
+            "<p>" +
+            " <div class='form-group row' style='text-align:center'>" +
+            " <label class='control-label col-md-4' style='text-align:right'>车道名称:</label>" +
+            "<div class='col-md-6 tl'>" +
+            " <label id='lbl_drivewayName_" + guid + "'>" + drivewayName + "</label>" +
+            "<input type='text' style='display: none'  value='" + drivewayName + "' id='input_drivewayName_" + guid + "'/>" +
+            "</div>" +
+            "</div>" +
+            "</p>" +
+            "<p>" +
+            " <div class='form-group row' style='text-align:center'>" +
+            "<label class='control-label col-md-4' style='text-align:right'>车道模式:</label>" +
+            "<div class='col-md-6 tl'>" +
+            " <label id='lbl_DrivewayTypeName_" + guid + "'>" + DrivewayTypeName + "</label>" +
+            '<select id="selectDrivewayType_' + guid + '" style="display:none">' +
+            '<option value="1">出口</option>' +
+            '<option value="0">入口</option>' +
+            '</select>' +
+            "</div>" +
+            "</div>" +
+            "</p>" +
+            "<p>" +
+            "<div class='form-group row' style='text-align:center'>" +
+            "<label class='control-label col-md-4' style='text-align:right'>关联设备名称:</label>" +
+            "<div class='col-md-6 tl'>" +
+            "<label id='lbldeviceName_" + guid + "'>" + deviceName + "</label>" +
+            " <input type='text' id='inputdeviceName_" + guid + "' value='" + deviceName + "' style='display: none'/>" +
+            "</div>" +
+            "</div>" +
+            "</p>" +
+            "<p>" +
+            "<div class='form-group row' style='text-align:center'>" +
+            "<label class='control-label col-md-4' style='text-align:right'>相机MAC地址:</label>" +
+            "<div class='col-md-6 tl'>" +
+            "<label id='lbldeviceMacAddress_" + guid + "'>" + deviceMacAddress + "</label>" +
+            " <input type='text' id='inputdeviceMacAddress_" + guid + "' value='" + deviceMacAddress + "' style='display: none'/>" +
+            "</div>" +
+            "</div>" +
+            "</p>" +
+            "<p>" +
+            "<div class='form-group row' style='text-align:center'>" +
+            "<label class='control-label col-md-4' style='text-align:right'>设备类型:</label>" +
+            "<div class='col-md-6 tl'>" +
+            "<label id='lbldeviceAccount_" + guid + "'>" + deviceAccount + "</label>" +
+            //" <input type='text' id='inputdeviceAccount_" + guid + "' value='" + deviceAccount + "' style='display: none'/>" +
+
+            "<select id='inputdeviceAccount_" + guid + "' value='" + deviceAccount + "' style='display: none' onchange='select_DeviceAccount()'>" +
+            '<option value="tz26">tz26</option>' +
+            '<option value="tz27">tz27</option>' +
+            '<option value="显示屏">显示屏</option>' +
+            '</select>' +
+            "</div>" +
+            "</div>" +
+
+            "</p>" +
+            "<p>" + 
+            "<div class='form-group row' style='text-align:center;" + css+ "' id='div_DeviceEntranceURI" + guid + "'>" +
+            " <label class='control-label col-md-4' style='text-align:right'>设备IP地址:</label>" +
+            "<div class='col-md-6 tl'>" +
+            "<label id='lbldeviceEntranceURI_" + guid + "'>" + deviceEntranceURI + "</label>" +
+            " <input type='text' id='inputdeviceEntranceURI_" + guid + "' value='" + deviceEntranceURI + "' style='display: none' oninput='functionName()'/>" +
+            '<label style="color:#ff0000" id="lbl_DeviceEntrance_' + guid + '"></label>' +
+            "</div>" +
+            "</div>" +
+            "</p>" +
+            //"<p>" +
+            //"<div class='form-group row' style='text-align:center'>" +
+            ////"<label class='control-label col-md-4' style='text-align:right'>设备验证口令:</label>" +
+            //"<div class='col-md-6 tl'>" +
+            //"<label id='lbldeviceVerification_" + guid + "'>" + deviceVerification + "</label>" +
+            //" <input type='text' id='inputdeviceVerification_" + guid + "' value='" + deviceVerification + "' style='display: none'/>" +
+            //"</div>" +
+            //"</div>" +
+            //"</p>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div >" +
+            "</div >";
+        return html_content
+    }
+    //获取车道列表
+    function GetDriveWayList(ParkingCode) {
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetDriveWayList?ParkingCode=" + ParkingCode,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    var html_content = "";
+                    if (json.length == 0) {
+                        $("#ParkLot_Add").show();
+                    }
+                    else {
+                        $("#ParkLot_Add").hide();
+                    }
+                    for (var key in json) {
+                        var guid = json[key].Guid;
+                        $("#" + guid).remove();
+                        var parkCode = json[key].ParkCode;
+                        var projectGuid = json[key].ProjectGuid;
+                        var drivewayName = json[key].DrivewayName;
+                        var type = json[key].Type;
+                        var deviceName = json[key].DeviceName;
+                        var deviceMacAddress = json[key].DeviceMacAddress;
+                        var deviceEntranceURI = json[key].DeviceEntranceURI;
+                        var deviceAccount = json[key].DeviceAccount;
+                        var deviceVerification = json[key].DeviceVerification;
+                        var DrivewayTypeName = "";
+                        if (type == 1) {
+                            DrivewayTypeName = "出口";
+                        }
+                        else {
+                            DrivewayTypeName = "入口";
+                        }
+                        var html = assemblehtml(projectGuid, parkCode, guid, drivewayName, DrivewayTypeName, deviceName, deviceMacAddress, deviceEntranceURI, deviceAccount, deviceVerification);
+                        //if (deviceAccount == "tz27") {
+
+                        //    $("#div_DeviceEntranceURI" + guid).hide();
+                        //}
+                        //else {
+                        //    $("#div_DeviceEntranceURI" + guid).show();
+                        //}
+
+                        html_content = html_content + html;
+                    }
+                    $("#content").prepend(html_content);
+                    _div.style.display = 'none';
+                }
+            },
+            error: function (xhr) {
+                _div.style.display = 'none';
+                // 导致出错的原因较多，以后再研究
+                $message('d', 'error:' + JSON.stringify(xhr));
+
+            }
+        })
+
+    }
+    function back_ParkLot() {
+        _div.style.display = 'block';
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\"> 车场设置</a> >" +
+            '<label style="color:#0092ff">添加</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Parklot_Add?ParkingCode=" + $("#ParkingCode").val());
+        _div.style.display = 'none';
+    }
+    //下一步
+    function Nextstep() {
+        _div.style.display = 'block';
+        var ParkingCode = $("#ParkingCode").val();
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Add_CarType?parkCode=" + ParkingCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 ></label> <a href="#" style="color:#9a9c9e" onclick="Back()"> 车场设置</a>> <label style="color:#0092ff">车类设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    }
+
+    //IP验证  DeviceEntranceURI
+    $("#DeviceEntranceURI").bind('input propertychange', function () {
+        var name = $(this).val();
+        if (name == "") {
+            $("#lblDeviceEntranceURI").text("")
+            return true;
+        }
+        var exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+        var reg = name.match(exp);
+        if (reg == null) {
+            $("#lblDeviceEntranceURI").text("请输入正确的IP地址");
+            $("#a_add").css("pointer-events", "none");
+        } else {
+            $("#lblDeviceEntranceURI").text("")
+            $("#a_add").css("pointer-events", "visible");
+            return true;
+        }
+    });
+    $("#DeviceAccount").change(function () {
+        var value = $(this).val();
+        if (value == "tz26" || value == "显示屏") {
+            $("#div_DeviceEntranceURI").show();
+        }
+        else {
+            $("#div_DeviceEntranceURI").hide();
+
+        }
+    });
+
+    //IP验证  DeviceEntranceURI
+    function functionName() {
+        var guid = $("#guid").val();
+        var name = $("#inputdeviceEntranceURI_" + guid).val();
+
+        if (name == "") {
+            $("#lbl_DeviceEntrance_" + guid).text("");
+            return true;
+        }
+        var exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+        var reg = name.match(exp);
+        if (reg == null) {
+            $("#lbl_DeviceEntrance_" + guid).text("请输入正确的IP地址");
+            $("#a_sava").css("pointer-events", "none");
+        } else {
+            $("#lbl_DeviceEntrance_" + guid).text("")
+            $("#a_sava").css("pointer-events", "visible");
+            return true;
+        }
+
+    }
+
+    function select_DeviceAccount() {
+        var guid = $("#guid").val();
+        var value = $("#inputdeviceAccount_" + guid).val();
+        if (value == "tz26" || value == "显示屏") {
+            $("#div_DeviceEntranceURI" + guid).show();
+        }
+        else {
+            $("#div_DeviceEntranceURI" + guid).hide();
+        }
+    }
+</script>

@@ -1,0 +1,529 @@
+﻿
+@{
+    ViewBag.Title = "SetCarType";
+    Layout = null;
+}
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrapValidator.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrapValidator.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    .btn-default {
+        color: #fff;
+        background-color: #b0b0b0;
+        border-color: transparent;
+    }
+
+    .btn-color {
+        color: #fff
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #0092ff;
+        border-color: #0092ff;
+    }
+
+    .thead {
+        background-color: #e8f6ff;
+        font-size: 15px;
+        font-weight: bold;
+        height: 40px;
+        background-color: #e8f6ff !important;
+    }
+
+    .table-striped1 tbody tr {
+        height: 15px
+    }
+    #sampleTable_wrapper{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+    <div class="row" style="height:35px;margin-top:10px">
+        <div class="col-md-5" style="margin-left:10px">
+            <div class="dataTables_length" id="sampleTable_length">
+                <img src="~/picture/zuobianlan.png" />&nbsp;&nbsp;&nbsp;
+                <label style="font-size:18px;font-weight:bold;margin-left:-6px;margin-top:5px">车类设置</label>
+            </div>
+        </div>
+        <div class="col-md-6" style="text-align:right">
+            <div id="sampleTable_filter" class="dataTables_filter">
+                <a class="btn btn-info" onclick="OpenAddSetDefaultCarType()" style="color:#fff;margin-top:8px"> <img src="~/picture/increase.png" />&nbsp;&nbsp;<span>新增车类</span></a>
+            </div>
+        </div>
+    </div>
+    <div style="border-bottom: 1px solid #dedede;height: 20px;width: 100%;margin: 0 auto 10px;"></div>
+    <div class="DefaultCarType" style="flex:1">
+        <table style="cursor: default; width:98%;margin-left:1%" class="table table-striped3 table-bordered text-left table-striped1" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+            <tbody id="tbody_content" class="text-center">
+                <tr role="row" class="thead">
+                    <td>设为默认</td>
+                    <td>车类名称</td>
+                    <td>缴费模式</td>
+                    <td>车类编码</td>
+                    <td>操作</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <input type="hidden" id="parkCode" value="" />
+        <input type="hidden" id="projectGuid" value="" />
+        <div class="tile-footer" style="">
+            <div class="row" style="margin-top:20px">
+                <a class="btn" href="#" onclick="back_ParkLot()" style="width:120px;background-color:#d7d8d9;color:#808080;margin: 0 auto 10px;">
+                    返回
+                </a>
+                @*<button class="btn btn-primary" type="button" onclick="Save()" style="width:120px;background-color:#d7d8d9">
+                        下一页
+                    </button>*@
+            </div>
+       
+    </div>
+</div>
+
+<!-- 新增 --> 
+<div class="col-sm-12">
+    <div class="modal fade" id="Div_Add" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header title_background-color" style="background-color:#0092ff">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">新增</h3>
+                </div>
+                <form>
+                    <div class="form-group" style="width:100%;height:45px;margin-top:10px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>车类名称：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <input type="text" class="form-control" name="username" id="carTypeName" />
+                        </div>
+                    </div>
+                    <!-- <div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>车类编码：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <input type="text" class="form-control" name="email" oninput="if(value.length>2)value=value.slice(0,2)" id="Idx" />
+                        </div>
+                    </div> -->
+                    <div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>缴费模式：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <select class="form-control" id="carType" style="height:35px">
+                                <option value="0">临时车</option>
+                                <option value="1">月租车</option>
+                                <option value="2">储值车</option>
+                                <option value="3">贵宾车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        <button type="button" name="submit" class="btn btn-primary" id="SavaAdd" onclick="SetAdd()">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="Div_Edit" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header title_background-color" style="background-color:#0092ff">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">编辑</h3>
+                </div>
+                <form>
+                    <div class="form-group" style="width:100%;height:45px;margin-top:10px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>车类名称：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <input type="text" class="form-control" name="username" id="Edit_carTypeName" />
+                        </div>
+                    </div>
+                    <!-- <div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>车类编码：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <input type="text" class="form-control" name="email" oninput="if(value.length>2)value=value.slice(0,2)" id="Edit_Idx" />
+                        </div>
+                    </div> -->
+                    <div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>缴费模式：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <select class="form-control" name="cartype" id="Edit_carType" disabled="disabled" style="height:35px">
+                                <option value="">请选择</option>
+                                <option value="0">临时车</option>
+                                <option value="1">月租车</option>
+                                <option value="2">储值车</option>
+                                <option value="3">贵宾车</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="hidden" id="guid" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        <button type="submit" name="submit" class="btn btn-primary" onclick="SetEdit()" id="SavaEdit">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var Moren = '';
+    $(function () {
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: '用户名验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        }
+                    }
+                },
+                cartype: {
+                    validators: {
+                        notEmpty: {
+                            message: '请选择'
+                        },
+                        callback: {
+                            message: '请选择',
+                            callback: function (value, validator) {
+                                if (value == '') { //-1是--请选择--选项
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                },
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        },
+                        regexp: {
+                            regexp: /^(?![^a-zA-Z]+$)(?!\D+$)/,
+                            message: '必须包含数字和字母'
+                        }
+                    }
+                }
+            }
+        });
+    });
+    var projectGuid = $.cookie("ProjectGuid");
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+
+    $(document).ready(function () {
+        _div.style.display = 'block';
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 0) {  //大于1 是修改  否则是添加
+            var value = "";
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    $("#" + name).val(decodeURI(value));
+                }
+            }
+        }
+        ResultApiPost();
+        
+    });
+
+    function ResultApiPost() {
+        var parkCode = $("#parkCode").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + parkCode + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var html = "";
+                    var index = 0;
+                    var json = data.Result;
+                    $("#tbody_content").html("");
+                    html = html + '<tr role="row"   class="thead">' +
+                        '<td> 设为默认</td >' +
+                        '<td>车类名称</td>' +
+                        '<td>缴费模式</td>' +
+                        '<td>车类编码</td>' +
+                        '<td>操作</td>' +
+                        '</tr>';
+                    for (var key in json) {
+                        index++;
+                        var carTypeName = json[key].CarTypeName;
+                        var guid = json[key].Guid;
+                        var parkCode = json[key].ParkCode;
+                        var enable = json[key].Enable;
+                        var Idx = json[key].Idx;
+                        if (Idx == null) {
+                            Idx = "";
+                        }
+                        let defaultType = json[key].DefaultType !== true ? '设为默认车类' : '默认车类';
+                        var carType = "";
+                        //缴费模式 0=临时车 1=月租车 2=储值车 3=贵宾车
+                        var button = "";
+                        switch (json[key].CarType) {
+                            case 0:
+                                carType = "临时车";
+                                if (json[key].DefaultType == true) {
+                                    button = ' <label style="color:#0092ff">' + defaultType + '</label>'
+                                    Moren = json[key].Guid
+                                }
+                                else {
+                                    button = "<a onclick='SetMoren(\"" + guid + "\",\"" + parkCode + "\",\"" + carTypeName + "\",\"" + json[key].CarType + "\",\"" + enable + "\")' >" + defaultType + '</a >';
+                                }
+                        }
+                        switch (json[key].CarType) {
+                            case 1:
+                                carType = "月租车";
+                        }
+                        switch (json[key].CarType) {
+                            case 2:
+                                carType = "储值车";
+                        }
+                        switch (json[key].CarType) {
+                            case 3:
+                                carType = "贵宾车";
+                                break;
+                        }
+
+                        if (index % 2 == 0) {
+                            html = html + "<tr  id='" + guid + "' style='font-size:15px;line-height:22px'>";
+                        }
+                        else {
+                            html = html + "<tr  id='" + guid + "' style='font-size:15px;background-color:#f3f8fb;line-height:22px'>";
+                        }
+                        html = html + "<td onmouseover =\"this.style.cursor = 'hand'\">" + button +
+                            '</td> ' +
+                            '<td>' + carTypeName + '</td>' +
+                            '<td>' + carType + '</td>' +
+                            '<td>' + Idx + '</td>' +
+                            "<td><a style='color: #fff;width:100px' class='btn btn-info' onclick='OpenEditSetDefaultCarType(\"" + guid + "\",\"" + Idx + "\",\"" + carTypeName + "\",\"" + json[key].CarType + "\")'>编辑</a> <a style='color: #fff;width:100px' class='btn btn-default' onclick='SetDelete(\"" + guid + "\",\"" + projectGuid + "\",\"" + parkCode + "\")'>删除</a></td>" +
+                            '</tr >';
+                    }
+                    $('#tbody_content').append(html);
+                }
+                _div.style.display = 'none';
+            },
+            error: function (xhr) {
+                // 导致出错的原因较多，以后再研究
+                $message('d','error:' + JSON.stringify(xhr));
+                _div.style.display = 'none';
+
+            }
+        })
+    };
+    //弹出添加
+    function OpenAddSetDefaultCarType() {
+        _div.style.display = 'block';
+        $("#Edit_carTypeName").val("");
+        $("#Edit_Idx").val("");
+        $("#Edit_carType").val("");
+        $('#Div_Add').modal();
+        _div.style.display = 'none';
+    }
+
+    //弹出编辑窗体
+    function OpenEditSetDefaultCarType(guid, Idx, carTypeName, carType) {
+        _div.style.display = 'block';
+        $("#Edit_carTypeName").val(carTypeName);
+        $("#Edit_Idx").val(Idx);
+        $("#guid").val(guid);
+        $("#Edit_carType option[value='" + carType + "']").attr("selected", "selected")
+        $('#Div_Edit').modal();
+        _div.style.display = 'none';
+    }
+
+    //设置默认
+    function SetMoren(Guid, ParkingCode, TypeName, PaymentMode, enable) {
+        _div.style.display = 'block';
+        var data = {
+            "Guid": Guid,
+            "ParkingCode": ParkingCode,
+            "ProjectGuid": projectGuid,
+            "TypeName": TypeName,
+            "PaymentMode": PaymentMode,
+            "Enable": enable
+
+        };
+        $.post("/Home/Maps/ParkLot/SetDefaultCarType", data, function (result) {
+            if (result.IsSuccess == true) {
+                Moren = Guid;
+                $message('s',"设置成功！")
+                ResultApiPost();
+            }
+            _div.style.display = 'none';
+        });
+       
+    }
+    $("#tab5").click(function () {
+        _div.style.display = 'block';
+        var link = 'url';
+        var iframe = document.getElementById("contentWindow");
+        $("#contentWindow").attr("src", link);
+        if (iframe.attachEvent) {
+            iframe.attachEvent("onload", function () {
+                $("body", $("#contentWindow").contents()).css("overflow", "hidden");
+            });
+        } else {
+            iframe.onload = function () {
+                $("body", $("#contentWindow").contents()).css("overflow", "hidden");
+            };
+        }
+        _div.style.display = 'none';
+    });
+    //添加
+    var SetAdd = function () {
+        var flag = $('form').data('bootstrapValidator').isValid()
+        if (!flag) {
+            $('form').bootstrapValidator('validate');
+            return; 
+        }
+        _div.style.display = 'block';
+        var carTypeName = $("#carTypeName").val();
+        // var Idx = $("#Idx").val();
+        var carType = $("#carType").val();
+        var ParkingCode = $("#parkCode").val();
+        var projectGuid = $.cookie("ProjectGuid");
+
+        var data = {
+            "TypeName": carTypeName, "PaymentMode": carType, "ParkingCode": ParkingCode, "ProjectGuid": projectGuid, "Enable": true // , "Idx": Idx
+        };
+        $.post("/Home/Maps/ParkLot/AddCarType", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s',"添加成功！");
+                $('#SavaAdd').attr("disabled", false);
+                parent.$('#mainIframe').attr('src', "/Home/Trans/SetDefaultCarType?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+                var html = "<p style='font-style:initial'>" +
+                    '<label style = "color:#a3a8ac" > 车场管理 ></label> <a href="#" style="color:#9a9c9e" onclick="Back()"> 车场设置</a>> <label style="color:#0092ff">车类设置</label>' +
+                    '</p >';
+                parent.document.getElementById('app-title').innerHTML = html;
+            }
+            else {
+                $('#SavaAdd').attr("disabled", false);
+                $message('d',result.MessageContent)
+            }
+            _div.style.display = 'none';
+        });
+       
+    }
+    //修改
+    function SetEdit() {
+        _div.style.display = 'block';
+        var guid = $("#guid").val();
+        var ParkingCode = $("#parkCode").val();
+        var projectGuid = $.cookie("ProjectGuid");
+        var carTypeName = $("#Edit_carTypeName").val();
+        // var Idx = $("#Edit_Idx").val();
+        var carType = $("#Edit_carType").val();
+        var data = {
+            "TypeName": carTypeName, "PaymentMode": carType, "ParkingCode": ParkingCode, "ProjectGuid": projectGuid, "Guid": guid, "Enable": true //, "Idx": Idx,
+        };
+        $.post("/Home/Maps/ParkLot/ModifyCarType", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s',"修改成功！")
+                $('#SavaEdit').attr("disabled", false);
+                //ResultApiPost();
+                $('#SavaAdd').attr("disabled", false);
+                parent.$('#mainIframe').attr('src', "/Home/Trans/SetDefaultCarType?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+                var html = "<p style='font-style:initial'>" +
+                    '<label style = "color:#a3a8ac" > 车场管理 ></label> <a href="#" style="color:#9a9c9e" onclick="Back()"> 车场设置</a>> <label style="color:#0092ff">车类设置</label>' +
+                    '</p >';
+                parent.document.getElementById('app-title').innerHTML = html;
+
+            }
+            else {
+                $('#SavaEdit').attr("disabled", false);
+
+                $message('d',result.MessageContent)
+            }
+            _div.style.display = 'none';
+        });
+       
+    }
+    //删除
+    function SetDelete(Guid, projectGuid, parkCode) {
+        if (Guid == Moren) {
+            return $message('i', '不能删除默认车类')
+        }
+        var data = {
+            "Guid": Guid,
+            "ParkingCode": parkCode,
+            "ProjectGuid": projectGuid
+        };
+        $alert({
+            html: '您确定删除吗？',
+            confirm: function () {
+                $loading_show()
+                $.post("/Home/Maps/ParkLot/RemoveCarType", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s',"删除成功！")
+                        $("#" + Guid).remove();
+                    }
+                    else {
+                        $message('d', result.MessageContent)
+                    }
+                    $loading_hide()
+                });
+            }
+        })
+      
+    }
+    function back_ParkLot() {
+        _div.style.display = 'block';
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\"> 车场设置</a>" +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParklotIndex");
+        _div.style.display = 'none';
+    }
+    function Open() {
+        _div.style.display = 'block';
+        $('#myModal').modal();
+        _div.style.display = 'none';
+    }
+
+</script>
+
+

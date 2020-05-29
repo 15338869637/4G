@@ -1,0 +1,73 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using Fujica.com.cn.Interface.DataUpload.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "API";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>基本要求</h2>
+            <p>
+                <table class="help-page-table">
+                    <tr>
+                        <td>测试地址</td>
+                        <td>http://127.0.0.1</td>
+                    </tr>
+                    <tr>
+                        <td>传输协议</td>
+                        <td>基于HTTP传输</td>
+                    </tr>
+                    <tr>
+                        <td>数据格式</td>
+                        <td>提交和返回数据都为JSON格式</td>
+                    </tr>
+                    <tr>
+                        <td>字符编码</td>
+                        <td>统一采用UTF-8字符编码</td>
+                    </tr>
+                    <tr>
+                        <td>签名要求</td>
+                        <td>必须统一采用SHA1算法进行签名，说明如下</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <div class="content-wrapper">
+            <h2>签名说明</h2>
+            <p>
+                双方传输数据时，必须将appid，timestamp，sign添加到http请求头中，用于验证签名，下表为各字段说明<br />
+            </p>
+            <table class="help-page-table">
+                <tr>
+                    <td>appid</td>
+                    <td>由富士智能分配</td>
+                </tr>
+                <tr>
+                    <td>timestamp</td>
+                    <td>当前时间的10位时间戳</td>
+                </tr>
+                <tr>
+                    <td>sign</td>
+                    <td>签名结果，其计算过程为拼接出字符串：<br />param=具体接口的入参&amp;secret=富士智能分配的secret&amp;timestamp=前面用到的时间戳<br />然后将拼接出的字符串作为明文连同富士智能分配的私钥进行SHA1运算即可</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h2>接口列表</h2>
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+        }
+    </section>
+</div>

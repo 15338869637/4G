@@ -1,0 +1,3459 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fujica.com.cn.Interface.Management</name>
+    </assembly>
+    <members>
+        <member name="T:Fujica.com.cn.Interface.Management.ApiBaseErrorCode">
+            <summary>
+            基本错误枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiBaseErrorCode.API_SUCCESS">
+            <summary>
+            请求成功
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiBaseErrorCode.API_FAIL">
+            <summary>
+            请求失败
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiBaseErrorCode.API_Unauthorized">
+            <summary>
+            请求未授权
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiBaseErrorCode.API_ERROR">
+            <summary>
+            服务器出现异常
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiBaseErrorCode.API_PARAM_ERROR">
+            <summary>
+            参数验证错误
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiBaseErrorCode.API_INTERFACENAME_ERROR">
+            <summary>
+            没有此接口的请求权限
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.ApiParkLotErrorCode">
+            <summary>
+            车场业务错误枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiParkLotErrorCode.API_DATA_SAVE_ERROR">
+            <summary>
+            保存该数据出错
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiParkLotErrorCode.API_DATA_NULL_ERROR">
+            <summary>
+            找不到该数据
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.ApiPersonnelErrorCode">
+            <summary>
+            人事管理错误枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiPersonnelErrorCode.API_DATA_SAVE_ERROR">
+            <summary>
+            保存该数据出错
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiPersonnelErrorCode.API_DATA_NULL_ERROR">
+            <summary>
+            找不到该数据
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.ApiCardServiceErrorCode">
+            <summary>
+            卡务管理错误枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiCardServiceErrorCode.API_DATA_SAVE_ERROR">
+            <summary>
+            保存该数据出错
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiCardServiceErrorCode.API_DATA_NULL_ERROR">
+            <summary>
+            找不到该数据
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.ApiSystemErrorCode">
+            <summary>
+            系统设置业务错误枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiSystemErrorCode.API_DATA_SAVE_ERROR">
+            <summary>
+            保存该数据出错
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.ApiSystemErrorCode.API_DATA_NULL_ERROR">
+            <summary>
+            找不到该数据
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,Fujica.com.cn.Interface.Management.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,Fujica.com.cn.Interface.Management.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},Fujica.com.cn.Interface.Management.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.#ctor(Fujica.com.cn.Interface.Management.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,Fujica.com.cn.Interface.Management.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:Fujica.com.cn.Interface.Management.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fujica.com.cn.Interface.Management.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.ChatHub">
+             <summary>
+            Hub（集线器）上下文对象：用来解决实时(realtime)信息交换的功能.连接到这个Hub，就能与所有的客户端共享发送到服务器上的信息，同时服务端可以调用客户端的脚本。
+             </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.ChatHub.OnConnected">
+            <summary>
+            当链接的时候
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.ChatHub.OnDisconnected(System.Boolean)">
+            <summary>
+            断开的时候
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.ChatHub.RemoveGroup(System.String,System.String)">
+            <summary>
+            断开连接使用
+            </summary>
+            <param name="connectionId"></param> 
+            <param name="groupName"></param> 
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.ChatHub.AddToGroup(System.String,System.String)">
+            /// <summary>
+            定义一个添加分组函数，用来被客户端调用 
+            </summary>
+            <param name="groupId"></param> 
+            <param name="connectionId"></param> 
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.BaseController">
+            <summary>
+            API接口的基础Controller
+            </summary>
+            <remarks>
+            2019.09.17: 修改 命名格式. Ase <br/>       
+            </remarks>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.BaseController.Logger">
+            <summary>
+            日志记录器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.BaseController.Serializer">
+            <summary>
+            序列化器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.BaseController.Apiaccesscontrol">
+            <summary>
+            api接入控制
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.BaseController.#ctor(Fujica.com.cn.Logger.ILogger,Fujica.com.cn.Tools.ISerializer,Fujica.com.cn.Security.AdmissionControl.APIAccessControl)">
+            <summary>
+            构造器
+            </summary>
+            <param name="logger">日志器</param>
+            <param name="serializer">序列化器</param>
+            <param name="apiaccesscontrol">权限控制器</param>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.ReportController">
+            <summary>
+            报表管理
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.ReportController._reportManager">
+            <summary>
+            报表管理
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.#ctor(Fujica.com.cn.Logger.ILogger,Fujica.com.cn.Tools.ISerializer,Fujica.com.cn.Security.AdmissionControl.APIAccessControl,Fujica.com.cn.Business.ParkLot.ReportManager)">
+            <summary>
+            唯一构造函数
+            </summary>
+            <param name="logger">日志接口器</param>
+            <param name="serializer">序列化接口器</param>
+            <param name="apiaccesscontrol">api接入控制器</param>
+            <param name="reportManager">报表管理</param> 
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchParkingRecord(FujicaService.Module.Entitys.Parking.ParkingSearchRequest)">
+            <summary>
+            查询停车记录(报表)
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchPaymentRecord(FujicaService.Module.Entitys.Parking.PaymentSearchRequest)">
+            <summary>
+            查询缴费记录(报表)
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchRechargeRecord(FujicaService.Module.Entitys.Parking.RechargeSearchRequest)">
+            <summary>
+            查询充值记录(报表)
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchConsumeRecord(FujicaService.Module.Entitys.Parking.ConsumeSearchRequest)">
+            <summary>
+            查询储值卡扣费记录(报表)
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchOpenGateRecord(FujicaService.Module.Entitys.Parking.OpenGateSearchRequest)">
+            <summary>
+            查询异常开闸信息(报表)
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchPresentRecord(FujicaService.Module.Entitys.Parking.PresentSearchRequest)">
+            <summary>
+             查询车辆在场记录信息(报表)
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchRecordInRecord(Fujica.com.cn.Context.Model.RecordInRequest)">
+            <summary>
+            补录报表数据(报表)
+            </summary>
+            <param name="requestModel">请求参数实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ReportController.SearchCorrectCarnoRecord(Fujica.com.cn.Context.Model.CorrectCarnoRequest)">
+            <summary>
+             车牌修正报表数据(报表)
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.CardServiceController">
+            <summary>
+            卡务管理模块
+            </summary>
+            <remarks>
+            2019.10.25: 修改.月卡、临时卡、储值卡分页搜索增加卡类查询条件 Ase <br/> 
+            </remarks>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.#ctor(Fujica.com.cn.Logger.ILogger,Fujica.com.cn.Tools.ISerializer,Fujica.com.cn.Security.AdmissionControl.APIAccessControl,Fujica.com.cn.Business.ParkLot.CardServiceManager)">
+            <summary>
+            唯一构造函数
+            </summary>
+            <param name="logger">日志接口器</param>
+            <param name="serializer">序列化接口器</param>
+            <param name="apiaccesscontrol">api接入控制器</param>
+            <param name="cardServiceManager">卡务管理器</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.ApplyNewCard(Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest)">
+            <summary>
+            开卡  
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.ModifyMonthCard(Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest)">
+            <summary>
+            月卡修改
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.ModifyValueCard(Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest)">
+            <summary>
+            储值卡修改
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.MonthCardRenew(Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest)">
+            <summary>
+            月卡续费 注意此时的延期开始时间不是开卡时间
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.ValueCardRenew(Fujica.com.cn.Interface.Management.Models.InPut.ValueCardServiceRequest)">
+            <summary>
+            储值车续费
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.CarLocked(Fujica.com.cn.Interface.Management.Models.InPut.CardServiceBaseRequest)">
+            <summary>
+            锁定车辆
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.CarUnLocked(Fujica.com.cn.Interface.Management.Models.InPut.CardServiceBaseRequest)">
+            <summary>
+            解锁车辆
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.CancelCar(Fujica.com.cn.Interface.Management.Models.InPut.CancelCardServiceRequest)">
+            <summary>
+            注销车辆
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.GetMonthCardList(Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest)">
+            <summary>
+            获取月卡列表
+            </summary>
+            <param name="requestModel">请求参数实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.GetValueCardList(Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest)">
+            <summary>
+            获取储值卡列表
+            </summary>
+            <param name="requestModel">请求参数实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CardServiceController.GetTempCardList(Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest)">
+            <summary>
+            获取临时卡列表
+            </summary>
+            <param name="requestModel">请求参数实体</param>
+            <returns></returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.CaptureController">
+            <summary>
+            websocket通讯接口类.
+            </summary>
+            <remarks>
+            2019.09.18: 创建. llp <br/> 
+            </remarks> 
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CaptureController.CaptureSend(Fujica.com.cn.Context.Model.CaptureInOutModel)">
+            <summary>
+            移动岗亭数据
+            </summary>
+            <param name="model"></param> 
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.CaptureController.HeartBeatSend(Fujica.com.cn.MonitorServiceClient.Model.HeartBeatModel)">
+            <summary>
+            相机状态
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Fujica.com.cn.Interface.Management.Controllers.HubBaseController`1" -->
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.HubBaseController`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.ParkLotController">
+             <summary>
+            车场业务模块
+             </summary> 
+             <remarks> 
+             2019.09.12: 增加InVehicleDelete在场车辆删除接口. llp <br/>  
+             2019.10.08: 修改实体名称InVehicleDelete为InVehicleDeleteModel. Ase <br/>  
+             2018.10.29：新增GetGateData获取车道车辆进出抓拍数据接口. Ase <br/>
+             </remarks>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.ParkLotController._parkLotManager">
+            <summary>
+            停车场管理器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.ParkLotController._scanningManager">
+            <summary>
+            扫码管理器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.ParkLotController._cardServiceManager">
+            <summary>
+            卡务管理
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.#ctor(Fujica.com.cn.Logger.ILogger,Fujica.com.cn.Tools.ISerializer,Fujica.com.cn.Security.AdmissionControl.APIAccessControl,Fujica.com.cn.Business.ParkLot.ParkLotManager,Fujica.com.cn.Business.ParkLot.ScanningManager,Fujica.com.cn.Business.ParkLot.CardServiceManager)">
+            <summary>
+            唯一构造函数
+            </summary>
+            <param name="logger">日志接口器</param>
+            <param name="serializer">序列化接口器</param>
+            <param name="apiaccesscontrol">api接入控制器</param>
+            <param name="parkLotManager">车场管理器</param>
+            <param name="scanningManager">扫码管理器</param>
+            <param name="cardServiceManager">卡务信息管理</param>        
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.AddNewParkLot(Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest)">
+            <summary>
+            添加车场
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ModifyParkLot(Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest)">
+            <summary>
+            修改车场
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.RemoveParkLot(Fujica.com.cn.Interface.Management.Models.InPut.DeleteParkLotRequest)">
+            <summary>
+            删除车场
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetParkLot(System.String)">
+            <summary>
+            获取车场
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetParkLotList(System.String)">
+            <summary>
+            获取车场列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetRemainingSpace(System.String)">
+             <summary>
+            获取车场 剩余车位数量 
+             </summary>
+             <returns></returns> 
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.AddNewDriveWay(Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest)">
+            <summary>
+            设置/新增车道
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ModifyDriveWay(Fujica.com.cn.Interface.Management.Models.InPut.ModifyDriveWayRequest)">
+            <summary>
+            修改车道
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.RemoveDriveWay(Fujica.com.cn.Interface.Management.Models.InPut.DeleteDriveWayRequest)">
+            <summary>
+            删除车道
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetDriveWay(System.String)">
+            <summary>
+            获取车道
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetDriveWayList(System.String)">
+            <summary>
+            获取车道列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetDriveWayStatusList(System.String)">
+            <summary>
+            获取车场所有车道的链接状态
+            </summary>
+            <param name="parkingCode">停车场编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.SyncDriveWayData(System.String,System.String,System.String)">
+            <summary>
+            车道数据同步
+            </summary>
+            <param name="projectGuid"></param>
+            <param name="parkingCode"></param>
+            <param name="deviceMacAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.AddCarType(Fujica.com.cn.Interface.Management.Models.InPut.CarTypeRequest)">
+            <summary>
+            设置/新增车类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ModifyCarType(Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarTypeRequest)">
+            <summary>
+            修改车类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.RemoveCarType(Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarTypeRequest)">
+            <summary>
+            删除车类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetCarType(System.String)">
+            <summary>
+            获取车类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetCarTypeList(System.String,System.String)">
+            <summary>
+            获取车类列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.SetDefaultCarType(Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarTypeRequest)">
+            <summary>
+            设置默认车类
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.AddBillingTemplate(Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest)">
+            <summary>
+            新增计费模板
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ModifyBillingTemplate(Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest)">
+            <summary>
+            修改计费模板
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.RemoveBillingTemplate(Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest)">
+            <summary>
+            删除计费模板
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetBillingTemplate(System.String)">
+            <summary>
+            获取计费模板
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.SetPostponeTemplate(Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest)">
+            <summary>
+            固定车延期模板设置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.RemovePostponeTemplate(Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest)">
+            <summary>
+            固定车延期模板移除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetPostponeTemplate(System.String)">
+            <summary>
+            获取固定车延期模板
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetPostponeTemplateList(System.String)">
+            <summary>
+            获取固定车延期模板列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetFunctionPoint(System.String)">
+            <summary>
+            获取其它设置页面数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.SetFunctionPoint(Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest)">
+            <summary>
+            修改其他设置页面数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.PhotographCar(Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest)">
+            <summary>
+            重新拍照
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.SetGateKeep(Fujica.com.cn.Interface.Management.Models.InPut.GateKeepListRequest)">
+            <summary>
+            设置车道闸口锁定
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetGateKeep(System.String,System.String)">
+            <summary>
+            获取车道闸口锁定
+            </summary>
+            <param name="projectGuid">项目guid</param>
+            <param name="parkingCode">停车场编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetTempCarParkingInfo(System.String,System.String)">
+            <summary>
+            根据车场编号和车牌号码获取当前车辆的停车费用信息
+            </summary>
+            <param name="parkingCode">停车场编码</param>
+            <param name="carNumber">车牌号码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.CarNumberRepush(Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest)">
+            <summary>
+            车牌修改重推
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GateCatchRefresh(System.String)">
+            <summary>
+            车道拦截数据刷新
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetGateData(System.String,System.String)">
+            <summary>
+            获取车道车辆进出抓拍数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetValueCardFeeInfoByCarNo(Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest)">
+            <summary>
+            获取储值车停车费信息
+            </summary>  
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ValueCardCalculationFee(Fujica.com.cn.Interface.Management.Models.InPut.ValueCardCalculationFeeRequest)">
+            <summary>
+             执行储值车扣费
+            </summary>  
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.CorrectCarNo(Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest)">
+            <summary>
+            车牌修正
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.AddInRecord(Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest)">
+            <summary>
+            入场补录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.InVehicleDelete(Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest)">
+            <summary>
+            在场车辆删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.AddBlacklist(Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest)">
+            <summary>
+            添加黑名单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ModifyBlacklist(Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest)">
+            <summary>
+            修改黑名单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.RemoveCarNoInBlacklist(Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRemoveRequest)">
+            <summary>
+            从黑名单列表移除某黑名单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.GetBlacklist(System.String)">
+            <summary>
+            获取黑名单
+            </summary>
+            <param name="Base64args">base64编码的参数 参数格式{"ProjectGuid":"","ParkingCode":"","CarNo":"","Type":0=永久时间 1=自定义时间}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.ActiveScanning(Fujica.com.cn.Interface.Management.Models.InPut.ActiveScanningRequest)">
+            <summary>
+            主扫
+            用户扫描固定车道码缴费
+            </summary>
+            <param name="model"></param>
+            <returns></returns>\
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.ParkLotController.PassiveScanning(Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest)">
+            <summary>
+            被扫
+            户出示微信/支付宝缴费二维码
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.PersonnelController">
+            <summary>
+            人事业务模块
+            2019.10.23：新增接口GetUserList根据项目编码和停车场编码获取所有用户列表. Ase <br/>
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.#ctor(Fujica.com.cn.Logger.ILogger,Fujica.com.cn.Tools.ISerializer,Fujica.com.cn.Security.AdmissionControl.APIAccessControl,Fujica.com.cn.Business.User.RoleManager,Fujica.com.cn.Business.User.UserManager,Fujica.com.cn.Business.User.MenuManager)">
+            <summary>
+            唯一构造函数
+            </summary>
+            <param name="_logger">日志接口器</param>
+            <param name="_serializer">序列化接口器</param>
+            <param name="_apiaccesscontrol">api接入控制器</param>
+            <param name="_rolemanager">角色管理器</param>
+            <param name="_usermanager">用户管理器</param>
+            <param name="_menumanager">菜单管理器</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.AddNewRole(Fujica.com.cn.Interface.Management.Models.InPut.ModifyRoleRequest)">
+            <summary>
+            新增角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.ModifyRole(Fujica.com.cn.Interface.Management.Models.InPut.ModifyRoleRequest)">
+            <summary>
+            修改角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.RemoveRole(Fujica.com.cn.Interface.Management.Models.InPut.RoleRequest)">
+            <summary>
+            删除角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.GetRoleList(System.String)">
+            <summary>
+            获取角色列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.GetRolePermission(System.String)">
+            <summary>
+            获取角色权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.GetProjectAllMenu(System.String)">
+            <summary>
+            获取所有菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.AddNewOperator(Fujica.com.cn.Interface.Management.Models.InPut.UserRequest)">
+            <summary>
+            新增操作员
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.ModifyOperator(Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserRequest)">
+            <summary>
+            修改操作员
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.RemoveOperator(Fujica.com.cn.Interface.Management.Models.InPut.DeleteUserRequest)">
+            <summary>
+            删除操作员
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.GetUserList(System.String)">
+            <summary>
+            获取操作员列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.GetUserList(System.String,System.String)">
+            <summary>
+            根据项目编码和停车场编码获取所有用户列表
+            </summary>
+            <param name="projectGuid">项目编码</param>
+            <param name="parkingCode">停车场编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.ResetPasssword(Fujica.com.cn.Interface.Management.Models.InPut.ResetUserPassword)">
+            <summary>
+            重置密码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.PersonnelController.ModifyPasssword(Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserPasswordRequest)">
+            <summary>
+            修改密码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Controllers.SystemSetController">
+            <summary>
+            系统设置业务模块
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.SystemSetController._voiceCommandManager">
+            <summary>
+            语音指令管理器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.SystemSetController._trafficRestrictionManager">
+            <summary>
+            通行设置管理器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.SystemSetController._openGateReasonManager">
+            <summary>
+            开闸管理器
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Interface.Management.Controllers.SystemSetController._parkLotManager">
+            <summary>
+            车场管理器
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.#ctor(Fujica.com.cn.Logger.ILogger,Fujica.com.cn.Tools.ISerializer,Fujica.com.cn.Security.AdmissionControl.APIAccessControl,Fujica.com.cn.Business.ParkLot.VoiceCommandManager,Fujica.com.cn.Business.ParkLot.TrafficRestrictionManager,Fujica.com.cn.Business.ParkLot.OpenGateReasonManager,Fujica.com.cn.Business.ParkLot.ParkLotManager)">
+            <summary>
+            唯一构造函数
+            </summary>
+            <param name="logger">日志接口器</param>
+            <param name="serializer">序列化接口器</param>
+            <param name="apiaccesscontrol">api接入控制器</param>
+            <param name="voiceCommandManager">语音指令管理器</param>
+            <param name="trafficRestrictionManager">通行设置管理器</param>
+            <param name="openGateReasonManager">开闸原因设置管理器</param>
+            <param name="parkLotManager">车场管理器</param>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.GetVoiceCommand(System.String)">
+            <summary>
+            获取语音指令
+            </summary>
+            <param name="DrivewayGuid">车道标识</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.SetVoiceCommand(Fujica.com.cn.Interface.Management.Models.InPut.VoiceCommandRequest)">
+            <summary>
+            设置语音指令
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.AddNewTrafficRestriction(Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest)">
+            <summary>
+            新增限行规则
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.ModifyTrafficRestriction(Fujica.com.cn.Interface.Management.Models.InPut.ModifyTrafficRestrictionRequest)">
+            <summary>
+            修改限行规则
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.RemoveTrafficRestriction(Fujica.com.cn.Interface.Management.Models.InPut.ModifyTrafficRestrictionRequest)">
+            <summary>
+            删除限行规则
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.GetTrafficRestrictionList(System.String)">
+            <summary>
+            获取限行规则列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.AddNewOpenGateReason(Fujica.com.cn.Interface.Management.Models.InPut.OpenGateReasonRequest)">
+            <summary>
+            新增开闸原因
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.ModifyOpenGateReason(Fujica.com.cn.Interface.Management.Models.InPut.ModifyOpenGateReasonRequest)">
+            <summary>
+            修改开闸原因
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.RemoveOpenGateReason(Fujica.com.cn.Interface.Management.Models.InPut.DeleteOpenGateReasonRequest)">
+            <summary>
+            删除开闸原因
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.GetOpenGateReasonList(System.String)">
+            <summary>
+            获取开闸原因列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.ChargeOpenGate(Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest)">
+            <summary>
+            收费开闸
+            </summary> 
+            <returns></returns> 
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.OpenGate(Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest)">
+            <summary>
+            手动开闸--出口未识别到车牌(添加到异常记录报表) 
+                    --出口识别到车牌（果是临时车则添加免费临停车缴费记录）
+                    --入口开闸(添加到异常记录报表)
+            </summary>
+            <param name="model">异常开闸记录</param> 
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Controllers.SystemSetController.FreeOpenGate(Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest)">
+            <summary>
+            免费放行
+            </summary>  
+            <returns></returns> 
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Filter.VerifyRequestAttribute">
+            <summary>
+            签名验证 以及请求过程记录
+            </summary>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Filter.VerifyRequestAttribute.OnActionExecutingAsync(System.Web.Http.Controllers.HttpActionContext,System.Threading.CancellationToken)">
+            <summary>
+            拦截验证请求参数
+            </summary>
+            <param name="actionContext"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fujica.com.cn.Interface.Management.Filter.VerifyRequestAttribute.OnActionExecuted(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            记录请求日志
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ActiveScanningRequest">
+            <summary>
+            主动扫码请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ActiveScanningRequest.DeviceMACAddress">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ActiveScanningRequest.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ActiveScanningRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ActiveScanningRequest.LaneSenseDate">
+            <summary>
+            压地感时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest">
+            <summary>
+            补入场记录请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.InTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.ImgUrl">
+            <summary>
+            入场图片
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.Entrance">
+            <summary>
+            入场通道
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.CarTypeGuid">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.DrivewayGuid">
+            <summary>
+            车道标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.AddInRecordRequest.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest">
+            <summary>
+            计费模板请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest.CarTypeGuid">
+            <summary>
+            卡类型(对应的车类型的guid)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest.ChargeMode">
+            <summary>
+            计费模式
+            1=小时算费 2=分段算费 3=深圳算费 4=按半小时算费 5=简易分段算费 
+            6=分段按小时算费 7=半小时算费(可分段) 8=分段按半小时算费 9=新分段收费标准
+            10=分段按15分钟算费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BillingTemplateRequest.TemplateJson">
+            <summary>
+            模板实体json字符串
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest">
+            <summary>
+            黑名单请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.CarNoList">
+            <summary>
+            车牌号集合,逗号分隔
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.Enable">
+            <summary>
+            是否启用(该黑名单)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.Always">
+            <summary>
+            是否永久限制
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.ByDate">
+            <summary>
+            按日期禁止
+            其实可以按12位长度，每6位表示yyMMdd,一个为开始，一个为结束
+            但怕别人看不懂，只好定义多个字段
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.StartDate">
+            <summary>
+            开始日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.EndDate">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.ByTime">
+            <summary>
+            按时间禁止
+            其实可以按12位长度，每6位表示HHmmss,一个为开始，一个为结束
+            但怕别人看不懂，只好定义多个字段
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.StatrtTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.ByWeek">
+            <summary>
+            按周天禁止
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.AssignDay">
+            <summary>
+            指定的禁止天,长度为7,依次为周一到周末，为1表示禁止
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRemoveRequest">
+            <summary>
+            黑名单移除实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRemoveRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.BlacklistRemoveRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.CardServiceBaseRequest">
+            <summary>
+            卡务管理请求基本实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CardServiceBaseRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CardServiceBaseRequest.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CardServiceBaseRequest.RechargeOperator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.CancelCardServiceRequest">
+            <summary>
+            注销卡请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CancelCardServiceRequest.Balance">
+            <summary>
+            卡上原金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CancelCardServiceRequest.RefundAmount">
+            <summary>
+            退款金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CancelCardServiceRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest">
+            <summary>
+            开卡请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.DrivewayGuidList">
+            <summary>
+            授权车道集合,如 b831254e32b94406be2d563dd7efbca5,3c3741986f8241619eb4ca8d9fbd373e
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.CarTypeGuid">
+            <summary>
+            卡类型 所属车类唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.StartDate">
+            <summary>
+            起始日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.EndDate">
+            <summary>
+            截止日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.PayAmount">
+            <summary>
+            支付金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ApplyCardServiceRequest.PayStyle">
+            <summary>
+            支付方式，直接中文描述
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest">
+            <summary>
+            修改卡请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest.DrivewayGuidList">
+            <summary>
+            授权车道集合,如 b831254e32b94406be2d563dd7efbca5,3c3741986f8241619eb4ca8d9fbd373e
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCardServiceRequest.CarTypeGuid">
+            <summary>
+            卡类型 所属车类唯一标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest">
+            <summary>
+            月卡请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest.StartDate">
+            <summary>
+            起始日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest.EndDate">
+            <summary>
+            截止日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest.PrimaryEndDate">
+            <summary>
+            延期之前截止日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest.PayAmount">
+            <summary>
+            支付金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest.PayStyle">
+            <summary>
+            支付方式，直接中文描述
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardServiceRequest.CarTypeGuid">
+            <summary>
+            车类编码不能为空
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardServiceRequest">
+            <summary>
+            储值卡请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardServiceRequest.PayAmount">
+            <summary>
+            支付金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardServiceRequest.PayStyle">
+            <summary>
+            支付方式，直接中文描述
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardServiceRequest.CarTypeGuid">
+            <summary>
+            车类编码不能为空
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardPause">
+            <summary>
+            月卡报停请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardPause.StartDate">
+            <summary>
+            报停开始日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardPause.EndDate">
+            <summary>
+            报停结束日期
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest">
+            <summary>
+            车牌修改重推 请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest.DriveWayMAC">
+            <summary>
+            车道设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest.OldCarNo">
+            <summary>
+            旧车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest.NewCarNo">
+            <summary>
+            新车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest.ImgUrl">
+            <summary>
+            识别照片
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarNumberRepushRequest.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.CarTypeRequest">
+            <summary>
+            车类请求实体.
+            </summary>
+            <remarks>
+            2019.09.24: 创建. llp <br/> 
+            2019.09.24:  去除TypeName 验证.  llp<br/>
+            </remarks> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarTypeRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarTypeRequest.TypeName">
+            <summary>
+            车类名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarTypeRequest.PaymentMode">
+            <summary>
+            缴费模式  0=时租卡 1=月租卡 2=储值卡 3=贵宾卡
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.CarTypeRequest.Enable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarTypeRequest">
+            <summary>
+            车类修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarTypeRequest.Guid">
+            <summary>
+            车类标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest">
+            <summary>
+            设备操作请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.DeviceMacAddress">
+            <summary>
+            设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.EntranceType">
+            <summary>
+            进出类型 0入 2出
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.DiscernCamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.ThroughType">
+            <summary> 
+            通行方式  1 自动开闸、2 手动开闸、3 免费开闸
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.OpenGateReason">
+            <summary>
+            开闸原因
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.OpenGateOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeviceRequest.ImageUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest">
+            <summary>
+            车道请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DriveWayName">
+            <summary>
+            车道名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DrivewayType">
+            <summary>
+            车道类型(模式) 0=入口车道 1=出口车道
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DeviceName">
+            <summary>
+            设备名称 自定义就好
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DeviceMACAddress">
+            <summary>
+            设备标识 如MAC地址等
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DeviceEntranceURI">
+            <summary>
+            设备登录地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DeviceAccount">
+            <summary>
+            设备账户
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DriveWayRequest.DeviceVerification">
+            <summary>
+            设备验证口令
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyDriveWayRequest">
+            <summary>
+            车道修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyDriveWayRequest.Guid">
+            <summary>
+            车道标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.DeleteDriveWayRequest">
+            <summary>
+            车道删除请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeleteDriveWayRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeleteDriveWayRequest.Guid">
+            <summary>
+            车道标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest">
+            <summary>
+            功能点数据请求实体（具体化实体参数）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.PostponeMode">
+            <summary>
+            月卡延期模式  0=顺延 1=跳延(仅当 cartype=1 也即月租车时候有效)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.pastDueMode">
+            <summary>
+            月卡过期处理模式 -1=禁止入场 0=看做临时车 大于等于N(N>=1) 过期N天后禁止入场(仅当 cartype=1 也即月租车时候有效)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.barredEntryCarTypeOnParkingFull">
+            <summary>
+            满位禁入车类guid集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.remainingSpaceCarType">
+            <summary>
+            参与剩余车位统计的车类的guid集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.bluePlateCarTypeGuid">
+            <summary>
+            蓝牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.yellowPlateCarTypeGuid">
+            <summary>
+            黄牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.whitePlateCarTypeGuid">
+            <summary>
+            白牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.greenPlateCarTypeGuid">
+            <summary>
+            绿牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.blackPlateCarTypeGuid">
+            <summary>
+            黑牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.minDays">
+            <summary>
+            月租车低于多少天延期提醒
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointModelRequest.minBalance">
+            <summary>
+            储值车低于多少元充值提醒
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest">
+            <summary>
+            功能点数据请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.PostponeMode">
+            <summary>
+            月卡延期模式  0=顺延 1=跳延(仅当 cartype=1 也即月租车时候有效)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.PastDueMode">
+            <summary>
+            月卡过期处理模式 -1=禁止入场 0=看做临时车 大于等于N(N>=1) 过期N天后禁止入场(仅当 cartype=1 也即月租车时候有效)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.BarredEntryCarTypeOnParkingFull">
+            <summary>
+            满位禁入车类guid集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.RemainingSpaceCarType">
+            <summary>
+            参与剩余车位统计的车类的guid集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.BluePlateCarTypeGuid">
+            <summary>
+            蓝牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.YellowPlateCarTypeGuid">
+            <summary>
+            黄牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.WhitePlateCarTypeGuid">
+            <summary>
+            白牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.GreenPlateCarTypeGuid">
+            <summary>
+            绿牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.BlackPlateCarTypeGuid">
+            <summary>
+            黑牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.MinDays">
+            <summary>
+            月租车低于多少天延期提醒
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.MinBalance">
+            <summary>
+            储值车低于多少元充值提醒
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FunctionPointRequest.ManualOpenGateGuid">
+            <summary>
+            手动开闸车类guid集合
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepListRequest">
+            <summary>
+            车道闸口锁定请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepListRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepListRequest.GateKeepList">
+            <summary>
+            车道闸口锁定集合
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepRequest">
+            <summary>
+            车道闸口锁定请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepRequest.DrivewayGuid">
+            <summary>
+            车道guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepRequest.DeviceMacAddress">
+            <summary>
+            设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GateKeepRequest.GateState">
+            <summary>
+            闸口状态 0：正常  1：开闸锁定   2：关闸锁定
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest">
+            <summary>
+            收款账户请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AccountName">
+            <summary>
+            账户名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AliPayAppid">
+            <summary>
+            支付宝appid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AliPayPartner">
+            <summary>
+            支付宝parter
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AliPaySeller">
+            <summary>
+            支付宝seller
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AliPayPriverkey">
+            <summary>
+            支付宝私钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AliPayPublickey">
+            <summary>
+            支付宝公钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.AliPayUseV2">
+            <summary>
+            支付宝使用V2版本?
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.WeChatAppid">
+            <summary>
+            微信appid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.WeChatMchid">
+            <summary>
+            微信商户id
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.WeChatSubmchid">
+            <summary>
+            微信子商户id
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.WeChatPrivatekey">
+            <summary>
+            微信私钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.WeChatSecert">
+            <summary>
+            微信secert
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.GatherAccountRequest.WeChatUseSubmch">
+            <summary>
+            微信开启子商户
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyGatherAccountRequest">
+            <summary>
+            收款账户修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyGatherAccountRequest.Guid">
+            <summary>
+            账户标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest">
+            <summary>
+            免费放行请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.FreeOpenGateRequest.TolloPerator">
+            <summary>
+            操作员
+            </summary> 
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateReasonRequest">
+            <summary>
+            开闸原因请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateReasonRequest.OpenType">
+            <summary>
+            开闸类型 0=手动 1=免费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateReasonRequest.ReasonRemark">
+            <summary>
+            开闸原因注明
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyOpenGateReasonRequest">
+            <summary>
+            开闸原因修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyOpenGateReasonRequest.Guid">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.DeleteOpenGateReasonRequest">
+            <summary>
+            开闸原因修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeleteOpenGateReasonRequest.Guid">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest">
+            <summary>
+            异常开闸记录
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.CarType">
+            <summary>
+            车类别
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.EntranceType">
+            <summary>
+            进出类型
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.DiscernCamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.ThroughType">
+            <summary>
+            通行方式   
+            出场：1、自动开闸  2、手动开闸  3、免费开闸   4、收费放行
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.OpenGateTime">
+            <summary>
+            开闸时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.OpenGateReason">
+            <summary>
+            开闸原因
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.OpenGateOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.ImageUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequest.ErrorCode">
+            <summary>
+            异常说明
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest">
+            <summary>
+            被动扫码请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest.DeviceMACAddress">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest.LaneSenseDate">
+            <summary>
+            压地感时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest.ParkingFee">
+            <summary>
+            停车费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PassiveScanningRequest.PayAuthCode">
+            <summary>
+            支付授权码
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.RoleRequest">
+            <summary>
+            角色请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.RoleRequest.Guid">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.RoleRequest.RoleName">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyRoleRequest">
+            <summary>
+            角色修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyRoleRequest.MenuSerials">
+            <summary>
+            菜单序号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyRoleRequest.ParkingCodeList">
+            <summary>
+            授权停车场编号集合
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest">
+            <summary>
+            车牌修正请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.OldCarNo">
+            <summary>
+            原车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.NewCarNo">
+            <summary>
+            新车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.InImgUrl">
+            <summary>
+            入场照片
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.InTime">
+            <summary>
+            入场时间
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.ThroughName">
+            <summary>
+            入场通道
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.CarType">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.DriveWayMAC">
+            <summary>
+            入口设备号
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyCarNoRequest.ParkingRecordCode">
+            <summary>
+            停车记录编码
+            </summary> 
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest">
+            <summary>
+            车场信息请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.ParkingName">
+            <summary>
+            停车场名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.CarNoPrefix">
+            <summary>
+            车牌前缀 如:"粤,B"
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.ParkingSpacesNumber">
+            <summary>
+            车位数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.RemainingSpace">
+            <summary>
+            剩余车位数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.ParkingType">
+            <summary>
+            车场类型 0=商业 1=小区
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.ParkingSiteAddress">
+            <summary>
+            车场地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.Existence">
+            <summary>
+            车场存续标志
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ParkLotRequest.RoleGuid">
+            <summary>
+            当前操作员角色guid（可选参数）
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.DeleteParkLotRequest">
+            <summary>
+            车场信息删除请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeleteParkLotRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest">
+            <summary>
+            在场车场删除信息请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest.RecordGuid">
+            <summary>
+            停车记录编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest.ImgUrl">
+             <summary>
+            入场照片
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.InVehicleDeleteRequest.Operator">
+            <summary>
+            当前操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest">
+            <summary>
+            固定车模板请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest.CarTypeGuid">
+            <summary>
+            卡类型(对应的车类型的guid)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest.Amount">
+            <summary>
+            金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.PermanentTemplateRequest.OperateUser">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyPermanentTemplateRequest">
+            <summary>
+            固定车模板修改实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyPermanentTemplateRequest.Guid">
+            <summary>
+            固定车模板唯一标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.RequestBase">
+            <summary>
+            业务请求基类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.RequestBase.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest">
+            <summary>
+            临时卡查询请求实体
+            </summary>
+            <remarks>
+            2019.10.25: 修改.月卡、临时卡、储值卡分页搜索增加卡类查询条件 Ase <br/> 
+            </remarks>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.ApplyDate">
+            <summary>
+            开卡日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.StatusType">
+            <summary>
+            卡状态 0=全部 1=正常 2=报停 3=锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TempCardSearchRequest.CarTypeGuid">
+            <summary>
+            卡类guid
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest">
+            <summary>
+            月卡查询请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.ApplyDate">
+            <summary>
+            开卡日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.StatusType">
+            <summary>
+            卡状态 0=全部 1=正常 2=报停 3=锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.MonthCardSearchRequest.CarTypeGuid">
+            <summary>
+            卡类guid
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest">
+            <summary>
+            储值卡查询请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.ApplyDate">
+            <summary>
+            开卡日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.StatusType">
+            <summary>
+            卡状态 0=全部 1=正常 2=报停 3=锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardSearchRequest.CarTypeGuid">
+            <summary>
+            卡类guid
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest">
+            <summary>
+            限行规则请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest.DrivewayGuid">
+            <summary>
+            限制车道集合,逗号分隔
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest.CarTypeGuid">
+            <summary>
+            限制车类集合,逗号分隔
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest.AssignDays">
+            <summary>
+            指定的禁止通行周天,长度为7,依次为周一到周末，为1表示禁止,例如 0010010 表示周三周六禁止
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest.StartTime">
+            <summary>
+            禁行开始时间 HH:mm:ss
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.TrafficRestrictionRequest.EndTime">
+            <summary>
+            禁行结束时间 HH:mm:ss
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyTrafficRestrictionRequest">
+            <summary>
+            限行规则修改实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyTrafficRestrictionRequest.Guid">
+            <summary>
+            规则标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.UserRequest">
+            <summary>
+            用户账户请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.UserRequest.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.UserRequest.UserPswd">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.UserRequest.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.UserRequest.RoleGuid">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserRequest">
+            <summary>
+            用户账户修改请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserRequest.Guid">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.DeleteUserRequest">
+            <summary>
+            用户账户删除请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.DeleteUserRequest.Guid">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserPasswordRequest">
+            <summary>
+            用户修改密码请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserPasswordRequest.Guid">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserPasswordRequest.OldPassword">
+            <summary>
+            旧密码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ModifyUserPasswordRequest.NewPassword">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ResetUserPassword">
+            <summary>
+            重置账户密码请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ResetUserPassword.Guid">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest">
+            <summary>
+            查询 储值卡类停车费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest.ParkCode">
+            <summary>
+            停车场编号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest.DeviceMACAddress">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest.LaneSenseDate">
+            <summary>
+            压地感时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardFeeRequest.ErrorCode">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardCalculationFeeRequest">
+             <summary>
+            执行储值卡扣费
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardCalculationFeeRequest.ParkCode">
+            <summary>
+            停车场编号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.ValueCardCalculationFeeRequest.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.VoiceCommandRequest">
+            <summary>
+            语音指令请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.VoiceCommandRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.VoiceCommandRequest.DrivewayGuid">
+            <summary>
+            对应车道
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.VoiceCommandRequest.CommandList">
+            <summary>
+            指令列表
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse">
+            <summary>
+            账户信息响应实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.Guid">
+            <summary>
+            账户标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AccountName">
+            <summary>
+            账户名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AliPayAppid">
+            <summary>
+            支付宝appid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AliPayPartner">
+            <summary>
+            支付宝parter
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AliPaySeller">
+            <summary>
+            支付宝seller
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AliPayPriverkey">
+            <summary>
+            支付宝私钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AliPayPublickey">
+            <summary>
+            支付宝公钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.AliPayUseV2">
+            <summary>
+            支付宝使用V2版本?
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.WeChatAppid">
+            <summary>
+            微信appid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.WeChatMchid">
+            <summary>
+            微信商户id
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.WeChatSubmchid">
+            <summary>
+            微信子商户id
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.WeChatPrivatekey">
+            <summary>
+            微信私钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.WeChatSecert">
+            <summary>
+            微信secert
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.GatherAccountResponse.WeChatUseSubmch">
+            <summary>
+            微信开启子商户
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse">
+            <summary>
+            车场信息返回实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.ParkingName">
+            <summary>
+            停车场名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.CarNoPrefix">
+            <summary>
+            车牌前缀 如:["粤","B"]
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.ParkingSpacesNumber">
+            <summary>
+            车位数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.RemainingSpace">
+            <summary>
+            剩余车位数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.ParkingType">
+            <summary>
+            车场类型 0=商业 1=小区
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.ParkingSiteAddress">
+            <summary>
+            车场地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.GatherAccountGuid">
+            <summary>
+            收款账户编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ParkLotResponse.Existence">
+            <summary>
+            车场存续标志
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.PermanentTemplateResponse">
+            <summary>
+            车类模板输出实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.PermanentTemplateResponse.CarTypeName">
+            <summary>
+            车类名
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBaseCommon">
+            <summary>
+            业务响应公共基类 
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBaseCommon.IsSuccess">
+            <summary>
+            是否执行成功
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBaseCommon.MessageCode">
+            <summary>
+            响应结果编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBaseCommon.MessageContent">
+            <summary>
+            响应结果描述
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBase`1">
+            <summary>
+            业务响应基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBase`1.Result">
+            <summary>
+            业务响应体 仅当IsSuccess为true时有效
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBaseList`1">
+            <summary>
+            业务响应基类集合
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBaseList`1.Result">
+            <summary>
+            业务响应体 仅当IsSuccess为true时有效
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBasePaper`1">
+            <summary>
+            业务响应基类分页集合
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBasePaper`1.Result">
+            <summary>
+            业务响应体 仅当IsSuccess为true时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.ResponseBasePaper`1.TotalCount">
+            <summary>
+            数据总条数
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.RoleListResponse">
+            <summary>
+            角色列表返回实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.RoleListResponse.RoleList">
+            <summary>
+            角色列表
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.RoleModel">
+            <summary>
+            角色模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.RoleModel.Guid">
+            <summary>
+            唯一识别标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.RoleModel.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.RolePermissionResponse">
+            <summary>
+            角色权限返回实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.RolePermissionResponse.OpenUpMenuSerial">
+            <summary>
+            开通的菜单序号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.RolePermissionResponse.ParkingCodeList">
+            <summary>
+            授权停车场编号集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.RolePermissionResponse.IsAdmin">
+            <summary>
+            管理员true管理员 false非管理员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse">
+            <summary>
+            获取临时车停车费用信息实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse.CarNumber">
+            <summary>
+            车牌号码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse.ParkingFee">
+            <summary>
+            停车费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse.ActualAmount">
+            <summary>
+            应缴费用（应缴费用=停车费–自动使用的优惠券的优惠费用）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse.DiscountAmount">
+            <summary>
+            优惠金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse.PaymentAmount">
+            <summary>
+            已缴费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.TempCarParkingFeeResponse.CouponList">
+            <summary>
+            优惠券列表
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon">
+            <summary>
+            用户模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.CouponType">
+            <summary>
+            优惠券优惠类型1全免2减免金额3减免时长4减免百分比
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.CouponValue">
+            <summary>
+            对应优惠券类型的值 金额/时间/折扣
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.CouponCode">
+            <summary>
+            优惠券编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.FavorableType">
+            <summary>
+            优惠券类型1 纸质券 2 电子券 3 活动券 4 新版纸质券
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.EndTime">
+             <summary>
+            截至时间
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.CouponDescribe">
+            <summary>
+            优惠券描述
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.CouponName">
+            <summary>
+            优惠券名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.UseStatus">
+             <summary>
+            标识优惠券是线上或线下使用的状态 1只在线上使用 2只在线下使用 3线上线下都可以使用
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.OperatorName">
+            <summary>
+            操作人员姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.OperatorPhone">
+            <summary>
+            操作人员电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.MCoupon.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.UserListResponse">
+            <summary>
+            操作员列表返回实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.UserListResponse.UserList">
+            <summary>
+            用户列表
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.OutPut.UserModel">
+            <summary>
+            用户模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.UserModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.UserModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.UserModel.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.UserModel.RoleGuid">
+            <summary>
+            所属角色标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.OutPut.UserModel.RoleName">
+            <summary>
+            所属角色名称
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Startup">
+            <summary>
+            让客户端能够连接到 Hub ，当程序启动的时候需要调用 MapSignalR 方法。
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.RecordInRequest">
+            <summary>
+            补录记录模型 查询模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.CarTypeGuid">
+            <summary>
+            车类guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.StrTime">
+            <summary>
+            补录开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.EndTime">
+            <summary>
+            补录结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInRequest.Operator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CorrectCarnoRequest">
+            <summary>
+            补录记录模型 查询模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.PageIndex">
+            <summary>
+            当前页码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.ProjectGuid">
+            <summary>
+            项目编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.OldCarno">
+            <summary>
+            旧车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.NewCarno">
+            <summary>
+            新车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.StrTime">
+            <summary>
+            操作开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.EndTime">
+            <summary>
+            操作结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.OperationType">
+            <summary>
+            操作类型 0-入场 1-出场
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoRequest.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+    </members>
+</doc>

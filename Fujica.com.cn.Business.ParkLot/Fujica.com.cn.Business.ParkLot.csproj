@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDA3DBEF-7D9A-4F81-A348-0A7E802C9BF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fujica.com.cn.Business.ParkLot</RootNamespace>
+    <AssemblyName>Fujica.com.cn.Business.ParkLot</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FujicaService.Infrastructure.Core, Version=1.2.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FujicaService.Infrastructure.Core.1.2.8\lib\net45\FujicaService.Infrastructure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FujicaService.Module.Entitys, Version=1.2.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FujicaService.Module.Entitys.1.2.9\lib\net45\FujicaService.Module.Entitys.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ReportManager.cs" />
+    <Compile Include="CameraSyncManager.cs" />
+    <Compile Include="CardServiceManager.cs" />
+    <Compile Include="ParkLotManager\BillingTemplateManager.cs" />
+    <Compile Include="ParkLotManager\BlacklistManager.cs" />
+    <Compile Include="ParkLotManager\CarInOutManager.cs" />
+    <Compile Include="ParkLotManager\CarTypeManager.cs" />
+    <Compile Include="ParkLotManager\CityCodeManager.cs" />
+    <Compile Include="OpenGateReasonManager.cs" />
+    <Compile Include="ParkLotManager\PermanentTemplateManager.cs" />
+    <Compile Include="ParkLotManager\DrivewayManager.cs" />
+    <Compile Include="ParkLotManager\FunctionPointManager.cs" />
+    <Compile Include="GatherAccountManager.cs" />
+    <Compile Include="ParkLotManager\ParkLotManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScanningManager.cs" />
+    <Compile Include="ParkLotManager\SpaceNumberManager.cs" />
+    <Compile Include="TrafficRestrictionManager.cs" />
+    <Compile Include="ParkLotManager\VehicleInOutManager.cs" />
+    <Compile Include="VoiceCommandManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fujica.com.cn.BaseConnect\Fujica.com.cn.BaseConnect.csproj">
+      <Project>{DAE1B3F6-AF79-43AA-A5E6-AECBF277F581}</Project>
+      <Name>Fujica.com.cn.BaseConnect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Business.Model\Fujica.com.cn.Business.Model.csproj">
+      <Project>{39AFEF4F-B677-4FB1-BE1B-2F959185C348}</Project>
+      <Name>Fujica.com.cn.Business.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Business.Base\Fujica.com.cn.Business.Base.csproj">
+      <Project>{B54CFB0F-A769-4600-8C89-50D2ECEAA03F}</Project>
+      <Name>Fujica.com.cn.Business.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Business.Toll\Fujica.com.cn.Business.Toll.csproj">
+      <Project>{428279c8-f93e-4852-9814-81fe7eb80e76}</Project>
+      <Name>Fujica.com.cn.Business.Toll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Business.User\Fujica.com.cn.Business.User.csproj">
+      <Project>{E722BBE2-760B-4746-8538-898DEBFB8A55}</Project>
+      <Name>Fujica.com.cn.Business.User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Communication.RabbitMQ\Fujica.com.cn.Communication.RabbitMQ.csproj">
+      <Project>{8DD5F3C2-716F-4AD3-B128-A859E3E9D23B}</Project>
+      <Name>Fujica.com.cn.Communication.RabbitMQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Context.IContext\Fujica.com.cn.Context.IContext.csproj">
+      <Project>{E1E964B4-E66C-421E-A32D-0679A4B458E9}</Project>
+      <Name>Fujica.com.cn.Context.IContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Context.Model\Fujica.com.cn.Context.Model.csproj">
+      <Project>{190D7431-4D13-470D-A166-AED2E04E90F4}</Project>
+      <Name>Fujica.com.cn.Context.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Context.ParkLot\Fujica.com.cn.Context.ParkLot.csproj">
+      <Project>{C01AB274-C2F1-47BC-ACCF-FC50177E8A36}</Project>
+      <Name>Fujica.com.cn.Context.ParkLot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.DataService.DataBase\Fujica.com.cn.DataService.DataBase.csproj">
+      <Project>{FC5DEA18-8DA1-4723-89C2-6520553EFF06}</Project>
+      <Name>Fujica.com.cn.DataService.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.DataService.RedisCache\Fujica.com.cn.DataService.RedisCache.csproj">
+      <Project>{22016540-8481-4252-BD50-8A05E8B1A7ED}</Project>
+      <Name>Fujica.com.cn.DataService.RedisCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Logger\Fujica.com.cn.Logger.csproj">
+      <Project>{5A2309B6-634A-40DB-9685-6B4A73634260}</Project>
+      <Name>Fujica.com.cn.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fujica.com.cn.Tools\Fujica.com.cn.Tools.csproj">
+      <Project>{C8799F9B-C457-4242-A8B5-5B8699B68983}</Project>
+      <Name>Fujica.com.cn.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

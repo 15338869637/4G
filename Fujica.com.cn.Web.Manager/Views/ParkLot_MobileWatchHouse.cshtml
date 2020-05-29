@@ -1,0 +1,2884 @@
+﻿
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrapValidator.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script> -->
+<script src="~/Scripts/jquery.datetimepicker.full.js"></script>
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrapValidator.js"></script>
+@*signalR 引用*@
+<script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+<script>
+    var ApiUrl = $.cookie("ApiUrl")
+    var reg = /^http(s)?:\/\/(.*?)\//
+    ApiUrl = reg.exec(ApiUrl)[0];
+    console.log('ApiUrl', ApiUrl)
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = ApiUrl + "signalr/hubs";
+    document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+<script src="~/Scripts/common.js"></script>
+<style>
+    .div1_1 {
+        position: absolute;
+        padding: 0 5px;
+        min-width: 76px;
+        height: 27px;
+        top: 0%;
+        left: 0%;
+        z-index: 999;
+        background: rgba(00,22,33,0.8);
+        text-align: center;
+    }
+
+    .div1_2 {
+        position: absolute;
+        width: 100%;
+        height: 35px;
+        z-index: 999;
+        background: rgba(00,22,33,0.5);
+        text-align: center;
+        color: #ffffff
+    }
+
+    .div2_1 {
+        position: absolute;
+        min-width: 76px;
+        height: 27px;
+        top: 5%;
+        left: 6%;
+        z-index: 999;
+        background: rgba(00,22,33,0.5);
+        text-align: center;
+    }
+
+    .div2_2 {
+        position: absolute;
+        width: 97%;
+        height: 35px;
+        z-index: 999;
+        background: rgba(00,22,33,0.5);
+        text-align: center;
+        color: #ffffff
+    }
+
+    .div3_1 {
+        position: absolute;
+        width: 76px;
+        height: 24px;
+        line-height: 24px;
+        top: 10px;
+        left: 5px;
+        z-index: 999;
+        background: rgba(00,22,33,0.5);
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    .div4_1 {
+        position: absolute;
+        min-width: 76px;
+        padding: 0 5px;
+        height: 27px;
+        top: 0%;
+        left: 0%;
+        z-index: 999;
+        background: rgba(00,22,33,0.8);
+        text-align: center;
+    }
+
+    .div4_2 {
+        position: absolute;
+        width: 100%;
+        height: 35px;
+        z-index: 999;
+        background: rgba(00,22,33,0.5);
+        text-align: center;
+        color: #ffffff
+    }
+
+    .div5_1 {
+        position: absolute;
+        min-width: 268px;
+        height: 42px;
+        top: 40%;
+        left: 24%;
+        z-index: 999;
+        font-size: 22px;
+        text-align: center;
+    }
+    .div5_1.green {
+        background: #178ce2c4;
+    }
+    .div5_1.green::before {
+        content:'';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url('/picture/success_ico.png') center;
+        background-size:24px 24px;
+        background-repeat:no-repeat;
+        position: relative;
+        top: 4px;
+        margin-right: 10px;
+    }
+
+    .div5_1.red {
+        background: #ff00008a;
+    }
+    .div5_1.red::before {
+        content:'';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url('/picture/warning_ico.png') center;
+        background-size:24px 24px;
+        background-repeat:no-repeat;
+        position: relative;
+        top: 4px;
+        margin-right: 10px;
+    }
+
+    .flex-box {
+        display: flex;
+    }
+
+    .flex-box.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-box.space-between {
+        justify-content: space-between;
+    }
+
+    .flex-box.column {
+        flex-direction: column;
+    }
+
+    .flex-box .flex1 {
+        flex: 1;
+    }
+
+    .m_r10 {
+        margin-right: 10px;
+    }
+
+    .flex-box .list {
+        padding: 0 10px;
+    }
+
+    .flex-box label {
+        margin: 0;
+    }
+
+    .maxBtn .btn {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .triangle {
+        color: #0092ff;
+        cursor: pointer;
+    }
+
+        .triangle:after {
+            content: '';
+            width: 0;
+            height: 0;
+            display: inline-block;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #0092ff;
+            position: relative;
+            top: -2px;
+        }
+
+        .triangle.open:after {
+            border-bottom: 8px solid #0092ff;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 0
+        }
+
+    .clear::after {
+        content: '';
+        width: 0;
+        height: 0;
+        display: block;
+        clear: both;
+    }
+
+    #lblstopDiscount .li {
+        display: none;
+    }
+
+    .img-camera {
+        background: url('/picture/camera.png') no-repeat center #e8f6ff;
+        position: relative;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .flex-box label.m_r10 {
+        margin-right: 10px;
+    }
+
+    .relative {
+        position: relative;
+    }
+
+        .relative .bottom {
+            bottom: 0;
+        }
+    .sign[disabled]{
+        background: #ccc !important;
+    }
+    .w24 {
+        width: 24%;
+    }
+    .center {
+        text-align: center;
+    }
+#camera {
+    width:100%;float:left;margin-left:10px;border:1px solid #dee2e6;height: 228px;
+}
+.camera-tit {
+    height:35px;background-color:#e8f6ff;line-height: 35px;border-bottom:1px solid #dee2e6;padding: 0 10px;
+}
+.status-type {
+    display: inline-block;
+    background: #1a9830;
+    color: #fff;
+}
+.status-type.no {
+    background: red;
+}
+#button_Gate[disabled='disabled'] {
+    border:1px solid #ccc !important;
+    color:#ccc !important;
+}
+#button_rephotograph,#button_reopen {
+    display: block !important;
+}
+</style>
+
+<div class="fleftContent" style="height: 100vh;overflow: auto;">
+    <div style="width:98%;min-width:1320px">
+        <div class="row">
+            <div class="col-lg-12" style="height:40px">
+                <div class="bs-component">
+                    <div class="alert alert-dismissible" style="float:left;width:100%">
+                        <div style="width:70%;float:left;min-width:880px">
+                            <div style="width:8%;float:left;margin-top:9px">
+                                <label>停车场：</label>
+                            </div>
+                            <div style="width:20%;float:left">
+                                <select id="ParkLotSelect" class="form-control" style="width:167px;">
+                                    <!-- <option value="">=请选择=</option> -->
+                                </select>
+                            </div>
+                            <div style="width:8%;float:left;margin-top:9px">
+                                <label>入场车道：</label>
+                            </div>
+                            <div style="width:20%;float:left">
+                                <select id="DriveWayEntrySelectt" class="form-control" style="width:167px;">
+                                    <option value="">=请选择=</option>
+                                </select>
+                            </div>
+                            <div style="width:8%;float:left;margin-top:9px">
+                                <label>出场车道：</label>
+                            </div>
+                            <div style="width:20%;float:left">
+                                <select id="DriveWayOutSelectt" class="form-control" style="width:167px;">
+                                    <option value="">=请选择=</option>
+                                </select>
+                            </div>
+                            <div style="width:8%;float:left;margin-top:9px">
+                                <label>剩余车位：</label>
+                            </div>
+                            <div style="width:5%;float:left;margin-top:10px">
+                                <label style="color:#078f09;font-weight:bold" id="Surplus"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row" style="margin-right:0px;margin-left:0px;">
+            <div class="col-lg-4" style="padding-right:0px">
+                <div class="bs-component">
+                    <div style="float:left;width:100%;text-align:center;border:1px solid #dee2e6;" class="relative">
+                        <div style="width:100%;height:320px;" class="img-camera">
+                            <img src="#" class="img-rounded hide" style="width:100%;height:320px;border-radius:0px" id="ImgUrlAdmission" />
+                        </div>
+                        <div class="div1_1">
+                            <label style="color:#e8f6ff;line-height:2;" class="div1_1_rc">入场识别</label>
+                        </div>
+
+                        <div class="div5_1" id="div5_1A">
+                            <div style="position: absolute; top: 0px;right: 5px;font-size: 12px;font-family: cursive;color: #fff;cursor: pointer;"
+                            onclick="$('#div5_1A').hide()">×</div>
+                            <label style="color:#e8f6ff;line-height:2;" id="lbl_div5_1A"></label>
+                        </div>
+                        <div class="div1_2 bottom" id="admission">
+                            <div style="width:100%;float:left;margin-top:8px" class="flex-box space-between">
+                                <div class="flex1">
+                                    <label id="enterlblCarNo" class="license-plate"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label id="InTime" class="admission-date"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="admission-time"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="vehicle-type"></label>
+                                </div>
+                                <div class="flex1">
+                                    <button class="btn" id="button_off" style="background-color: rgb(0, 146, 255);color: rgb(255, 255, 255);padding:0px;width:60px;" type="button" onclick="OpenGate(AdmissionObj)">开闸</button>
+                                </div>
+                                <div class="flex1">
+                                    <button class="btn" id="button_reopen" style="background-color: rgb(0, 146, 255);color: rgb(255, 255, 255);padding:0px;width:60px;" type="button" onclick="PhotographCar($('#DriveWayEntrySelectt option:selected').val(), 'r')">重拍</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;width:100%;height:15px">
+                    </div>
+                    @*/进出场记录*@
+                    <div style="float:left;width:100%;text-align:center;">
+                        <div class="row" style="margin-left:0%;width:100%">
+                            <div style="float:left;width:100%;height:35px;background-color:#e8f6ff;border:1px solid #dee2e6;box-sizing: border-box;" class="flex-box center">
+                                <div class="list flex-box center">
+                                    <input class="magic-radio" type="radio" name="Enable" id="Enable0" value="0" checked="checked" onchange="PresenceOfVehicle('')">
+                                    <label for="Enable0" style="min-width:56px">在场记录 </label>
+                                </div>
+                                <div class="list flex-box center">
+                                    <input class="magic-radio" type="radio" name="Enable" id="Enable1" value="1" onchange="GetDriveWayHalfHourCars('')">
+                                    <label for="Enable1" style="min-width:56px">出场记录 </label>
+                                </div>
+                                <div class="list flex1 flex-box center">
+                                    <input type="text" class="flex1 m_r10 form-control" placeholder="" name="Always" id="ParkingName" style="height:25px">
+                                    <button id="button_Gate" class="btn" style="background-color:#0092ff;color:#e8f6ff;height:25px;padding: 0px 12px;" type="button" onclick="SearchForVehicles()">搜索</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left:0%;width:100%;border:1px solid #dee2e6;overflow:auto;height:285px;box-sizing: border-box;" id="div_Vehiclelist">
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style="padding-right:0px">
+                <div class="bs-component">
+                    <div style="float:left;width:100%;border:1px solid #dee2e6;" class="relative">
+                        <div style="width:100%;height:320px;" class="img-camera">
+                            <img src="#" class="img-rounded hide" style="width:100%;height:320px;border-radius:0px" id="ImgUrlAppearance" />
+                        </div>
+                        <div class="div1_1">
+                            <label style="color:#e8f6ff;line-height:2;" class="div1_1_cc">出场识别</label>
+                        </div>
+                        <div class="div5_1" id="div5_1B">
+                            <div style="position: absolute; top: 0px;right: 5px;font-size: 12px;font-family: cursive;color: #fff;cursor: pointer;"
+                            onclick="$('#div5_1B').hide()">×</div>
+                            <label style="color:#e8f6ff;line-height:2;" id="lbl_div5_1B"></label>
+                        </div>
+                        <div class="div1_2 bottom" id="appearance">
+                            <div style="width:100%;float:left;margin-top:8px" class="flex-box space-between">
+                                <div class="flex1">
+                                    <label class="license-plate"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="admission-date"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="admission-time"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="vehicle-type"></label>
+                                </div>
+                                <div class="flex1">
+                                    <button class="btn" id="button_additionalrecording" style="background-color:#0092ff; color:#ffffff;padding:0px;width:60px;" type="button" onclick="AddInRecord()">补录</button>
+                                </div>
+                                <div class="flex1">
+                                    <button class="btn" id="button_rephotograph" style="background-color:#0092ff; color:#ffffff;padding:0px;width:60px;" type="button" onclick="PhotographCar($('#DriveWayOutSelectt option:selected').val(), 'c')">重拍</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="float:left;width:100%;height:15px">
+                    </div>
+                    <div style="float:left;width:100%;border:1px solid #dee2e6;" class="relative">
+                        <div style="width:100%;height:320px;" class="img-camera">
+                            <img src="#" class="img-rounded hide" style="width:100%;height:320px;border-radius:0px" id="ImgUrlAdmissionPhoto" />
+                        </div>
+                        <div class="div4_1">
+                            <label style="color:#e8f6ff;line-height:2;">入场照片</label>
+                        </div>
+                        <div class="div4_2 bottom" id="exit_identification">
+                            <div style="width:100%;float:left;margin-top:8px" class="flex-box center">
+                                <div class="flex1">
+                                    <label class="license-plate"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="admission-date"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="admission-time"></label>
+                                </div>
+                                <div class="flex1">
+                                    <label class="vehicle-type"></label>
+                                </div>
+                                <div class="flex1">
+                                </div>
+                                <div class="flex1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style="padding-right:0px">
+                <div style="width:100%;float:left;">
+                    <div style="border:1px solid #dee2e6;width:100%;float:left;margin:0px 10px 10px 10px">
+                        <div style="width:100%;float:left; background-color:#e8f6ff;overflow-y: auto;height:286px">
+                            <div style="width:90%;margin:25px" id="presence_information" class="clear">
+                                <div style="width:100%;float:left;height:35px">
+                                    <div style="width:20%;float:left;">
+                                        车牌号码：
+                                    </div>
+                                    <div style="width:80%;float:left;text-align:left">
+                                        <div style="width:60%;float:left;"> <label id="lblCarNo" class="CarNo"></label></div>
+                                        <div style="width:40%;color:#0092ff;float:left;display:none;" id="div_revise">
+                                            <a onclick="OpenCorrectCarNo($('#lblCarNo').text(), true)" style="cursor: pointer;">
+                                                <img src="~/picture/revise.png" />
+                                                车牌修改
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;height:35px">
+                                    <div style="width:20%;float:left;">
+                                        车辆类型：
+                                    </div>
+                                    <div style="width:80%;float:left;text-align:left">
+                                        <label id="lblCarTypeName" class="CarTypeName"></label>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;height:35px">
+                                    <div style="width:20%;float:left;padding:3px" id="lblt_horoughfare">
+                                        出口通道：
+                                    </div>
+                                    <div style="width:80%;float:left;padding:3px;text-align:left">
+                                        <label id="lbldrivewayName" class="drivewayName"></label>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;height:35px;">
+                                    <div style="width:20%;float:left;padding:3px" id="lbl_tiem">
+                                        入场时间：
+                                    </div>
+                                    <div style="width:80%;float:left;padding:3px;text-align:left">
+                                        <label id="EventTime" class="EventTime"></label>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;height:35px;">
+                                    <div style="width:20%;float:left;padding:3px" id="lbl_tiem">
+                                        出场时间：
+                                    </div>
+                                    <div style="width:80%;float:left;padding:3px;text-align:left">
+                                        <label class="OutTime" id="OutTime"></label>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;height:35px;">
+                                    <div style="width:20%;float:left;padding:3px" id="lbl_tiem">
+                                        停车时长：
+                                    </div>
+                                    <div style="width:80%;float:left;padding:3px;text-align:left">
+                                        <label class="StopTime"></label>
+                                    </div>
+                                </div>
+                                <div style="width:100%;float:left;">
+                                    <div style="width:20%;float:left;padding:3px" id="lbl_tiem">
+                                        优惠劵：
+                                    </div>
+                                    <div style="width:80%;float:left;text-align:left">
+                                        <label></label>
+                                        <div id="lblstopDiscount" class='flex-box StopDiscount'>
+                                            <!-- <div class="list flex1">
+                                                <p>优惠劵1</p>
+                                                <p>优惠劵2</p>
+                                                <p class="li">优惠劵3</p>
+                                                <p class="li">优惠劵4</p>
+                                                <p class="li">优惠劵5</p>
+                                            </div>
+                                            <div class="triangle" onclick="triangle(this)">
+                                                展开全部
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width:100%;float:left;"></div>
+                        <div style="display:block" id="div_cost">
+                            <div style="height:100px">
+                                <div style="width:100%;float:left;height:10px">
+                                </div>
+                                <div style="width:100%;float:left;text-align:center;height:35px">
+                                    <div style="width:25%;float:left;" id="parking_fee">停车费用：</div>
+                                    <div class="discount_amount" style="width:25%;float:left;" id="discount_amount">优惠金额： </div>
+                                    <div class="discount_amount" style="width:25%;float:left;" id="actual_amount">应缴费用：</div>
+                                    <div style="width:25%;float:left;" id="payment_amount">已缴费用： </div>
+                                </div>
+                            </div>
+                            <div style="width:100%;float:left;text-align:center;font-size:20px">
+                                <div style="width:25%;float:left;color:#ff0000"><label id="parkingFee">0.00</label></div>
+                                <div class="discount_amount" style="width:25%;float:left;color:#ff0000"><label id="discountAmount">0.00</label> </div>
+                                <div class="discount_amount" style="width:25%;float:left;color:#ff0000"><label id="actualAmount">0.00</label></div>
+                                <div style="width:25%;float:left;color:#ff0000"><label id="paymentAmount">----</label> </div>
+                            </div>
+                        </div>
+                        <div style="width:100%;float:left;text-align:center;padding:10px;" class="maxBtn flex-box space-between" id="pan_Gate">
+                            <button class="btn" id="button_Gate" style="background-color:#ffffff;border:1px solid #0092ff;color:#0092ff;" type="button" onclick="OpenGate(AppearanceObj)">手动开闸</button>
+                            <button id="button_New" class="btn sign" style="background-color:#0092ff;color:#e8f6ff;" type="button" onclick="FreeOpenGate()">免费开闸</button>
+                            <button id="button_InRecord" class="btn sign" style="background-color:#0092ff;color:#e8f6ff;" type="button" onclick="ChargeOpenGate()">收费放行</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:100%;float:left;margin-left:10px;border:1px solid #dee2e6;height: 228px" id="camera" class="flex-box column">
+                    <div style="height:35px;background-color:#e8f6ff;line-height: 35px;border-bottom:1px solid #dee2e6;padding: 0 10px;" class="flex-box camera-tit">
+                        <div class="w24 center">车道</div>
+                        <div class="w24 center">相机</div>
+                        <div class="w24 center">连接状态</div>
+                        <div class="flex1 center">闸道状态</div>
+                    </div>
+                    <div class="content flex1" style="overflow-y: auto;">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---弹出在场车辆-->
+<div class="col-sm-12">
+    <div class="modal fade" id="Show_PresenceOfVehicle" tabindex="-1" role="dialog" aria-labelledby="" style="margin-left:-10%;margin-top:0%">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content" style="width: 750px;height: 450px;">
+                <div class="modal-header header " style="background-color:#0092ff">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">在场详情</h3>
+                </div>
+                <div class="modal-body">
+                    <!-- <div style="width:100%;float:left;font-size:12px;height:70%">
+                        <div class="col-lg-7" style="padding-right:0px;">
+                            <img src="#" style="width:100%;height:100%" id="PresenceOfVehicle_ImgUrl" />
+                        </div>
+                        <div class="col-lg-5" style="padding-right:0px">
+                            <div style="width:40%;float:left;text-align:center;padding:10px">车牌号码:</div>
+                            <div style="width:60%;float:left;text-align:left;padding:10px">
+                                <label id="lblcarNo"></label>
+                            </div>
+                            <div style="width:40%;float:left;text-align:center;padding:10px">车辆类型:</div>
+                            <div style="width:60%;float:left;text-align:left;padding:10px"><label id="lbl_CarTypeName"></label></div>
+                            <div style="width:40%;float:left;text-align:center;padding:10px">入口车道:</div>
+                            <div style="width:60%;float:left;text-align:left;padding:10px"><label id="lblentranceName"></label></div>
+                            <div class="car-out" style="width:40%;float:left;text-align:center;padding:10px">出口车道:</div>
+                            <div class="car-out" style="width:60%;float:left;text-align:left;padding:10px"><label id="outlblentranceName"></label></div>
+                            <div style="width:40%;float:left;text-align:center;padding:10px"><label id="lblTime">入场时间</label> </div>
+                            <div style="width:60%;float:left;text-align:left;padding:10px"><label id="lblinTime"></label></div>
+                            <div class="car-out" style="width:50%;float:left;text-align:center;padding:10px">出场时间:</div>
+                            <div class="car-out" style="width:50%;float:left;text-align:left;padding:10px"><label></label></div>
+                            <div style="width:40%;float:left;text-align:center;padding:10px">停车时长:</div>
+                            <div style="width:60%;float:left;text-align:left;padding:10px"><label id="lblstopLong"></label></div>
+                            <div style="width:100%;float:left;text-align:left;padding:10px;text-align:center">
+                                <button class="btn" id="button_New" style="background-color:#ffffff;border:1px solid #808080;color:#808080;" type="button" onclick="OpenCorrectCarNo('')">车牌修改</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="flex-box space-between">
+                        <div class="flex1" style="text-align: center;">
+                            <img src="#" style="max-width:100%;height:278px" id="PresenceOfVehicle_ImgUrl" />
+                        </div>
+                        <div class="content flex-box" style="width:200px;flex-direction: column;">
+                          <div class="flex1 flex-box" style='align-items: center;'><span>车牌号码:</span><span class="flex1">adf</span></div>
+                          <div class="flex1 flex-box" style='align-items: center;'><span>车辆类型:</span><span class="flex1">adf</span></div>
+                          <div class="flex1 flex-box" style='align-items: center;'><span>入口车道:</span><span class="flex1">adf</span></div>
+                          <div class="flex1 flex-box" style='align-items: center;'><span>出口车道:</span><span class="flex1">adf</span></div>
+                          <div class="flex1 flex-box" style='align-items: center;'><span>入场时间:</span><span class="flex1">adf</span></div>
+                          <div class="flex1 flex-box" style='align-items: center;'><span>出场时间:</span><span class="flex1">adf</span></div>
+                          <div class="flex1 flex-box" style='align-items: center;'><span>停车时长:</span><span class="flex1">adf</span></div>
+                        </div>
+                    </div>
+                    <div class="Cost flex-box space-between" style="margin-top: 5px;">
+                        <div class="flex1 flex-box">
+                            <div class="flex1" style="display:flex;flex-direction: column;text-align: center;">
+                                <p>停车总金额</p>
+                                <p class="Cost1" style="text-align: center;font-size: 24px">1</p>
+                            </div>
+                            <div class="flex1" style="display:flex;flex-direction: column;text-align: center;">
+                                <p>实收金额</p>
+                                <p class="Cost2" style="text-align: center;font-size: 24px">2</p>
+                            </div>
+                            <div class="flex1" style="display:flex;flex-direction: column;text-align: center;">
+                                <p>优惠金额</p>
+                                <p class="Cost3" style="text-align: center;font-size: 24px">3</p>
+                            </div>
+                            <div class="flex1" style="display:flex;flex-direction: column;text-align: center;">
+                                <p>免费金额</p>
+                                <p class="Cost4" style="text-align: center;font-size: 24px">4</p>
+                            </div>
+                        </div>
+                        <div style="width:200px;">
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 开闸 -->
+<div class="col-sm-12">
+    <div class="modal fade" id="Show_GateReason" tabindex="-1" role="dialog" aria-labelledby="" style="margin-left:-10%;margin-top:10%">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content" style="width: 450px;height:360px">
+                <div class="modal-header header " style="background-color:#0092ff;height:60px">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">在场详情</h3>
+                </div>
+                <div class="modal-body">
+                    <div style="width:100%;float:left;font-size:14px;">
+                        <div class="col-lg-12" style="padding-right:0px; line-height: 30px;">
+                            <div class="form-group flex-box">
+                                <label for="NewCatOn" class="m_r10" style="width:20%;text-align:right;">名称:</label>
+                                <input type="text" class="form-control" style="width:50%;" name="NewCatOn" placeholder="请输入名称">
+                            </div>
+                            <div class="form-group flex-box">
+                                <label for="NewCatOn" class="m_r10" style="width:20%;text-align:right;">车牌号:</label>
+                                <input type="text" class="form-control" style="width:50%;" name="NewCatOn" placeholder="请输入车牌">
+                            </div>
+                            <div class="form-group flex-box">
+                                <label for="NewCatOn" class="m_r10" style="width:20%;text-align:right;">车类型:</label>
+                                <select id="u4816_input" class="form-control" style="width:50%;">
+                                    <option value="临时车A">临时车A</option>
+                                    <option value="临时车B">临时车B</option>
+                                </select>
+                            </div>
+                            <div class="form-group flex-box">
+                                <label for="NewCatOn" class="m_r10" style="width:20%;text-align:right;">开闸原因:</label>
+                                <select id="u4813_input" class="form-control" style="width:50%;">
+                                    <option value="重要访客">重要访客</option>
+                                    <option value="无法识别">无法识别</option>
+                                    <option value="识别不开闸">识别不开闸</option>
+                                    <option value="其它">其它</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="OpenGate()" style="background-color:#0092ff"><span class="glyphicon" aria-hidden="true"></span>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 车牌修正 -->
+<form class="" id="addDepForm" autocomplete="off">
+    <div class="col-sm-12">
+        <div class="modal fade" id="myModa3" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+            <div class="modal-dialog" role="document" style="margin-left:0px">
+
+                <div class="modal-content">
+                    <div class="modal-header header title_background-color">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="div_AddInRecord">请输入车牌信息</h3>
+                    </div>
+                    <div class="modal-body">
+                        @*<div style="width:100%;float:left;margin-left:55px">
+                                <label for="txt_departmentname">原车牌：</label>
+                                <label id="update_OldCarNo"></label>
+                            </div>*@
+                        <div style="width:100%;float:left;height:60px;margin-left:15%;">
+                            <div style="width:70%;float:left;height:40px">
+                                <div style="width:75%;float:left">
+                                    <label style="line-height:22px;float:left;text-align:right">原车牌：</label>
+                                    <input class="form-control input-sm" id="Original_CarNo" type="text" style="float:left;width:70%" name="lblOriginal_CarNo">
+                                </div>
+                                <div style="width:25%;float:left">
+                                    <label style="color:#cc0000" id="lbl_CarNo"></label>
+                                </div>
+                            </div>
+                            <div style="width:70%;float:left;height:40px">
+                                <div style="width:75%;float:left">
+                                    <label style="line-height:22px;float:left;text-align:right">现车牌：</label>
+                                    <input class="form-control input-sm" id="New_CarNo" type="text" style="float:left;width:70%" name="lblNew_CarNo">
+                                </div>
+                                <div style="width:25%;float:left">
+                                    <label style="color:#cc0000" id="lbl_NewCarNo"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div style="width:70%;float:left;margin-left:15%">
+                                <label style="line-height:22px;float:left;width:25%;text-align:right">新车牌号：</label>
+                                <input class="form-control input-sm" id="New_CarNo" type="text" style="width:200px;float:left;width:60%;" name="lblNew_CarNo">
+                                <label style="color:#cc0000">请输入正确的车牌号</label>
+                            </div>*@
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        <button type="button" id="btnSavaCorrectCarNo" class="btn btn-primary"  onclick="SavaCorrectCarNo()" style="background-color:#0092ff">保存</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 弹出入场补录 -->
+    <div class="col-sm-12">
+        <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+            <div class="modal-dialog" role="document" style="margin-left:0px">
+                <div class="modal-content">
+                    <div class="modal-header header title_background-color">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="div_AddInRecord">请输入车牌信息</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="margin-left:50px;">
+                            <label for="txt_departmentname" style="margin-left:-12px">当前车场：</label>
+                            <label id="parkName"></label>
+                            <input type="hidden" id="ParkingCode2" />
+                        </div>
+                        <div class="form-group" style="margin-left:50px;height:30px;">
+                            <div style="width:15%;float:left;margin-top:7px">
+                                <label for="txt_departmentname" style="">车牌号：</label>
+                            </div>
+                            <div style="width:52%;float:left;">
+                                <input type="text" id="CarNo_3" disabled class="form-control input-sm" style="width:190px;height:35px" name="lblNewCarNo" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left:50px;height:30px">
+                            <div style="width:15%;float:left;margin-top:7px">
+                                <label for="txt_departmentname">车类型：</label>
+                            </div>
+                            <div style="width:52%;float:left">
+                                <select id="CarTypeModel" class="form-control" disabled style="height:35px;width:190px;">
+                                    <option value="">=请选择=</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left:50px;height:30px">
+                            <div style="width:20%;float:left;margin-left:-13px;margin-top:7px">
+                                <label for="txt_departmentname">入场车道：</label>
+                            </div>
+                            <div style="width:80%;float:left">
+                                <select id="VehicleLane" class="form-control" disabled style="height:35px;width:190px;margin-left:-5px">
+                                    <option value="">=请选择=</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left:50px;height:30px">
+                            <div style="width:20%;float:left;margin-left:-13px;margin-top:7px">
+                                <label for="txt_departmentname">入场时间：</label>
+                            </div>
+                            <div style="width:80%;float:left">
+                                <div class="input-group date form_date col-md-5" style="width:220px;float:left;margin-left:-20px">
+
+                                    <input class="form-control" type="text" value="" id="MinInTime" style="background-color:#ffffff;width:155px" name="lblMinInTime">
+                                    <span class="input-group-addon" style="background-color:#ffffff">X<span class="glyphicon glyphicon-remove"></span></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" value="" id="ParkingCode" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        <button type="submit" id="Sava_AddInRecord" class="btn btn-primary" data-dismiss="modal" onclick="SetAddInRecord()" style="background-color:#0092ff">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<input type="hidden" id="DriveWayMAC" value="" />
+<script type="text/javascript">
+
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    var ProjectGuid = $.cookie("ProjectGuid");
+    var DeviceMac = {}; // 存储转换车道名
+    var OpenGateReasonList = null; // 开闸原因列表
+    var CarTypeList = {}; // 车类列表
+    var RemainingSpace = null; // 获取总车位
+    var nub = 0;
+    var connectionId = null;
+    var flagInit = {}
+
+    var chat,chatHubProxy;
+    function initConnection(newFlag, cb) {
+        chat = $.hubConnection(ApiUrl);
+        chatHubProxy = chat.createHubProxy('chatHub');
+        chatHubProxy.on('broadcastMessage',function(data){
+            callback(data);
+        });
+        chatHubProxy.on('heartBeatMessage',function(data){
+            cameraStatus(data);
+        });
+        
+        chat.start().done(function(){
+            console.log('connection id=' + chat.id);
+            connectionId = chat.id;
+            if (newFlag) {
+                ParkLot({newFlag})
+                ParkLot_r({newFlag})
+                ParkLot_c({newFlag})
+            }
+            cb && cb()
+        });
+        chat.reconnecting(function () {
+            console.log('SignalR正在重新连接中...')
+        });
+        chat.reconnected(function () {
+            console.log('SignalR重新连接成功...')
+        });
+        chat.disconnected(function () {
+            console.log('SignalR断开连接...');
+            setTimeout(function () {
+                // chat.start().done(function(){
+                //     console.log('connection id=>' + chat.id);
+                //     chatHubProxy.on('broadcastMessage',function(data){
+                //         callback(data);
+                //     });
+                //     chatHubProxy.on('heartBeatMessage',function(data){
+                //         cameraStatus(data);
+                //     });
+                //     connectionId = chat.id
+                // });
+                initConnection(true)
+            }, 1000); // 1秒后重新连接
+        });
+    }
+    function ParkLot ({newFlag = null}, cb) { // 停车场change事件
+        $('#DriveWayEntrySelectt option[value!=""],#DriveWayOutSelectt option[value!=""]').remove()
+        $('#camera .content').html('');
+        LoadingLane($("#ParkLotSelect").val(), function (list, arr) { // 加载车道下拉列表 及 半小时车辆列表
+            GateStateList($("#ParkLotSelect").val(), list); // 闸口状态列表 
+            cb && cb(arr)
+        }); 
+        GetRemainingSpace($("#ParkLotSelect").val()); // 获取剩余车位
+        Binding($("#ParkLotSelect").val(), 't', chatHubProxy, newFlag); // 绑定停车场获取相机状态
+        ResetAdmission() // 清空入场状态
+        ResetAppearance() // 清空出场状态
+    }
+    function ParkLot_r ({newFlag}, d) { // 入场车道change事件
+        ResetAdmission(); // 重置
+        var val = $('#DriveWayEntrySelectt option:selected').val() || d
+        Binding(val, 'r', chatHubProxy, newFlag);
+        $('.div1_1_rc').text(val ? $('#DriveWayEntrySelectt option:selected').text() : '入场车道');
+        if (!flagInit['r']) {
+            console.log('ParkLot_r')
+            $.get('/Home/Maps/ParkLot/GetGateData?parkingCode=' + $("#ParkLotSelect").val() + '&deviceMacAddress=' + val, function (data, status) {
+                console.log('ParkLot_r =>', data)
+                if (data.IsSuccess && data.Result) {
+                    callback(data.Result)
+                }
+            });
+            flagInit['r'] = true
+        }
+    }
+    function ParkLot_c ({newFlag}, d) { // 出场车道change事件
+        ResetAppearance();
+        var val = $('#DriveWayOutSelectt option:selected').val() || d
+        Binding(val, 'c', chatHubProxy, newFlag);
+        $('.div1_1_cc').text(val ? $('#DriveWayOutSelectt option:selected').text() : '出场车道');
+        if (!flagInit['c']) {
+            console.log('ParkLot_c')
+            $.get('/Home/Maps/ParkLot/GetGateData?parkingCode=' + $("#ParkLotSelect").val() + '&deviceMacAddress=' + val, function (data, status) {
+                console.log('ParkLot_c =>', data)
+                if (data.IsSuccess && data.Result) {
+                    callback(data.Result)
+                }
+            });
+            flagInit['c'] = true
+        }
+    }
+    $(document).ready(function () {
+        initConnection(false, function () {
+            GetParkLotList(function () {
+                ParkLot({}, function (arr) {
+                    ParkLot_r({}, arr[0])
+                    ParkLot_c({}, arr[1])
+                })
+            });
+        })
+        $("#div5_1A").hide();
+        $("#div5_1B").hide();
+        $("#pan_Gate button").attr('disabled', 'disabled');
+        $("#button_reopen").hide(); //重拍
+        $("#button_off").hide(); //开闸
+
+        $("#button_rephotograph").hide(); //出场开闸
+        $("#button_additionalrecording").hide(); //出场补录
+
+
+        // WebSocketTest();
+        
+        formValidator();
+        // var connection = $.hubConnection('http://192.168.15.115:8020');//45852  如果前后端为同一个端口，可不填参数。如果前后端分离，这里参数为服务器端的URL
+        // var demoChatHubProxy = connection.createHubProxy('chatHub');
+        // demoChatHubProxy.on('broadcastMessage', Capture_Send);
+        // connection.start()
+        //     .done(function () {
+        //         console.log('Now connected, connection ID=' + connection.id);
+        //         console.log("Connected,transport=" + connection.transport.name);
+        //
+        //     })
+        //     .fail(function () {
+        //        // console.log('Could not connect' + connection.data);
+        //         console.log("3232332:" + connection.data);
+        //     });
+        $("#ParkLotSelect").on('change', ParkLot)
+        $("#DriveWayEntrySelectt").on('change', ParkLot_r)
+        $("#DriveWayOutSelectt").on('change', ParkLot_c)
+        var timeOut = null
+        $('#div_Vehiclelist').scroll(function () {
+            console.log('flag', flag)
+            if (!flag) {
+                return
+            }
+            var height = $('#div_Vehiclelist')[0].scrollHeight - 285
+            if (height - $('#div_Vehiclelist').scrollTop() < 30) {
+                // Rendering()
+                if (timeOut) clearTimeout(timeOut)
+                timeOut = setTimeout(function () {
+                  SearchForVehicles(currIndex / pageSize + 1)
+                }, 300)
+            }
+        })
+    });
+
+    function formValidator() {
+
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:
+            {
+                lblNewCarNo: {
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '请输入正确的车牌号'
+                        }
+                    }
+                },
+
+                lblMinInTime:
+                {
+                    trigger: 'change',
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        }
+                    }
+                },
+
+
+                lblNew_CarNo: {
+                    validators: {
+                        notEmpty: {
+                            message: '.'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '.'
+                        }
+                    }
+                },
+
+                lblOriginal_CarNo: {
+                    validators: {
+                        notEmpty: {
+                            message: '.'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '.'
+                        }
+                    }
+                },
+
+
+            }
+        });
+
+
+    }
+
+    //日期格式初始化
+    // $('.form_date').datetimepicker({
+    //     minView: "0", //选择日期后，不会再跳转去选择时分秒
+    //     format: 'yyyy-mm-dd hh:ii',
+    //     language: 'zh-CN',//显示中文
+    //     weekStart: 1,
+    //     todayBtn: 1,
+    //     autoclose: 1,
+    //     todayHighlight: 1,
+    //     startView: 2,
+    //     forceParse: 0,
+    //     showMeridian: 1,
+    //     days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+    //     daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    //     daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+    //     months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    //     monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    //     today: '今天',
+    //     suffix: [],
+    //     meridiem: []
+    // });
+    $('#MinInTime').datetimepicker({
+        format: 'Y-m-d H:i',
+        maxDate: new Date(),
+        onChangeDateTime: function (...arr) {
+          console.log('data', arr)
+        },
+        step: 15
+    })
+
+    //获取角色权限api/Personnel/GetRolePermission?Guid={Guid}
+    function GetRolePermission() {
+        $loading_show();
+        var RoleGuid = $.cookie("RoleGuid");
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + RoleGuid,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            async: false,
+            success: function (data) {
+                if (data.ParkingCodeList) {
+                    data.ParkingCodeList = [...(new Set(data.ParkingCodeList))]
+                }
+                if (data.IsSuccess == true) {
+                    RoleGuidList = data.ParkingCodeList;
+                }
+                $loading_hide();
+            },
+        })
+    }
+
+    //获取车场
+    function GetParkLotList(cb) {
+        $loading_show();
+        GetRolePermission();
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=' + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    for (var key in json) {
+                        var parkCode = json[key].ParkCode;
+                        for (var roleGuidList in RoleGuidList) {
+                            if (RoleGuidList[roleGuidList] == parkCode) {
+                                var parkName = json[key].ParkName;
+                                if (json[key].Existence == true) {
+                                    $("#ParkLotSelect").append("<option value='" + parkCode + "' >" + parkName + "</option>");
+                                }
+                            }
+                        }
+                    }
+                    cb && cb()
+                }
+                $loading_hide();
+            }
+        })
+    }
+
+    //入场在场车辆
+    function PresenceOfVehicle(CarNo, page) {
+        $loading_show();
+        if (!page) {
+          $('#div_Vehiclelist').empty();
+          EntryArr = [];
+          currIndex = 0;
+          pageIndex = 1;
+        }
+        var ParkingCode = $("#ParkLotSelect").val();
+        var jsonstr = { 
+            "ParkingCode": ParkingCode, 
+            "PageIndex": page || 1, 
+            "PageSize": 10, 
+            "LicensePlate": CarNo || "", 
+            FieldSort: 'AdmissionDate', 
+            Sort: 1 
+            }
+        $.ajax({
+            url: "/Home/Maps/Report/SearchPresentRecord",
+            type: 'POST',
+            data: jsonstr,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var html = "";
+                    var index = 0;
+                    console.log('data.PaperCouponList', data.PaperCouponList)
+                    console.log('CarType.CarTypeName', CarType.CarTypeName)
+                    EntryArr = EntryArr.concat(data.PaperCouponList.map(item => {
+                      item.CarType = CarType.CarTypeName[item.CarType]
+                      return item
+                    }));
+                    flag = true
+                    TotalCount = data.TotalCount
+                    Rendering(page || 1);
+                }
+                $loading_hide();
+            },
+            error: function (xhr) {
+                // 导致出错的原因较多，以后再研究
+                $message('d', 'error:' + JSON.stringify(xhr));
+                $loading_hide();
+            }
+        })
+    }
+
+    //获取选择车道半小时内经过的车辆列表
+    function GetDriveWayHalfHourCars(CarNo, page) {
+        $loading_show();
+        if (!page) {
+          $('#div_Vehiclelist').empty();
+          ExitArr = [];
+          currIndex = 0;
+          pageIndex = 1;
+        }
+        var ParkingCode = $("#ParkLotSelect").val();
+        var jsonstr = { 
+            "ParkingCode": ParkingCode, 
+            "PageIndex": page || 1, 
+            "PageSize": pageSize,
+            "LicensePlate": CarNo || "", 
+            'FieldSort': 'AppearanceDate',
+            'Sort': 1
+        }
+        $.ajax({
+            url: "/Home/Maps/Report/SearchParkingRecord",
+            type: 'POST',
+            data: jsonstr,
+            success: function (data) {
+                $("#tbody_DriveWay").text("");
+                if (data.IsSuccess == true) {
+                    var html = "";
+                    var index = 0;
+                    ExitArr = ExitArr.concat(data.PaperCouponList);
+                    flag = true
+                    TotalCount = data.TotalCount
+                    Rendering(page || 1);
+                }
+                $loading_hide();
+            }
+        })
+    }
+
+    // 渲染车辆列表
+    var ExitArr = []; // 出场数据
+    var EntryArr = []; // 入场数据
+    var currIndex = 0; // 当前索引
+    var pageIndex = 1;
+    var pageSize = 10;
+    var flag = true; // 控制渲染，避免重复触发
+    var TotalCount = 0;
+    function Rendering(index) {
+        console.log('Rendering', index, flag, TotalCount)
+        var Enable = $('input:radio[name="Enable"]:checked').val();
+        var html = "";
+        var date = function (time) {
+            var dateee = new Date(time).toJSON();
+            return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        }
+        if (Enable === '0') { // 入场
+            var json = EntryArr;
+            for (var key = currIndex; key < json.length; key++) {
+                var parkName = json[key].ParkName;
+                var carNo = json[key].LicensePlate;
+                var guid = json[key].Guid;
+                var carTypeName = json[key].CarType;
+                var entranceName = json[key].Entrance;
+                var inTime = json[key].AdmissionDate;
+                var inImgUrl = json[key].InImgUrl;
+                if (json[key].InImgUrl == "") {
+                    inImgUrl = "";
+                }
+                if (json[key].InImgUrl == "/picture/shownocapture.png") {
+                    inImgUrl = "/picture/nocapture.png";
+                }
+                var remark = json[key].Remark;
+                var str = JSON.stringify({
+                    Enable: '0',
+                    inImgUrl,
+                    carNo,
+                    carTypeName,
+                    Entrance: json[key].Entrance,
+                    CarTypeGuid,
+                    DriveWayMAC,
+                    date: date(inTime),
+                    InTime: date(json[key].AdmissionDate)
+                }).replace(/"/g, '\\"')
+                html = html + '<div data-carno="'+carNo+'" class="col-md-4" style = "padding-left:5px;padding-right:5px;padding-top:10px">' +
+                    '<div style="width:100%;float:left;">' +
+                    "<a onclick='ShowPresenceOfVehicle(\"" + str + "\", 0)'><img src='" + inImgUrl + "' style='width:100%;height:90px' /></a>" +
+                    '</div>' +
+                    '<div style="width:100%;float:left">' +
+                    '<label style="width:50%;float:left">' + carNo + '</label> <label style="width:50%;float:left">' + carTypeName + '</label>' +
+                    '</div>' +
+                    '<div style="width:100%;float:left">' +
+                    '<label style="width:100%;float:left">' + date(inTime) + '</label> ' +
+                    '</div>' +
+                    '<div class="div3_1">' +
+                    '<label style="color:#e8f6ff;line-height:2;">' + entranceName + '</label>' +
+                    '</div>' +
+                    '</div >';
+
+            }
+            $('#div_Vehiclelist').append(html);
+            if (TotalCount == json.length) {
+                flag = false
+            }
+            console.log('currIndex', currIndex, key, flag)
+            currIndex = key
+        } else {// 出场
+            var json = ExitArr;
+            console.log('json', currIndex, ExitArr.length)
+            for (var key = currIndex; key < json.length; key++) {
+                var H = parseInt(json[key].LongStop / 60);
+                var M = json[key].LongStop % 60
+                var stopLong = `${H}小时${M}分钟`;
+                var DriveWayMAC = json[key].Export;
+                var carNo = json[key].LicensePlate;
+                var inImgUrl = json[key].OutImgUrl;
+                var EventTime = json[key].AppearanceDate;
+                var CarTypeGuid = CarType.CarTypeName[json[key].CarType];
+                var Remark = json[key].Remark;
+                if (json[key].ImgUrl == "") {
+                    inImgUrl = "";
+                }
+                if (json[key].ImgUrl == "/picture/shownocapture.png") {
+                    inImgUrl = "/picture/nocapture.png";
+                }
+                var str = JSON.stringify({
+                    Enable: '1',
+                    RecordGuid: json[key].Id,
+                    inImgUrl,
+                    carNo,
+                    CardType: json[key].CardType,
+                    carTypeName: CarTypeGuid,
+                    CarTypeGuid,
+                    DriveWayMAC,
+                    Entrance: json[key].Entrance,
+                    Exit: json[key].Export,
+                    date: date(EventTime),
+                    InTime: date(json[key].AdmissionDate),
+                    OutTime: date(json[key].AppearanceDate)
+                }).replace(/"/g, '\\"')
+                html = html + '<div data-carno="'+carNo+'" class="col-md-4" style = "padding-left:5px;padding-right:5px;padding-top:10px">' +
+                    '<div style="width:100%;float:left;">' +
+                    "<a onclick='ShowPresenceOfVehicle(\"" + str + "\")'><img src='" + inImgUrl + "' style='width:100%;height:90px' /></a>" +
+                    '</div>' +
+                    '<div style="width:100%;float:left">' +
+                    '<label style="width:50%;float:left">' + carNo + '</label> <label style="width:50%;float:left">' + CarTypeGuid + '</label>' +
+                    '</div>' +
+                    '<div style="width:100%;float:left">' +
+                    '<label style="width:100%;float:left">' + date(EventTime) + '</label> ' +
+                    '</div>' +
+                    '<div class="div3_1">' +
+                    '<label style="color:#e8f6ff;line-height:2;">' + DriveWayMAC + '</label>' +
+                    '</div>' +
+                    '</div >';
+
+            }
+            $('#div_Vehiclelist').append(html);
+            if (TotalCount == json.length) {
+                flag = false
+            }
+            console.log('currIndex', currIndex, key, flag)
+            currIndex = key
+        }
+    }
+    
+    // 插入在场记录数据
+    function addNewData (data) {
+      var Enable = $('input:radio[name="Enable"]:checked').val();
+      if (data.EntryType == Enable) {
+        var DriveWayMAC = Enable == 0 ? data.Entrance : data.Exit;
+        var carNo = data.CarNo;
+        var inImgUrl = Enable == 0 ? data.InImgUrl : data.OutImgUrl;
+        var EventTime = Enable == 0 ? data.InTime : data.OutTime;
+        var date = function (time) {
+            var dateee = new Date(time).toJSON();
+            var t = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+            return t
+        }
+        var CarTypeGuid = data.CarTypeName;
+        var Remark = data.Remark;
+        if (inImgUrl == "/picture/shownocapture.png") {
+            inImgUrl = "/picture/nocapture.png";
+        }
+        carTypeName = data.CarTypeName;
+        var str = JSON.stringify({
+            Enable,
+            RecordGuid: data.Guid,
+            CardType: data.CarType === 0 ? 3 : data.CarType,
+            inImgUrl,
+            carNo,
+            carTypeName,
+            Entrance: data.Entrance,
+            Exit: data.Exit,
+            CarTypeGuid,
+            DriveWayMAC,
+            date: date(EventTime),
+            InTime: date(data.InTime),
+            OutTime: data.OutTime ? date(data.OutTime) : null
+        }).replace(/"/g, '\\"')
+        var html =  '<div data-carno="'+carNo+'" class="col-md-4" style = "padding-left:5px;padding-right:5px;padding-top:10px">' +
+            '<div style="width:100%;float:left;">' +
+            "<a onclick='ShowPresenceOfVehicle(\"" + str + "\", " + Enable + ")'><img src='" + inImgUrl + "' style='width:100%;height:90px' /></a>" +
+            '</div>' +
+            '<div style="width:100%;float:left">' +
+            '<label style="width:50%;float:left">' + carNo + '</label> <label style="width:50%;float:left">' + CarTypeGuid + '</label>' +
+            '</div>' +
+            '<div style="width:100%;float:left">' +
+            '<label style="width:100%;float:left">' + date(EventTime) + '</label> ' +
+            '</div>' +
+            '<div class="div3_1">' +
+            '<label style="color:#e8f6ff;line-height:2;">' + DriveWayMAC + '</label>' +
+            '</div>' +
+            '</div >';
+            $('#div_Vehiclelist').prepend(html);
+      }
+    }
+    // 停留时间
+    function LongStop(s, e) {
+      let sta = new Date(s).getTime()
+      let end = new Date(e).getTime()
+      let stopTime = end - sta
+      let H = parseInt(stopTime / (1000 * 60 * 60))
+      let M = parseInt(stopTime % (1000 * 60 * 60) / (1000 * 60))
+      let S = parseInt(stopTime % (1000 * 60) / (1000))
+      return `${H}小时${M}分`
+    }
+
+    //弹出在场车辆管理
+    function ShowPresenceOfVehicle(json, type) {
+        var {
+          Enable,
+          RecordGuid,
+          inImgUrl,
+          carNo,
+          CardType,
+          carTypeName,
+          Entrance,
+          Exit,
+          CarTypeGuid,
+          DriveWayMAC,
+          date,
+          InTime,
+          OutTime
+         } = JSON.parse(json)
+        var stopLong = LongStop(InTime, OutTime || new Date());
+        if (inImgUrl == "") {
+            $("#PresenceOfVehicle_ImgUrl").attr('src', "/picture/nocapture.png");  //图片
+        }
+        else {
+            $("#PresenceOfVehicle_ImgUrl").attr('src', inImgUrl);  //图片
+        }
+        var str = '<div class="flex1 flex-box" style="align-items: center;"><span>车牌号码:</span><span class="flex1">'+ carNo +'</span></div>' +
+          '<div class="flex1 flex-box" style="align-items: center;"><span>车辆类型:</span><span class="flex1">'+ carTypeName +'</span></div>' +
+          '<div class="flex1 flex-box" style="align-items: center;"><span>入口车道:</span><span class="flex1">'+ Entrance +'</span></div>' +
+          (Enable == 1 ? '<div class="flex1 flex-box" style="align-items: center;"><span>出口车道:</span><span class="flex1">'+ Exit +'</span></div>' : '') +
+          '<div class="flex1 flex-box" style="align-items: center;"><span>入场时间:</span><span class="flex1">'+ InTime +'</span></div>' +
+          (Enable == 1 ? '<div class="flex1 flex-box" style="align-items: center;"><span>出场时间:</span><span class="flex1">'+ OutTime +'</span></div>' : '') +
+          '<div class="flex1 flex-box" style="align-items: center;"><span>停车时长:</span><span class="flex1">'+ stopLong +'</span></div>';
+        console.log('ShowPresenceOfVehicle', JSON.parse(json))
+        if (Enable == 1 && CardType == 3) { // 入场
+          var data = {
+            ParkingRecordCode: RecordGuid, 
+            ParkingCode: $('#ParkLotSelect option:selected').val(),
+            PageIndex: 1,
+            PageSize: 10
+          };
+
+          $.ajax({
+            url: "/Home/Maps/Report/SearchPaymentRecord",
+            type: 'POST',
+            data: data,
+            success: function (res) {
+                console.log('SearchPaymentRecord', res);
+                if (res.IsSuccess && res.TotalCount) {
+                    var obj = res.PaperCouponList[0]
+                    $('#Show_PresenceOfVehicle .Cost1').text(obj.AmountReceivable);
+                    $('#Show_PresenceOfVehicle .Cost2').text(obj.AmountReceived);
+                    $('#Show_PresenceOfVehicle .Cost3').text(obj.AmountReceivable - obj.AmountReceived - obj.FreeAdmission);
+                    $('#Show_PresenceOfVehicle .Cost4').text(obj.FreeAdmission);
+                } else {
+                    $('#Show_PresenceOfVehicle .Cost1').text('--');
+                    $('#Show_PresenceOfVehicle .Cost2').text('--');
+                    $('#Show_PresenceOfVehicle .Cost3').text('--');
+                    $('#Show_PresenceOfVehicle .Cost4').text('--');
+                    $message('i', '未查到当前车辆缴费记录')
+                }
+                $('#Show_PresenceOfVehicle .Cost').show()
+                $('#Show_PresenceOfVehicle .content').html(str)
+                $("#Show_PresenceOfVehicle").modal();
+            }
+          });
+        } else {
+          if (Enable == 0) {
+              str += '<div style="text-align:center">'+
+                    '<button class="btn" id="button_New" style="background-color:#ffffff;border:1px solid #808080;color:#808080;margin-right: 10px" type="button" onclick="OpenCorrectCarNo(\'\')">车牌修改</button>'+
+                    '<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>'+
+                '</div>'
+          }
+          $('#Show_PresenceOfVehicle .Cost').hide()
+          $('#Show_PresenceOfVehicle .content').html(str)
+          $("#Show_PresenceOfVehicle").modal();
+        }
+    }
+
+    //开闸
+    function Show_GateReason() {
+        $loading_show();
+        console.log('开闸')
+        $("#Show_GateReason").modal();
+        var ParkingCode = $('#ParkLotSelect option:selected').val();
+        if (!CarTypeList[ParkingCode]) {
+            GetCarTypeList(ParkingCode)
+        } else {
+            SetCarTypeList(CarTypeList[ParkingCode])
+        }
+        if (!OpenGateReasonList) {
+            GetOpenGateReasonList()
+        } else {
+            SetOpenGateReasonList(OpenGateReasonList)
+        }
+        $loading_hide();
+    }
+
+    // 获取车类列表
+    function GetCarTypeList(ParkingCode) {
+        $loading_show();
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=' + $('#ParkLotSelect option:selected').val() + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess) {
+                    console.log('获取车类列表', data);
+                    CarTypeList[ParkingCode] = data.Result;
+                    
+                    SetOpenGateReasonList(CarTypeList[ParkingCode]);
+                }
+                $loading_hide();
+            }
+        });
+    }
+    
+    var CarType = function (cb) {
+        console.log('CarType')
+        CarType.CarTypeName = {};
+        CarType.CarTypeGuid = {};
+        this.init = function () {
+          $.ajax({
+            url: '/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=' + $('#ParkLotSelect option:selected').val() + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess) {
+                   console.log('获取车类列表', data);
+                   data.Result.forEach(function (item) {
+                     CarType.CarTypeName[item.Idx] = item.CarTypeName
+                     CarType.CarTypeGuid[item.Guid] = item.CarType
+                   })
+                   cb && cb()
+                }
+            }
+          })
+        }
+        this.init()
+    }
+
+
+    // 获取开闸原因
+    function GetOpenGateReasonList() {
+        $loading_show();
+        $.ajax({
+            url: '/Home/Maps/SystemSet/GetOpenGateReasonList?ProjectGuid=' + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess) {
+                    console.log('获取开闸原因', data);
+                    OpenGateReasonList = data.Result;
+                    SetOpenGateReasonList(OpenGateReasonList);
+                }
+                $loading_hide();
+            }
+        });
+
+    }
+
+    // 渲染车类列表
+    function SetCarTypeList(list) {
+        $loading_show();
+        var html = '';
+        for (var key in list) {
+            var CarType = list[key].CarType;
+            var CarTypeName = list[key].CarTypeName;
+            html += '<option value="' + CarType + '">' + CarTypeName + '</option>';
+        }
+        $("#u4816_input").html(html);
+        $loading_hide();
+    }
+
+    // 渲染开闸原因
+    function SetOpenGateReasonList(list) {
+        $loading_show();
+        var html = '';
+        for (var key in list) {
+            var OpenType = list[key].OpenType;
+            var ReasonRemark = list[key].ReasonRemark;
+            html += '<option value="' + OpenType + '">' + ReasonRemark + '</option>';
+        }
+        $("#u4813_input").html(html);
+        $loading_hide();
+    }
+
+    // 绑定长连接
+
+    function Binding(value, type, chatHubProxy, newFlag) {
+        var _this = this;
+        if (!newFlag && _this[type]) {
+            chatHubProxy.invoke("RemoveGroup", connectionId,_this[type]);
+            console.log('RemoveGroup', connectionId, _this[type])
+        }
+        if (!value) {
+            return
+        }
+        chatHubProxy.invoke("AddToGroup", connectionId, value);
+        console.log('AddToGroup', value)
+        _this[type] = value
+    }
+
+    /*
+        /// 当次停车唯一标识
+        Guid
+
+
+        /// 停车场编码
+        ParkCode
+
+        /// 车道入口名
+        Entrance
+
+        /// 车道 出口名
+        Exit
+
+        /// 车道设备地址
+        DriveWayMAC
+
+        /// 剩余车位数量
+        RemainingNumber
+        
+
+        /// 车牌号
+        CarNo
+
+        /// 进出场类型 0入场 1出场
+         EntryType
+
+        /// 入场图片地址
+        InImgUrl
+
+        /// 出场图片地址
+        OutImgUrl 
+
+        /// 入场时间
+        InTime 
+
+        /// 出场时间
+        OutTime
+
+
+        /// 车类，0=时租车 1=月租车 2=储值车
+        CarType
+
+        /// 车类名称
+        CarTypeName
+
+        /// 车类标识
+        CarTypeGuid
+        
+        /// 备注说明
+        Remark
+
+        /// 异常说明
+        ErrorCode
+    */
+    // 扫描车辆回调
+    var AppearanceObj = {}, // 出场暂存
+     AdmissionObj = {}; // 入场暂存
+    function callback(data, type) {  //被服务端回调的方法则采用：chat.on
+        console.log('callback:' + type, new Date().toLocaleTimeString(), data)
+        data.RemainingNumber && $('#Surplus').text(data.RemainingNumber)
+        var t = { c: '已重拍', r: '已重拍', b:'已重拍' }
+        for (var k in timeEvent) {
+            if (timeEvent[k]) {
+                $message('s', t[k])
+                clearTimeout(timeEvent[k])
+                timeEvent[k] = null
+                $loading_hide()
+            }
+        }
+        
+        // 修正
+        if (EditCarNo.CarNo == data.CarNo) {
+          $loading_hide()
+          clearTimeout(EditCarNo.timeOut)
+          EditCarNo.timeOut = null
+        }
+        
+        // 修改车牌
+        if (EditCarNo.edit.length) {
+          for(var i = 0;i < EditCarNo.edit.length;i++) {
+              var carNo = EditCarNo.edit[i]
+              if (carNo === data.CarNo) {
+                EditCarNo.edit.splice(i, 1)
+              }
+          }
+          console.log('EditCarNo.edit.length', EditCarNo.edit.length)
+          if (!EditCarNo.edit.length) $loading_hide()
+          return
+        }
+        !data.Remark && (data.Remark = '')
+        if (data.Remark.indexOf('管理后台') > -1) {
+            // 手工补录入场数据 重拍
+            if (data.CarNo == InRecord.CarNo) {
+                clearTimeout(InRecord.timeOut)
+                InRecord.timeOut = null
+                PhotographCar($('#DriveWayOutSelectt option:selected').val(), 'b')
+            }
+            return
+        }
+        if (data.Remark.indexOf('场内注销') > -1) {
+            return
+        }
+        
+        if (data.EntryType == 0) {  // 0入场 1出场
+            AdmissionObj = data
+            //$("#enterlblCarNo").text(data.CarNo);
+            //if ($('#DriveWayEntrySelectt option:selected').val() == data.DriveWayMAC) { // 过滤车道
+            if (data.InImgUrl === '/picture/shownocapture.png') {
+                return
+            }
+            //var dateee = new Date(inTime).toJSON();
+            //var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+            $("#admission .license-plate").text(data.CarNo);
+            $("#admission .admission-date").text(data.InTime ? data.InTime.substring(0, 10) : '');
+            $("#admission .admission-time").text(data.InTime ? data.InTime.substring(11, 19) : '');
+            $("#admission .vehicle-type").text(data.CarTypeName || '');
+            $("#ImgUrlAdmission").attr("src", data.InImgUrl);
+            $("#ImgUrlAdmission").removeClass('hide');
+
+            // if (data.Remark) {
+            //     $("#admission .btn").show()
+            // } else {
+            //     $("#admission .btn").hide()
+            // }
+            $("#DriveWayMAC").val(data.Entrance);
+            $("#lbl_div5_1A").text("")
+            $("#div5_1A").hide();
+            if (data.ErrorCode != -1) {
+                $("#button_reopen").show(); //重拍
+                $("#button_off").show(); //开闸
+                $("#admission .btn").show()
+                $("#div5_1A").show();
+                $("#div5_1A").removeClass('green')
+                $("#div5_1A").addClass('red')
+                switch (data.ErrorCode) {
+                    case "13":
+                        $("#lbl_div5_1A").text("无入场记录");
+                        break
+                    case "14":
+                        $("#lbl_div5_1A").text("临时车未缴费");
+                        break
+                    case "400":
+                        $("#lbl_div5_1A").text("黑名单");
+                        break
+                    case "401":
+                        $("#lbl_div5_1A").text("通行限制");
+                        break
+                    case "402":
+                        $("#lbl_div5_1A").text("该车辆已被锁定");
+                        break
+                    case "403":
+                        $("#lbl_div5_1A").text("月卡过期");
+                        break
+                    case "404":
+                        $("#lbl_div5_1A").text("禁止无牌车");
+                        break
+                    case "405":
+                        $("#lbl_div5_1A").text("确认开闸");
+                        break
+                    case "406":
+                        $("#lbl_div5_1A").text("满车位");
+                        break
+                    case "407":
+                        $("#lbl_div5_1A").text("无感车辆");
+                        break
+                    case "409":
+                        $("#lbl_div5_1A").text("该车辆已被锁定");
+                        break
+                    case "410":
+                        $("#lbl_div5_1A").text("该车辆已被锁定");
+                        break
+                }
+            } else {
+                $("#div5_1A").show();
+                $("#div5_1A").removeClass('red');
+                $("#div5_1A").addClass('green');
+                $("#lbl_div5_1A").text("开闸放行");
+
+                $("#button_reopen").hide(); //重拍
+                $("#button_off").hide(); //开闸
+                $("#admission .btn").hide()
+                if ($('input:radio[name="Enable"]:checked').val() == 0) {
+                  $('[data-carno="'+data.CarNo+'"]').remove()
+                }
+                addNewData(data);
+            }
+        }
+        else {
+            AppearanceObj = data
+            //if ($('#DriveWayOutSelectt option:selected').val() == data.DriveWayMAC) { // 过滤车道
+            if (data.OutImgUrl === '/picture/shownocapture.png') {
+                return
+            }
+            var DriveWayOutSelectt = $("#DriveWayOutSelectt").find("option:selected").text();
+            clearInImg()
+
+            // 出场数据赋值
+            $("#appearance .license-plate").text(data.CarNo);
+            $("#appearance .admission-date").text(data.OutTime ? data.OutTime.substring(0, 10) : '');
+            $("#appearance .admission-time").text(data.OutTime ? data.OutTime.substring(11, 19) : '');
+            $("#appearance .vehicle-type").text(data.CarTypeName || '');
+            $("#ImgUrlAppearance").attr("src", data.OutImgUrl);
+            $("#ImgUrlAppearance").removeClass('hide');
+            $('#appearance .btn').show();
+
+            // 入场对照数据
+            $("#exit_identification .license-plate").text(data.ErrorCode != 13 ? data.CarNo : '');
+            $("#exit_identification .admission-date").text(data.InTime ? data.InTime.substring(0, 10) : '');
+            $("#exit_identification .admission-time").text(data.InTime ? data.InTime.substring(11, 19) : '');
+            $("#exit_identification .vehicle-type").text(data.ErrorCode != 13 ? data.CarTypeName || '' : '');
+            if (data.InImgUrl && data.InImgUrl !== '/picture/shownocapture.png') {
+                $("#ImgUrlAdmissionPhoto").attr("src", data.InImgUrl);
+                $("#ImgUrlAdmissionPhoto").removeClass('hide');
+            } else {
+                $("#ImgUrlAdmissionPhoto").addClass('hide');
+            }
+
+            // GetDriveWayHalfHourCars("");
+            $("#lbl_div5_1B").text("")
+            $("#div5_1B").hide();
+            // 获取车辆信息
+            if (data.ErrorCode != -1) {
+                $("#pan_Gate button").removeAttr('disabled');
+                $("#pan_Gate .sign").attr('disabled', true)
+                $("#div5_1B").show();
+                $("#div5_1B").removeClass('green')
+                $("#div5_1B").addClass('red')
+                $('#div_revise').show();
+                $("#button_rephotograph").show(); //出场开闸
+                $("#button_additionalrecording").show(); //出场补录
+                switch (data.ErrorCode) {
+                    case "13":
+                        $("#lbl_div5_1B").text("无入场记录");
+                        break
+                    case "14":
+                        $("#lbl_div5_1B").text("临时车未缴费");
+                        ParkingFeeInfo(data)
+                        break
+                    case "400":
+                        $("#lbl_div5_1B").text("黑名单");
+                        ParkingFeeInfo(data)
+                        break
+                    case "401":
+                        $("#lbl_div5_1B").text("通行限制");
+                        ParkingFeeInfo(data)
+                        break
+                    case "402":
+                        $("#lbl_div5_1B").text("该车辆已被锁定");
+                        ParkingFeeInfo(data)
+                        break
+                    case "403":
+                        $("#lbl_div5_1B").text("月卡过期");
+                        break
+                    case "404":
+                        $("#lbl_div5_1B").text("禁止无牌车");
+                        $("#button_additionalrecording").hide()
+                        break
+                    case "405":
+                        $("#lbl_div5_1B").text("手动开闸");
+                        ParkingFeeInfo(data)
+                        break
+                    case "406":
+                        $("#lbl_div5_1B").text("满车位");
+                        break
+                    case "407":
+                        $("#lbl_div5_1B").text("无压地感车辆");
+                        $("#button_additionalrecording").hide()
+                        break
+                    case "408":
+                        $("#lbl_div5_1B").text("储值车余额不足");
+                        $("#button_rephotograph").hide(); //出场开闸
+                        $("#button_additionalrecording").hide(); //出场补录
+                        ParkingFeeInfo(data)
+                        break
+                    case "409":
+                        $("#lbl_div5_1B").text("该车辆已被锁定");
+                        ParkingFeeInfo(data)
+                        break
+                    case "410":
+                        $("#lbl_div5_1B").text("该车辆已被锁定");
+                        ParkingFeeInfo(data)
+                        break
+                }
+                // 在场详情
+                $("#presence_information .CarNo").text(data.CarNo)
+                $("#presence_information .CarTypeName").text(data.CarTypeName)
+                $("#presence_information .drivewayName").text(DeviceMac[data.DriveWayMAC] ? DeviceMac[data.DriveWayMAC].DrivewayName : '')
+                var dateee = new Date(data.InTime).toJSON();
+                var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+                var Outdateee = new Date(data.OutTime).toJSON();
+                var Outdate = new Date(+new Date(Outdateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+                $("#presence_information .EventTime").text(data.InTime ? date : '')
+                $("#presence_information .OutTime").text(Outdate)
+                $("#presence_information .StopTime").text(data.InTime ? StopTime(data.InTime, data.OutTime) : '')
+                $("#lbldrivewayName").text(DriveWayOutSelectt)
+                $("#DriveWayMAC").val(data.Exit);
+            } else {
+                $("#div5_1B").removeClass('red');
+                $("#div5_1B").addClass('green');
+                $("#div5_1B").show();
+                $("#lbl_div5_1B").text("开闸放行");
+                $("#button_rephotograph").hide(); //出场开闸
+                $("#button_additionalrecording").hide(); //出场补录
+                $("#pan_Gate button").attr('disabled', 'disabled');
+                $('#div_revise').hide();
+                
+                // 在场详情
+                $("#presence_information .CarNo").text('')
+                $("#presence_information .CarTypeName").text('')
+                $("#presence_information .drivewayName").text('')
+                $("#presence_information .EventTime").text('')
+                $("#presence_information .OutTime").text('')
+                $("#presence_information .StopTime").text('')
+                $("#lbldrivewayName").text('')
+                $("#DriveWayMAC").val('');
+                
+                // 费用详情
+                $('#parkingFee,#discountAmount,#actualAmount,#paymentAmount').text('----')
+                if ($('input:radio[name="Enable"]:checked').val() == 0) {
+                  $('[data-carno="'+data.CarNo+'"]').remove()
+                } else {
+                    addNewData(data);
+                }
+
+            }
+        }
+
+        // 清空
+        function clearInImg () {
+            $('#lblstopDiscount').html('');
+            $("#exit_identification .license-plate").text('');
+            $("#exit_identification .admission-date").text('');
+            $("#exit_identification .admission-time").text('');
+            $("#exit_identification .vehicle-type").text('');
+            $("#ImgUrlAdmissionPhoto").attr("src", '#');
+            $("#ImgUrlAdmissionPhoto").addClass('hide');
+        }
+    }
+
+    // 入场车道重置
+    function ResetAdmission() {
+        $("#admission .license-plate").text('');
+        $("#admission .admission-date").text('');
+        $("#admission .admission-time").text('');
+        $("#admission .vehicle-type").text('');
+        $("#ImgUrlAdmission").attr("src", '#');
+        $("#ImgUrlAdmission").addClass('hide');
+        $("#admission .btn").hide()
+        $("#div5_1A").hide()
+    }
+
+
+    // 出场车道重置
+    function ResetAppearance() {
+        // 出场数据赋值
+        $("#appearance .license-plate").text('');
+        $("#appearance .admission-date").text('');
+        $("#appearance .admission-time").text('');
+        $("#appearance .vehicle-type").text('');
+        $("#ImgUrlAppearance").attr("src", '');
+        $("#ImgUrlAppearance").addClass('hide');
+        $('#div_revise,#appearance .btn').hide();
+
+        // 入场对照数据
+        $("#exit_identification .license-plate").text('');
+        $("#exit_identification .admission-date").text('');
+        $("#exit_identification .admission-time").text('');
+        $("#exit_identification .vehicle-type").text('');
+        $("#ImgUrlAdmissionPhoto").attr("src", '');
+        $("#ImgUrlAdmissionPhoto").addClass('hide');
+
+        $("#div5_1B").hide();
+        // 在场详情
+        // $("#presence_information .CarNo").text(data.CarNo)
+        // $("#presence_information .CarTypeName").text(data.CarTypeName)
+        // $("#presence_information .drivewayName").text(DeviceMac[data.DriveWayMAC] ? DeviceMac[data.DriveWayMAC].DrivewayName : '')
+        // $("#presence_information .EventTime").text(data.InTime)
+        // $("#presence_information .OutTime").text(data.OutTime)
+        // $("#presence_information .StopTime").text(StopTime(data.InTime, data.OutTime))
+        // $('#parkingFee').text(Result.ParkingFee); // 停车费
+        // $('#discountAmount').text(Result.ParkingFee - Result.ActualAmount);// 优惠金额
+        // $('#actualAmount').text(Result.ActualAmount); // 应缴金额
+        // $('#lblstopDiscount').html(html);
+    }
+    // 加载车道列表
+
+    function LoadingLane(ParkingCode, cb) {
+        if (!ParkingCode) return;
+        $loading_show()
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetDriveWayList?ParkingCode=' + ParkingCode,
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                $loading_hide()
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    var arr = [];
+                    var html0 = ''; // <option value="">=请选择=</option>
+                    var html1 = ''; // <option value="">=请选择=</option>
+                    for (var key in json) {
+                        var DeviceMacAddress = json[key].DeviceMacAddress;
+                        DeviceMac[json[key].DeviceMacAddress] = json[key];
+                        var drivewayName = json[key].DrivewayName;
+                        if (json[key].Type === 0) {
+                            if (!arr[0]) arr[0] = DeviceMacAddress;
+                            html0 += '<option value="' + DeviceMacAddress + '" data-time="0">' + drivewayName + '</option>';
+                        } else {
+                            if (!arr[1]) arr[1] = DeviceMacAddress;
+                            html1 += '<option value="' + DeviceMacAddress + '" data-time="0">' + drivewayName + '</option>';
+                        }
+                    }
+                    $('#DriveWayEntrySelectt').html(html0);
+                    $('#DriveWayOutSelectt').html(html1);
+
+                    // 更新车辆列表
+                    CarType(function () {
+                      SearchForVehicles()
+                    })
+
+                    cb && cb(json, arr)
+                }
+            }
+        });
+    }
+
+    // 获取剩余车位数量
+    function GetRemainingSpace(ParkingCode) {
+        if (!ParkingCode) return;
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetRemainingSpace?ParkingCode=' + ParkingCode,
+            dataType: '',
+            method: '',
+            contentType: '',
+            async: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    $('#Surplus').text(data.Result.RemainingSpace || 0);
+                }
+            }
+        })
+    }
+
+    // 搜索车辆
+    function SearchForVehicles(page) {
+        var CarNo = $("#ParkingName").val().trim();
+        CarNo && (CarNo = LicensePlate(CarNo))
+        var Enable = $('input:radio[name="Enable"]:checked').val();
+        if (Enable == 0) {  //0入口 1出口
+            PresenceOfVehicle(CarNo, page);
+        }
+        else {
+            GetDriveWayHalfHourCars(CarNo, page);
+        }
+
+    }
+
+    // 查询车辆费用信息
+    function ParkingFeeInfo(data) {
+        $loading_show()
+        var parkingCode = $("#ParkLotSelect").val();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        console.log('ParkingFeeInfo', CarType.CarTypeGuid[data.CarTypeGuid])
+        let num = CarType.CarTypeGuid[data.CarTypeGuid]
+        if (num === 0) {
+            GetCarParkingInfo();
+        } else if (num === 2) {
+            GetValueCardFeeInfoByCarNo();
+        } else {
+            $('.discount_amount').hide();
+            $loading_hide()
+        }
+        // 储值车
+        function GetValueCardFeeInfoByCarNo() {
+            $.ajax({
+                url: '/Home/Maps/ParkLot/GetValueCardFeeInfoByCarNo',
+                type: 'POST',
+                data: data,
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        var Result = data.Result;
+                        if (Result != null) {
+                            //Object.assign(Result, data.Result);
+                            $('#parkingFee').text(Result.ParkingFee || '----'); // 停车费
+                            $('#discountAmount').text('----');// 优惠金额
+                            $('#actualAmount').text('----'); // 应缴金额
+                            $('#paymentAmount').text(Result.Balance); // 已缴费用
+                            $('#payment_amount').text('余额:');
+                            $('.discount_amount').hide();
+                            $('#lblstopDiscount').html('');
+                        }
+                    }
+                    $loading_hide()
+                }
+            })
+        }
+
+        // 临时车
+        function GetCarParkingInfo () {
+            $.ajax({
+                  url: '/Home/Maps/ParkLot/GetTempCarParkingInfo?parkingCode=' + parkingCode + '&carNumber=' + data.CarNo + '',
+                  dataType: 'json',
+                  method: 'GET',
+                  contentType: "application/json;utf-8",
+                  success: function (data) {
+                      if (data.IsSuccess == true) {
+                          var Result = data.Result;
+                          if (Result != null) {
+                              //Object.assign(Result, data.Result);
+                              $('#parkingFee').text(Result.ParkingFee || '----'); // 停车费
+                              $('#discountAmount').text((Result.ParkingFee - Result.ActualAmount) || '----');// 优惠金额
+                              $('#actualAmount').text(Result.ActualAmount || '----'); // 应缴金额
+                              $('#paymentAmount').text('----'); // 已缴费用
+                              $('#payment_amount').text('已缴费用');
+                              $('.discount_amount').show();
+                              // 优惠劵
+                              var html = '';
+                              html += '<div class="list flex1">';
+                              for (var i = 0; i < Result.CouponList.length; i++) {
+                                  var item = Result.CouponList[i];
+                                  html += '<p' + (i >= 2 ? ' class="li"' : '') + '>' + item.CouponName + '</p>';
+                              }
+                              html += '</div>';
+                              if (i > 2) {
+                                  html += '<div class="triangle" onclick="triangle(this)">展开全部</div>';
+                              }
+                              $('#lblstopDiscount').html(html);
+                             
+                              if (Result.ParkingFee > 0) {
+                                $("#pan_Gate .sign").removeAttr('disabled')
+                              }
+                          }
+                      }
+                      $loading_hide()
+                  }
+              })
+        }
+
+        // 
+        function GetTempCarParkingInfo () {
+            $.ajax({
+                  url: '/Home/Maps/CardService/GetMonthCard?parkingCode=' + parkingCode + '&CarNo=' + data.CarNo + '',
+                  dataType: 'json',
+                  method: 'GET',
+                  contentType: "application/json;utf-8",
+                  async: true,
+                  success: function (data) {
+                      if (data.IsSuccess == true) {
+                          //console.log('查询车辆费用信息', data);
+                          var Result = data.Result;
+                          if (Result != null) {
+                              //Object.assign(Result, data.Result);
+                              $('#parkingFee').text(Result.ParkingFee || '----'); // 停车费
+                              $('#discountAmount').text((Result.ParkingFee - Result.ActualAmount) || '----');// 优惠金额
+                              $('#actualAmount').text(Result.ActualAmount || '----'); // 应缴金额
+                              $('#paymentAmount').text('----'); // 已缴费用
+                              // 优惠劵
+                              var html = '';
+                              html += '<div class="list flex1">';
+                              for (var i = 0; i < Result.CouponList.length; i++) {
+                                  var item = Result.CouponList[i];
+                                  html += '<p' + (i >= 2 ? ' class="li"' : '') + '>' + item.CouponName + '</p>';
+                              }
+                              html += '</div>';
+                              if (i > 2) {
+                                  html += '<div class="triangle" onclick="triangle(this)">展开全部</div>';
+                              }
+                              $('#lblstopDiscount').html(html);
+                          }
+                      }
+                      $loading_hide()
+                  }
+              })
+        }
+    }
+
+    // 展开更多优惠
+    function triangle(_this) {
+        $('#lblstopDiscount .li').toggle();
+        $(_this).toggleClass('open');
+    }
+
+    // 计算时长
+    function StopTime(start, end) {
+        var s = new Date(start).getTime();
+        var e = new Date(end).getTime();
+        var H = (e - s) >= 1000 * 60 * 60 ? parseInt((e - s) / (1000 * 60 * 60)) : 0;
+        var M = (e - s) >= 1000 * 60 ? parseInt((e - s) % (1000 * 60 * 60) / (1000 * 60)) : 0;
+        var S = (e - s) >= 1000 ? parseInt((e - s) % (1000 * 60) / 1000) : 0;
+        return H + '小时' + M + '分钟' + S + '秒'
+    }
+
+    //  正
+    var CarNoType = true;
+    var EditCarNo = {
+        CarNo: '',
+        timeOut: null,
+        edit: []
+    };
+    function OpenCorrectCarNo(carNo, type) {
+        CarNoType = !!type
+        if (carNo && carNo != '无车牌') {
+            $("#Original_CarNo").val(carNo);
+            $("#Original_CarNo").attr("disabled", "disabled");
+        } else {
+            $("#Original_CarNo").val('');
+            $("#Original_CarNo").removeAttr("disabled");
+        }
+        $("#New_CarNo").val("");
+        $("#btnSavaCorrectCarNo").removeAttr("disabled", "disabled");
+        $("#lbl_CarNo").text("");
+        $("#lbl_NewCarNo").text("");
+        $('#myModa3').modal();
+    }
+
+    //保存车牌修正
+    function SavaCorrectCarNo() {
+        $loading_show();
+        var Original_CarNo = $("#Original_CarNo").val();
+        var New_CarNo = $("#New_CarNo").val();
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            if (Original_CarNo == "") {
+                $("#lbl_CarNo").text("原车牌不能为空");
+            }
+            if (New_CarNo == "") {
+                $("#lbl_NewCarNo").text("新车牌不能为空");
+            }
+            $loading_hide();
+            return;
+        }
+
+
+        var ParkingCode = $("#ParkLotSelect").val();
+        var DeviceMacAddress = $("#DriveWayOutSelectt").val();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var url = ""; 
+        var data = {};
+        if (CarNoType) { // 修正
+            // let res = await (function () {
+            //     return new Promise(function (p) {
+            //         $.post('/Home/Maps/Report/SearchPresentRecord', {
+            //             ParkingCode: ParkingCode,
+            //             LicensePlate: New_CarNo
+            //         }, function (result) {
+            //             p(result)
+            //         })
+            //     })
+            // })()
+            // console.log('入场信息:', res)
+            // if (!res.TotalCount) {
+            //     $message('d', '无' + New_CarNo + '的入场记录');
+            //     $loading_hide();
+            //     return
+            // }
+            url = "/Home/Maps/ParkLot/CarNumberRepush";  //修改
+            data = {
+                "DriveWayMAC": DeviceMacAddress,
+                "ParkingCode": ParkingCode,
+                "Operator": $.cookie("UserName"),
+                "OldCarNo": Original_CarNo,//原车牌
+                "ProjectGuid": $.cookie("ProjectGuid"),
+                "ThroughName": $("#DriveWayOutSelectt option:selected").text(),
+                "ImgUrl": AppearanceObj.OutImgUrl || '',
+                "NewCarNo": New_CarNo
+            };
+        }
+        else { // 修改
+            url = "/Home/Maps/ParkLot/CorrectCarNo";  //修正
+            data = {
+                "ProjectGuid": ProjectGuid,
+                "ParkingCode": ParkingCode,
+                "OldCarNo": Original_CarNo,//原车牌
+                "Operator": $.cookie("UserName"),
+                "NewCarNo": New_CarNo
+            };
+        }
+        console.log('url', data)
+        $.post(url, data, function (result) {
+            if (result.IsSuccess == true) {
+                $("#Original_CarNo").val();
+                $("#New_CarNo").val();
+                $("#btnSavaCorrectCarNo").removeAttr("disabled", "disabled");
+                $('#myModa3').modal('hide');
+                $('#Show_PresenceOfVehicle').modal('hide');
+                if (CarNoType) {
+                  console.log('CorrectCarNo', result)
+                  EditCarNo.CarNo = New_CarNo;
+                  EditCarNo.timeOut = setTimeout(function () {
+                    EditCarNo.CarNo = '';
+                    EditCarNo.timeOut = null;
+                    $message('d', "车牌修正超时！")
+                    $loading_hide();
+                  }, 10000)
+                } else {
+                    // EditCarNo.edit.push(Original_CarNo)
+                    // EditCarNo.edit.push(New_CarNo)
+                    $loading_hide();
+                    SearchForVehicles()
+                }
+            }
+            else {
+                $("#Original_CarNo").val();
+                $("#New_CarNo").val();
+                $("#btnSavaCorrectCarNo").removeAttr("disabled", "disabled");
+                $message('d', result.MessageContent)
+                $('#myModa3').modal('hide');
+                $('#Show_PresenceOfVehicle').modal('hide');
+                $loading_hide();
+            }
+        });
+    }
+
+    //重拍
+    var Timeout = 10000; // 设置超时时间
+    var timeEvent = {};
+    function PhotographCar(DeviceMacAddress, type) { // type => r:入场  c:出场
+        var ParkLotSelect = $("#ParkLotSelect").val();
+        // var DeviceMacAddress = $("#DriveWayMAC").val();
+        if (!ParkLotSelect) {
+            $message('i', '请选择停车场')
+            return
+        }
+        if (!DeviceMacAddress) {
+            $message('i', '请选择车道')
+            return
+        }
+        type !== 'b' && $loading_show();
+        var data = {
+            "ParkingCode": ParkLotSelect,
+            "DeviceMacAddress": DeviceMacAddress,
+            "ProjectGuid": ProjectGuid
+        };
+        $.post("/Home/Maps/ParkLot/PhotographCar", data, function (result) {
+            if (result.IsSuccess == true) {
+                timeEvent[type] = setTimeout(function () {
+                    $loading_hide();
+                    $message('d', '重拍响应超时！')
+                    timeEvent[type] = null
+                }, Timeout)
+            } else {
+                $loading_hide();
+                $message('d', result.MessageContent)
+            }
+        });
+
+
+    }
+
+    // 加载异常原因
+    var OpenGateReasonList = null
+    function GetOpenGateReasonList (cb) {
+        if (OpenGateReasonList) {
+            cb(OpenGateReasonList)
+        } else {
+            $.ajax({
+                url: '/Home/Maps/SystemSet/GetOpenGateReasonList',
+                type: 'GET',
+                data: {
+                    ProjectGuid: $.cookie("ProjectGuid")
+                },
+                success: function (result) {
+                    let arr = result.Result || []
+                    cb(arr)
+                }
+            })
+        }
+    }
+    
+    // 手动开闸弹框
+    function OpenGate(data) {
+        var str = '';
+        if (['404', '407'].indexOf(data.ErrorCode) == -1) {
+            str += '<p>车牌号：'+data.CarNo+'</p>';
+            str += '<p>车类型：'+data.CarTypeName+'</p>';
+        }
+        GetOpenGateReasonList(function (list) {
+            var arr = list.filter(function (item) {return item.OpenType === 0});
+            var option = '';
+            arr.forEach(function (item) {
+                option += '<option value="'+ item.ReasonRemark +'">'+ item.ReasonRemark +'</option>'
+            })
+            str += '<p>开闸原因: <select id="OpenGateSelect" class="form-control" style="width: 200px;display: inline-block;">'+
+                option +
+                '</select></p>';
+            $alert({
+                title: '请选择开闸原因',
+                html: str,
+                confirm: function () {
+                    console.log('#OpenGateSelect', parent.$('#OpenGateSelect').val())
+                    data.OpenGateReason = parent.$('#OpenGateSelect').val()
+                    data.Remark = '手动开闸:' + parent.$('#OpenGateSelect').val()
+                    SetOpenGate(data)
+                }
+            })
+        })
+    }
+    // 手动开闸提交
+    function SetOpenGate (data) {
+       $loading_show();
+        var {
+          ParkCode: ParkingCode,
+          DriveWayMAC: DeviceIdentify,
+          EntryType: EntranceType,
+          Exit: DiscernCamera,
+          CarType,
+          OpenGateReason,
+          Remark,
+          InImgUrl,
+          CarNo,
+          ErrorCode,
+          OutImgUrl
+        } = data;
+        var ImageUrl = OutImgUrl || InImgUrl,
+          OpenGateTime = data.EntryType == 0 ? data.InTime : data.OutTime,
+          OpenGateOperator = $.cookie("UserName"),
+          ProjectGuid = $.cookie("ProjectGuid"),
+          ThroughType = 2,
+          ThroughName = data.EntryType == 0 ? data.Entrance : data.Exit;
+
+         $.ajax({
+            url: '/Home/Maps/SystemSet/OpenGate',
+            type: 'POST',
+            data: {
+              ParkingCode,
+              DeviceIdentify,
+              CarNo,
+              CarType,
+              EntranceType,
+              DiscernCamera,
+              OpenGateReason,
+              Remark,
+              InImgUrl,
+              OutImgUrl,
+              ImageUrl,
+              OpenGateTime,
+              OpenGateOperator,
+              ProjectGuid,
+              ErrorCode,
+              ThroughType,
+              ThroughName
+            },
+            success: function (result) {
+            if (result.IsSuccess == true) {
+                $loading_hide();
+                $message('s', "开闸成功！")
+                if (EntranceType == '0') {
+                    $('#div5_1A').removeClass('red')
+                    $('#div5_1A').addClass('green')
+                    $('#lbl_div5_1A').text('开闸放行')
+                    $('#admission .btn').hide()
+                } else {
+                    $("#div5_1B").removeClass('red');
+                    $("#div5_1B").addClass('green');
+                    $("#lbl_div5_1B").text("开闸放行");
+                    $('#appearance .btn').hide()
+                    $("#pan_Gate button").attr('disabled', 'disabled');
+                    $('#parkingFee,#discountAmount,#actualAmount,#paymentAmount').text('----')
+                    if (CarType === 2) {
+                        $.ajax({
+                            url: '/Home/Maps/ParkLot/ValueCardCalculationFee',
+                            type: 'POST',
+                            data: {
+                                ParkCode: ParkingCode,
+                                CarNo: CarNo,
+                                ProjectGuid: ProjectGuid
+                            },
+                            success: function (result) {
+                                if (result.data.IsSuccess) {
+                                    console.log('ValueCardCalculationFee', result)
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+            else {
+                $loading_hide();
+                $message('d', result.MessageContent)
+            }
+        }});
+    }
+
+    // 免费放行
+    function FreeOpenGate () {
+        if (['404', '407'].indexOf(AppearanceObj.ErrorCode) > -1) {
+            $message('d', "未识别到车牌，请使用手工开闸！")
+            return
+        }
+        var str = '';
+        str += '<p>车牌号：'+AppearanceObj.CarNo+'</p>';
+        str += '<p>车类型：'+AppearanceObj.CarTypeName+'</p>';
+        GetOpenGateReasonList(function (list) {
+            var arr = list.filter(function (item) {return item.OpenType === 1});
+            var option = '';
+            arr.forEach(function (item) {
+                option += '<option value="'+ item.ReasonRemark +'">'+ item.ReasonRemark +'</option>'
+            })
+            str += '<p>开闸原因: <select id="OpenGateSelect" class="form-control" style="width: 200px;display: inline-block;">'+
+                option +
+                '</select></p>';
+            $alert({
+                title: '请选择开闸原因',
+                html: str,
+                confirm: function () {
+                    console.log('#OpenGateSelect', parent.$('#OpenGateSelect').val())
+                    AppearanceObj.OpenGateReason = parent.$('#OpenGateSelect').val()
+                    AppearanceObj.Remark = '免费开闸:' + parent.$('#OpenGateSelect').val()
+                    setFreeOpenGate()
+                }
+            })
+        })
+    }
+    // 提交免费放行
+    function setFreeOpenGate () {
+        var ParkingCode = $("#ParkLotSelect").val();
+        var CarNo = $("#lblCarNo").text();
+        var TolloPerator = $.cookie("UserName");
+        var DeviceIdentify = AppearanceObj.DriveWayMAC;
+        var Remark = AppearanceObj.Remark;
+        var data = {
+            ParkingCode,
+            CarNo,
+            TolloPerator,
+            DeviceIdentify,
+            Remark
+        }
+        $loading_show();
+         $.ajax({
+            url: '/Home/Maps/SystemSet/FreeOpenGate',
+            type: 'POST',
+            data: data,
+            success: function (result) {
+                $loading_hide();
+                if (result.IsSuccess == true) {
+                    $message('s', "开闸成功！")
+                    $("#div5_1B").removeClass('red');
+                    $("#div5_1B").addClass('green');
+                    $("#lbl_div5_1B").text("开闸放行");
+                    $('#appearance .btn').hide()
+                    $("#pan_Gate button").attr('disabled', 'disabled');
+                    $('#parkingFee,#discountAmount,#actualAmount,#paymentAmount').text('----')
+                }
+                else {
+                    $message('d', result.MessageContent)
+                }
+            }
+        })
+    }
+
+    // 收费放行
+    function ChargeOpenGate () {
+        if (['404', '407'].indexOf(AppearanceObj.ErrorCode) > -1) {
+            $message('d', "未识别到车牌，请使用手工开闸！")
+            return
+        }
+        var ParkingCode = $("#ParkLotSelect").val();
+        var CarNo = $("#lblCarNo").text();
+        var TolloPerator = $.cookie("UserName");
+        var DeviceIdentify = AppearanceObj.DriveWayMAC;
+        var data = {
+            Remark: '收费放行',
+            ParkingCode,
+            CarNo,
+            TolloPerator,
+            DeviceIdentify
+        }
+        $loading_show();
+         $.ajax({
+            url: '/Home/Maps/SystemSet/ChargeOpenGate',
+            type: 'POST',
+            data: data,
+            success: function (result) {
+                $loading_hide();
+                if (result.IsSuccess == true) {
+                    $message('s', "开闸成功！")
+                    $("#div5_1B").removeClass('red');
+                    $("#div5_1B").addClass('green');
+                    $("#lbl_div5_1B").text("开闸放行");
+                    $('#appearance .btn').hide()
+                    $("#pan_Gate button").attr('disabled', 'disabled');
+                    $('#parkingFee,#discountAmount,#actualAmount,#paymentAmount').text('----')
+                }
+                else {
+                    $message('d', result.MessageContent)
+                }
+            }
+        })
+    }
+
+    //入场补录
+    function AddInRecord() {
+        $loading_show();
+        var ParkLotSelect = $("#ParkLotSelect").find("option:selected").text();
+        var ParkCode = $("#ParkLotSelect").val();
+        CarTypeModel(ParkCode)
+        $("#parkName").text(ParkLotSelect);
+        $('#myModa2').modal();
+        $("#Sava_AddInRecord").removeAttr("disabled");
+        $("#CarNo_3").val(AppearanceObj.CarNo);
+        $("#CarTypeModel").val(AppearanceObj.CarTypeGuid);
+        $("#MinInTime").val("");
+        $("#VehicleLane").html($('#DriveWayEntrySelectt').html().replace('<option value="">=请选择=</option>', ''))
+        $("#VehicleLane").val($('#DriveWayEntrySelectt').val())
+
+        //移除上次的校验配置
+        $("#addDepForm").data('bootstrapValidator').destroy();
+        $('#addDepForm').data('bootstrapValidator', null);
+        //重新添加校验
+        formValidator();
+        $loading_hide();
+    }
+
+    //添加入场补录
+    var InRecord = {
+        CarNo: '',
+        timeOut: null
+    }
+    function SetAddInRecord() {
+        $loading_show();
+        var MinInTime = $("#MinInTime").val();
+        var CarNo3 = $("#CarNo_3").val();
+        var is = 0;
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            $loading_hide();
+            return
+        }
+
+        var ParkingCode = $("#ParkLotSelect").val();
+        var CarTypeGuid = $("#CarTypeModel").val();
+
+        var DrivewayGuid = DeviceMac[$("#VehicleLane").val()].Guid;
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var ImgUrl = "/picture/shownocapture.png";
+        var data = {
+            "ProjectGuid": ProjectGuid, 
+            "ParkingCode": ParkingCode, 
+            "CarNo": CarNo3, 
+            "InTime": MinInTime, 
+            "CarTypeGuid": CarTypeGuid, 
+            "Entrance": DeviceMac[$("#VehicleLane").val()].DrivewayName,
+            "Operator": $.cookie("UserName"),
+            "DrivewayGuid": DrivewayGuid, 
+            "ImgUrl": ImgUrl
+        };
+        $.post("/Home/Maps/ParkLot/AddInRecord", data, function (result) {
+            if (result.IsSuccess == true) {
+                // $message('s', "入场补录成功！")
+                var PageIndex = parseFloat($("#page-index").val());
+                $('#myModa2').modal('hide');
+                InRecord.CarNo = CarNo3;
+                InRecord.timeOut = setTimeout(function () {
+                  $message('d', "入场补录超时！")
+                  $loading_hide();
+                  InRecord.timeOut = null
+                } , 10000)
+                // PhotographCar($('#DriveWayOutSelectt option:selected').val(), 'c')
+            }
+            else {
+                $loading_hide();
+                $("#Sava_AddInRecord").removeAttr("disabled");
+                $message('d', result.MessageContent);
+            }
+        });
+    }
+
+    //车类型
+    function CarTypeModel(CarTypeGuid) {
+        $loading_show();
+        if (CarTypeGuid != "") {
+            $.ajax({
+                url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + CarTypeGuid + '&projectGuid=' + $.cookie("ProjectGuid"),
+                dataType: '',
+                method: '',
+                contentType: '',
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        var json = data.Result;
+                        $("#CarTypeModel").find("option").remove();
+                        for (var key in json) {
+                            var carTypeGuid = json[key].Guid;
+                            var carTypeName = json[key].CarTypeName;
+                            $("#CarTypeModel").append("<option value='" + carTypeGuid + "' >" + carTypeName + "</option>");
+                        }
+                        $loading_hide();
+                    }
+                }
+            })
+        }
+        else {
+            $loading_hide();
+            $("#CarTypeModel").find("option").remove();
+            $("#CarTypeModel").append("<option value=''>=请选择=</option>");
+        }
+
+    }
+
+    //原车牌验证
+    $("#Original_CarNo").bind('input propertychange', function () {
+        var name = $(this).val();
+        if (name == "") {
+            $("#lbl_CarNo").text("原车牌不能为空");
+            return;
+        }
+        var exp = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/;
+        var reg = name.match(exp);
+        if (reg == null) {
+            $("#lbl_CarNo").text("请输入正确的车牌号");
+            return;
+        } else {
+            $("#lbl_CarNo").text("");
+            return true;
+        }
+    });
+
+
+    //新车牌验证
+    $("#New_CarNo").bind('input propertychange', function () {
+        var name = $(this).val();
+        if (name == "") {
+            $("#lbl_NewCarNo").text("新车牌不能为空");
+            return;
+        }
+        var exp = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/;
+        var reg = name.match(exp);
+        if (reg == null) {
+            $("#lbl_NewCarNo").text("请输入正确的车牌号");
+            return;
+        } else {
+            $("#lbl_NewCarNo").text("");
+            return true;
+        }
+    });
+
+    // 模糊查询车牌添加通配符
+    function LicensePlate(carNo) {
+      let str = carNo.trim()
+      let re = /^[\u4e00-\u9fa5]/
+      if (re.test(str)) {
+        return carNo + '*'
+      } else {
+        return '?*' + carNo + '*'
+      }
+    }
+
+    // 更新相机连接状态
+    function cameraStatus (data) {
+        console.log('cameraStatus', data);
+        // var a = data.TimeStamp;
+        // var date = {Y: a.substring(0,4), M:a.substring(4,6),D:a.substring(6,8),h:a.substring(8,10),m:a.substring(10,12),s:a.substring(12,14)};
+        // var dataTime = new Date(date.Y + '-' + date.M + '-' + date.D + ' ' + date.h + ':' + date.m + ':' + date.s).getTime();
+        var currTime = new Date().getTime();
+        var dom = $('.alert-dismissible [value="'+data.DeviceIdentify+'"]');
+        dom.attr('data-time', currTime);
+    }
+
+    // 闸口状态列表
+    var GetGateKeep = {}
+    function GateStateList(parkingCode, listData) {
+        $.get("/Home/Maps/ParkLot/GetGateKeep?projectGuid=" + ProjectGuid + "&parkingCode=" + parkingCode, function (res) {
+            if (res.IsSuccess){
+                console.log('GateStateList', res.Result.List, listData)
+                $.get("/Home/Maps/ParkLot/GetDriveWayStatusList?parkingCode=" + parkingCode, function (GetDriveWayStatusList) {
+                    if (res.IsSuccess){
+                        var html = '';
+                        var obj = {};
+                        var DeviceStatus = {}
+                        for(var index in res.Result.List) {
+                            obj[res.Result.List[index].DeviceMacAddress] = res.Result.List[index]
+                        }
+                        for(var i in GetDriveWayStatusList.Result) {
+                            DeviceStatus[GetDriveWayStatusList.Result[i].DeviceMacAddress] = GetDriveWayStatusList.Result[i].DeviceStatus
+                            if (GetDriveWayStatusList.Result[i].DeviceStatus) {
+                                $('#DriveWayEntrySelectt option[value="'+GetDriveWayStatusList.Result[i].DeviceMacAddress+'"],#DriveWayOutSelectt option[value="'+GetDriveWayStatusList.Result[i].DeviceMacAddress+'"]').attr('data-time', new Date().getTime())
+                            } else {
+                                $('#DriveWayEntrySelectt option[value="'+GetDriveWayStatusList.Result[i].DeviceMacAddress+'"],#DriveWayOutSelectt option[value="'+GetDriveWayStatusList.Result[i].DeviceMacAddress+'"]').attr('disabled', 'disabled')
+                            }
+                        }
+                        GetGateKeep = obj
+                        for(var key in listData) {
+                            var list = listData[key]
+                            html += `<div class="flex-box" id="${list.DeviceMacAddress}" style="padding: 5px 0;">
+                                    <div class="w24 center">${list.DrivewayName}</div>
+                                    <div class="w24 center">${list.DeviceName}</div>
+                                    <div class="w24 center status-type ${DeviceStatus[list.DeviceMacAddress] ? '">正常' : 'no">连接中...' }</div>
+                                    <div class="flex1 center">
+                                    <select class="camera-select" ${DeviceStatus[list.DeviceMacAddress] ? '' : 'disabled="disabled"' } onchange="SetGateKeep('${list.DeviceMacAddress}','${list.DrivewayGuid}',$(this).val())">
+                                        <option value="0" ${ obj[list.DeviceMacAddress] && obj[list.DeviceMacAddress].GateState === 0 ? 'selected' : ''}>正常</option>
+                                        <option value="1" ${ obj[list.DeviceMacAddress] && obj[list.DeviceMacAddress].GateState === 1 ? 'selected' : ''}>开闸锁定</option>
+                                        <option value="2" ${ obj[list.DeviceMacAddress] && obj[list.DeviceMacAddress].GateState === 2 ? 'selected' : ''}>关闸锁定</option>
+                                    </select>
+                                    </div>
+                                </div>`
+                        }
+                        $('#camera .content').html(html);
+                        eachDeviceStatus()
+                    }
+                })
+            }
+        })
+    }
+
+    // 改变闸口常开状态
+    
+    function SetGateKeep (DeviceMacAddress, DrivewayGuid, GateState) {
+        var arr = [];
+        if (!GetGateKeep[DeviceMacAddress]) {
+            GetGateKeep[DeviceMacAddress] = {DeviceMacAddress, DrivewayGuid}
+        }
+        for (var key in GetGateKeep) {
+            var item = GetGateKeep[key]
+            if (key === DeviceMacAddress) {
+                item.GateState = GateState
+            }
+            arr.push(item)
+        }
+        var data = {
+            ParkingCode: $('#ParkLotSelect').val(),
+            ProjectGuid: ProjectGuid,
+            GateKeepList: JSON.stringify(arr)
+        };
+        $.ajax({
+            url: '/Home/Maps/ParkLot/SetGateKeep',
+            type: 'POST',
+            data,
+            success: function (data) {
+                if (data.IsSuccess) {
+                    $message('s', '设置成功')
+                }
+            }
+        })
+    }
+    
+    // 更新相机状态延长页面登录超时
+    var setIntTime = 1;
+    function eachDeviceStatus () {
+        setIntTime++
+        if (setIntTime % 10 === 0) {
+            $.get('/HOME/RefreshTimeout?time=' + new Date().getTime());
+        }
+        $('#DriveWayEntrySelectt option[value!=""],#DriveWayOutSelectt option[value!=""]').each(function (i, item) {
+            var dom = $(item);
+            var dataTime = dom.attr('data-time');
+            var currTime = new Date().getTime();
+            dataTime = Number(dataTime || 0);
+            if (dataTime === 0 || (currTime - dataTime > 60 * 1000)) {
+                if (!dom.attr('disabled')) {
+                    dom.attr('disabled', 'disabled');
+                    $('#' + dom.val() + ' .status-type').addClass('no').text('连接中...');
+                    $('#' + dom.val() + ' .camera-select').attr('disabled', 'disabled');
+                }
+            } else {
+                dom.removeAttr('disabled');
+                $('#' + dom.val() + ' .camera-select').removeAttr('disabled');
+                $('#' + dom.val() + ' .status-type').removeClass('no').text('正常');
+            }
+            console.log('cameraStatus '+ dom.text() +' =>', currTime - dataTime)
+        })
+    }
+    setInterval(eachDeviceStatus, 60 * 1000)
+</script>

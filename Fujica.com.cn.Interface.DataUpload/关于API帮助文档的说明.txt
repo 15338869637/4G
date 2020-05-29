@@ -1,0 +1,4 @@
+﻿第一步:打开项目属性，在-生成-页面里，勾选XML文档，然后复制里面的地址
+第二步:打开Areas\HelpPage\App_Start下的HelpPageConfig.cs去掉语句config.SetDocumentationProvider前的注释
+第三步:粘贴第一步的地址到第二步的语句代码里
+第四步:引用到其它项目的实体，请将内部对应的内容拷贝进去就好了

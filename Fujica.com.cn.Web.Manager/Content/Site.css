@@ -1,0 +1,293 @@
+﻿/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}*/
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .AddNewParkLot_div {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 60%;
+    }
+}
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .AddNewParkLot_div {
+        height: 90%;
+    }
+}
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .FunctionPoint {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 55%;
+        
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .FunctionPoint {
+        height: 100%;
+        
+    }
+}
+
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .DefaultCarType {
+        overflow: auto;
+        height: 49%
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .DefaultCarType {
+        overflow: auto;
+        height: 67%
+    }
+}
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .BillingTemplate_div {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 560px;
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .BillingTemplate_div {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 70%
+    }
+}
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .ModifyDriveWay_div {
+        height: 62%;
+        overflow: auto;
+        overflow-x: hidden
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .ModifyDriveWay_div {
+        height: 95%;
+        overflow: auto;
+        overflow-x: hidden
+    }
+}
+
+ /*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .Add_BillingTemplate_div {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 60%
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .Add_BillingTemplate_div {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 60%
+    }
+}
+
+
+
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .Add_BillingTemplate2_div {
+        margin-bottom: 2rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 57%;
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .Add_BillingTemplate2_div {
+        margin-bottom: 2rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 62%;
+    }
+}
+
+
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .ParklotIndex_div {
+        overflow: auto;
+        height: 70%
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .ParklotIndex_div {
+        overflow: auto;
+        height: 85%
+    }
+}
+
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .Blacklist_div {
+        overflow: auto;
+        height: 48%
+    }
+}
+
+ 
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .Blacklist_div {
+        overflow: auto;
+        height: 75%
+    }
+}
+
+
+
+
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .Inout_div1 {
+        width: 98%;
+        height: 400px;
+    }
+
+    .Inout_div2 {
+        width: 100%;
+        overflow: auto;
+        height: 65%;
+        padding-top: 10px;
+    }
+    
+    .Inout_div3 {
+        width: 100%;
+        height: 15%;
+        background-color: #f3f8fb;
+        line-height: 22px
+    }
+    .Inout_div4 {
+        width: 59%;
+        float: left;
+        text-align: center;
+        background-color: #e9f6ff;
+        height: 78%
+    }
+    .Inout_div5 {
+        height: 105px;
+        width: 100%;
+        overflow-x: auto;
+        overflow-x: hidden
+    }
+    .Inout_div6 {
+        width: 100%;
+        float: left;
+        background-color: #e8f6ff;
+        height: 189px;
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .Inout_div1 {
+        width: 98%;
+        height: 470px;
+    }
+    .Inout_div2 {
+        width: 100%;
+        overflow: auto;
+        height: 73%;
+        padding-top: 10px;
+    }
+    .Inout_div3 {
+        width: 100%;
+        height: 7%;
+        background-color: #f3f8fb;
+        line-height: 22px
+    }
+    .Inout_div4 {
+        width: 59%;
+        float: left;
+        text-align: center;
+        background-color: #e9f6ff;
+        height: 81%
+    }
+    .Inout_div5 {
+        height:200px;
+        width: 100%;
+        overflow-x: auto;
+        overflow-x: hidden
+    }
+    .Inout_div6 {
+        width: 100%;
+        float: left;
+        background-color: #e8f6ff;
+        height: 200px;
+    }
+   
+
+}
+
+
+
+ 
+/*分辨率低于1280，采用下面的样式*/
+@media screen and (max-width:1440px) {
+    .PresenceOfVehicle_div {
+        overflow: auto;
+        height: 48%
+    }
+}
+
+
+/*分辨率高于1440，采用下面的样式*/
+@media screen and (min-width: 1440px) {
+    .PresenceOfVehicle_div {
+        overflow: auto;
+        height: 72%
+    }
+}

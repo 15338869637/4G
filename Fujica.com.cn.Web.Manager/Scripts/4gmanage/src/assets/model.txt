@@ -1,0 +1,24 @@
+<template>
+    <div class="open-door">
+        
+    </div>
+</template>
+        
+<script>
+export default {
+  name: 'opendorrindex',
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+
+  }
+}
+</script>
+
+<style>
+
+</style>
+          

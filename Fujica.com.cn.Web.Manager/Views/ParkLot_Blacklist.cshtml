@@ -1,0 +1,1582 @@
+﻿
+@{
+    ViewBag.Title = "ParkLot_Blacklist";
+    Layout = null;
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrapValidator.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrapValidator.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="~/Content/build.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="~/Scripts/bootstrapValidator.js"></script>
+@*<script src="~/Scripts/bootstrapValidator.js"></script>*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    .btn-color {
+        color: #fff
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #0092ff;
+        border-color: #0092ff;
+    }
+
+    .btn-default {
+        color: #fff;
+        background-color: #b0b0b0;
+        border-color: transparent;
+    }
+
+
+
+    .pointer {
+        pointer-events: none;
+    }
+
+    .time_background-color {
+        background-color: #fff;
+    }
+
+    .tl {
+        text-align: left
+    }
+
+    .tr {
+        text-align: right
+    }
+
+    .magic-radio {
+        position: absolute;
+        display: none;
+    }
+
+
+
+        .magic-radio + label {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+            .magic-radio + label:hover:before {
+                animation-duration: 0.4s;
+                animation-fill-mode: both;
+                animation-name: hover-color;
+            }
+
+            .magic-radio + label.radio5:before {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                content: '';
+                border: 2px solid #259af2;
+            }
+
+            .magic-radio + label.radio2:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                content: '';
+                border: 2px solid #C30C22;
+            }
+
+            .magic-radio + label.radio3:before {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                content: '';
+                border: 2px solid #259af2;
+            }
+
+            .magic-radio + label:after {
+                position: absolute;
+                display: none;
+                content: '';
+            }
+
+        .magic-radio[disabled] + label {
+            cursor: not-allowed;
+            color: #e4e4e4;
+        }
+
+        .magic-radio:checked + label:before {
+            animation-name: none;
+        }
+
+        .magic-radio:checked + label:after {
+            display: block;
+        }
+
+        .magic-radio + label:before {
+            border-radius: 50%;
+        }
+
+        .magic-radio + label.radio5:after {
+            top: 6px;
+            left: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #259af2;
+        }
+
+        .magic-radio + label.radio2:after {
+            top: 6px;
+            left: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff00;
+        }
+
+        .magic-radio + label.radio3:after {
+            top: 6px;
+            left: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #259af2;
+        }
+        .empty-ico{
+            background: url('/picture/empty.png') no-repeat;
+            background-size:  100% 100%;
+            width: 60px;
+            height: 60px;
+            padding-top: 60px;
+            line-height: 30px;
+            margin-top: 50px;
+            text-align: center;
+            display: block;
+            color: #ccc;
+            left: 50%;
+            position: absolute;
+        }
+</style>
+
+<body>
+    <form id="defaultForm">
+        <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer" style="border:1px solid #e6eaee;">
+            <div class="row" style="margin-top:15px;height:50px">
+                <div class="col-sm-12 col-md-12">
+                    <div class="dataTables_length" id="sampleTable_length">
+                        <div style="float:left;width:40%;">
+                            <div style="float:left;width:40%">
+                                <label style="width:30%;float:left;text-align:right;line-height: 30px;">
+                                    停车场：
+                                </label>
+                                <select aria-controls="sampleTable" class="form-control form-control-sm" id="ParkLotSelect" style="height:30px;width:60%;float:left;padding:0px">
+                                    <option value="">=请选择=</option>
+                                </select>
+                            </div>
+                            <div style="float:left;width:50%">
+                                <label style="float:left;width:25%;line-height:30px;text-align:right">车牌号：</label><input type="text" id="CarNo" class="form-control" style="float:left;width:65%;height:30px" />
+                            </div>
+                        </div>
+                        <div style="float:left;line-height:30px">
+                            黑名单类型：
+                        </div>
+                        <div style="float:left">
+                            <select aria-controls="sampleTable_length" class="form-control form-control-sm" id="Type" style="width:120px;height:30px;padding:0px">
+                                <option value="-1" selected="selected">=全部=</option>
+                                <option value="0">自定义时间</option>
+                                <option value="1">永久时间</option>
+                            </select>
+                        </div>
+                        <div style="float:left;width:200px;text-align:right">
+                            <a class="btn btn-info btn-color" style="color:#fff;width:86px" onclick="GetBlacklist()">搜索</a>
+                            <a class="btn btn-info btn-color" style="color:#fff;width:86px" onclick="Setempty()">重置</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style=" height:10px;background-color:#eff3f6">
+        </div>
+        <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer" style="border:1px solid #e6eaee;">
+            <div class="row" style="height:30px;margin-top:15px">
+                <div class="col-sm-12 col-md-6">
+                    <div class="dataTables_length" id="sampleTable_length">
+                        <img src="~/picture/zuobianlan.png" />
+                        <label style="font-size:18px;font-weight:bold;margin-left:10px">黑名单车辆</label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div id="sampleTable_filter " class="dataTables_filter ">
+                        <a class="btn btn-info" onclick="ModalAddBlacklist()" style="color:#fff;">新增黑名单车辆</a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row Blacklist_div">
+                <div class="col-sm-12">
+                    <table style="text-align:center;cursor: default;" onmouseover="this.style.cursor='hand'" class="table  table-bordered" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                        <tbody id="tbody_content">
+                            <tr role="row" style="background-color:#e8f6ff;font-size:15px;font-weight:bold;">
+                                <td>停车场</td>
+                                <td>车牌号</td>
+                                <td>黑名单类型</td>
+                                <td>限行起始日期</td>
+                                <td>限行截止日期</td>
+                                <td>限行起始时间</td>
+                                <td>限行截止时间</td>
+                                <td>限行周天</td>
+                                <td>状态</td>
+                                <td>备注</td>
+                                <td>操作</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="empty-ico">
+                      暂无数据
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        @*添加*@
+        <div class="col-sm-12">
+            <div class="modal fade" id="div_AddBlacklist" tabindex="-1" role="dialog" aria-labelledby="div_AddBlacklist">
+                <div class="modal-dialog" role="document" style="margin-left:0px">
+                    <div class="modal-content" style="width: 1100px;height: 600px;margin-left:-110%;margin-top:-40px">
+                        <div class="modal-header title_background-color" style="background-color:#0092ff;height:50px;padding:15px">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px;margin-top:-13px"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="div_AddInRecord" style="margin-top:-13px">新增</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tile-body">
+                                <div class="form-horizontal">
+                                    <div style="margin-left:-20px;height:450px;overflow-y:auto;overflow-x:hidden;margin-left:-155px;">
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                停车场名称：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <select name="sampleTable_length" aria-controls="sampleTable" class="form-control input-sm" id="Select_ParkingCode" style="width:280px"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="append_div">
+
+                                            <label class="control-label col-md-4 tr">
+                                                <span style="color:#f70724"> *</span> 车牌号码：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <div style="width:100%;float:left;">
+                                                    <div style="width:55%;float:left;">
+                                                        <input class="form-control" type="text" placeholder="" id="CarNoList" style="width:280px;" name="lblcarNoList">
+                                                        <label style="color:#f70724" id="lblCarNoList"></label>
+                                                    </div>
+                                                    <div style="float:left;margin-top:5px;" id="div_img">
+                                                        <a href="#" onclick="ShowCarNo()">
+                                                            <img src="~/picture/increase.png" style="height:25px;width:25px;" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                是否启用：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <div style="width:20%;float:left">
+                                                    <input class="magic-radio" type="radio" name="Enable" id="Enable" value="1" checked="">
+                                                    <label for="Enable" class="radio5">启用</label>
+                                                    @*<input type="radio" name="Enable" value="1" id="Enable" checked="checked" class="aa">启用*@
+                                                </div>
+                                                <div style="width:80%;float:left">
+                                                    @*<input type="radio" name="Enable" value="0" id="Enable">禁用*@
+                                                    <input class="magic-radio" type="radio" name="Enable" id="Enable2" value="0">
+                                                    <label for="Enable2" class="radio3">禁用</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                黑名单类型：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <div style="width:20%;float:left">
+                                                    @*<input type="radio" name="Always" value="0" id="Always">永久限制*@
+
+                                                    <input class="magic-radio" type="radio" name="Always" id="Always" value="1" onchange="Hide()">
+                                                    <label for="Always" class="radio5">永久限制</label>
+                                                </div>
+                                                <div style="width:80%;float:left">
+                                                    <input class="magic-radio" type="radio" name="Always" id="Always2" value="0" checked="checked" onchange="Show()">
+                                                    <label for="Always2" class="radio3">自定义时间</label>
+                                                    @*<input type="radio" name="Always" value="1" id="Always" checked="checked">自定义时间*@
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row" id="Always_Time" style="display:block">
+                                            <div class="col-md-4 tl">
+                                            </div>
+                                            <div class="col-md-6 tl">
+                                                <div style="border:1px solid #cccccc;width:641px;height:167px">
+                                                    <div style="width:20%;float:left;margin:20px 0 0 20px">
+                                                        <div class="checkbox checkbox-primary">
+                                                            <input id="ByDate" class="styled" name="ByDate" type="checkbox">
+                                                            <label for="ByDate">
+                                                                指定日期
+                                                            </label>
+                                                        </div>
+                                                        @*<input type="checkbox" id="ByDate" name="ByDate"><label for="ByDate">指定日期</label>*@
+                                                    </div>
+                                                    <div style="width:70%;float:left;margin:20px 0 0 20px;text-align:left">
+                                                        <div style="float:left">
+                                                            <label>限行日期：</label>
+                                                        </div>
+                                                        <div class="input-group date form_date col-md-5 pointer " data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:180px;float:left;" id="div_ByDate1">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="StartDate" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        <div style="float:left">
+                                                            -
+                                                        </div>
+                                                        <div class="input-group date form_date col-md-5 pointer " data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:180px;float:left;" id="div_ByDate2">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="EndDate" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        @*<input class="" id="StartDate" type="text" style="width:150px">-<input id="EndDate" type="text" style="width:150px">*@
+                                                    </div>
+                                                    <div style="width:20%;float:left;margin:20px 0 0 20px">
+                                                        <div class="checkbox checkbox-primary">
+                                                            <input id="ByTime" class="styled" name="ByTime" type="checkbox">
+                                                            <label for="ByTime">
+                                                                指定时间
+                                                            </label>
+                                                        </div>
+
+                                                        @*<input type="checkbox" id="ByTime" name="ByTime"><label>指定时间</label>*@
+                                                    </div>
+                                                    <div style="width:70%;float:left;margin:20px 0 0 20px;text-align:left;">
+                                                        <div style="float:left">  <label>限行时间：</label></div>
+
+                                                        <div class="input-group date form_time col-md-5 pointer" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii" style="width:180px;float:left;" id="div_ByTime1">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="StatrtTime" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        <div style="float:left"> -</div>
+                                                        <div class="input-group date form_time col-md-5 pointer" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii" style="width:180px;float:left;" id="div_ByTime2">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="EndTime" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        <input type="hidden" id="dtp_input3" value="" /><br />
+                                                        @*<input class="" id="StatrtTime" type="text" style="width:150px">-<input id="EndTime" type="text" style="width:150px">*@
+                                                    </div>
+                                                    <div style="width:20%;float:left;margin:20px 0 0 20px">
+                                                        <div class="checkbox checkbox-primary">
+                                                            <input id="ByWeek" class="styled" name="ByWeek" type="checkbox">
+                                                            <label for="ByWeek">
+                                                                指定周天
+                                                            </label>
+                                                        </div>
+                                                        @*<input type="checkbox" id="ByWeek" name="ByWeek"><label>指定周天</label>*@
+                                                    </div>
+                                                    <div style="width:70%;float:left;margin:20px 0 0 20px;text-align:left;" class="pointer" id="div_ByWeek">
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left;">
+                                                            <input id="AssignDay1" class="styled" name="AssignDay" type="checkbox" value="1">
+                                                            <label for="AssignDay1" style="padding-left:5px">
+                                                                周一
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="AssignDay2" class="styled" name="AssignDay" type="checkbox" value="2">
+                                                            <label for="AssignDay2" style="padding-left:5px">
+                                                                周二
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="AssignDay3" class="styled" name="AssignDay" type="checkbox" value="3">
+                                                            <label for="AssignDay3" style="padding-left:5px">
+                                                                周三
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="AssignDay4" class="styled" name="AssignDay" type="checkbox" value="4">
+                                                            <label for="AssignDay4" style="padding-left:5px">
+                                                                周四
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="AssignDay5" class="styled" name="AssignDay" type="checkbox" value="5">
+                                                            <label for="AssignDay5" style="padding-left:5px">
+                                                                周五
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="AssignDay6" class="styled" name="AssignDay" type="checkbox" value="6">
+                                                            <label for="AssignDay6" style="padding-left:5px">
+                                                                周六
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="AssignDay7" class="styled" name="AssignDay" type="checkbox" value="7">
+                                                            <label for="AssignDay7" style="padding-left:5px">
+                                                                周日
+                                                            </label>
+                                                        </div>
+                                                        @*<input type="checkbox" id="AssignDay" value="1" name="AssignDay"><label>周一</label> <input type="checkbox" id="AssignDay" name="AssignDay" value="2"><label>周二</label> <input type="checkbox" id="AssignDay" value="3" name="AssignDay"><label>周三</label> <input type="checkbox" id="AssignDay" value="4" name="AssignDay"><label>周四</label> <input type="checkbox" id="AssignDay" value="5" name="AssignDay"><label>周五</label> <input type="checkbox" id="AssignDay" value="6" name="AssignDay"><label>周六</label> <input type="checkbox" id="AssignDay" value="7" name="AssignDay"><label>周日</label>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                备注：
+                                            </label>
+                                            <div class="col-md-7">
+                                                <textarea class="form-control" id="remark" rows="5" style="width:645px"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                            @*<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="SetAddInRecord()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>*@
+                            <button type="submit" name="submit" class="btn btn-primary" id="SavaAdd" onclick="SetAddInRecord()" style="width:120px;background-color:#0092FF">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*编辑*@
+        <div class="col-sm-12">
+            <div class="modal fade" id="div_ModifyBlacklist" tabindex="-1" role="dialog" aria-labelledby="div_ModifyBlacklist">
+                <div class="modal-dialog" role="document" style="margin-left:0px">
+                    <div class="modal-content" style="width: 1100px;height: 600px;margin-left:-110%;margin-top:-40px">
+                        <div class="modal-header title_background-color" style="background-color:#0092ff;height:50px;padding:15px">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px;margin-top:-13px"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="div_AddInRecord" style="margin-top:-13px">编辑</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tile-body">
+                                <div class="form-horizontal">
+                                    <div style="margin-left:-20px;height:450px;overflow-y:auto;overflow-x:hidden;margin-left:-155px">
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                停车场名称：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <select name="sampleTable_length" aria-controls="sampleTable" class="form-control input-sm" id="Select_ParkingCodeEdit" style="width:280px"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="append_div">
+                                            <label class="control-label col-md-4 tr">
+                                                <span style="color:#f70724"> *</span>  车牌号码：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <div style="width:100%;float:left;">
+                                                    <div style="width:55%;float:left;">
+                                                        <input class="form-control" type="text" placeholder="" id="Edit_CarNo" style="width:280px;" name="lblEdit_CarNo">
+                                                        <label style="color:#f70724" id="lblCarNo"></label>
+                                                    </div>
+                                                    @*<div style="float:left;margin-top:5px;" id="div_img">
+                                                            <a href="#" onclick="ShowCarNo()">
+                                                                <img src="~/picture/increase.png" style="height:25px;width:25px;" />
+                                                            </a>
+                                                        </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                是否启用：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <div style="width:20%;float:left">
+                                                    <input class="magic-radio" type="radio" name="Edit_EnableList" id="Edit_Enable" value="1">
+                                                    <label for="Edit_Enable" class="radio5">启用</label>
+                                                </div>
+                                                <div style="width:80%;float:left">
+                                                    <input class="magic-radio" type="radio" name="Edit_EnableList" id="Edit_Enable2" value="0">
+                                                    <label for="Edit_Enable2" class="radio3">禁用</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                黑名单类型：
+                                            </label>
+                                            <div class="col-md-6 tl">
+                                                <div style="width:20%;float:left">
+                                                    @*<input type="radio" name="Always" value="0" id="Always">永久限制*@
+
+                                                    <input type="radio" class="magic-radio" name="Edit_AlwaysList" id="Edit_Always" value="1" onchange="frame_hide()">
+                                                    <label for="Edit_Always" class="radio5">永久限制</label>
+                                                </div>
+                                                <div style="width:80%;float:left">
+                                                    <input type="radio" class="magic-radio" name="Edit_AlwaysList" id="Edit_Always2" value="0" onchange="frame_show()">
+                                                    <label for="Edit_Always2" class="radio3">自定义时间</label>
+                                                    @*<input type="radio" name="Always" value="1" id="Always" checked="checked">自定义时间*@
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row" id="frame_time" style="display:block">
+                                            <div class="col-md-4 tl">
+                                            </div>
+                                            <div class="col-md-6 tl">
+                                                <div style="border:1px solid #cccccc;width:641px;height:167px">
+                                                    <div style="width:20%;float:left;margin:20px 0 0 20px">
+                                                        <div class="checkbox checkbox-primary">
+                                                            <input id="Edit_ByDate" class="styled" name="Edit_ByDateList" type="checkbox">
+                                                            <label for="Edit_ByDate">
+                                                                指定日期
+                                                            </label>
+                                                        </div>
+                                                        @*<input type="checkbox" id="ByDate" name="ByDate"><label for="ByDate">指定日期</label>*@
+                                                    </div>
+                                                    <div style="width:70%;float:left;margin:20px 0 0 20px;text-align:left">
+                                                        <div style="float:left">
+                                                            <label>限行日期：</label>
+                                                        </div>
+                                                        <div class="input-group date Editform_date1 col-md-5 pointer" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:180px;float:left;" id="ByDate_Time">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="Edit_StartDate" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        <div style="float:left">
+                                                            -
+                                                        </div>
+                                                        <div class="input-group date Editform_date2 col-md-5 pointer" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width:180px;float:left;" id="ByDate_Time2">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="Edit_EndDate" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        @*<input class="" id="StartDate" type="text" style="width:150px">-<input id="EndDate" type="text" style="width:150px">*@
+                                                    </div>
+                                                    <div style="width:20%;float:left;margin:20px 0 0 20px">
+                                                        <div class="checkbox checkbox-primary">
+                                                            <input id="Edit_ByTime" class="styled" name="Edit_ByTimeList" type="checkbox">
+                                                            <label for="Edit_ByTime">
+                                                                指定时间
+                                                            </label>
+                                                        </div>
+
+                                                        @*<input type="checkbox" id="ByTime" name="ByTime"><label>指定时间</label>*@
+                                                    </div>
+                                                    <div style="width:70%;float:left;margin:20px 0 0 20px;text-align:left;">
+                                                        <div style="float:left">  <label>限行时间：</label></div>
+
+                                                        <div class="input-group date Editform_time1 col-md-5 pointer" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii" style="width:180px;float:left;" id="div_ByTime3">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="Edit_StatrtTime" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        <div style="float:left"> -</div>
+                                                        <div class="input-group date Editform_time2 col-md-5 pointer" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii" style="width:180px;float:left;" id="div_ByTime4">
+                                                            <input class="form-control" size="16" type="text" value="" readonly id="Edit_EndTime" style="background-color:#fff">
+                                                            <span class="input-group-addon" style="background-color:#fff"><span class="glyphicon glyphicon-remove"></span></span>
+
+                                                        </div>
+                                                        <input type="hidden" id="dtp_input3" value="" /><br />
+                                                        @*<input class="" id="StatrtTime" type="text" style="width:150px">-<input id="EndTime" type="text" style="width:150px">*@
+                                                    </div>
+                                                    <div style="width:20%;float:left;margin:20px 0 0 20px">
+                                                        <div class="checkbox checkbox-primary">
+                                                            <input id="Edit_ByWeek" class="styled" name="Edit_ByWeekList" type="checkbox">
+                                                            <label for="Edit_ByWeek">
+                                                                指定周天
+                                                            </label>
+                                                        </div>
+                                                        @*<input type="checkbox" id="ByWeek" name="ByWeek"><label>指定周天</label>*@
+                                                    </div>
+                                                    <div style="width:70%;float:left;margin:20px 0 0 20px;text-align:left;" class="pointer" id="div_ByWeek1">
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left;">
+                                                            <input id="Edit_AssignDay1" class="styled" name="Edit_AssignDayList" type="checkbox" value="1">
+                                                            <label for="Edit_AssignDay1" style="padding-left:5px">
+                                                                周一
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="Edit_AssignDay2" class="styled" name="Edit_AssignDayList" type="checkbox" value="2">
+                                                            <label for="Edit_AssignDay2" style="padding-left:5px">
+                                                                周二
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="Edit_AssignDay3" class="styled" name="Edit_AssignDayList" type="checkbox" value="3">
+                                                            <label for="Edit_AssignDay3" style="padding-left:5px">
+                                                                周三
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="Edit_AssignDay4" class="styled" name="Edit_AssignDayList" type="checkbox" value="4">
+                                                            <label for="Edit_AssignDay4" style="padding-left:5px">
+                                                                周四
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="Edit_AssignDay5" class="styled" name="Edit_AssignDayList" type="checkbox" value="5">
+                                                            <label for="Edit_AssignDay5" style="padding-left:5px">
+                                                                周五
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="Edit_AssignDay6" class="styled" name="Edit_AssignDayList" type="checkbox" value="6">
+                                                            <label for="Edit_AssignDay6" style="padding-left:5px">
+                                                                周六
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox checkbox-primary" style="width:13%;float:left">
+                                                            <input id="Edit_AssignDay7" class="styled" name="Edit_AssignDayList" type="checkbox" value="7">
+                                                            <label for="Edit_AssignDay7" style="padding-left:5px">
+                                                                周日
+                                                            </label>
+                                                        </div>
+                                                        @*<input type="checkbox" id="AssignDay" value="1" name="AssignDay"><label>周一</label> <input type="checkbox" id="AssignDay" name="AssignDay" value="2"><label>周二</label> <input type="checkbox" id="AssignDay" value="3" name="AssignDay"><label>周三</label> <input type="checkbox" id="AssignDay" value="4" name="AssignDay"><label>周四</label> <input type="checkbox" id="AssignDay" value="5" name="AssignDay"><label>周五</label> <input type="checkbox" id="AssignDay" value="6" name="AssignDay"><label>周六</label> <input type="checkbox" id="AssignDay" value="7" name="AssignDay"><label>周日</label>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-4 tr">
+                                                备注：
+                                            </label>
+                                            <div class="col-md-7">
+                                                <textarea class="form-control" id="Edit_remark" rows="5" style="width:645px"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                            @*<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="SetModifyBlacklist()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>*@
+                            <button type="submit" name="submit" class="btn btn-primary" id="SavaEdit" onclick="SetModifyBlacklist()" style="width:120px;background-color:#0092FF">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<input type="hidden" value="" id="str_number" />
+<script type="text/javascript">
+    var RoleGuidList = "";
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    $(document).ready(function () {
+        _div.style.display = 'block';
+        $('#defaultForm').bootstrapValidator();
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:
+            {
+                lblcarNoList: {
+                    validators: {
+                        notEmpty: {
+                            message: '.'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '.'
+                        }
+                    }
+                },
+
+
+            },
+            fields: {
+                lblEdit_CarNo: {
+                    validators: {
+                        notEmpty: {
+                            message: '.'
+                        },
+                        regexp:
+                        {
+                            regexp: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/,
+                            message: '.'
+                        }
+                    }
+                },
+
+
+            }
+        });
+        GetRolePermission(GetParkLotList);
+
+    })
+    //重置
+    function Setempty() {
+        _div.style.display = 'block';
+        GetParkLotList();
+        $("#CarNo").val("");
+    }
+    //获取角色权限api/Personnel/GetRolePermission?Guid={Guid}
+    function GetRolePermission(cb) {
+        var RoleGuid = $.cookie("RoleGuid");
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + RoleGuid,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            async: false,
+            success: function (data) {
+                if (data.ParkingCodeList) {
+                    data.ParkingCodeList = [...(new Set(data.ParkingCodeList))]
+                }
+                if (data.IsSuccess == true) {
+                    RoleGuidList = data.ParkingCodeList;
+                    cb && cb()
+                }
+                _div.style.display = 'none';
+            },
+        })
+    }
+
+    //获取车场
+    function GetParkLotList() {
+        // GetRolePermission()
+        // $("#ParkLotSelect").empty();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=' + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            accepts: false,
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    var html = "<option value='' >=请选择=</option>"
+                    for (var key in json) {
+                        var parkCode = json[key].ParkCode;
+                        if (json[key].Existence == true) {
+                            for (var roleGuidList in RoleGuidList) {
+                                if (RoleGuidList[roleGuidList] == parkCode) {
+                                    var parkName = json[key].ParkName;
+                                    var projectGuid = json[key].ProjectGuid;
+                                    html += "<option value='" + parkCode + "' >" + parkName + "</option>";
+                                }
+                            }
+                        }
+                    }
+                    $("#ParkLotSelect").html(html)
+                    _div.style.display = 'none';
+                }
+            }
+        })
+    }
+
+    $("#ParkLotSelect").change(function () {
+        GetBlacklist();
+    })
+
+    //获取黑名单列表
+    function GetBlacklist() {
+        var ParkingCode = $("#ParkLotSelect").val();
+        if (ParkingCode == "") {
+            return;
+            //return alert("请选择停车场")
+        }
+        _div.style.display = 'block';
+        var CarNo = $("#CarNo").val();
+        var Type = $("#Type").val();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var jsonstr = { "ProjectGuid": ProjectGuid, "ParkingCode": ParkingCode, "Type": Type, "CarNo": CarNo }
+        var where = JSON.stringify(jsonstr);
+        var Base64args = encodeBase64(where);
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetBlacklist?Base64args=" + Base64args,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result.List;
+                    var html_content = "";
+                    $("#tbody_content").html("");
+                    var index = "";
+                    //标题
+                    var html_content = '<tr role="row" style="background-color:#e8f6ff;font-weight:bold;font-size:15px">' +
+                        '<td>停车场</td>' +
+                        '<td>车牌号</td>' +
+                        '<td>黑名单类型</td>' +
+                        '<td>限行起始日期</td>' +
+                        '<td>限行截止日期</td>' +
+                        ' <td>限行起始时间</td>' +
+                        '<td>限行截止时间</td>' +
+                        '<td>限行周天</td>' +
+                        '<td>状态</td>' +
+                        ' <td>备注</td>' +
+                        '<td>操作</td>' +
+                        '</tr>';
+
+                    for (var key in json) {
+                        index++;
+                        var parkName = $('#ParkLotSelect').find("option:selected").text();
+                        var carNo = json[key].CarNo;
+                        var always = json[key].Always == true ? '永久时间' : '自定义时间'
+                        var enable = json[key].Enable == true ? '启动' : '禁用'
+                        var startDate = json[key].StartDate;
+                        var endDate = json[key].EndDate;
+                        var byTime = json[key].ByTime;
+                        var statrtTime = json[key].StatrtTime == null ? '' : json[key].StatrtTime;
+                        var endTime = json[key].EndTime == null ? '' : json[key].EndTime;;
+                        var byWeek = json[key].ByWeek;
+                        var assignDay = json[key].AssignDay;
+                        var remark = json[key].Remark;
+                        var byDate = json[key].ByDate;
+                        var assignDaystr = "";
+                        if (assignDay != null) {
+                            for (var i = 0; i < assignDay.length; i++) {
+                                 
+                                var count = 1;
+                                var index = parseInt(i) + parseInt(count);
+                                var value = assignDay[i];
+                                if (assignDay[i] == 1)
+                                {
+
+                                    assignDaystr = assignDaystr + "周" + index;
+                                    if (i != 7) {
+                                        assignDaystr = assignDaystr + ",";
+                                    }
+                                }
+                            }
+                            assignDaystr = assignDaystr.substring(0, assignDaystr.length - 1);
+                        }
+                        //内容列表
+                        if (index % 2 == 0) {
+                            html_content = html_content + '<tr role="row" class="odd" id=key_' + index + ' style="font-size:14px;background-color:#f3f8fb;">';
+                        }
+                        else {
+                            html_content = html_content + '<tr role="row" class="odd" id=key_' + index + ' style="font-size:14px">';
+                        }
+                        html_content = html_content + '<td class="sorting_1">' + parkName + '</td>' +
+                            '<td>' + carNo + '</td>' +
+                            '<td>' + always + '</td>' +
+                            '<td>' + startDate + '</td>' +
+                            '<td>' + endDate + '</td>' +
+                            '<td>' + statrtTime + '</td>' +
+                            '<td class="sorting_1">' + endTime + '</td>' +
+                            '<td>' + assignDaystr + '</td>' +
+                            '<td>' + enable + '</td>' +
+                            '<td>' + remark + '</td>' +
+                            "<td><input type='button' class='btn btn-info icon-btn mr-10' style='color: #e8f6ff; margin: 0px 15px 0px 15px; width: 70px; height: 30px; padding: 0.15rem 0.75rem'  value='编辑' onclick='ModalModifyBlacklist(\"" + ParkingCode + "\",\"" + carNo + "\",\"" + json[key].Enable + "\",\"" + json[key].Always + "\",\"" + byDate + "\",\"" + startDate + "\",\"" + endDate + "\",\"" + byTime + "\",\"" + statrtTime + "\",\"" + endTime + "\",\"" + byWeek + "\",\"" + assignDay + "\",\"" + remark + "\")' />" +
+                            "<a class='btn btn-default' style='color:#e8f6ff;margin:0px 15px 0px 15px;width:70px;height:30px;padding:0.15rem 0.75rem ' onclick='Delete(\"" + carNo + "\",\"" + index + "\",\"" + ParkingCode + "\")'>删除</a>" +
+                            "</td > " +
+                            '</tr >';
+                    }
+                    $("#tbody_content").append(html_content);
+                    if (json.length) {
+                        $('.empty-ico').hide()
+                    } else {
+                        $('.empty-ico').show()
+                    }
+                }
+                _div.style.display = 'none';
+            },
+            error: function (xhr) {
+                _div.style.display = 'none';
+                // 导致出错的原因较多，以后再研究
+                $message('d','error:' + JSON.stringify(xhr));
+            }
+        })
+    }
+    //加密
+    function encodeBase64(mingwen) {
+        // 创建Base64对象
+        var Base64 = { _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", encode: function (e) { var t = ""; var n, r, i, s, o, u, a; var f = 0; e = Base64._utf8_encode(e); while (f < e.length) { n = e.charCodeAt(f++); r = e.charCodeAt(f++); i = e.charCodeAt(f++); s = n >> 2; o = (n & 3) << 4 | r >> 4; u = (r & 15) << 2 | i >> 6; a = i & 63; if (isNaN(r)) { u = a = 64 } else if (isNaN(i)) { a = 64 } t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a) } return t }, decode: function (e) { var t = ""; var n, r, i; var s, o, u, a; var f = 0; e = e.replace(/[^A-Za-z0-9+/=]/g, ""); while (f < e.length) { s = this._keyStr.indexOf(e.charAt(f++)); o = this._keyStr.indexOf(e.charAt(f++)); u = this._keyStr.indexOf(e.charAt(f++)); a = this._keyStr.indexOf(e.charAt(f++)); n = s << 2 | o >> 4; r = (o & 15) << 4 | u >> 2; i = (u & 3) << 6 | a; t = t + String.fromCharCode(n); if (u != 64) { t = t + String.fromCharCode(r) } if (a != 64) { t = t + String.fromCharCode(i) } } t = Base64._utf8_decode(t); return t }, _utf8_encode: function (e) { e = e.replace(/rn/g, "n"); var t = ""; for (var n = 0; n < e.length; n++) { var r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r) } else if (r > 127 && r < 2048) { t += String.fromCharCode(r >> 6 | 192); t += String.fromCharCode(r & 63 | 128) } else { t += String.fromCharCode(r >> 12 | 224); t += String.fromCharCode(r >> 6 & 63 | 128); t += String.fromCharCode(r & 63 | 128) } } return t }, _utf8_decode: function (e) { var t = ""; var n = 0; var r = c1 = c2 = 0; while (n < e.length) { r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r); n++ } else if (r > 191 && r < 224) { c2 = e.charCodeAt(n + 1); t += String.fromCharCode((r & 31) << 6 | c2 & 63); n += 2 } else { c2 = e.charCodeAt(n + 1); c3 = e.charCodeAt(n + 2); t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63); n += 3 } } return t } }
+        var encodedString = Base64.encode(mingwen)
+        return encodedString;
+    }
+    //编辑黑名单
+    function Add(ParkingCode, carNo, enable, always, byDate, startDate, endDate, byTime, statrtTime, endTime, byWeek, assignDay, remark) {
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 > <a href="#" onclick=\"back_ParkLotBlackList()\"> 黑名单车辆</a> </label> > <label style="color:#0092ff"> 添加黑名单车辆 </label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_BlackEdit?carNo=" + carNo + "&ParkingCode=" + ParkingCode + "&Enable=" + enable + "&always=" + always + "&byDate=" + byDate + "&startDate=" + startDate + "&endDate=" + endDate + "&byTime=" + byTime + "&statrtTime=" + statrtTime + "&endTime=" + endTime + "&byWeek=" + byWeek + "&assignDay=" + assignDay + "&remark=" + remark);
+    }
+    //添加黑名单
+    function BtnAdd() {
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 > <a href="#" onclick=\"back_ParkLotBlackList()\"> 黑名单车辆</a> </label> > <label style="color:#0092ff"> 添加黑名单车辆 </label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_Blackadd");
+
+
+    }
+
+    //删除
+    function Delete(carNo, key, ParkingCode) {
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var data = {
+            "CarNo": carNo,
+            "ParkingCode": ParkingCode,
+            "ProjectGuid": ProjectGuid
+        };
+        $alert({
+            html: "您确定删除吗？",
+            confirm: function () {
+                _div.style.display = 'block';
+                $.post("/Home/Maps/ParkLot/RemoveCarNoInBlacklist", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s',"删除成功！")
+                        $("#key_" + key).remove();
+                        _div.style.display = 'none';
+                    }
+                    else {
+                        _div.style.display = 'none';
+                        $message('d', result.MessageContent);
+                    }
+                });
+            }
+        })
+    }
+    //添加车牌号
+    function ShowCarNo() {
+        var index = Math.floor(Math.random() * (1 - 50000) + 50000);
+        var html = '<div class="form-group row div_' + index + '" id="append_div">' +
+            '<label class="control-label col-md-4 tr">' +
+            ' </label >' +
+            '<div class="col-md-6 tl">' +
+            '<div style="width:100%;float:left;">' +
+            '<div style="width:55%;float:left;">' +
+            '<input class="form-control" type="text" placeholder="" id="CarNoList" style="width:280px;">' +
+            '</div >' +
+            '<div style="float:left;margin-top:5px" id="div_img">' +
+            ' <a href="#" onclick="Delete1(' + index + ')">' +
+            '<img src="/picture/cancel.png" />' +
+            '</a>' +
+            '</div>' +
+            ' </div>' +
+            ' </div>' +
+            '</div>';
+        $("#append_div").after(html)
+        var number = $("#str_number").val();
+        $("#str_number").val(number + "," + index);
+
+    };
+
+    function Delete1(index) {
+        $(".div_" + index).remove();
+    }
+
+    function frame_show() {
+        $("#frame_time").show();
+    }
+    function frame_hide() {
+        $("#frame_time").hide();
+    }
+    //编辑数据
+    function ModalModifyBlacklist(ParkingCode, carNo, enable, always, byDate, startDate, endDate, byTime, statrtTime, endTime, byWeek, assignDay, remark) {
+        _div.style.display = 'block';
+        $("#lblCarNo").text("");
+        $("#SavaEdit").removeAttr("disabled")
+        $("#SavaEdit").removeAttr("disabled");
+        $('.Editform_date1').datetimepicker("update", startDate);//赋值
+        $('.Editform_date2').datetimepicker("update", endDate);//赋值
+        $('.Editform_time1').datetimepicker("update", statrtTime);//赋值
+        $('.Editform_time2').datetimepicker('update', endTime);//赋值，当前日期
+        $("#Edit_CarNo").val(carNo);
+        if (enable == "true") {
+            $("#Edit_Enable").click();
+        }
+        else {
+            $("#Edit_Enable2").click();
+        }
+        if (always == "true") {
+            $("#frame_time").hide();
+            $("#Edit_Always").click();
+        }
+        else {
+            $("#frame_time").show();
+            $("#Edit_Always2").click();
+        }
+        if (byDate == "true") {
+            $("input[type=checkbox][name='Edit_ByDateList']").prop('checked', true);
+            $("#ByDate_Time").removeClass("pointer");
+            $("#ByDate_Time2").removeClass("pointer");
+
+        } else {
+            $("input[type=checkbox][name='Edit_ByDateList']").prop('checked', false);
+            $("#ByDate_Time").addClass("pointer");
+            $("#ByDate_Time2").addClass("pointer");
+        }
+
+        $("#Edit_StartDate").val(decodeURI(startDate));
+        $("#Edit_EndDate").val(decodeURI(endDate));
+        if (byTime == "true") {
+            $("input[type=checkbox][name='Edit_ByTimeList']").prop('checked', true);
+            $("#div_ByTime3").removeClass("pointer");
+            $("#div_ByTime4").removeClass("pointer");
+        }
+        else {
+            $("input[type=checkbox][name='Edit_ByTimeList']").prop('checked', false);
+            $("#div_ByTime3").addClass("pointer");
+            $("#div_ByTime4").addClass("pointer");
+        }
+        $("#Edit_StatrtTime").val(decodeURI(statrtTime));
+        $("#Edit_EndTime").val(decodeURI(endTime));
+        if (byWeek == "true") {
+            $("#Edit_ByWeek").prop("checked", true);
+            $("#div_ByWeek1").removeClass("pointer");
+        }
+        else {
+            $("#Edit_ByWeek").prop("checked", false);
+            $("#div_ByWeek1").addClass("pointer");
+        }
+        var strlength = assignDay;
+
+        if (strlength != "") {
+            for (var j = 0; j < strlength.length; j++) {
+                var count = parseInt(j) + parseInt(1);
+                if (strlength[j] == 1) {
+                    $("#Edit_AssignDay" + count).prop("checked", true);
+                    // $("input[name=Edit_AssignDayList]:eq(" + j + ")").attr("checked", 'checked');
+                }
+                else {
+                    $("#Edit_AssignDay" + count).prop("checked", false);
+                    //$("input[name=Edit_AssignDayList]:eq(" + j + ")").attr("checked", false);
+                }
+            }
+        }
+        else {
+            for (var j = 0; j < 7; j++) {
+                var count = parseInt(j) + parseInt(1);
+                $("#Edit_AssignDay" + count).prop("checked", false);
+            }
+        }
+        Get_ParkLotList(ParkingCode);
+        $("#Edit_remark").val(remark);
+        $("#div_ModifyBlacklist").modal();
+        _div.style.display = 'none';
+    }
+    //添加数据
+    function ModalAddBlacklist() {
+        _div.style.display = 'block';
+        var number = $("#str_number").val().split(",");
+        if (number != "") {
+            var list = JSON.stringify(number);
+            for (var i = 0; i < number.length; i++) {
+                $(".div_" + number[i]).remove();
+            }
+        }
+        Get_ParkLotList("");
+
+        $("#StartDate").val("");
+        $("#EndDate").val("");
+        $("#StatrtTime").val("");
+        $("#EndTime").val("");
+
+        $("input[type=checkbox][name='ByDate']").prop('checked', false);
+        $("#div_ByDate1").addClass("pointer");
+        $("#div_ByDate2").addClass("pointer");
+        $("input[type=checkbox][name='ByTime']").prop('checked', false);
+        $("#div_ByTime1").addClass("pointer");
+        $("#div_ByTime2").addClass("pointer");
+        $("#ByWeek").prop("checked", false);
+        $("#div_ByWeek").addClass("pointer");
+        $("#CarNoList").val("");
+        $("#remark").val("");
+        $("#remark").val("");
+        $("#div_AddBlacklist").modal();
+        for (var j = 0; j < 7; j++) {
+            //  $("#ByDate").prop("checked", false);
+            $("#AssignDay" + j).prop("checked", false);
+        }
+        $("#lblCarNoList").text("")
+        $("#SavaAdd").removeAttr("disabled")
+        _div.style.display = 'none';
+    }
+
+    //选择永久限制时显示
+    function Show() {
+
+        $("#Always_Time").css("display", "block");
+
+    }
+    //选择永久限制时隐藏
+    function Hide() {
+        $("#Always_Time").css("display", "none");
+    };
+
+    $("#Edit_ByDate").change(function () {
+
+        if ($('#Edit_ByDate').is(':checked') == true) {
+            $("#ByDate_Time").removeClass("pointer");
+            $("#ByDate_Time2").removeClass("pointer");
+        }
+    });
+
+    $("#ByDate").change(function () {
+        if ($('#ByDate').is(':checked') == true) {
+            $("#div_ByDate1").removeClass("pointer");
+            $("#div_ByDate2").removeClass("pointer");
+        }
+    });
+
+    $("#ByTime").change(function () {
+        if ($('#ByTime').is(':checked') == true) {
+            $("#div_ByTime1").removeClass("pointer");
+            $("#div_ByTime2").removeClass("pointer");
+        }
+    });
+
+    $("#Edit_ByTime").change(function () {
+        if ($('#Edit_ByTime').is(':checked') == true) {
+            $("#div_ByTime3").removeClass("pointer");
+            $("#div_ByTime4").removeClass("pointer");
+        }
+    });
+
+    $("#ByWeek").change(function () {
+        if ($('#ByWeek').is(':checked') == true) {
+            $("#div_ByWeek").removeClass("pointer");
+        }
+    });
+
+    $("#Edit_ByWeek").change(function () {
+        if ($('#Edit_ByWeek').is(':checked') == true) {
+            $("#div_ByWeek1").removeClass("pointer");
+        }
+    });
+    $('.form_date').datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        format: 'yyyy-mm-dd hh:mm:ss',
+        language: 'zh-CN',//显示中文
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        today: '今天',
+        suffix: [],
+        meridiem: [],
+        weekStart: 1,
+        format: 'yyyy-mm-dd'
+    });
+
+    $('.Editform_date1').datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        format: 'yyyy-mm-dd hh:mm:ss',
+        language: 'zh-CN',//显示中文
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        today: '今天',
+        suffix: [],
+        meridiem: [],
+        weekStart: 1,
+        format: 'yyyy-mm-dd'
+    });
+
+    $('.Editform_date2').datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        format: 'yyyy-mm-dd hh:mm:ss',
+        language: 'zh-CN',//显示中文
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        today: '今天',
+        suffix: [],
+        meridiem: [],
+        weekStart: 1,
+        format: 'yyyy-mm-dd'
+    });
+
+    $('.form_time').datetimepicker({
+        language: 'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+
+    $('.Editform_time1').datetimepicker({
+        language: 'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+
+    $('.Editform_time2').datetimepicker({
+        language: 'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+    //保存编辑
+    function SetModifyBlacklist() {
+        _div.style.display = 'block';
+        /*手动验证表单，当是普通按钮时。*/
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            _div.style.display = 'none';
+            return;
+        }
+        else {
+            var is = 0;
+            if ($("#Edit_CarNo").val() == "") {
+                $("#lblCarNo").text("不能为空");
+            }
+            if (is != 0) {
+                $('form').data('bootstrapValidator').validate();
+                if ($('form').data('bootstrapValidator').isValid()) {
+                    _div.style.display = 'none';
+                    return;
+                }
+            }
+            var arrayObj = $("#Edit_CarNo").val();
+            var ProjectGuid = $.cookie("ProjectGuid");
+            var ParkingCode = $("#Select_ParkingCodeEdit").val();
+            var Enable = $('input:radio[name="Edit_EnableList"]:checked').val();
+            if (Enable == "0") {
+                Enable = false;
+            }
+            else {
+                Enable = true;
+            }
+            var Always = $('input:radio[name="Edit_AlwaysList"]:checked').val();
+            var ByDate = "";
+            var EndDate = "";
+            var StartDate = "";
+            var ByTime = "";
+            var StatrtTime = "";
+            var EndTime = "";
+            var ByWeek = "";
+            var AssignDay = "";
+            if (Always != "1") {
+                Always = false;
+                ByDate = $('#Edit_ByDate').is(":checked");
+                if (ByDate == true) {
+                    EndDate = $("#Edit_EndDate").val();
+                    StartDate = $("#Edit_StartDate").val();
+                }
+                var ByTime = $('#Edit_ByTime').is(':checked');
+                if (ByTime == true) {
+                    StatrtTime = $("#Edit_StatrtTime").val();
+                    EndTime = $("#Edit_EndTime").val();
+                }
+
+                var ByWeek = $('#Edit_ByWeek').is(':checked');
+                if (ByWeek == true) {
+                    AssignDay = "";//定义一个
+                    $("input[name='Edit_AssignDayList']").each(function (i) {//把所有被选中的复选框的值存入数组
+                        AssignDay = AssignDay + ($(this).is(':checked') ? '1' : '0');
+                    });
+
+                }
+            }
+            else {
+                Always = true;
+                ByDate = false;
+                ByTime = false;
+                ByWeek = false;
+
+            }
+            var Remark = $("#Edit_remark").val();
+
+            var data = {
+                "ParkingCode": ParkingCode, "Remark": Remark, "ProjectGuid": ProjectGuid, "CarNoList": arrayObj, "Always": Always == 1 ? true : false, "Enable": Enable == 1 ? true : false, "ByDate": ByDate, "EndDate": EndDate, "StartDate": StartDate, "ByTime": ByTime, "StatrtTime": StatrtTime, "EndTime": EndTime, "ByWeek": ByWeek, "AssignDay": AssignDay
+            }
+
+            $.post("/Home/Maps/ParkLot/ModifyBlacklist", data, function (result) {
+                if (result.IsSuccess == true) {
+                    $message('s', "黑名单修改成功");
+                    $('#SavaEdit').attr("disabled", false);
+                    $('#SavaAdd').attr("disabled", false);
+                    $('#div_ModifyBlacklist').modal('hide');//隐藏modal
+                    GetBlacklist();
+                    _div.style.display = 'none';
+                    return;
+                }
+                else {
+                    $('#SavaEdit').attr("disabled", false);
+                    $('#SavaAdd').attr("disabled", false);
+                    $message('d', result.MessageContent);
+                    _div.style.display = 'none';
+                    return;
+                }
+            });
+        }
+
+    }
+    //保存添加
+    function SetAddInRecord() {
+        _div.style.display = 'block';
+        /*手动验证表单，当是普通按钮时。*/
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            _div.style.display = 'none';
+            return;
+        }
+        else {
+            var is = 0;
+            if ($("#CarNoList").val() == "") {
+                $("#lblCarNoList").text("不能为空");
+                is++;
+
+            }
+            if (is != 0) {
+                $('form').data('bootstrapValidator').validate();
+                if ($('form').data('bootstrapValidator').isValid()) {
+                    _div.style.display = 'none';
+                    return;
+                }
+            }
+        }
+        var arrayObj = "";
+        var arraystr = "";
+        $("input[id='CarNoList']").each(function (i) {
+            arraystr = arraystr + $(this).val() + ",";
+        });
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var ParkingCode = $("#Select_ParkingCode").val();
+        // var CarNoList = $("#CarNoList").val();
+        arrayObj = arraystr.substr(0, arraystr.length - 1);
+        var Enable = $('input:radio[name="Enable"]:checked').val();
+        if (Enable == "0") {
+            Enable = false;
+        }
+        else {
+            Enable = true;
+        }
+        //var Always = $("#Always").val();
+        var Always = $('input:radio[name="Always"]:checked').val();
+        var ByDate = "";
+        var EndDate = "";
+        var StartDate = "";
+        var ByTime = "";
+        var StatrtTime = "";
+        var EndTime = "";
+        var ByWeek = "";
+        var AssignDay = "";
+        if (Always == "0") {
+            Always = false;
+            ByDate = $('#ByDate').is(":checked");
+            if (ByDate == true) {
+                EndDate = $("#EndDate").val();
+                StartDate = $("#StartDate").val();
+            }
+            var ByTime = $('#ByTime').is(':checked');
+            if (ByTime == true) {
+                StatrtTime = $("#StatrtTime").val();
+                EndTime = $("#EndTime").val();
+            }
+            var ByWeek = $('#ByWeek').is(':checked');
+            if (ByWeek == true) {
+                AssignDay = "";//定义一个
+                $("input[name='AssignDay']").each(function (i) {//把所有被选中的复选框的值存入数组
+                    AssignDay = AssignDay + ($(this).is(':checked') ? '1' : '0');
+                });
+
+            }
+        }
+        else {
+            ByDate = false;
+            ByTime = false;
+            ByWeek = false;
+            Always = true;
+        }
+        var Remark = $("#remark").val();
+        var data = {
+            "ParkingCode": ParkingCode, "Remark": Remark, "ProjectGuid": ProjectGuid, "CarNoList": arrayObj, "Always": Always == 1 ? true : false, "Enable": Enable == 1 ? true : false, "ByDate": ByDate, "EndDate": EndDate, "StartDate": StartDate, "ByTime": ByTime, "StatrtTime": StatrtTime, "EndTime": EndTime, "ByWeek": ByWeek, "AssignDay": AssignDay
+        }
+        $.post("/Home/Maps/ParkLot/AddBlacklist", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "添加成功");
+                GetBlacklist();
+                $('#SavaEdit').attr("disabled", false);
+                $('#SavaAdd').attr("disabled", false);
+                $('#div_AddBlacklist').modal('hide');//隐藏modal
+                _div.style.display = 'none';
+                return;
+            }
+            else {
+                $message('d',result.MessageContent);
+                $('#SavaEdit').attr("disabled", false);
+                $('#SavaAdd').attr("disabled", false);
+                _div.style.display = 'none';
+                return;
+            }
+        });
+
+        //  }
+    }
+
+    //获取车场
+    function Get_ParkLotList(ParkingNo) {
+        _div.style.display = 'block';
+        var ProjectGuid = $.cookie("ProjectGuid");
+
+        if (ParkingNo == "") {
+            var ParkingCode = $("#ParkLotSelect").val();
+        }
+        else {
+            var ParkingCode = ParkingNo;
+        }
+        $.ajax({
+            url: '/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=' + ProjectGuid,
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    $("#Select_ParkingCodeEdit").empty();
+                    $("#Select_ParkingCode").empty();
+                    for (var key in json) {
+                        if (json[key].Existence == true) {
+                            var parkCode = json[key].ParkCode;
+                            var parkName = json[key].ParkName;
+                            if (json[key].Existence == true) {
+                                for (var roleGuidList in RoleGuidList) {
+                                    if (RoleGuidList[roleGuidList] == parkCode) {
+                                        if (parkCode == ParkingCode) {
+                                            //Select_ParkingCodeEdit
+                                            if (ParkingNo == "") {
+                                                $("#Select_ParkingCode").append("<option value='" + parkCode + "' selected='selected'>" + parkName + "</option>");
+                                            }
+                                            else {
+                                                $("#Select_ParkingCodeEdit").append("<option value='" + parkCode + "' selected='selected'>" + parkName + "</option>");
+                                            }
+                                        }
+                                        else {
+                                            if (ParkingNo == "") {
+                                                $("#Select_ParkingCode").append("<option value='" + parkCode + "'>" + parkName + "</option>");
+                                            }
+                                            else {
+                                                $("#Select_ParkingCodeEdit").append("<option value='" + parkCode + "'>" + parkName + "</option>");
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        _div.style.display = 'none';
+    }
+
+    $("#CarNoList").bind('input propertychange', function () {
+        var name = $(this).val();
+        if (name == "") {
+            $("#lblCarNoList").text("不能为空");
+            $("#SavaAdd").attr("disabled", "disabled");
+            return true;
+        }
+        var exp = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/;
+        var reg = name.match(exp);
+        if (reg == null) {
+            $("#lblCarNoList").text("请输入正确的车牌号");
+            $("#SavaAdd").attr("disabled", "disabled");
+            return false;
+
+        } else {
+            $("#lblCarNoList").text("");
+            $("#SavaAdd").removeAttr("disabled")
+            return true;
+        }
+    });
+
+    $("#Edit_CarNo").bind('input propertychange', function () {
+        var name = $(this).val();
+        if (name == "") {
+            $("#lblCarNo").text("不能为空");
+            $("#SavaEdit").attr("disabled", "disabled");
+            return true;
+        }
+        var exp = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z0-9]{1}[A-Z0-9挂学警港澳]{4,5}$/;
+        var reg = name.match(exp);
+        if (reg == null) {
+            $("#lblCarNo").text("请输入正确的车牌号");
+            $("#SavaEdit").attr("disabled", "disabled");
+            return false;
+
+        } else {
+            $("#lblCarNo").text("");
+            $("#SavaEdit").removeAttr("disabled")
+            return true;
+        }
+    });
+
+</script>

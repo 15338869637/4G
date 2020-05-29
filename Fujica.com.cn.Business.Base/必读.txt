@@ -1,0 +1,1 @@
+﻿所有的业务类必须继承自Fujica.com.cn.Bussiness.Base项目的IBaseBussiness接口

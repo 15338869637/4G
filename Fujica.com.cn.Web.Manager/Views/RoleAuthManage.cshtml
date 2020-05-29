@@ -1,0 +1,540 @@
+@{
+    /**/
+
+    ViewBag.Title = "RoleAuthManage";
+    Layout = null;
+
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/common.js"></script>
+<style>
+    .btn-default {
+        color: #fff;
+        background-color: #b0b0b0;
+        border-color: transparent;
+    }
+
+    .checkWrap {
+        float: left;
+        margin-top: 10px !important;
+        margin-right: 25px;
+    }
+
+    .panel-body {
+        padding :15px 0;
+    }
+    #roleBox {
+        padding: 0;
+    }
+
+        #roleBox li {
+            list-style: none;
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+            cursor: pointer;
+            color: #6C7A8B;
+            padding-top:10px
+        }
+        #roleBox li span{
+            font-size: 12px;
+            border-left: 1px solid #fff;
+            padding-left: 15px;
+            height: 20px;
+            display: block;
+            line-height: 20px;
+        }
+        .border_b {
+            border-left: 1px solid #0092FF !important;
+        }
+            #roleBox li:hover {
+                background-color: #E8F6FF;
+            }
+
+    tr:nth-child(even) {
+        background-color: #F3F8FB;
+    }
+    html,body,#sampleTable_wrapper {
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    #sampleTable_wrapper{
+        padding: 15px 8px;
+        overflow: hidden;
+    }
+    .bs-component{
+        display: flex;
+        flex-direction: column;
+    }
+    #myTabContent{
+        display: flex;
+
+    }
+</style>
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer" >
+    <div style="height:40px;">
+        <div class="col-sm-12 col-md-2">
+            <div class="dataTables_length" id="sampleTable_length">
+                <div style="width:10%;float:left">
+                    <img src="~/picture/zuobianlan.png" />
+                </div>
+                <div style="width:80%;float:left;">
+                    <label style="font-size:20px;font-weight:bold;line-height: 36px;">角色权限管理</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="border-bottom: 1px solid #eeeeee;margin-top: 10px;"></div>
+    <div style="flex:1;display: flex;flex-direction: column;overflow: hidden;">
+        <div class="bs-component" style="flex:1;overflow: hidden;">
+            <div class="tab-content" id="myTabContent" style="flex:1;overflow: auto;">
+
+                <div class="panel panel-default" style="width:15%;margin:10px;border:1px solid #E7E9ED;overflow-y: auto;">
+                    <div class="panel-heading" style="color: #2196F3; background-color: #F3F8FB; border-color: #E7E9ED;height:40px;">
+                        <h3 class="panel-title" style="float:left;color:#2CA4FE;font-weight:900;">已有角色</h3>
+                        <i class="img_outer" id="Delete" data-toggle="modal" data-target=".removeRole" style="display:block;margin-left:10px;height:20px;width:20px;float:right;cursor:pointer;"><img src="/picture/delete.png" style="width:20px;" /></i>
+                        <i class="img_outer" id="Add" data-toggle="modal" onclick="$('[name=\'RoleName\']').val('')" data-target=".addNewRole" style="display:block;margin-left:10px;height:20px;width:20px;float:right;cursor:pointer;"><img src="/picture/Add.png" style="width:20px;" /></i>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tree">
+                            <ul id="roleBox">
+                                @*<li class="roleBoxLi" Guid=" ">
+                                        <span class="" style="font-size: 12px;">管理员</span>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default" style="width:80%;margin:10px;border:none;overflow-y: auto;display: flex;">
+                    <div style="width:16%; overflow:hidden;display: flex;flex-direction: column;" >
+                        <div id="parkingOverflow" style="overflow-y:auto;flex:1">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="" style="width:85%;background-color:#E8F6FF">授权停车场</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="parkList">
+                                    <tr>
+                                        <td>
+                                            <div class="parklistbox" style="height:auto;">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="chooseAllPark"> 全选
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @*<div class="checkbox checkWrap">
+                                                <label>
+                                                    <input type="checkbox"> 我的停车场1
+                                                </label>
+                                            </div>*@
+                                        </td>
+                                    </tr>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="width:84%;display: flex;flex-direction: column;">
+                        <div style="flex:1;overflow-y:auto;">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="" style="width:15%;background-color:#E8F6FF">权限组</th>
+                                        <th class="" style="width:85%;background-color:#E8F6FF">权限</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="menuBox">
+                                    @*<tr>
+                                        <th>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 车场管理
+                                                </label>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="checkbox checkWrap">
+                                                <label>
+                                                    <input type="checkbox"> 车场设置
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>*@
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+                <div class="col-lg-9 col-lg-offset-3">
+                    @*<button class="btn btn-default" type="reset" style=" color: #fff;background-color: #777; border-color: transparent;width:120px">返回</button>*@
+                    <button class="btn" style="width:120px;background-color:#0092FF;color:#fff;" type="submit" id="SaveBtn" onclick="Add_ModifyRole()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*模态框*@
+    <!-- Small modal -->
+    <div class="modal fade bs-example-modal-sm removeRole" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="width:100%;height:100%;">
+        <div class="modal-dialog modal-md" role="document" style="margin-left:-500px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="removeRole">提示</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div>是否确定删除该角色？</div>
+                    <br />
+                    <div style="float:right;">
+                        <button class="btn" style="background-color:#fff;color:#6C7A8B;border-color:#c5c5c5;" data-dismiss="modal">取消</button>
+                        <button class="btn" style="background-color:#66b1ff;color:#fff;border-color:#66b1ff;" onclick="RemoveRole()" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm addNewRole" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="width:100%;height:100%;">
+        <div class="modal-dialog modal-md" role="document" style="margin-left:-500px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addNewRole">新增角色</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div style="margin-bottom:20px;">
+                        <label>角色名称：<input type="text" name="RoleName" value="" style="width:150px;" /></label>
+                    </div>
+                    <div style="float:right;">
+                        <button class="btn" style="background-color:#fff;color:#6C7A8B;border-color:#c5c5c5;" data-dismiss="modal">取消</button>
+                        <button class="btn" style="background-color:#66b1ff;color:#fff;border-color:#66b1ff;" onclick="AddNewRoleHtml()" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetRoleList();
+        GetProjectAllMenu();
+        AuthLis()
+        $(".roleBoxLi").eq(0).trigger("click").css("backgroundColor", "#E8F6FF").attr("step", "0").siblings().css("backgroundColor", "#fff").removeAttr("step").end().children("span").addClass("border_b");
+
+        $("#parkingOverflow").hover(function () {
+            $(this).css("width","100%")
+        }, function () {
+            $(this).css("width", "108%")
+        })
+        //授权停车场全选
+        $("#chooseAllPark").click(function () {
+            if ($(this).prop("checked") == true) {
+                $(this).parents(".checkbox").siblings().find("input[type='checkbox']").prop("checked", true)
+            } else {
+                $(this).parents(".checkbox").siblings().find("input[type='checkbox']").prop("checked", false)
+            }
+        })
+
+    });
+
+    //获取角色列表
+    function GetRoleList() {
+        var projectGuid = $.cookie("ProjectGuid")
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRoleList?ProjectGuid=" + projectGuid,
+            dataType: 'json',
+            method: 'GET',
+            async: false,
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                if (res.IsSuccess == true) {
+                    var json = res.RoleList;
+
+
+
+
+
+
+
+
+
+                    for (var key in json) {
+                        var roleName = json[key].RoleName;
+                        var guid = json[key].Guid;
+                        //onclick="GetRolePermission(\'' + guid +'\')"
+                        var html = '<li class="roleBoxLi" Guid="' + guid + '">' +
+                            '<span class="" style = "font-size: 12px;">' + roleName + '</span >' +
+                            '</li >';
+                        $("#roleBox").append(html);
+                    }
+
+                }
+                else {
+                    //预留错误信息
+                }
+            }
+        })
+    }
+    //获取所有菜单
+    function GetProjectAllMenu() {
+        var projectGuid = $.cookie("ProjectGuid")
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=" + projectGuid,
+            dataType: 'json',
+            method: 'GET',
+            async: false,
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                if (res.IsSuccess == true) {
+                    for (var i = 0; i < res.Result.length; i++) {
+                        if (res.Result[i].Existence == true) {
+                            var html = '<div class="checkbox">' +
+                                '<label>' +
+                                '<input type="checkbox" name="' + res.Result[i].ParkCode + '">' + res.Result[i].ParkName +
+                                '</label>' +
+                                '</div>';
+                            $("#parkList .parklistbox").append(html);
+                        }
+                    }
+                } else {
+                    $message('d',"停车场信息有误！")
+                }
+            }
+        })
+
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetProjectAllMenu?ProjectGuid=" + projectGuid,
+            dataType: 'json',
+            method: 'GET',
+            async: false,
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                if (res.IsSuccess == true) {
+                    var json = res.Result.MenuList;
+                    var fatherArr = [];
+                    var sonArr = [];
+                    for (var key in json) {
+                        var menuSerial = json[key].MenuSerial;
+                        var menuName = json[key].MenuName;
+                        if (menuSerial < 10) {  //不能大于10
+                            var obj = {
+                                menuSerial: menuSerial,
+                                menuName: menuName
+                            }
+                            fatherArr.push(obj)
+                        } else {
+                            var obj = {
+                                menuSerial: menuSerial,
+                                menuName: menuName
+                            }
+                            sonArr.push(obj)
+                        }
+                    }
+                    for (var i = 0; i < fatherArr.length; i++) {
+                            console.log()
+                        var htmlson = '';
+                        for (var j = 0; j < sonArr.length; j++) {
+                            if (sonArr[j].menuSerial.substring(0, 1) == fatherArr[i].menuSerial && sonArr[j].menuName !== '角色权限管理') {
+                                htmlson = htmlson +
+                                    '<div class="checkbox checkWrap">' +
+                                    '<label>' +
+                                    '<input type="checkbox" name="' + sonArr[j].menuSerial + '">' + sonArr[j].menuName +
+                                    '</label>' +
+                                    '</div>';
+                            } else {
+                            }
+                        }
+                        var html = '<tr>' +
+                            '<th>' +
+                            '<div class="checkbox">' +
+                            '<label>' +
+                            '<input type="checkbox" name="00' + fatherArr[i].menuSerial + '">' + fatherArr[i].menuName +
+                            '</label>' +
+                            '</div>' +
+                            '</th>' +
+                            '<td>' + (htmlson || "") +
+                            '</td>' +
+                            '</tr>';
+                        $("#menuBox").append(html);
+                    }
+                }
+                else {
+                    //预留错误信息
+                }
+            }
+        })
+
+    }
+
+    //角色表点击事件
+    function AuthLis() {
+        var lis = $(".roleBoxLi");
+        for (var i = 0; i < lis.length; i++) {
+            lis.eq(i).unbind("click")
+            lis.eq(i).click(function () {
+                $(this).css("backgroundColor", "#E8F6FF").attr("step", "0").siblings().css("backgroundColor", "#fff").removeAttr("step")
+                    .end().children("span").addClass("border_b")
+                    .end().siblings().children("span").removeClass("border_b");
+                var guid = $(this).attr("guid");
+                GetRolePermission(guid)
+                if ($("#roleBox").find("li[step='0'] span").html().trim() == "超级管理员") {
+                    $("#menuBox").find("input[type='checkbox']").attr("disabled", "disabled")
+                } else {
+                    $("#menuBox").find("input[type='checkbox']").removeAttr("disabled")
+                }
+            })
+        }
+    }
+
+    //获取角色权限
+    function GetRolePermission(guid) {
+        $("input").prop("checked", false);
+        if (guid !== "0") {
+            $.ajax({
+                url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + guid,
+                dataType: 'json',
+                method: 'GET',
+                async: false,
+                contentType: "application/json;charset=utf-8",
+                success: function (res) {
+                    if (res.ParkingCodeList) {
+                        res.ParkingCodeList = [...(new Set(res.ParkingCodeList))]
+                    }
+                    var OpenUpMenuSerial = res.OpenUpMenuSerial || "";
+                    if (OpenUpMenuSerial !== "") {
+                        for (var i = 0; i < OpenUpMenuSerial.length; i++) {
+                            $("input[name='" + OpenUpMenuSerial[i] + "']").prop("checked", true);
+                        }
+                    }
+
+                    var ParkingCodeList = res.ParkingCodeList || "";
+                    if (ParkingCodeList.length == ($(".parklistbox").find("input[type='checkbox']").length - 1)) {
+                        $("#chooseAllPark").prop("checked", true);
+                    }
+                    if (ParkingCodeList !== "") {
+                        for (var i = 0; i < ParkingCodeList.length; i++) {
+                            $("input[name=" + ParkingCodeList[i]+ "]").prop("checked", true);
+                        }
+                    }
+
+                }
+            })
+        }
+    }
+
+    //删除角色
+    function RemoveRole() {
+        var guid = $("#roleBox").find("li[step='0']").attr("guid");
+        var roleName = $("#roleBox").find("li[step='0']").children("span").html().trim();
+        var projectGuid = $.cookie("ProjectGuid");
+        if (roleName == "超级管理员") {
+            $message('d', "不能删除超级管理员！")
+            return false;
+        }
+        if ($("li[step='0']").attr('data-new')) {
+            $("li[step='0']").remove();
+        } else {
+            $.ajax({
+                url: "/Home/Maps/Personnel/RemoveRole",
+                dataType: 'json',
+                method: 'POST',
+                data: {
+                    Guid: guid,
+                    RoleName: roleName,
+                    ProjectGuid: projectGuid
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.IsSuccess == true) {
+                        $("li[step='0']").remove();
+                        $message('s',"删除成功");
+                    } else if (res.IsSuccess == false) {
+                        $message('d',res.MessageContent);
+                    }
+                }
+            })
+        }
+    }
+
+    //新增角色
+    function AddNewRoleHtml() {
+        var roleName = $("input[name='RoleName']").val();
+        if (!roleName) {
+            $("input[name='RoleName']").attr("placeholder", "角色名不能为空！")
+            return false;
+        } else if (roleName == "超级管理员") {
+                $message('d',"不能新增超级管理员角色！")
+                return false;
+        }
+        var html = '<li class="roleBoxLi" Guid="0" data-new="new">' +
+            '<span class="" style = "font-size: 12px;">' + roleName + '</span >' +
+            '</li >';
+        $("#roleBox").append(html)
+        AuthLis();
+    }
+
+    //新增和修改权限
+    function Add_ModifyRole() {
+        var ajax, title;
+        var guid = $("#roleBox").find("li[step='0']").attr("guid");
+        guid == "0" ? (ajax = "AddNewRole", title = "添加成功！") : (ajax = "ModifyRole", title = "修改成功！");
+        var roleName = $("#roleBox").find("li[step='0']").children("span").html();
+        var projectGuid = $.cookie("ProjectGuid");
+
+        var menuSerials = [];
+        var inps = $("#menuBox input:checked");
+        for (var i = 0; i < inps.length; i++) {
+            var name = inps.eq(i).attr("name");
+            menuSerials.push(name);
+        }
+        if (roleName == '超级管理员') {
+            menuSerials.push('201')
+        }
+        //授权车场ParkingCode
+        var parkingCodeList = [];
+        var parkinps = $("#parkList input:checked");
+        for (var i = 0; i < parkinps.length; i++) {
+            var name = parkinps.eq(i).attr("name");
+            if (name) {
+                parkingCodeList.push(name);
+            }
+        }
+        $.ajax({
+            url: "/Home/Maps/Personnel/" + ajax,
+            method: 'POST',
+            data: {
+                MenuSerials: JSON.stringify(menuSerials),
+                ParkingCodeList: JSON.stringify(parkingCodeList),
+                Guid: guid,
+                RoleName: roleName,
+                ProjectGuid: projectGuid
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res.IsSuccess == true) {
+                    //如果为新增，返回guid
+                    $message('s', title)
+                    if (guid=="0") {
+                        $("#roleBox").find("li[step='0']").attr("guid", res.Result.Guid).removeAttr('data-new');
+                    }
+                }
+            }
+        })
+    }
+</script>

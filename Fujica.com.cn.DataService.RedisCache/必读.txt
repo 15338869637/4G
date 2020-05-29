@@ -1,0 +1,1 @@
+﻿所有操作redis的具体业务都必须继承自IBaseRedisOperate接口

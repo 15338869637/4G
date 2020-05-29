@@ -1,0 +1,3959 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fujica.com.cn.Context.Model</name>
+    </assembly>
+    <members>
+        <member name="T:Fujica.com.cn.Context.Model.OpenTypeEnum">
+            <summary>
+            公共枚举类
+            </summary>
+            <remarks>
+            2019.09.17: 创建. llp <br/>   
+            2019.09.17: 增加 OpenTypeEnum 通行方式枚举类型  llp <br/> 
+            </remarks> 
+            <summary>
+            通行方式
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.OpenTypeEnum.Automatic">
+            <summary>
+            自动开闸
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.OpenTypeEnum.Manual">
+            <summary>
+            手动开闸
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.OpenTypeEnum.Free">
+            <summary>
+            免费开闸
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.OpenTypeEnum.Charge">
+            <summary>
+            收费放行
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.OpenTypeEnum.FieldDelete">
+            <summary>
+            场内删除
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CarTypeEnum">
+            <summary>
+            卡类型枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.CarTypeEnum.TempCar">
+            <summary>
+            临时卡
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.CarTypeEnum.MonthCar">
+            <summary>
+            月租车
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.CarTypeEnum.ValueCar">
+            <summary>
+            储值车
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.CarTypeEnum.VIPCar">
+            <summary>
+            贵宾车
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.DrivewayType">
+            <summary>
+            车道类型
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.DrivewayType.In">
+            <summary>
+            入口车道
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.DrivewayType.Out">
+            <summary>
+            出口车道
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ValueCardFeeType">
+            <summary>
+            缴费失败枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.ValueCardFeeType.BalanceSuccess">
+            <summary>
+            缴费完成
+            </summary> 
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.ValueCardFeeType.BalanceNoEnough">
+            <summary>
+            余额不足
+            </summary> 
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.ValueCardFeeType.BalanceFail">
+            <summary>
+            扣费失败
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.ValueCardFeeType.BalanceConfirm">
+            <summary>
+            需要确认开闸
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.DrivewayConnStatusModel">
+            <summary>
+            车道连接状态实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayConnStatusModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayConnStatusModel.DeviceMacAddress">
+            <summary>
+            设备标识 如MAC地址等
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayConnStatusModel.ConnDate">
+            <summary>
+            连接时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayConnStatusModel.DeviceStatus">
+            <summary>
+            设备连接状态 true：已连接 false：已断开
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.FreeOpenGateModel">
+            <summary>
+            免费放行请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FreeOpenGateModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>  
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FreeOpenGateModel.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FreeOpenGateModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FreeOpenGateModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FreeOpenGateModel.TolloPerator">
+            <summary>
+            操作员
+            </summary> 
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ActiveScanningModel">
+            <summary>
+            主动扫码模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningModel.DeviceMACAddress">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningModel.LaneSenseDate">
+            <summary>
+            压地感时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ActiveScanningResponseModel">
+            <summary>
+            主动扫码返回模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningResponseModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningResponseModel.ParkingFee">
+            <summary>
+            停车费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningResponseModel.BeginTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningResponseModel.QRCode">
+            <summary>
+            付款二维码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningResponseModel.Remark">
+            <summary>
+            备注字段
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ActiveScanningResponseModel.Extend">
+            <summary>
+            预留扩展字段
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.AddRecordModel">
+            <summary>
+            补录记录模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.CarTypeGuid">
+            <summary>
+            车类guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.Entrance">
+            <summary>
+            入场通道
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.CarType">
+            <summary>
+            车类0=时租车 1=月租车 2=储值车 3=贵宾车
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.InTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.RecordTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.ImgUrl">
+            <summary>
+            入场图片
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.AddRecordModel.Operator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.RecordInSearch">
+            <summary>
+            补录记录模型 查询模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.TotalCount">
+            <summary>
+            数据总条数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.CarTypeGuid">
+            <summary>
+            车类guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.StrTime">
+            <summary>
+            补录开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.EndTime">
+            <summary>
+            补录结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RecordInSearch.Operator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CaptureInOutModel">
+            <summary>
+            出入场车辆抓拍
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.Entrance">
+            <summary>
+            车道入口名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.Exit">
+            <summary>
+            车道 出口名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.DriveWayMAC">
+            <summary>
+            车道设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.RemainingNumber">
+            <summary>
+            剩余车位数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.EntryType">
+            <summary>
+            进出场类型 0入场 1出场
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.InImgUrl">
+            <summary>
+            入场图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.OutImgUrl">
+            <summary>
+            出场图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.InTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.OutTime">
+            <summary>
+            出场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.CarType">
+            <summary>
+            车类，0=时租车 1=月租车 2=储值车
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.CarTypeName">
+            <summary>
+            车类名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.CarTypeGuid">
+            <summary>
+            车类标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.Remark">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CaptureInOutModel.ErrorCode">
+            <summary>
+            异常说明
+            13-无入场记录
+            14-临时车未缴费
+            400-黑名单
+            401-通行限制
+            402-月卡被锁
+            403-月卡过期
+            404-禁止无牌车
+            405-手动开闸
+            406-满车位
+            407-无压地感车辆
+            408是储值卡余额不足
+            409临时车锁定
+            410储值卡锁定
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CardServiceModel">
+            <summary>
+            卡务管理模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.DrivewayGuidList">
+            <summary>
+            授权车道集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.CarTypeGuid">
+            <summary>
+            卡类型 所属车类唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.PayAmount">
+            <summary>
+            支付金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.PayStyle">
+            <summary>
+            支付方式，直接中文描述
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.Enable">
+            <summary>
+            是否有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.Locked">
+            <summary>
+            是否锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.Balance">
+            <summary>
+            账户余额 储值卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.RenewalType">
+            <summary>
+            月卡续费类型
+            1、天 2、月 3、年
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.RenewalValue">
+            <summary>
+            月卡续费值
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.StartDate">
+            <summary>
+            起始日期 月卡时有效（为开卡日期，不要修改）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.EndDate">
+            <summary>
+            截止日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.PrimaryEndDate">
+            <summary>
+            延期前结束日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.PauseDate">
+            <summary>
+            报停日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.ContinueDate">
+            <summary>
+            激活日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.AdmissionDate">
+            <summary>
+            入场时间 储值卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.BillingStartTime">
+            <summary>
+            计费开始时间 储值卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceModel.RechargeOperator">
+            <summary>
+            收费人
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CardServiceSearchModel">
+            <summary>
+            卡务查询模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.TotalCount">
+            <summary>
+            数据总条数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.StartDate">
+            <summary>
+            开卡日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.Enable">
+            <summary>
+            是否有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.Locked">
+            <summary>
+            是否锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CardServiceSearchModel.CarTypeGuid">
+            <summary>
+            卡类guid
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.APIAccessModel">
+            <summary>
+            API接入信息模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.AppID">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.Secret">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.PrivateKeyPKCS8">
+            <summary>
+            私钥PKCS8对齐
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.APIAccessModel.NeedVerify">
+            <summary>
+            是否需要验证,1 时间戳验证、2 签名验证、 4 接口权限验证、 8参数验证
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.BillingTemplateModel">
+            <summary>
+            计费模板模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateModel.CarTypeGuid">
+            <summary>
+            卡类型(对应的车类型的guid)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateModel.ChargeMode">
+            <summary>
+            计费方式1-10 共10种
+            1=小时算费 2=分段算费 3=深圳算费 4=按半小时算费 5=简易分段算费 
+            6=分段按小时算费 7=分段按半小时算费 8=半小时算费(可分段) 9=新分段收费标准
+            10=分段按15分钟算费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateModel.TemplateJson">
+            <summary>
+            模板实体json字符串
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.BillingTemplateChargeModel">
+            <summary>
+            具体计费方式的基础模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.CarTypeGuid">
+            <summary>
+            卡类型(对应的车类型的guid)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.ChargeMode">
+            <summary>
+            计费方式1-10 共10种
+            1=小时算费 2=分段算费 3=深圳算费 4=按半小时算费 5=简易分段算费 
+            6=分段按小时算费 7=半小时算费(可分段) 8=分段按半小时算费 9=新分段收费标准
+            10=分段按15分钟算费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.BeginTime1">
+            <summary>
+            开始时间-时间段1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.BeginTime2">
+            <summary>
+            开始时间-时间段2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.BeginTime3">
+            <summary>
+            开始时间-时间段3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.EndTime1">
+            <summary>
+            结束时间-时间段1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.EndTime2">
+            <summary>
+            结束时间-时间段2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.EndTime3">
+            <summary>
+            结束时间-时间段3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.FreeMinutes1">
+            <summary>
+            免费分钟数-时间段1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.FreeMinutes2">
+            <summary>
+            免费分钟数-时间段2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.FreeMinutes3">
+            <summary>
+            免费分钟数-时间段3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.LeaveTimeout1">
+            <summary>
+            离场超时分钟-时间段1
+            缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.LeaveTimeout2">
+            <summary>
+            离场超时分钟-时间段2
+            缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BillingTemplateChargeModel.LeaveTimeout3">
+            <summary>
+            离场超时分钟-时间段3
+            缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.HourlyTollModel">
+            <summary>
+            按小时算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.FreeMinutes">
+            <summary>
+            免费分钟数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h1">
+            <summary>
+            1小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h2">
+            <summary>
+            2小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h3">
+            <summary>
+            3小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h4">
+            <summary>
+            4小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h5">
+            <summary>
+            5小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h6">
+            <summary>
+            6小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h7">
+            <summary>
+            7小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h8">
+            <summary>
+            8小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h9">
+            <summary>
+            9小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h10">
+            <summary>
+            10小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h11">
+            <summary>
+            11小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h12">
+            <summary>
+            12小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h13">
+            <summary>
+            13小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h14">
+            <summary>
+            14小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h15">
+            <summary>
+            15小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h16">
+            <summary>
+            16小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h17">
+            <summary>
+            17小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h18">
+            <summary>
+            18小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h19">
+            <summary>
+            19小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h20">
+            <summary>
+            20小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h21">
+            <summary>
+            21小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h22">
+            <summary>
+            22小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h23">
+            <summary>
+            23小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.h24">
+            <summary>
+            24小时金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.DayAmountTopLimit">
+            <summary>
+            每天最大金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.AmountTopLimit">
+            <summary>
+            每次最大金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HourlyTollModel.MonetaryUnit">
+            <summary>
+            单位 0=角 1=元
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SegmentTollModel">
+            <summary>
+            分段算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.MonetaryUnit">
+            <summary>
+            MonetaryUnit
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.LeaveTimeout">
+            <summary>
+            LeaveTimeout
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.MaxDayMoney">
+            <summary>
+            MaxDayMoney
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.FreeMiniteAll">
+            <summary>
+            FreeMiniteAll
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.BeginTime1">
+            <summary>
+            BeginTime1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.EndTime1">
+            <summary>
+            EndTime1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.BeginTime2">
+            <summary>
+            BeginTime2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.EndTime2">
+            <summary>
+            EndTime2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.BeginTime3">
+            <summary>
+            BeginTime3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.EndTime3">
+            <summary>
+            EndTime3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.FreeMinute1">
+            <summary>
+            FreeMinute1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.FreeMinute2">
+            <summary>
+            FreeMinute2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.FreeMinute3">
+            <summary>
+            FreeMinute3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.Fee1">
+            <summary>
+            Fee1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.Fee2">
+            <summary>
+            Fee2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.Fee3">
+            <summary>
+            Fee3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SameTimeFreeMinute">
+            <summary>
+            SameTimeFreeMinute
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SameTimeMoney1">
+            <summary>
+            SameTimeMoney1
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SameTimeMoney2">
+            <summary>
+            SameTimeMoney2
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SameTimeMoney3">
+            <summary>
+            SameTimeMoney3
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SpanFreeMinute">
+            <summary>
+            SpanFreeMinute
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SpanAccount">
+            <summary>
+            SpanAccount
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SpanNoOut">
+            <summary>
+            SpanNoOut
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SpanNoOutMoney">
+            <summary>
+            SpanNoOutMoney
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SpanOut">
+            <summary>
+            SpanOut
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.SpanOutMoney">
+            <summary>
+            SpanOutMoney
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverFlag">
+            <summary>
+            OverFlag
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverFreeMinute">
+            <summary>
+            OverFreeMinute
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverMaxValue">
+            <summary>
+            OverMaxValue
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverNoOut">
+            <summary>
+            OverNoOut
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverNoOutMoney">
+            <summary>
+            OverNoOutMoney
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverOut">
+            <summary>
+            OverOut
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentTollModel.OverOutMoney">
+            <summary>
+            OverOutMoney
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ShenZhengTollModel">
+            <summary>
+            深圳算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.FreeMinutes">
+            <summary>
+            FreeMinutes
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.RHBeginTime">
+            <summary>
+            RHBeginTime
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.RHEndTime">
+            <summary>
+            RHEndTime
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.RHFirstHour">
+            <summary>
+            RHFirstHour
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.RHEveryHalfHour">
+            <summary>
+            RHEveryHalfHour
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.NRHFirstHour">
+            <summary>
+            NRHFirstHour
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.NRHEveryHour">
+            <summary>
+            NRHEveryHour
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.NWDFirstHour">
+            <summary>
+            NWDFirstHour
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.NWDEveryHour">
+            <summary>
+            NWDEveryHour
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.NWDEveryDay">
+            <summary>
+            NWDEveryDay
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.WDEveryDay">
+            <summary>
+            WDEveryDay
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.EveryDay">
+            <summary>
+            EveryDay
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.AmountTopLimit">
+            <summary>
+            AmountTopLimit
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.Timeout">
+            <summary>
+            Timeout
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.MonetaryUnit">
+            <summary>
+            MonetaryUnit
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.TollFlag">
+            <summary>
+            TollFlag
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ShenZhengTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.HalfHourTollModel">
+            <summary>
+            按半小时算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayFreeMinutes">
+            <summary>
+            白天免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.NightFreeMinutes">
+            <summary>
+            晚上免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayBeginTime">
+            <summary>
+            白天时段 开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayEndTime">
+            <summary>
+            白天时段截止时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayFirstHour">
+            <summary>
+            白天段首N个半
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayFirstMoney">
+            <summary>
+            白天时段首N个半小时收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayNextHour">
+            <summary>
+            白天段 后M小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayNextMoney">
+            <summary>
+            后M小时收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.DayTimeout">
+            <summary>
+            白天段 超时时间 30以内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.NightFirstHour">
+            <summary>
+            晚上段 每M半小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.NightFirstMoney">
+            <summary>
+            晚上段 每M半小时 收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.NightNextHour">
+            <summary>
+            晚上段 每M半小时N个半小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.NightNextMoney">
+            <summary>
+            晚上段 每M半小时N个半小时收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.NightTimeout">
+            <summary>
+            晚上段 超时时间 30以内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.MaxDayMoney">
+            <summary>
+            每天最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.MaxMoney">
+            <summary>
+            本次最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.MonetaryUnit">
+            <summary>
+            收费单位
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.HalfHourTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SimpleSegmentTollModel">
+            <summary>
+            简易分段算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.FreeMinutes">
+            <summary>
+            免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.DayBeginTime">
+            <summary>
+            白天开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.DayEndTime">
+            <summary>
+            白天截止日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.DayMoney">
+            <summary>
+            白天收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.NightMoney">
+            <summary>
+            晚上段收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.DayMaxMoney">
+            <summary>
+            每天最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.DayMinute">
+            <summary>
+            白天段 分钟内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.DayFirstMoney">
+            <summary>
+            白天段开始分钟内收费金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.NightMinute">
+            <summary>
+            晚上段时间内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.NightFirstMoney">
+            <summary>
+            晚上段开始收费金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.SpanProcessing">
+            <summary>
+            跨段处理
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.MonetaryUnit">
+            <summary>
+            计费单位
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SimpleSegmentTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SegmentHourlyTollModel">
+            <summary>
+            分段按小时算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.FreeMinutes">
+            <summary>
+            免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.DayBeginTime">
+            <summary>
+            白天开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.DayEndTime">
+            <summary>
+            白天结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.DayFirstHour">
+            <summary>
+            白天N小时内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.DayPerHour">
+            <summary>
+            每M小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.DayFirstMoney">
+            <summary>
+            白天收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.DayNextMoney">
+            <summary>
+            超过N小时后的消费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.NightFirstHour">
+            <summary>
+            晚上小时内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.NightPerHour">
+            <summary>
+            每N个小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.NightFirstMoney">
+            <summary>
+            NightFirstMoney
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.NightNextMoney">
+            <summary>
+            NightNextMoney
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.Timeout">
+            <summary>
+            超时时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.MaxDayMoney">
+            <summary>
+            每天最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.SpanProcessing">
+            <summary>
+            跨段处理
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.MonetaryUnit">
+            <summary>
+            收费单位
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHourlyTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel">
+            <summary>
+            无分段按半小时收费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.MonetaryUnit">
+            <summary>
+            收费单位
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.FreeMinutes">
+            <summary>
+            免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.FirstHalfHour">
+            <summary>
+            首几小时数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.FirstMoney">
+            <summary>
+            首几小时收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.NextHalfHour">
+            <summary>
+            以后几小时数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.NextMoney">
+            <summary>
+            以后几小时收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.Timeout">
+            <summary>
+            超时限制分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentNoneHalfHourTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel">
+            <summary>
+            按半小时算费(可分段)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.MonetaryUnit">
+            <summary>
+            计费单位
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.FreeMinutes">
+            <summary>
+            免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayBeginTime">
+            <summary>
+            白天段开始
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayEndTime">
+            <summary>
+            白天段结束
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayFirstHalfHour">
+            <summary>
+            白天首几半小时数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayFirstMoney">
+            <summary>
+            白天首几半小时收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayNextHalfHour">
+            <summary>
+            白天首几半小时之后数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayNextMoney">
+            <summary>
+            白天首几半小时之后收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayMaxMoney">
+            <summary>
+            白天最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.NightFirstHalfHour">
+            <summary>
+            晚上首几半小时数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.NightFirstMoney">
+            <summary>
+            晚上首几半小时收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.NightNextHalfHour">
+            <summary>
+            晚上首几半小时之后数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.NightNextMoney">
+            <summary>
+            晚上首几半小时之后收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.NightMaxMoney">
+            <summary>
+            晚上最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.AmountTopLimit">
+            <summary>
+            单次最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.DayTopLimit">
+            <summary>
+            24小时最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.FeeSet1">
+            <summary>
+            超过1天后，剩余不足1天时间晚上无前1小时收费，直接按每1个半小时收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.FeeSet2">
+            <summary>
+            超过1天后，剩余不足1天时间晚上无前1小时收费，直接按每1个半小时收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.FeeSet3">
+            <summary>
+            去掉免费分钟后再计算费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.FeeSet4">
+            <summary>
+            无分段，按白天段处理
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.TimeOut">
+            <summary>
+            超时分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentHalfHourTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.NewSegmentTollModel">
+            <summary>
+            新分段算费模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.MonetaryUnit">
+            <summary>
+            计费单位  1 元 0 角
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.BeginTime">
+            <summary>
+            收费开始时间 08:00
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.EndTime">
+            <summary>
+            收费截至时间 20:00
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTopLimit">
+            <summary>
+            每天最大金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeMaxAmount">
+            <summary>
+            白天段最大收费金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeMaxAmount">
+            <summary>
+            夜间段最大收费金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.FreeMinutes">
+            <summary>
+            免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.CrossSegmentsType">
+            <summary>
+            停车时间跨段处理方式  0 跨段时将两段停留时间分别计算，并将计算结果相加 1 跨段时按停车时间逐段计算，最后将计算结果相加
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NoSegmentedIsEnable">
+            <summary>
+            无分段时按白天段处理 0 不用 1 启用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.FreeTreatTypeIsEnable">
+            <summary>
+            免费时间的处理方式 0 不用 1 启用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.FreeTreatType">
+            <summary>
+            免费时间处理方式 0总时间去掉免费时间再计算 1 分段处理免费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.CrossSegmentsFreeType">
+            <summary>
+            跨段免费时间处理方式 0 白天段和晚上段都有免费分钟，但计算时不去掉免费分钟 1 白天段和晚上段都有免费分钟，但计算时去掉免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeSt1">
+            <summary>
+            白天开始N小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeFt1">
+            <summary>
+            白天开始N小时每M个半小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeFee1">
+            <summary>
+            白天开始M个半小时收取费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeSt2">
+            <summary>
+            白天超过N小时但在P小时内
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeFt2">
+            <summary>
+            白天超过N小时在P小时内每M个半小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeFee2">
+            <summary>
+            白天超过N小时在P小时内每M个半小时的收取费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeSt3">
+            <summary>
+            白天停车时间大于P小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeFt3">
+            <summary>
+            白天停车时间大于P小时每M个半小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.DayTimeFee3">
+            <summary>
+            白天停车时间大于P小时每M个半小时收取费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeSt1">
+            <summary>
+            夜间开始N小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeFt1">
+            <summary>
+            夜间开始N小时每M个半小时
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeFee1">
+            <summary>
+            夜间开始M个半小时收取费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeSt2">
+             <summary>
+            夜间超过N小时但在P小时内
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeFt2">
+             <summary>
+            夜间超过N小时在P小时内每M个半小时
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeFee2">
+             <summary>
+            夜间超过N小时在P小时内每M个半小时的收取费用
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeSt3">
+             <summary>
+            夜间停车时间大于P小时
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeFt3">
+             <summary>
+            夜间停车时间大于P小时每M个半小时
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.NightTimeFee3">
+             <summary>
+            夜间停车时间大于P小时每M个半小时收取费用
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.NewSegmentTollModel.Timeout">
+            <summary>
+            超时分钟
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel">
+            <summary>
+            按15分钟收费(可分段)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.MonetaryUnit">
+            <summary>
+            1 元 0 角 默认 元 2分
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayBeginTime">
+            <summary>
+            白天时段开始
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayEndTime">
+            <summary>
+            白天时段结束
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayFreeMinutes">
+            <summary>
+            白天免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayFirstTime">
+            <summary>
+            白天首几个15分时间段数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayFirstMoney">
+            <summary>
+            白天首几个15分时间段收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayNextTime">
+            <summary>
+            白天首几个15分之后时间段数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayNextMoney">
+            <summary>
+            白天首几个15分之后时间段收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayTimeOut">
+            <summary>
+            白天超时时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayMaxMoney">
+            <summary>
+            白天最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightFreeMinutes">
+            <summary>
+            晚上免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightFirstTime">
+            <summary>
+            晚上首几个15分时间段数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightFirstMoney">
+            <summary>
+            晚上首几个15分时间段收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightNextTime">
+            <summary>
+            晚上首几个15分之后时间段数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightNextMoney">
+            <summary>
+            晚上首几个15分之后时间段收费数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightTimeOut">
+            <summary>
+            晚上超时时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.NightMaxMoney">
+            <summary>
+            晚上最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.AmountTopLimit">
+            <summary>
+            本次最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.DayTopLimit">
+            <summary>
+            每天最高收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet1">
+            <summary>
+            无分段 按白天段处理
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet2">
+            <summary>
+            几个免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet3">
+            <summary>
+            计算时是否去掉免费分钟
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet4">
+            <summary>
+            收费金额精确到 元 角 分
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet5">
+            <summary>
+            跨段收费规则
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet6">
+            <summary>
+             超过1天后，剩余不足1天时间白天段无前N小时收费，直接按每M个15分钟收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet7">
+            <summary>
+             超过1天后，剩余不足1天时间晚上段无前N小时收费，直接按每M个15分钟收费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet8">
+            <summary>
+            FeeSet7
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet9">
+            <summary>
+            FeeSet8
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.FeeSet10">
+            <summary>
+            FeeSet10 超时分钟 按10进制 或 16进制
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SegmentQuarterHourTollModel.LeaveTimeout">
+            <summary>
+            离场超时分钟，缴费后可享有的免费时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.BlacklistModel">
+            <summary>
+            黑名单模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistModel.List">
+            <summary>
+            黑名单详情
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.BlacklistSingleModel">
+            <summary>
+            黑名单某项详情模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.Enable">
+            <summary>
+            是否启用(该黑名单)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.Always">
+            <summary>
+            是否永久限制
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.ByDate">
+            <summary>
+            按日期禁止
+            其实可以按12位长度，每6位表示yyMMdd,一个为开始，一个为结束
+            但怕别人看不懂，只好定义多个字段
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.StartDate">
+            <summary>
+            开始日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.EndDate">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.ByTime">
+            <summary>
+            按时间禁止
+            其实可以按12位长度，每6位表示HHmmss,一个为开始，一个为结束
+            但怕别人看不懂，只好定义多个字段
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.StatrtTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.ByWeek">
+            <summary>
+            按周天禁止
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.AssignDay">
+            <summary>
+            指定的禁止天,长度为7,依次为周一到周末，为1表示禁止,例如 0010010 表示周三周六禁止
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.BlacklistSingleModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CarNumberRepushModel">
+            <summary>
+            车牌修改重推模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarNumberRepushModel.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarNumberRepushModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarNumberRepushModel.OldCarno">
+            <summary>
+            旧车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarNumberRepushModel.NewCarno">
+            <summary>
+            新车牌
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CarTypeModel">
+            <summary>
+            车类模型.
+            </summary>
+            <remarks>
+            2019.09.17: 新增版本备注信息 llp <br/> 
+            2019.09.17: 修改枚举引用 llp<br/>
+            </remarks>  
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.CarTypeName">
+            <summary>
+            车类名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.CarType">
+            <summary>
+            车类 0=时租车 1=月租车 2=储值车 3=贵宾车
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.DefaultType">
+            <summary>
+            默认车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.Enable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CarTypeModel.Idx">
+            <summary>
+            车类标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CityCodeModel">
+            <summary>
+             城市区号模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CityCodeModel.CodeID">
+            <summary>
+            城市区号（四位数存储） 
+            如0755 0020
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CorrectCarnoModel">
+            <summary>
+            修正车牌模型
+            </summary>
+            <remarks>
+            2019.10.08: 新增字段NewCarTypeGuid. Ase<br/>
+            </remarks>   
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.Discerncamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.OldGuid">
+            <summary>
+            旧停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.OldCarno">
+            <summary>
+            旧车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.NewCarno">
+            <summary>
+            新车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.ImgUrl">
+            <summary>
+            入场照片
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.InTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.CarTypeGuid">
+            <summary>
+            车类guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.NewCarTypeGuid">
+            <summary>
+            新车类guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.CarType">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.OperationType">
+            <summary>
+            操作类型 0-入场 1-出场
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoModel.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CorrectCarnoSearch">
+            <summary>
+            补录记录模型 查询模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.PageIndex">
+            <summary>
+            当前页码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.TotalCount">
+            <summary>
+            数据总条数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.ProjectGuid">
+            <summary>
+            项目编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.OldCarno">
+            <summary>
+            旧车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.NewCarno">
+            <summary>
+            新车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.StrTime">
+            <summary>
+            操作开始时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.EndTime">
+            <summary>
+            操作结束时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.OperationType">
+            <summary>
+            操作类型 0-入场 1-出场
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CorrectCarnoSearch.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.EntryOriginalModel">
+            <summary>
+            入场车辆原始数据模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.EntryOriginalModel.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.EntryOriginalModel.OriginalList">
+            <summary>
+            原始数据集合
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ExitTempCarPayModel">
+            <summary>
+            出口未缴费临时车辆 交互实体（相机上传）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ExitTempCarPayModel.DriveWayMAC">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ExitTempCarPayModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ExitTempCarPayModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ExitTempCarPayModel.LaneSenseDate">
+            <summary>
+            压地感时间
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.FunctionPointModel">
+            <summary>
+            功能点模型(其它设置页)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.PostponeMode">
+            <summary>
+            月卡延期模式  0=顺延 1=跳延(仅当 cartype=1 也即月租车时候有效)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.PastDueMode">
+            <summary>
+            月卡过期处理模式 -1=禁止入场 0=看做临时车 大于等于N(N>=1) 过期N天后禁止入场(仅当 cartype=1 也即月租车时候有效)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.BarredEntryCarTypeOnParkingFull">
+            <summary>
+            满位禁入车类guid集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.RemainingSpaceCarType">
+            <summary>
+            参与剩余车位统计的车类的guid集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.BluePlateCarTypeGuid">
+            <summary>
+            蓝牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.YellowPlateCarTypeGuid">
+            <summary>
+            黄牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.WhitePlateCarTypeGuid">
+            <summary>
+            白牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.GreenPlateCarTypeGuid">
+            <summary>
+            绿牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.BlackPlateCarTypeGuid">
+            <summary>
+            黑牌车 所属车类 收费(空表示按默认的)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.MinDays">
+            <summary>
+            月租车低于多少天延期提醒
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.MinBalance">
+            <summary>
+            储值车低于多少元充值提醒
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.FunctionPointModel.ManualOpenGateGuid">
+            <summary>
+            手动开闸车类guid集合
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GateCatchModel">
+            <summary>
+            车道拦截相机发送实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchModel.ErrorCode">
+            <summary>
+            异常说明。
+            13-无入场记录
+            14-临时车未缴费
+            400-黑名单
+            401-通行限制
+            402-月卡被锁
+            403-月卡过期
+            404-禁止无牌车
+            405-手动开闸
+            406-满车位
+            407-无压地感车辆
+            408-是储值卡余额不足
+            500-非法开闸
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchModel.DeviceIdentify">
+            <summary>
+            车道相机 设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchModel.ImgUrl">
+            <summary>
+            车道当前照片
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchModel.CarNo">
+            <summary>
+            车牌号码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchModel.CarTypeGuid">
+            <summary>
+            车类标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GateCatchDetailModel">
+            <summary>
+            车道拦截车辆详细实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.CarNo">
+            <summary>
+            车牌号码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.DrivewayName">
+            <summary>
+            车道名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.DriveWayMAC">
+            <summary>
+            车道相机 设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.CarType">
+            <summary>
+            车类，0=时租车 1=月租车 2=储值车 3=贵宾车
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.CarTypeGuid">
+            <summary>
+            车类标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.CarTypeName">
+            <summary>
+            车类名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateCatchDetailModel.ImgUrl">
+            <summary>
+            车道当前照片
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GateKeepListModel">
+            <summary>
+            车道闸口锁定模型集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateKeepListModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateKeepListModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateKeepListModel.List">
+            <summary>
+            数据集合
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GateKeepModel">
+            <summary>
+            车道闸口锁定模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateKeepModel.DrivewayGuid">
+            <summary>
+            车道guid
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateKeepModel.DeviceMacAddress">
+            <summary>
+            设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GateKeepModel.GateState">
+            <summary>
+            闸口状态 0：正常  1：开闸锁定   2：关闸锁定
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GatherAccountModel">
+            <summary>
+            收款账户模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GatherAccountModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GatherAccountModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GatherAccountModel.AccountName">
+            <summary>
+            账户名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GatherAccountModel.AlipayAccount">
+            <summary>
+            支付宝账号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.GatherAccountModel.WechatAccount">
+            <summary>
+            微信账号
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GatherAccountModel.AliPayAccountModel">
+            <summary>
+            支付宝账户模型
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.GatherAccountModel.WeChatAccountModel">
+            <summary>
+            微信账户模型
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.DrivewayModel">
+            <summary>
+            车道模型.
+            </summary>
+            <remarks>
+            2019.09.17: 新增版本备注信息 llp <br/> 
+            2019.09.17: 修改枚举引用 llp<br/>
+            </remarks>   
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.DrivewayName">
+            <summary>
+            车道名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.Type">
+            <summary>
+            车道类型(模式)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.DeviceName">
+            <summary>
+            设备名称 自定义就好
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.DeviceMacAddress">
+            <summary>
+            设备标识 如MAC地址等
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.DeviceEntranceURI">
+            <summary>
+            设备登录地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.DeviceAccount">
+            <summary>
+            设备账户
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.DrivewayModel.DeviceVerification">
+            <summary>
+            设备验证口令
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.MenuModel">
+            <summary>
+            菜单模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MenuModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MenuModel.MenuList">
+            <summary>
+            菜单详情
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.MenuDetialModel">
+            <summary>
+            菜单模型详情
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MenuDetialModel.MenuSerial">
+            <summary>
+            菜单序号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MenuDetialModel.MenuName">
+            <summary>
+            菜单名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MenuDetialModel.PageUrl">
+            <summary>
+            页面地址
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.MonthCarModel">
+            <summary>
+            月卡车模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.CarTypeGuid">
+            <summary>
+            车类编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.DrivewayGuidList">
+            <summary>
+            授权车道集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.Cost">
+            <summary>
+            基础费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.Units">
+            <summary>
+            单次续费月数 例如
+            cost=100,untis=1,则单次只允许1个月一续费，费用100
+            cost=1000,untis=12,则单次只允许12个月一续费，费用1000
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.Enable">
+            <summary>
+            是否有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.Locked">
+            <summary>
+            是否锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.StartDate">
+            <summary>
+            起始日期 起始时间(开卡时间)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.EndDate">
+            <summary>
+            截止日期
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.PauseDate">
+            <summary>
+            报停日期 月卡时有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MonthCarModel.ContinueDate">
+            <summary>
+            激活日期 月卡时有效
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.OpenGateReasonModel">
+            <summary>
+            开闸原因模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.OpenGateReasonModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.OpenGateReasonModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.OpenGateReasonModel.OpenType">
+            <summary>
+            开闸类型 0=手动 1=免费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.OpenGateReasonModel.ReasonRemark">
+            <summary>
+            开闸原因注明
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ParkLotModel">
+            <summary>
+            车场模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.ParkName">
+            <summary>
+            停车场名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.Prefix">
+            <summary>
+            车牌前缀 如粤B
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.SpacesNumber">
+            <summary>
+            车位数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.RemainingSpace">
+            <summary>
+            剩余车位
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.Type">
+            <summary>
+            车场类型 0=商业 1=小区
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.SiteAddress">
+            <summary>
+            车场地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.DrivewayList">
+            <summary>
+            该车场所有车道guid列表
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ParkLotModel.Existence">
+            <summary>
+            车场存续标志
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.PassiveScanningModel">
+            <summary>
+            被动扫码模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningModel.DeviceMACAddress">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningModel.LaneSenseDate">
+            <summary>
+            压地感时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningModel.ParkingFee">
+            <summary>
+            停车费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningModel.PayAuthCode">
+            <summary>
+            支付授权码
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.PassiveScanningResponseModel">
+            <summary>
+            被动扫码返回模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningResponseModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningResponseModel.PayState">
+            <summary>
+            付款状态 true：成功  false：失败
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningResponseModel.Remark">
+            <summary>
+            备注字段
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PassiveScanningResponseModel.Extend">
+            <summary>
+            预留扩展字段
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.PermanentTemplateModel">
+            <summary>
+            固定车模板模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.CarTypeGuid">
+            <summary>
+            卡类型(对应的车类型的guid)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.Months">
+            <summary>
+            月数 单次续费的月数
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.Amount">
+            <summary>
+            金额 单次续费的金额数 单位元
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.OperateTime">
+            <summary>
+            最后一次操作时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PermanentTemplateModel.OperateUser">
+            <summary>
+            最后一次操作员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.PresenceOfVehicleModel">
+            <summary>
+            在场车模型.
+            </summary>
+            <remarks>
+            2019.09.17: 新增版本备注信息 llp <br/> 
+            2019.09.17: 修改枚举引用 llp<br/>
+            2019.09.26: 修改实体名称InVehicleDelete为InVehicleDeleteModel Ase<br/>
+            </remarks>   
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.ParkCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.EntranceName">
+            <summary>
+            入口名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.InImgUrl">
+            <summary>
+            车辆入场图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.InTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.StopLong">
+            <summary>
+            停车时长
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.CarTypeGuid">
+            <summary>
+            车类标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.CarTypeName">
+            <summary>
+            车类名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.PresenceOfVehicleModel.Remark">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.InVehicleDeleteModel">
+            <summary>
+            在场车场删除信息请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.RecordGuid">
+            <summary>
+            停车记录编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.CarTypeGuid">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.DeviceMACAddress">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.ImgUrl">
+            <summary>
+            删除的出场照片
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.OpenType">
+            <summary>
+            通行方式   
+            出场：1、自动开闸  2、手动开闸  3、免费开闸   4、收费放行  5、场内删除
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.Operator">
+            <summary>
+            当前操作员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.InVehicleDeleteModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.RolePermissionModel">
+            <summary>
+            角色权限管理模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RolePermissionModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RolePermissionModel.Guid">
+            <summary>
+            唯一识别标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RolePermissionModel.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RolePermissionModel.ContentDetial">
+            <summary>
+            权限详情 格式为 菜单序号(三位)+0或1 (0=代表无 1=代表有)
+            例如 0011002100300040.... 按四位拆分
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RolePermissionModel.ParkingCodeList">
+            <summary>
+            授权停车场编号集合 英文逗号分隔
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.RolePermissionModel.IsAdmin">
+            <summary>
+            是否管理员
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.SpaceNumberModel">
+            <summary>
+            车位数量实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SpaceNumberModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.SpaceNumberModel.RemainingSpace">
+            <summary>
+            剩余车位数
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.TempCarParkingModel">
+            <summary>
+            获取临时车停车费用信息实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TempCarParkingModel.CarNumber">
+            <summary>
+            车牌号码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TempCarParkingModel.ParkingFee">
+            <summary>
+            停车费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TempCarParkingModel.ActualAmount">
+            <summary>
+            应缴费用（应缴费用=停车费–自动使用的优惠券的优惠费用）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TempCarParkingModel.DiscountAmount">
+            <summary>
+            优惠金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TempCarParkingModel.PaymentAmount">
+            <summary>
+            已缴费用
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TempCarParkingModel.CouponList">
+            <summary>
+            优惠券列表
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.MCoupon">
+            <summary>
+            用户模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.CouponType">
+            <summary>
+            优惠券优惠类型1全免2减免金额3减免时长4减免百分比
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.CouponValue">
+            <summary>
+            对应优惠券类型的值 金额/时间/折扣
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.CouponCode">
+            <summary>
+            优惠券编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.FavorableType">
+            <summary>
+            优惠券类型1 纸质券 2 电子券 3 活动券 4 新版纸质券
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.EndTime">
+             <summary>
+            截至时间
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.CouponDescribe">
+            <summary>
+            优惠券描述
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.CouponName">
+            <summary>
+            优惠券名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.UseStatus">
+             <summary>
+            标识优惠券是线上或线下使用的状态 1只在线上使用 2只在线下使用 3线上线下都可以使用
+             </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.OperatorName">
+            <summary>
+            操作人员姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.OperatorPhone">
+            <summary>
+            操作人员电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.MCoupon.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.TrafficRestrictionModel">
+            <summary>
+            通行限制模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.Guid">
+            <summary>
+            唯一区分标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.DrivewayGuid">
+            <summary>
+            限制车道集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.CarTypeGuid">
+            <summary>
+            限制车类集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.AssignDays">
+            <summary>
+            指定的禁止通行周天,长度为7,依次为周一到周末，为1表示禁止,例如 0010010 表示周三周六禁止
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.StartTime">
+            <summary>
+            禁行开始时间 HH:mm:ss
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.TrafficRestrictionModel.EndTime">
+            <summary>
+            禁行结束时间 HH:mm:ss
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.UserAccountModel">
+            <summary>
+            用户上下文模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.UserPswd">
+            <summary>
+            用户密码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.Privilege">
+            <summary>
+            用户权限
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.UserAccountModel.RoleGuid">
+            <summary>
+            所属角色标识
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ValueCardFeeModel">
+            <summary>
+            储值卡类模型.
+            </summary>
+            <remarks>
+            2019.09.17: 新增版本备注信息 llp <br/> 
+            2019.09.17: 修改枚举引用 llp<br/>
+            </remarks>  
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.ParkingCode">
+            <summary>
+            停车场编号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.ParkingFee">
+            <summary>
+            停车费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.Balance">
+            <summary>
+            余额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.QRCode">
+            <summary>
+            付款二维码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.BeginTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.LineRecordCode">
+            <summary>
+            停车记录编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.IsPaid">
+            <summary>
+            是否扣费成功
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.ResponseType">
+            <summary>
+            命令类型(名称)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCardFeeModel.Remarks">
+            <summary>
+            预留扩展字段
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.ValueCarModel">
+            <summary>
+            储值卡车模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.CarOwnerName">
+            <summary>
+            车主姓名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.Mobile">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.CarNo">
+            <summary>
+            车牌
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.CarTypeGuid">
+            <summary>
+            车类编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.StartDate">
+            <summary>
+            起始时间(开卡时间)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.DrivewayGuidList">
+            <summary>
+            授权车道集合
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.Enable">
+            <summary>
+            是否有效
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.Locked">
+            <summary>
+            是否锁定
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.ValueCarModel.Balance">
+            <summary>
+            账户余额
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.VehicleInModel">
+            <summary>
+            车辆入场原始数据请求实体
+            </summary>
+            <remarks>
+            2019.09.17: 修改 开闸类型字段(OpenType)为枚举类型. Ase <br/>       
+            </remarks>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.DriveWayMAC">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.ImgUrl">
+            <summary>
+            车辆图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.InTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.CarTypeGuid">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.Remark">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.OpenType">
+            <summary>
+            开闸类型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInModel.PlateUrl">
+            <summary>
+            车牌图片url地址
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.VehicleInOutModel">
+            <summary>
+            车辆出入场实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.DriveWayMAC">
+            <summary>
+            车道设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.Entrance">
+            <summary>
+            入口名
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.ImgUrl">
+            <summary>
+            车辆图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.EventTime">
+            <summary>
+            出入事件触发时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.CarTypeGuid">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.CarTypeName">
+            <summary>
+            车类名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleInOutModel.Remark">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.VehicleOutModel">
+            <summary>
+            车辆出场请求实体
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.Guid">
+            <summary>
+            当次停车唯一标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.DriveWayMAC">
+            <summary>
+            车道相机设备地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.ImgUrl">
+            <summary>
+            车辆图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.OutTime">
+            <summary>
+            出场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.CarTypeGuid">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.Remark">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.OpenType">
+            <summary>
+            开闸类型 1、自动开闸  2、手动开闸  3、免费开闸   4、收费放行
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.Operator">
+            <summary>
+            操作员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VehicleOutModel.PlateUrl">
+            <summary>
+            车牌图片url地址
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.VoiceCommandModel">
+            <summary>
+            语音指令模型
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VoiceCommandModel.ProjectGuid">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VoiceCommandModel.ParkCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VoiceCommandModel.DrivewayGuid">
+            <summary>
+            对应车道
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VoiceCommandModel.DeviceMacAddress">
+            <summary>
+            车道相机标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.VoiceCommandModel.CommandList">
+            <summary>
+            指令列表
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.CommandDetialModel">
+            <summary>
+            指令详情
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CommandDetialModel.CommandType">
+            <summary>
+            命令类型(名称)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CommandDetialModel.ShowVoice">
+            <summary>
+            语音展示
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Context.Model.CommandDetialModel.ShowText">
+            <summary>
+            文字展示
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Context.Model.VoiceCommand">
+            <summary>
+            指令枚举
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.EntranceFree">
+            <summary>
+            入口空闲
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ExportFree">
+            <summary>
+            出口空闲
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.TempCarIn">
+            <summary>
+            临时车入场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.UnPaidTempCarOut">
+            <summary>
+            未缴费临时车出场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.PaidTempCarOut">
+            <summary>
+            已缴费临时车出场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.PaidTempCarOverTime">
+            <summary>
+            已缴费临时车离场超时出场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.MonthCarIn">
+            <summary>
+            月卡车入场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.MonthCarInRemind">
+            <summary>
+            月卡车入场识别提醒延期
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.MonthCarOverDate">
+            <summary>
+            已过期月卡车入场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.MonthCarOut">
+            <summary>
+            月卡车出场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.MonthCarOutRemind">
+            <summary>
+            月卡车出场识别提醒延期
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ValueCarIn">
+            <summary>
+            储值车入场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ValueCarInRemind">
+            <summary>
+            储值车入场识别提醒充值
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ValueCarOut">
+            <summary>
+            储值车出场识别
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ValueCarOutRemind">
+            <summary>
+            储值车出场识别提醒充值
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ValueCarInsufficient">
+            <summary>
+            储值车出场余额不足
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.DriveWayRestriction">
+            <summary>
+            车道通行限制
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.NoEntryRecord">
+            <summary>
+            无入场记录
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Context.Model.VoiceCommand.ManualOpenGate">
+            <summary>
+            手动开闸
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel">
+            <summary>
+            线下临时卡缴费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.CarType">
+            <summary>
+            车类别(关联计费类型)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.AdmissionDate">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.BillingStartTime">
+            <summary>
+            计费开始时间 （算费接口返回的 最后一次缴费时间或入场时间）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.BillingDeadline">
+            <summary>
+            计费截至时间 （算费接口返回的计费时间）
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.FreeAdmission">
+            <summary>
+            人工免费
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.TollOperator">
+            <summary>
+            计费操作员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.ActualAmount">
+            <summary>
+            缴费金额
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.AmountTime">
+            <summary>
+            缴费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.CardNo">
+            <summary>
+            临时卡卡号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.LineRecordCode">
+            <summary>
+            线下停车记录编码
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.CustomDate">
+            <summary>
+            客户端时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.DealNo">
+            <summary>
+            线下交易编号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.Amount">
+            <summary>
+            金额(停车费)
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.DeductionAmount">
+            <summary>
+            抵扣金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.Reason">
+            <summary>
+            抵扣原因
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.UseTimeCount">
+            <summary>
+            使用的优惠小时数 通过hosting获取优惠金额后会返回该字段的值
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.InvoiceStatus">
+            <summary>
+            发票领取状态1已领2未领
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.InvoiceTime">
+            <summary>
+            发票领取时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.PayBackamt">
+            <summary>
+            缴费后当前储值卡金额
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.NewChargedFee">
+            <summary>
+            更新后的已收取费用(单位：元)
+            取值：
+                未跨段 取当次停车费；
+                跨段 取跨段后的新的费用。
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.NewSplitTime">
+            <summary>
+            跨段后的时间分割点(格式：2017-08-01 12:32:00)
+            时间分割点为当次的入场时间或者跨段后的缴费时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OfflineTemporaryCardPayModel.CouponList">
+            <summary>
+            优惠券信息
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.CouponCalculateView.CouponCode">
+            <summary>
+            优惠券编码
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.CouponCalculateView.FavorableType">
+            <summary>
+            优惠券类型1 纸质券 2 电子券
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel">
+            <summary>
+            异常开闸记录
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.ParkingCode">
+            <summary>
+            停车场编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.CarType">
+            <summary>
+            车类别
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.CarNo">
+            <summary>
+            车牌号
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.EntranceType">
+            <summary>
+            进出类型
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.DiscernCamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.ThroughType">
+            <summary>
+            通行方式  
+            入场：1、自动开闸  2、手动开闸
+            出场：1、自动开闸  2、手动开闸  3、免费开闸   4、收费放行
+            </summary>
+        </member>
+        <member name="F:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.OpenGateTime">
+            <summary>
+            开闸时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.OpenGateReason">
+            <summary>
+            开闸原因
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.OpenGateOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.ImageUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Bussiness.Entity.OpenGateRecordModel.ErrorCode">
+            <summary>
+            异常说明
+            </summary>
+        </member>
+        <member name="T:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst">
+            <summary>
+            异常开闸记录
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.ParkingCode">
+            <summary>
+            停车场编码
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.DeviceIdentify">
+            <summary>
+            设备标识
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.CarType">
+            <summary>
+            车类别
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.EntranceType">
+            <summary>
+            进出类型
+            </summary> 
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.DiscernCamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.ThroughType">
+            <summary>
+            通行方式   
+            出场：1、自动开闸  2、手动开闸  3、免费开闸   4、收费放行
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.OpenGateTime">
+            <summary>
+            开闸时间
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.OpenGateReason">
+            <summary>
+            开闸原因
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.OpenGateOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Fujica.com.cn.Interface.Management.Models.InPut.OpenGateRecordRequsst.ImageUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+    </members>
+</doc>

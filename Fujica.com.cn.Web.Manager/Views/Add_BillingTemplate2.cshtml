@@ -1,0 +1,637 @@
+﻿
+@{
+    ViewBag.Title = "ParkLot_SetBillingTemplate";
+    Layout = null;
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/plugins/pace.min.js"></script>
+<script type="text/javascript" src="~/Scripts/plugins/chart.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/jquery.serializejson.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    a {
+        font-size: 12px;
+    }
+
+    #car0List, #car2List {
+        list-style: none;
+        padding: 0;
+    }
+
+        #car0List li, #car2List li {
+            padding-top: 10px;
+            list-style: none;
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+            cursor: pointer;
+            color: #6C7A8B;
+        }
+
+            #car0List li span, #car2List li span {
+                font-size: 12px;
+                padding-left: 50px;
+                border-left: 2px solid #fff;
+                height: 20px;
+                display: block;
+                line-height: 20px;
+            }
+
+    .border_b {
+        border-left: 2px solid #0092FF !important;
+    }
+
+    .bgc_b {
+        background-color: #E8F6FF !important;
+    }
+    .flex-box {
+        display: flex;
+    }
+    .flex-box.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-box.space-between {
+        justify-content: space-between;
+    }
+
+    .flex-box .flex1 {
+        flex: 1;
+        position: relative;
+    }
+    .steps{
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-left: 16.6%;
+    }
+    .steps .steps-title{
+        width: 120px;
+        text-align: center;
+        display: inline-block;
+        margin-left: -60px;
+    }
+    .steps .flex1{
+        height: 50px;
+    }
+    .steps .icon{
+        bottom: 0;
+        width: 100%;
+        border-bottom: 4px solid;
+        position: absolute;
+    }
+    .steps .icon:after{
+        content:'';
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #e8e8e8ed;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: -8px;
+        margin-left: -7px;
+    }
+    .steps .icon.gray{
+       border-color: #e8e8e8ed;
+    }
+    .steps .icon.blue{
+       border-color: #0093ff;
+    }
+    .steps .start .icon{
+        right: 0;
+    }
+    .steps .end .icon{
+        left:0;
+        border-color: #fff;
+    }
+    .steps .curr{
+        color: #00a5ff;
+    }
+    .steps .curr .icon:after{
+      content:'';
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background: url('/picture/Ellipse.png');
+      position: absolute;
+      bottom: 0;
+      margin-bottom: -13px;
+      margin-left: -12px;
+    }
+    .steps .start .icon:after{
+        left: 0%;
+    }
+    .steps .end .icon:after{
+        left: 0%;
+    }
+</style>
+
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+    <div class="row" style="margin:30px auto 20px">
+        <!-- <img src="~/picture/bar3.png" style="margin-left:16%" /> -->
+        <div class="flex-box center steps">
+            <div class="flex1 start curr">
+                <span class="steps-title">设置车场基本信息</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 curr">
+                <span class="steps-title">添加车道和设备</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 curr">
+                <span class="steps-title">设置车类型</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 curr">
+                <span class="steps-title">计费模板设置</span>
+                <div class="icon blue"></div>
+            </div>
+            <div class="flex1 end curr">
+                <span class="steps-title">延期金额设置</span>
+                <div class="icon gray"></div>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top:5px" />
+    <div class="row Add_BillingTemplate2_div">
+        <div class="col-lg-12">
+            <div class="bs-component">
+                <div id="profile" style="height:444px;">
+                    <div class="col-md-12">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="sampleTable_length">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6" style="text-align:right;height:50px">
+                            <div id="sampleTable_filter" class="dataTables_filter">
+                                <a class="btn btn-info" onclick="showAdd()" style="color:#fff;background-color:#0092FF"> <img src="~/picture/increase.png" />&nbsp;&nbsp;<span>新添数据</span></a>
+
+                            </div>
+                        </div>
+                        <div style="overflow:auto;height:90%;width:100%">
+                            <table class="table table-striped table-bordered" style="border:1px solid #bfbfbf;text-align:center">
+                                <thead style="background-color:#e8f6ff">
+                                    <tr style="font-size:15px">
+                                        @*<th>#</th>*@
+                                        <th style="text-align:center">卡类型</th>
+                                        @*<th>续费月数</th>*@
+                                        <th style="text-align:center">金额（元）</th>
+                                        <th style="text-align:center">操作时间</th>
+                                        <th style="text-align:center">操作人</th>
+                                        <th style="text-align:center">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_content"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="projectGuid" value="" />
+                    <input type="hidden" id="parkingCode" value="" />
+                    <input type="hidden" id="parkName" value="" />
+                    <input type="hidden" id="navtabs" value="" />
+
+                </div>
+
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="tile-footer">
+        <div class="row">
+            <div class="col-md-9" style="text-align:center">
+                <a class="btn " href="#" onclick="back_ParkLot()" style="width:120px;margin-left:30%;background-color:#D7D8D9;color:#575656">
+                    返回
+                </a>
+                <button class="btn btn-primary" type="button" onclick="Nextstep()" style="width:120px;background-color:#0092ff">
+                    跳过
+                </button>
+                <button class="btn btn-primary" type="button" onclick="Nextstep()" style="width:120px;background-color:#0092ff">
+                    完成
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@*添加*@
+<div class="col-sm-12">
+    <div class="modal fade" id="div_add" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header title_background-color" style="background-color:#0092ff">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">新增</h3>
+                </div>
+                <form>
+                    <div class="form-group" style="width:100%;height:45px;margin-top:10px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>车类类型：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            @*<input type="text" class="form-control" name="username" id="carTypeName" />*@
+                            <select class="form-control" id="CarTypeGuid"></select>
+                        </div>
+                    </div>
+                    @*<div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>月数：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <select class="form-control" id="Months">
+                                <option selected="" value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>*@
+                    <div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>金额：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <input type="text" class="form-control"  onkeyup="this.value=this.value.replace(/\D/g,'')"
+onafterpaste="this.value=this.value.replace(/\D/g,'')" id="Amount"  maxlength="10"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        @*<button type="submit" name="submit" class="btn btn-primary" onclick="SavaAdd()">保存</button>*@
+                        <button class="btn btn-primary" type="button" onclick="SavaAdd()" style="width:80px">
+                            <i class="fa fa-fw fa-lg fa-check-circle">
+                            </i>保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@*编辑*@
+<div class="col-sm-12">
+    <div class="modal fade" id="div_edit" tabindex="-1" role="dialog" aria-labelledby="div_AddInRecord">
+        <div class="modal-dialog" role="document" style="margin-left:0px">
+            <div class="modal-content">
+                <div class="modal-header title_background-color" style="background-color:#0092ff">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="div_AddInRecord">编辑</h3>
+                </div>
+                <form>
+                    <div class="form-group" style="width:100%;height:45px;margin-top:10px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>车类类型：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;"> 
+                            <select class="form-control" id="Edit_CarTypeGuid" disabled="disabled"></select>
+                        </div>
+                    </div>
+                    @*<div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>月数：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <select class="form-control" id="Edit_Months" disabled="disabled">
+                                <option selected="" value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>*@
+                    <div class="form-group" style="width:100%;height:45px">
+                        <div class="float-left text-right" style="width:20%;">
+                            <label>金额：</label>
+                        </div>
+                        <div class="float-left" style="width:70%;">
+                            <input type="text" class="form-control"   id="Edit_Amount" onkeyup="this.value=this.value.replace(/\D/g,'')"
+onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="10"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        @*<button type="submit" name="submit" class="btn btn-primary" onclick="SavaEdit()">保存</button>*@
+                        <button class="btn btn-primary" type="button" onclick="SavaEdit()" style="width:80px">
+                            <i class="fa fa-fw fa-lg fa-check-circle">
+                            </i>保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Google analytics script-->
+<script type="text/javascript">
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    var strcarTypeName = 0;
+    var tabs = "";
+    var PostponeTemplateList = "";
+    $(document).ready(function () {
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 0) {  //大于1 是修改  否则是添加
+            var value = "";
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    $("#" + name).val(decodeURI(value));
+                }
+            }
+        }
+
+        GetPostponeTemplateList();
+        //GetCarTypeList()
+        var tabs = $("#navtabs").val();
+    });
+    
+    function GetParkLot() {
+        var ParkingCode = $("#ParkingCode").val();
+
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetParkLot?ParkingCode=" + ParkingCode,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    $(".parkName").html(data.Result.parkName)
+                }
+            }
+        })
+    };
+     
+    //弹出添加页面
+    function showAdd() {
+        _div.style.display = 'block';
+        GetCarTypeModel(1, "");
+        $('#div_add').modal();
+        _div.style.display = 'none';
+    };
+
+    //弹出编辑页面
+    function showEdit(carTypeGuid, months, amount)
+    {
+        _div.style.display = 'block';
+        $("#Edit_CarTypeGuid").val(carTypeGuid);
+        $("#Edit_Months").val(months);
+        $("#Edit_Amount").val(amount)
+        GetCarTypeModel(0, carTypeGuid);
+        $('#div_edit').modal();
+        _div.style.display = 'none';
+    };
+
+    //保存添加
+    function SavaAdd() {
+        _div.style.display = 'block';
+        var ParkingCode = $("#parkingCode").val();
+        var CarTypeGuid = $("#CarTypeGuid").val();
+        if (CarTypeGuid == null) {
+            _div.style.display = 'none';
+            return;
+        }
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var UserName = $.cookie("UserName")
+        //var Months = $("#Months").val();
+        var Months = 0;
+        var Amount = $("#Amount").val();  
+        for (var key in PostponeTemplateList) {
+            var months = json[key].months;
+            var carTypeGuid = json[key].carTypeGuid;
+            if (CarTypeGuid == carTypeGuid && months == Months) {
+                return $message('i', "已添加过相同的数据！")
+            }
+        }
+        var data = {
+            "Months": Months, "Amount": Amount, "ParkingCode": ParkingCode, "ProjectGuid": ProjectGuid, "CarTypeGuid": CarTypeGuid, "OperateUser": UserName
+        };
+        $.post("/Home/Maps/ParkLot/SetPostponeTemplate", data, function (result) {
+            if (result.IsSuccess == true) { 
+                location.reload(); 
+                _div.style.display = 'none';
+                return; 
+            }
+            else
+            {
+                $message('d', "添加不成功！");
+                _div.style.display = 'none';
+                return false;
+            }
+           
+        });
+    }
+
+    //保存编辑
+    function SavaEdit() {
+        _div.style.display = 'block';
+        var ParkingCode = $("#parkingCode").val();
+        var CarTypeGuid = $("#Edit_CarTypeGuid").val();
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var UserName = $.cookie("UserName")
+        //var Months = $("#Edit_Months").val();
+        var Months = 0;
+        var Amount = $("#Edit_Amount").val();
+        var data = {
+            "Months": Months, "Amount": Amount, "ParkingCode": ParkingCode, "ProjectGuid": ProjectGuid, "CarTypeGuid": CarTypeGuid, "OperateUser": UserName
+        };
+        $.post("/Home/Maps/ParkLot/SetPostponeTemplate", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s', "操作成功！")
+                //location.reload()
+                location.reload();
+                _div.style.display = 'none';
+                // parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_SetBillingTemplate?projectGuid=" + ProjectGuid + "&parkingCode=" + ParkingCode + "&navtabs=1");
+                return;
+            }
+            else {
+                $message('d', result.MessageContent);
+                _div.style.display = 'none';
+                return false;
+            }
+        });
+    }
+
+    //获取固定车延期模板列表
+    function GetPostponeTemplateList() {
+        _div.style.display = 'block';
+        strcarTypeName = "";
+        var parkCode = $("#parkingCode").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetPostponeTemplateList?ParkingCode=" + parkCode,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    PostponeTemplateList = data.Result;
+                    json = PostponeTemplateList;
+                    for (var key in json) {
+                        var months = json[key].Months;
+                        var amount = json[key].Amount;
+                        var operateTime = json[key].OperateTime;
+                        var operateUser = json[key].OperateUser;
+                        var carTypeGuid = json[key].CarTypeGuid;
+                        var projectGuid = json[key].ProjectGuid;
+                        var parkCode = json[key].ParkCode;
+                        var carTypeName = json[key].CarTypeName;
+                        strcarTypeName = strcarTypeName + carTypeName + ",";
+                        var html = html + "<tr id='" + "Id_" + key + "' style='font-size: 15px'>" +
+                            '<td>' + carTypeName + '</td>' +
+                            //'<td>' + months + '</td>' +
+                            ' <td>' + amount + '</td>' +
+                            '<td>' + operateTime + '</td>' +
+                            '<td>' + operateUser + '</td>' +
+                            "<td><a class='btn btn-info icon-btn mr-10' style='color: #e8f6ff;width:100px;background-color:#0092FF' onclick='showEdit(\"" + carTypeGuid + "\",\"" + months + "\",\"" + amount + "\")'>编辑</a> <a  class='btn ' style='color: #e8f6ff;background-color:#b0b0b0;width:100px' onclick='Delete(\"" + carTypeGuid + "\",\"" + projectGuid + "\",\"" + key + "\",\"" + months + "\",\"" + amount + "\",\"" + operateUser + "\",\"" + parkCode + "\")'>删除</a></td>" +
+                            '</tr >';
+                    }
+                    $("#tbody_content").append(html);
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+
+    //新添数据
+    function Add() {
+        _div.style.display = 'block';
+        var projectGuid = $.cookie("ProjectGuid");
+        var parkCode = $("#parkingCode").val();
+        var url = ("/Home/Trans/ParkLot_AddBillingTemplate?projectGuid=" + projectGuid + "&parkingCode=" + parkCode);
+        parent.$('#mainIframe').attr('src', url);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理</label>  > <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>><a href="#" style="color:#9a9c9e" onclick="back_ParkLot()">计费设置</a>  > <label style="color:#0092ff">添加</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    }
+
+    //获取车类下拉列表
+    function GetCarTypeModel(type, carTypeGuid) {
+        _div.style.display = 'block';
+        var ParkingCode = $("#parkingCode").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + ParkingCode + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    $("#CarTypeGuid").find("option").remove();
+                    $("#Edit_CarTypeGuid").find("option").remove();
+                    for (var key in json) {
+                        var guid = json[key].Guid;
+                        var carTypeName = json[key].CarTypeName;
+                        if (json[key].CarType != 0 && json[key].Enable == true && json[key].CarType != 2)
+                       /* if (json[key].CarType != 0 && json[key].Enable == true)*/ {
+                            if (type == 1) {
+                                if (strcarTypeName.indexOf(carTypeName) == -1) {
+
+                                    $("#CarTypeGuid").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                                }
+                            }
+                            else {
+                                if (carTypeGuid == guid) {
+                                    $("#Edit_CarTypeGuid").append("<option value='" + guid + "' selected='selected'>" + carTypeName + "</option>");
+                                }
+                                else {
+                                    $("#Edit_CarTypeGuid").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                                }
+                            }
+                        }
+
+                    }
+                }
+                _div.style.display = 'none';
+            }
+        })
+    }
+  
+    //删除
+    function Delete(CarTypeGuid, projectGuid, key, months, amount, operateUser, parkCode) {
+        var data = {
+            "CarTypeGuid": CarTypeGuid,
+            "ParkingCode": parkCode,
+            "ProjectGuid": projectGuid,
+            "Months": months,
+            "Amount": amount,
+            "OperateUser": operateUser
+        };
+        $alert({
+            html: "您确定删除吗？",
+            confirm: function () {
+                _div.style.display = 'block';
+                $.post("/Home/Maps/ParkLot/RemovePostponeTemplate", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s', "删除成功！")
+                        //$("#Id_" + key).remove();
+                        location.reload(); 
+                    }
+                    else {
+                        $message('d', "删除不成功！")
+                        return false;
+                    }
+                    _div.style.display = 'none';
+                });
+            }
+        })
+    }
+     
+
+    //返回车场页面
+    function back_ParkLot() {
+   
+        _div.style.display = 'block';
+        var parkCode = $("#parkingCode").val(); 
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Add_BillingTemplate?parkingCode=" + parkCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    }
+    //跳过
+    function Nextstep() {
+        _div.style.display = 'block';
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\"> 车场设置</a>" +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParklotIndex");
+        _div.style.display = 'none';
+    }
+     
+</script>

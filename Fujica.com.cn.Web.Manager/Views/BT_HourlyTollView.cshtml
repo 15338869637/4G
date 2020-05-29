@@ -1,0 +1,282 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "BT_HourlyTollView";
+    Layout = null;
+
+}
+@*按小时计费*@
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+@*<script src="~/Scripts/jquery.validate.js"></script>*@
+<script src="~/Scripts/common.js"></script>
+<style>
+    label, select {
+        color: #6C7A8B;
+    }
+    .input-group-addon {
+        background-color: #E8F6FF;
+        border: 1px solid #E7E9ED;
+        color: #6C7A8B;
+        height: 45px;
+    }
+    input.form-control {
+        border: 1px solid #E7E9ED;
+        color: #0092FF;
+        text-align: center;
+        height: 45px;
+    }
+    .panel-body .input-group {
+        margin-bottom: 10px !important;
+    }
+
+    .panel {
+        border-radius: 0px;
+    }
+
+    .panel-body {
+        border: 1px solid #e7e9ed;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+<form id="form" method="post" action="#" onsubmit="parent.SaveBtn();return false;">
+    <div style="height:0;overflow: hidden;"><input type="submit" value="submit" /></div>
+    <div style="overflow:auto;min-width:1000px;">
+        <div class="panel panel-body">
+            <div class="input-group" style="text-align:right;">
+                <div class="col-md-11 radio-list" style="text-align:right;">
+                    <label class=" control-label" style="font-size:14px;">计费单位：</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="MonetaryUnit" id="Unit1" value="1" onclick="change()" checked />
+                        <span style="font-size:14px">元</span>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="MonetaryUnit" id="Unit2" value="0" onclick="change()" />
+                        <span style="font-size:14px">角</span>
+                    </label>
+                </div>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left;">
+                <span class="input-group-addon" style="width:100px">免费时间</span>
+                <input class="form-control" type="number" name="FreeMinutes" id="FreeMinutes" min="0" max="59" value="30">
+                <span class="input-group-addon" style="width:40px;margin-left:5px;">分</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">离场超时时间</span>
+                <input class="form-control required MaxNumText NumText" type="number" min="0" max="65535" id="LeaveTimeout" name="LeaveTimeout" value="15">
+                <span class="input-group-addon" style="width:40px;margin-left:5px;">分</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">每天最大金额</span>
+                <input class="form-control required MaxNumHaxText NumText" id="DayAmountTopLimit" type="number" min="0" max="255" name="DayAmountTopLimit" value="255">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">每次最大金额</span>
+                <input class="form-control required MaxNumText NumText" id="AmountTopLimit" type="number" min="0" max="65535" name="AmountTopLimit" value="65535">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">1小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h1" id="h1" value="1">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">2小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h2" id="h2" value="2">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">3小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h3" id="h3" value="3">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">4小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h4" id="h4" value="4">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">5小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h5" id="h5" value="5">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">6小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h6" id="h6" value="6">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">7小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h7" id="h7" value="7">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">8小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h8" id="h8" value="8">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">9小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" id="h9" name="h9" value="9">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">10小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h10" id="h10" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">11小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h11" id="h11" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">12小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h12" id="h12" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">13小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h13" id="h13" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">14小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h14" id="h14" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">15小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h15" id="h15" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">16小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h16" id="h16" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">17小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h17" id="h17" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">18小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h18" id="h18" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">19小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h19" id="h19" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">20小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" name="h20" min="0" max="255" id="h20" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">21小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h21" id="h21" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">22小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h22" id="h22" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">23小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h23" id="h23" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+            <div class="input-group" style="width:23%;margin:5px;float:left">
+                <span class="input-group-addon" style="width:100px">24小时金额</span>
+                <input class="form-control required MaxNumHaxText NumText" type="number" min="0" max="255" name="h24" id="h24" value="10">
+                <span class="input-group-addon Yuan" style="width:40px;margin-left:5px;">元</span>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    //获取carTypeGuid
+    var url = location.href
+    var num = url.split("?")[1]
+    var carTypeGuid = num.split("=")[1]
+    $.ajax({
+        url: "/Home/Maps/ParkLot/GetBillingTemplate?CarTypeGuid=" + carTypeGuid,
+        dataType: 'json',
+        method: 'GET',
+        contentType: "application/json;charset=utf-8",
+        success: function (res) {
+            if (res.IsSuccess == true) {
+                //请求成功判断是新增还是修改
+                if (res.Result !== null) {
+                    //修改
+                    $("#form").attr("flag", "1")
+                } else {
+                    //新增
+                    $("#form").attr("flag", "0")
+                }
+                if (res.Result !== null && res.Result.ChargeMode == "1") {
+                    var data = JSON.parse(res.Result.TemplateJson)
+                    var MonetaryUnit = data.MonetaryUnit;
+                    if ($("input[name=MonetaryUnit]").eq(0).val() == MonetaryUnit) {
+                        $("input[name=MonetaryUnit]").eq(0).prop("checked", true)
+                        $("input[name=MonetaryUnit]").eq(1).prop("checked", false)
+                        change()
+                    } else if ($("input[name=MonetaryUnit]").eq(1).val() == MonetaryUnit) {
+                        $("input[name=MonetaryUnit]").eq(1).prop("checked", true)
+                        $("input[name=MonetaryUnit]").eq(0).prop("checked", false)
+                        change()
+                    }
+                    $("#FreeMinutes").val(data.FreeMinutes)
+                    $("#LeaveTimeout").val(data.LeaveTimeout)
+                    $("#h1").val(data.h1)
+                    $("#h2").val(data.h2)
+                    $("#h3").val(data.h3)
+                    $("#h4").val(data.h4)
+                    $("#h5").val(data.h5)
+                    $("#h6").val(data.h6)
+                    $("#h7").val(data.h7)
+                    $("#h8").val(data.h8)
+                    $("#h9").val(data.h9)
+                    $("#h10").val(data.h10)
+                    $("#h11").val(data.h11)
+                    $("#h12").val(data.h12)
+                    $("#h13").val(data.h13)
+                    $("#h14").val(data.h14)
+                    $("#h15").val(data.h15)
+                    $("#h16").val(data.h16)
+                    $("#h17").val(data.h17)
+                    $("#h18").val(data.h18)
+                    $("#h19").val(data.h19)
+                    $("#h20").val(data.h20)
+                    $("#h21").val(data.h21)
+                    $("#h22").val(data.h22)
+                    $("#h23").val(data.h23)
+                    $("#h24").val(data.h24)
+                    $("#DayAmountTopLimit").val(data.DayAmountTopLimit)
+                    $("#AmountTopLimit").val(data.AmountTopLimit)
+                }
+            }
+
+        }
+    })
+    function change() {
+        var value = $("input[name='MonetaryUnit']:checked").parent().find("span").html();
+        $(".Yuan").html(value);
+    }
+
+</script>

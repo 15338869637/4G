@@ -1,0 +1,293 @@
+﻿@{
+    Layout = null;
+}
+@*按半小时收费*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-timepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/common.js"></script>
+<style>
+    .textAlignRight {
+        text-align: right;
+    }
+
+    .h30 {
+        height: 30px;
+        margin-bottom: 10px;
+        color: #6C7A8B;
+    }
+    .input-group-addon {
+        background-color: #E8F6FF;
+        border: 1px solid #E7E9ED;
+        color: #6C7A8B;
+    }
+    input.form-control {
+        border: 1px solid #E7E9ED;
+        color: #0092FF;
+        text-align: center;
+    }
+    .panel {
+        border-radius:0px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+<form id="form" method="post" action="#" onsubmit="parent.SaveBtn();return false;">
+    <div style="height:0;overflow: hidden;"><input type="submit" value="submit" /></div>
+    <div style="margin-left:30px;width:1000px;">
+        <div class="panel panel-primary" style="margin:0px -20px;border-color: #e7e9ed;">
+            <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                <label style="margin-left:10px;margin-top:5px;font-size:12px">公共设置</label>
+            </div>
+            <div class="panel-body">
+                <input id="TemplateModelName" value="TemplateModelName" class="hidden" />
+                <!--公共设置-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group validateinput  h30">
+                            <label class="col-md-5 control-label textAlignRight">白天时段</label>
+                            <div class="col-md-5 input-group">
+                                <div class="bootstrap-timepicker timepicker">
+                                    <input id="DayBeginTime" type="text" class="form-control datetimepicker3 font-size-12" data-theme="DayBeginTime" name="DayBeginTime" value="" style="height:30px;width:70px">
+                                </div>
+                                <span class="input-group-addon" style="font-size:12px;height:26px">至</span>
+                                <div class="bootstrap-timepicker timepicker">
+                                    <input id="DayEndTime" type="text" class="form-control datetimepicker3 font-size-12" data-theme="DayEndTime" name="DayEndTime" value="" style="height:30px;width:70px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight">每天最高收费</label>
+                            <div class="col-md-5 input-group">
+                                <input type="number" name="MaxDayMoney" id="MaxDayMoney" class="form-control NumText input-sm MaxNumText required" min="0" max="65535" value="999">
+                                <span class="input-group-addon classunit">元</span>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight">离场超时时间</label>
+                            <div class="col-md-5 input-group">
+                                <input class="form-control required MaxNumHaxText NumText input-sm"  type="number" min="0" max="65535" id="LeaveTimeout" name="LeaveTimeout" value="30">
+                                <span class="input-group-addon">分</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight">计费单位</label>
+                            <div class="col-md-7 radio-list">
+                                <label class="radio-inline">
+                                    <input name="MonetaryUnit" id="Unit1" value="1" type="radio" onclick="change()" checked><span style="font-size:14px">元</span>
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="MonetaryUnit" id="Unit2" value="0" type="radio" onclick="change()"> <span style="font-size:14px">角</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight">本次最高收费</label>
+                            <div class="col-md-5 input-group">
+                                <input type="number" name="MaxMoney" id="MaxMoney" class="form-control NumText input-sm MaxNumText required" min="0" max="65535" value="65535">
+                                <span class="input-group-addon classunit">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary " style="margin: 0px -20px;border-color: #e7e9ed;">
+            <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                <label style="margin-left:10px;margin-top:5px;font-size:12px">白天时段内设置</label>
+            </div>
+            <div class="panel-body">
+                <!--白天时段内设置-->
+                <div class="row">
+                    <div class="col-md-4 padding-left-right-0">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight" style="padding-left:5px">免费分钟</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" name="DayFreeMinutes" id="DayFreeMinutes" class="form-control NumText MaxNumHaxText input-sm required" min="0" max="255" value="30">
+                                <span class="input-group-addon">分</span>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight">超时时间为</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" name="DayTimeout" id="DayTimeout" class="form-control NumText MaxNumDecText input-sm required" min="0" max="99" value="0">
+                                <span class="input-group-addon">分</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 padding-left-right-0">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-3 control-label textAlignRight">首</label>
+                            <div class="col-md-5 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="DayFirstHour" id="DayFirstHour" min="0" max="255" value="1">
+                            </div>
+                            <label class="col-md-4 control-label">个半小时</label>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-3 control-label textAlignRight">以后</label>
+                            <div class="col-md-5 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="DayNextHour" id="DayNextHour" min="0" max="255" value="5">
+                            </div>
+                            <label class="col-md-4 control-label">个半小时</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 padding-left-0">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-4 control-label textAlignRight">收费</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="DayFirstMoney" id="DayFirstMoney" min="0" max="255" value="10">
+                                <span class="input-group-addon classunit">元</span>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-4 control-label textAlignRight">收费</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="DayNextMoney" id="DayNextMoney" min="0" max="255" value="5">
+                                <span class="input-group-addon classunit">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary" style="margin: 0px -20px;border-color: #e7e9ed;">
+            <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                <label style="margin-left:10px;margin-top:5px;font-size:12px">晚上时段内设置</label>
+            </div>
+            <div class="panel-body">
+                <!--晚上时段内收费设置-->
+                <div class="row">
+                    <div class="col-md-4 padding-left-right-0">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-5 control-label textAlignRight">免费分钟</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" name="NightFreeMinutes" id="NightFreeMinutes" class="form-control NumText MaxNumHaxText input-sm required" min="0" max="99" value="30">
+                                <span class="input-group-addon">分</span>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+
+                            <label class="col-md-5 control-label textAlignRight">超时时间为</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" name="NightTimeout" id="NightTimeout" class="form-control NumText MaxNumDecText input-sm required" min="0" max="99" value="0">
+                                <span class="input-group-addon">分</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 padding-left-right-0">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-3 control-label textAlignRight">首</label>
+                            <div class="col-md-5 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="NightFirstHour" id="NightFirstHour" min="0" max="255" value="1">
+                            </div>
+                            <label class="col-md-4 control-label font-size-12">个半小时</label>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-3 control-label textAlignRight">以后</label>
+                            <div class="col-md-5 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="NightNextHour" id="NightNextHour" min="0" max="255" value="5">
+                            </div>
+                            <label class="col-md-4 control-label font-size-12">个半小时</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 padding-left-0">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-4 control-label textAlignRight">收费</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="NightFirstMoney" id="NightFirstMoney" min="0" max="255" value="10">
+                                <span class="input-group-addon classunit">元</span>
+                            </div>
+                        </div>
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-4 control-label textAlignRight">收费</label>
+                            <div class="col-md-7 input-group">
+                                <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="NightNextMoney" id="NightNextMoney" min="0" max="255" value="5">
+                                <span class="input-group-addon classunit">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $('.datetimepicker3').timepicker({
+        minuteStep: 1,
+        maxHours: 24,
+        showMeridian: false,
+        secondStep: 1,
+        showSeconds: false,
+    });
+</script>
+<script>
+    //获取carTypeGuid
+    var url = location.href
+    var num = url.split("?")[1]
+    var carTypeGuid = num.split("=")[1]
+    $.ajax({
+        url: "/Home/Maps/ParkLot/GetBillingTemplate?CarTypeGuid=" + carTypeGuid,
+        dataType: 'json',
+        method: 'GET',
+        contentType: "application/json;charset=utf-8",
+        success: function (res) {
+            if (res.IsSuccess == true) {
+                //请求成功判断是新增还是修改
+                if (res.Result !== null) {
+                    //修改
+                    $("#form").attr("flag", "1")
+                } else {
+                    //新增
+                    $("#form").attr("flag", "0")
+                }
+                if (res.Result !== null && res.Result.ChargeMode == 4) {
+                    var data = JSON.parse(res.Result.TemplateJson)
+                    var MonetaryUnit = data.MonetaryUnit;
+                    if ($("input[name=MonetaryUnit]").eq(0).val() == MonetaryUnit) {
+                        $("input[name=MonetaryUnit]").eq(0).prop("checked", true)
+                        $("input[name=MonetaryUnit]").eq(1).prop("checked", false)
+                        change()
+                    } else if ($("input[name=MonetaryUnit]").eq(1).val() == MonetaryUnit) {
+                        $("input[name=MonetaryUnit]").eq(1).prop("checked", true)
+                        $("input[name=MonetaryUnit]").eq(0).prop("checked", false)
+                        change()
+                    }
+                    $("#DayFreeMinutes").val(data.DayFreeMinutes)
+                    $("#NightFreeMinutes").val(data.NightFreeMinutes)
+                    $("#DayBeginTime").val(data.DayBeginTime)
+                    $("#DayEndTime").val(data.DayEndTime)
+                    $("#DayFirstHour").val(data.DayFirstHour)
+                    $("#DayFirstMoney").val(data.DayFirstMoney)
+                    $("#DayNextHour").val(data.DayNextHour)
+                    $("#DayNextMoney").val(data.DayNextMoney)
+                    $("#DayTimeout").val(data.DayTimeout)
+                    $("#NightFirstHour").val(data.NightFirstHour)
+                    $("#NightFirstMoney").val(data.NightFirstMoney)
+                    $("#NightNextHour").val(data.NightNextHour)
+                    $("#NightNextMoney").val(data.NightNextMoney)
+                    $("#NightTimeout").val(data.NightTimeout)
+                    $("#MaxDayMoney").val(data.MaxDayMoney)
+                    $("#MaxMoney").val(data.MaxMoney)
+                    $("#LeaveTimeout").val(data.LeaveTimeout)
+                }
+            }
+
+        }
+    })
+    function change() {
+        var value = $("input[name='MonetaryUnit']:checked").parent().find("span").html();
+        $(".classunit").html(value);
+    }
+</script>

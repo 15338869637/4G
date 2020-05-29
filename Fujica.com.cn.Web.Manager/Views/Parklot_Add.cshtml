@@ -1,0 +1,766 @@
+﻿
+@{
+    /**/
+    Layout = null;
+    ViewBag.Title = "Parklot_Add";
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/bootstrapValidator.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrapValidator.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    a {
+        font-size: 12px;
+    }
+
+    #car0List, #car2List {
+        list-style: none;
+        padding: 0;
+    }
+
+        #car0List li, #car2List li {
+            padding-top: 10px;
+            list-style: none;
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+            cursor: pointer;
+            color: #6C7A8B;
+        }
+
+            #car0List li span, #car2List li span {
+                font-size: 12px;
+                padding-left: 50px;
+                border-left: 2px solid #fff;
+                height: 20px;
+                display: block;
+                line-height: 20px;
+            }
+
+    .border_b {
+        border-left: 2px solid #0092FF !important;
+    }
+
+    .bgc_b {
+        background-color: #E8F6FF !important;
+    }
+
+    .thead {
+        background-color: #e8f6ff;
+        font-size: 15px;
+        font-weight: bold;
+        height: 40px;
+        background-color: #e8f6ff !important;
+    }
+
+    .tl {
+        text-align: left;
+    }
+    .flex-box {
+        display: flex;
+    }
+    .flex-box.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-box.space-between {
+        justify-content: space-between;
+    }
+
+    .flex-box .flex1 {
+        flex: 1;
+        position: relative;
+    }
+    .steps{
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-left: 16.6%;
+    }
+    .steps .steps-title{
+        width: 120px;
+        text-align: center;
+        display: inline-block;
+        margin-left: -60px;
+    }
+    .steps .flex1{
+        height: 50px;
+    }
+    .steps .icon{
+        bottom: 0;
+        width: 100%;
+        border-bottom: 4px solid;
+        position: absolute;
+    }
+    .steps .icon:after{
+        content:'';
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #e8e8e8ed;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: -8px;
+        margin-left: -7px;
+    }
+    .steps .icon.gray{
+       border-color: #e8e8e8ed;
+    }
+    .steps .icon.blue{
+       border-color: #0093ff;
+    }
+    .steps .start .icon{
+        right: 0;
+    }
+    .steps .end .icon{
+        left:0;
+        border-color: #fff;
+    }
+    .steps .curr{
+        color: #00a5ff;
+    }
+    .steps .curr .icon:after{
+      content:'';
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background: url('/picture/Ellipse.png');
+      position: absolute;
+      bottom: 0;
+      margin-bottom: -13px;
+      margin-left: -12px;
+    }
+    .steps .start .icon:after{
+        left: 0%;
+    }
+    .steps .end .icon:after{
+        left: 0%;
+    }
+</style>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header" style="height:40px;margin-top:10px">
+                <h4><img src="/picture/zuobianlan.png"><label id="lbl_tiele" style="margin-left:10px"></label></h4>
+            </div>
+        </div>
+    </div>
+
+    @*添加车场*@
+    <div class="tile-body" style="width:50%;margin-left:20%;display:block;height:100%" id="div_A">
+        <form class="form-horizontal">
+            <div class="form-group row" id="div_img1">
+                <!-- <img src="~/picture/time.png" style="margin-left:16%;margin-top:-30px" /> -->
+                <div class="flex-box center steps">
+                    <div class="flex1 start curr">
+                      <span class="steps-title">设置车场基本信息</span>
+                      <div class="icon gray"></div>
+                    </div>
+                    <div class="flex1 ">
+                      <span class="steps-title">添加车道和设备</span>
+                      <div class="icon gray"></div>
+                    </div>
+                    <div class="flex1 ">
+                      <span class="steps-title">设置车类型</span>
+                      <div class="icon gray"></div>
+                    </div>
+                    <div class="flex1 ">
+                      <span class="steps-title">计费模板设置</span>
+                      <div class="icon gray"></div>
+                    </div>
+                    <div class="flex1 end ">
+                      <span class="steps-title">延期金额设置</span>
+                      <div class="icon gray"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="AddNewParkLot_div">
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label> 停车场名称：
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" type="text" placeholder="" id="ParkingName" name="lblParkingName">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label> 停车场编码：
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" type="text" placeholder="" id="ParkingCode" name="lblParkingCode">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label>  首字母：
+                    </label>
+                    <div class="col-md-5" style="float:left;">
+                        <div style="float:left;width:50%">
+                            <select class="form-control" id="exampleSelect1" style="width:98%" name="sltexampleSelect1">
+                                <option value="0">请选择</option>
+                                <option value="京">京</option>
+                                <option value="沪">沪</option>
+                                <option value="浙">浙</option>
+                                <option value="苏">苏</option>
+                                <option value="粤">粤</option>
+                                <option value="鲁">鲁</option>
+                                <option value="晋">晋</option>
+                                <option value="冀">冀</option>
+                                <option value="豫">豫</option>
+                                <option value="川">川</option>
+                                <option value="渝">渝</option>
+                                <option value="辽">辽</option>
+                                <option value="吉">吉</option>
+                                <option value="黑">黑</option>
+                                <option value="皖">皖</option>
+                                <option value="鄂">鄂</option>
+                                <option value="津">津</option>
+                                <option value="贵">贵</option>
+                                <option value="云">云</option>
+                                <option value="桂">桂</option>
+                                <option value="琼">琼</option>
+                                <option value="青">青</option>
+                                <option value="新">新</option>
+                                <option value="藏">藏</option>
+                                <option value="蒙">蒙</option>
+                                <option value="宁">宁</option>
+                                <option value="甘">甘</option>
+                                <option value="陕">陕</option>
+                                <option value="闽">闽</option>
+                                <option value="赣">赣</option>
+                                <option value="湘">湘</option>
+                            </select>
+                        </div>
+
+                        <div style="float:left;width:50%">
+                            <select class="form-control" id="exampleSelect2" style="width:98%;margin-left:0px" name="sltexampleSelect2">
+                                @*<option value="0">请选择</option>*@
+                                @*<option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                    <option value="H">H</option>
+                                    <option value="J">J</option>
+                                    <option value="K">K</option>
+                                    <option value="L">L</option>
+                                    <option value="M">M</option>
+                                    <option value="N">N</option>
+                                    <option value="P">P</option>
+                                    <option value="Q">Q</option>
+                                    <option value="R">R</option>
+                                    <option value="S">S</option>
+                                    <option value="T">T</option>
+                                    <option value="U">U</option>
+                                    <option value="V">V</option>
+                                    <option value="W">W</option>
+                                    <option value="X">X</option>
+                                    <option value="Y">Y</option>
+                                    <option value="Z">Z</option>*@
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label> 总车位：
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" type="text" placeholder="" id="ParkingSpacesNumber" maxlength="10" name="lblParkingSpacesNumber">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label>  剩余车位数：
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" type="text" placeholder="" id="RemainingSpace" maxlength="10" name="lblRemainingSpace">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label>  停车场类型：
+                    </label>
+                    <div class="col-md-5">
+                        <select class="form-control" id="ParkingType" name="ParkingType">
+                            <option value="">请选择</option>
+                            <option value="0">小区</option>
+                            <option value="1">商业</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-5 tl">
+                        <label style="color:#ff0000">*</label>  停车场地址：
+                    </label>
+                    <div class="col-md-5" style="float:left;">
+                        <div style="float:left;width:50%;">
+                            <select style="display: inline-block;width: 98%;text-align:left;margin-left:0px" name="province" id="province" class='province form-group form-control' msgEmpty="请选择省份">
+                                <option value="">请选择省份</option>
+                            </select>
+                        </div>
+                        <div style="float:left;width:50%;">
+                            <select style="display: inline-block;width: 98%;margin: 0 10px;margin-left:0px" name="city" id="city" class='city form-group form-control' msgEmpty="请选择城市">
+                                <option value="">请选择城市</option>
+                            </select>
+
+                        </div>
+                        <br />
+                        <textarea class="form-control" id="Detailedaddress" rows="3" placeholder="请输入详细地址"></textarea>
+
+                    </div>
+                </div>
+                <div class="tile-footer" style="margin-left:45%;display:block" id="div_1">
+                    <div class="row">
+                        <div class="col-md-11 ">
+                            <a class="btn btn-secondary" href="#" onclick="back_ParkLot()" style="width:120px;background-color:#d7d8d9;color:#808080">
+                                返回
+                            </a>
+                            @*<button class="btn btn-primary" type="submit" onclick="Sava()" style="width:120px;background-color:#0092ff">
+                                    下一步
+                                </button>*@
+                            <button type="submit" name="submit" class="btn btn-primary" id=" " onclick="Sava()" style="width:120px;background-color:#0092FF">保存</button>
+                            @*<button class="btn btn-primary" type="button" onclick="Sava()" style="width:80px">
+                                    <i class="fa fa-fw fa-lg fa-check-circle">
+                                    </i>保存
+                                </button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<input type="hidden" id="ParkingCode" value="" />
+<script type="text/javascript">
+
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    var PkCode = location.search.split('?ParkingCode=')[1];
+    //创建城市地区
+    var city = {
+        北京: ["东城区", "西城区", "崇文区", "宣武区", "朝阳区", "海淀区", "丰台区", "石景山区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区",
+            "平谷区", "门头沟区", "密云县", "延庆县"
+        ],
+        天津: ["和平区", "河东区", "河西区", "南开区", "河北区", "红桥区", "东丽区", "西青区", "北辰区", "津南区", "武清区", "宝坻区", "滨海新区", "静海县",
+            "宁河县", "蓟县"
+        ],
+        上海: ["黄浦区", "卢湾区", "徐汇区", "长宁区", "静安区", "普陀区", "闸北区", "虹口区", "杨浦区", "闵行区", "宝山区", "嘉定区", "浦东新区", "金山区",
+            "松江区", "青浦区", "奉贤区", "崇明县"
+        ],
+        重庆: ["渝中区", "大渡口区", "江北区", "南岸区", "北碚区", "渝北区", "巴南区", "长寿区", "双桥区", "沙坪坝区", "万盛区", "万州区", "涪陵区", "黔江区",
+            "永川区", "合川区", "江津区", "九龙坡区", "南川区", "綦江县", "潼南县", "荣昌县", "璧山县", "大足县", "铜梁县", "梁平县", "开县", "忠县",
+            "城口县", "垫江县", "武隆县", "丰都县", "奉节县", "云阳县", "巫溪县", "巫山县", "石柱土家族自治县", "秀山土家族苗族自治县", "酉阳土家族苗族自治县",
+            "彭水苗族土家族自治县"
+        ],
+        河北: ["石家庄", "唐山", "秦皇岛", "邯郸", "邢台", "保定", "张家口", "承德", "沧州", "廊坊", "衡水"],
+        山西: ["太原", "大同", "阳泉", "长治", "晋城", "朔州", "晋中", "运城", "忻州", "临汾", "吕梁"],
+        辽宁: ["沈阳", "大连", "鞍山", "抚顺", "本溪", "丹东", "锦州", "营口", "阜新", "辽阳", "盘锦", "铁岭", "朝阳", "葫芦岛"],
+        吉林: ["长春", "吉林", "四平", "辽源", "通化", "白山", "松原", "白城", "延边朝鲜族自治州"],
+        黑龙江: ["哈尔滨", "齐齐哈尔", "鹤岗", "双鸭山", "鸡西", "大庆", "伊春", "牡丹江", "佳木斯", "七台河", "黑河", "绥化", "大兴安岭"],
+        江苏: ["南京", "苏州", "无锡", "常州", "镇江", "南通", "泰州", "扬州", "盐城", "连云港", "徐州", "淮安", "宿迁"],
+        浙江: ["杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水"],
+        安徽: ["合肥", "芜湖", "蚌埠", "淮南", "马鞍山", "淮北", "铜陵", "安庆", "黄山", "滁州", "阜阳", "宿州", "巢湖", "六安", "亳州", "池州",
+            "宣城"
+        ],
+        福建: ["福州", "厦门", "莆田", "三明", "泉州", "漳州", "南平", "龙岩", "宁德"],
+        江西: ["南昌", "景德镇", "萍乡", "九江", "新余", "鹰潭", "赣州", "吉安", "宜春", "抚州", "上饶"],
+        山东: ["济南", "青岛", "淄博", "枣庄", "东营", "烟台", "潍坊", "济宁", "泰安", "威海", "日照", "莱芜", "临沂", "德州", "聊城", "滨州",
+            "菏泽"
+        ],
+        河南: ["郑州", "开封", "洛阳", "平顶山", "安阳", "鹤壁", "新乡", "焦作", "濮阳", "许昌", "漯河", "三门峡", "南阳", "商丘", "信阳", "周口",
+            "驻马店"
+        ],
+        湖北: ["武汉", "黄石", "十堰", "荆州", "宜昌", "襄樊", "鄂州", "荆门", "孝感", "黄冈", "咸宁", "随州", "恩施"],
+        湖南: ["长沙", "株洲", "湘潭", "衡阳", "邵阳", "岳阳", "常德", "张家界", "益阳", "郴州", "永州", "怀化", "娄底", "湘西"],
+        广东: ["广州", "深圳", "珠海", "汕头", "韶关", "佛山", "江门", "湛江", "茂名", "肇庆", "惠州", "梅州", "汕尾", "河源", "阳江", "清远",
+            "东莞", "中山", "潮州", "揭阳", "云浮"
+        ],
+        海南: ["海口", "三亚"],
+        四川: ["成都", "自贡", "攀枝花", "泸州", "德阳", "绵阳", "广元", "遂宁", "内江", "乐山", "南充", "眉山", "宜宾", "广安", "达州", "雅安",
+            "巴中", "资阳", "阿坝", "甘孜", "凉山"
+        ],
+        贵州: ["贵阳", "六盘水", "遵义", "安顺", "铜仁", "毕节", "黔西南", "黔东南", "黔南"],
+        云南: ["昆明", "曲靖", "玉溪", "保山", "昭通", "丽江", "普洱", "临沧", "德宏", "怒江", "迪庆", "大理", "楚雄", "红河", "文山", "西双版纳"],
+        陕西: ["西安", "铜川", "宝鸡", "咸阳", "渭南", "延安", "汉中", "榆林", "安康", "商洛"],
+        甘肃: ["兰州", "嘉峪关", "金昌", "白银", "天水", "武威", "酒泉", "张掖", "庆阳", "平凉", "定西", "陇南", "临夏", "甘南"],
+        青海: ["西宁", "海东", "海北", "海南", "黄南", "果洛", "玉树", "海西"],
+        内蒙古: ["呼和浩特", "包头", "乌海", "赤峰", "通辽", "鄂尔多斯", "呼伦贝尔", "巴彦淖尔", "乌兰察布", "锡林郭勒盟", "兴安盟", "阿拉善盟"],
+        广西: ["南宁", "柳州", "桂林", "梧州", "北海", "防城港", "钦州", "贵港", "玉林", "百色", "贺州", "河池", "来宾", "崇左"],
+        西藏: ["拉萨", "那曲", "昌都", "林芝", "山南", "日喀则", "阿里"],
+        宁夏: ["银川", "石嘴山", "吴忠", "固原", "中卫"],
+        新疆维吾尔自治区: ["乌鲁木齐", "克拉玛依", "吐鲁番", "哈密", "和田", "阿克苏", "喀什", "克孜勒苏", "巴音郭楞", "昌吉", "博尔塔拉", "伊犁", "塔城",
+            "阿勒泰"
+        ],
+        香港: ["香港岛", "九龙东", "九龙西", "新界东", "新界西"],
+        澳门: ["澳门半岛", "离岛"],
+        台湾: ["台北", "高雄", "基隆", "新竹", "台中", "嘉义", "台南市"]
+    };
+    $(function () {
+        _div.style.display = 'block';
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                lblParkingName: {
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        }
+                    }
+                },
+                sltexampleSelect1: {
+                    validators: {
+                        callback: {
+                            message: '必选',
+                            callback: function (value, validator) {
+                                if (value == 0) {
+                                    return false;
+
+                                } else {
+                                    return true;
+
+                                }
+                            }
+                        }
+                    }
+                }, 
+                ParkingType: {
+                    validators: {
+                        callback: {
+                            message: '必选',
+                            callback: function (value, validator) {
+                                if (value =="") {
+                                    return false;
+
+                                } else {
+                                    return true;
+
+                                }
+                            }
+                        }
+                    }
+                }, 
+                province: {
+                    validators: {
+                        callback: {
+                            message: '必选',
+                            callback: function (value, validator) {
+                                if (value == "") {
+                                    return false;
+
+                                } else {
+                                    return true;
+
+                                }
+                            }
+                        }
+                    }
+                }, 
+                
+                lblParkingCode: {
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        },
+                        stringLength: {
+                            max: 14,
+                            min: 14,
+                            message: '车场编码长度必须为14位'
+                        },
+                        digits: {
+                            message: '该值只能包含数字'
+                        }
+
+                    }
+                },
+                lblParkingSpacesNumber: {
+
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        },
+                        digits: {
+                            message: '该值只能包含数字'
+                        }
+
+                    }
+                },
+                lblRemainingSpace: {
+                    validators: {
+                        notEmpty: {
+                            message: '不能为空'
+                        },
+                        digits: {
+                            message: '该值只能包含数字'
+                        }
+                        //callback: {
+                        //    message: '最大值不可小于最小值',
+                        //    callback: function (value, validator) {
+                        //        if (value != '') {
+                        //            var nMin = $("#form").data("bootstrapValidator").getFieldElements('ParkingSpacesNumber');
+                        //            if (nMin.val() != '' && Number(nMin.val()) > Number(value)) {
+                        //                return false;
+                        //            } else if (nMin.val() != '' && Number(nMin.val()) < Number(value)) {
+                        //                //从新验证该字段
+                        //                //$('#form').data('bootstrapValidator').revalidateField('nMin');
+
+                        //                //当符合规则手动修改该字段的验证状态
+                        //                /* 因为上面方法两个字段相互验证 ，会造成死循环，所以在两个字段比较之后，并且符合验证规则，就手动修改该字段的验证状态 */
+                        //                $('#form').data('bootstrapValidator').updateStatus("ParkingSpacesNumber", "VALID", null);
+                        //                return true;
+                        //            } else if (nMin.val() == '') {
+                        //                return true;
+                        //            } else {
+                        //                return true;
+                        //            }
+                        //        } else {
+                        //            return true;
+                        //        }
+                        //    }
+                        //}
+                    }
+                }
+
+
+
+            },
+
+
+        });
+        var data = sessionStorage.getItem('Parklot_Add')
+        if (PkCode && data) {
+            console.log('edit', JSON.parse(data), PkCode)
+            var obj = JSON.parse(data);
+            var CarNoPrefix = obj.CarNoPrefix.split(',')
+            var ParkingSiteAddress = JSON.parse(obj.ParkingSiteAddress.replace(/\'/g,'"'));
+            $('#ParkingName').val(obj.ParkingName)
+            $('#ParkingCode').val(obj.ParkingCode).attr('disabled', 'disabled')
+            $('#exampleSelect1').val(CarNoPrefix[0])
+            exampleSelect2_add()
+            $('#exampleSelect2').val(CarNoPrefix[1])
+            $('#ParkingSpacesNumber').val(obj.ParkingSpacesNumber)
+            $('#RemainingSpace').val(obj.RemainingSpace)
+            $('#ParkingType').val(obj.ParkingType)
+            getcity()
+            $('#province').val(ParkingSiteAddress.province)
+            cityChange(ParkingSiteAddress.province)
+            $('#city').val(ParkingSiteAddress.city)
+            $('#Detailedaddress').val(ParkingSiteAddress.Detailedaddress)
+        }
+        _div.style.display = 'none';
+    });
+
+    //获取车类列表
+    function GetCarTypeModel() {
+        var ParkingCode = $("#ParkingCode").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + ParkingCode + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    for (var key in json) {
+                        var carTypeName = json[key].carTypeName;
+                        var guid = json[key].guid;
+                        $("#CarTypeGuid").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                    }
+
+                }
+            },
+            error: function (xhr) {
+                // 导致出错的原因较多，以后再研究
+                $message('d','error:' + JSON.stringify(xhr));
+
+            }
+        })
+
+    };
+    function exampleSelect2_add () {
+        $("#exampleSelect2").append("<option value='A'>A</option>");
+        $("#exampleSelect2").append("<option value='B'>B</option>");
+        $("#exampleSelect2").append("<option value='D'>D</option>");
+        $("#exampleSelect2").append("<option value='E'>E</option>");
+        $("#exampleSelect2").append("<option value='F'>F</option>");
+        $("#exampleSelect2").append("<option value='G'>G</option>");
+        $("#exampleSelect2").append("<option value='H'>H</option>");
+        $("#exampleSelect2").append("<option value='J'>J</option>");
+        $("#exampleSelect2").append("<option value='K'>K</option>");
+        $("#exampleSelect2").append("<option value='L'>L</option>");
+        $("#exampleSelect2").append("<option value='M'>M</option>");
+        $("#exampleSelect2").append("<option value='N'>N</option>");
+        $("#exampleSelect2").append("<option value='P'>P</option>");
+        $("#exampleSelect2").append("<option value='Q'>Q</option>");
+        $("#exampleSelect2").append("<option value='R'>R</option>");
+        $("#exampleSelect2").append("<option value='S'>S</option>");
+        $("#exampleSelect2").append("<option value='T'>T</option>");
+        $("#exampleSelect2").append("<option value='U'>U</option>");
+        $("#exampleSelect2").append("<option value='V'>V</option>");
+        $("#exampleSelect2").append("<option value='W'>W</option>");
+        $("#exampleSelect2").append("<option value='X'>X</option>");
+        $("#exampleSelect2").append("<option value='Y'>Y</option>");
+        $("#exampleSelect2").append("<option value='Z'>Z</option>");
+    }
+    $("#exampleSelect1").change(exampleSelect2_add);
+    $(document).ready(function () {
+        _div.style.display = 'block';
+        getcity();
+        var ParkingCode = "";
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 0) {  //大于1 是修改  否则是添加
+            var value = "";
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    if (name == "ParkingCode") {
+                        ParkingCode = value;
+
+                    }
+                }
+            }
+        }
+        if (ParkingCode != "") {
+            $("#lbl_tiele").text("编辑车场");
+          //  GetGetParkLot(ParkingCode);
+        }
+        else {
+            $("#lbl_tiele").text("新增车场");
+        }
+        _div.style.display = 'none';
+    })
+    //初始化省名
+    function getcity() {
+        var pro = ["北京", "天津", "上海", "重庆", "河北", "山西", "辽宁", "吉林", "黑龙江", "江苏", "浙江", "安徽", "福建", "江西", "山东", "河南",
+            "湖北", "湖南", "广东", "海南", "四川", "贵州", "云南", "陕西", "甘肃", "青海", "内蒙古", "广西", "西藏", "宁夏", "新疆维吾尔自治区", "香港",
+            "澳门", "台湾"
+        ];
+        for (var i = 0; i < pro.length; i++) {
+            $option = $("<option/>");
+            $option.attr("value", pro[i]);
+            $option.text(pro[i]);
+            $(".province").append($option);
+        }
+        $(".province").change(function () {
+            cityChange($(this).val())
+        });
+    }
+    function cityChange(val) {
+        var cities = city[val];
+            $(".city").empty();
+            //$(".city").append("<option value=''>请选择</option>");
+            for (var i = 0; i < cities.length; i++) {
+                $option = $("<option/>");
+                $option.attr("value", cities[i]);
+                $option.text(cities[i]);
+                $(".city").append($option);
+            }
+    }
+    //初始化地址
+    function change_province() {
+        var cities = city[$(this).val()];
+        $(".city").empty();
+        $(".city").append("<option value=''>请选择</option>");
+        for (var i = 0; i < cities.length; i++) {
+            $option = $("<option/>");
+            $option.attr("value", cities[i]);
+            $option.text(cities[i]);
+            $(".city").append($option);
+        }
+    }
+    //保存
+    function Sava() {
+        _div.style.display = 'block';
+        /*手动验证表单，当是普通按钮时。*/
+        $('form').data('bootstrapValidator').validate();
+        if (!$('form').data('bootstrapValidator').isValid()) {
+            _div.style.display = 'none';
+            return;
+        }
+        else {
+            var RoleGuid = $.cookie("RoleGuid");
+            var url = "";
+            if (PkCode) {
+                url = "/Home/Maps/ParkLot/ModifyParkLot";
+                success = "修改成功！"
+            } else {
+                url = "/Home/Maps/ParkLot/AddNewParkLot";
+                success = "添加成功！"
+            }
+            var ProjectGuid = $.cookie("ProjectGuid");
+            var ParkingName = $("#ParkingName").val();
+            var exampleSelect1 = $("#exampleSelect1").val();
+            var exampleSelect2 = $("#exampleSelect2").val();
+            var CarNoPrefix = "" + exampleSelect1 + "," + exampleSelect2 + "";
+            var ParkingSpacesNumber = $("#ParkingSpacesNumber").val();
+            var RemainingSpace = $("#RemainingSpace").val();
+            if (parseInt(ParkingSpacesNumber) < parseInt(RemainingSpace)) {
+                _div.style.display = 'none';
+                return $message('d', "剩余车数不能大于总车数！")
+            }
+            var ParkingType = $("#ParkingType").val()
+            var province = $("#province").val();
+            var city = $("#city").val();
+            var ParkingCode = $("#ParkingCode").val();
+            //if (ParkingCode.length != 14) {
+            //    _div.style.display = 'none';
+            //    return alert("停车场编码错误！")
+            //}
+            var Detailedaddress = $("#Detailedaddress").val();
+            var ParkingSiteAddress = "{'province':'" + province + "','city':'" + city + "','Detailedaddress':'" + Detailedaddress + "'}";
+            var data = {
+                "ParkingName": ParkingName, "ParkingCode": ParkingCode, "CarNoPrefix": CarNoPrefix, "ParkingType": ParkingType, "ParkingSpacesNumber": ParkingSpacesNumber, "RemainingSpace": RemainingSpace, "ParkingSiteAddress": ParkingSiteAddress, "Existence": true, "ProjectGuid": ProjectGuid, "RoleGuid": RoleGuid
+            };
+            $.post(url, data, function (result) {
+                if (result.IsSuccess == true) {
+                    sessionStorage.setItem('Parklot_Add', JSON.stringify(data))
+                    parent.$('#mainIframe').attr('src', "/Home/Trans/Add_DriveWay?ParkingCode=" + ParkingCode);
+                    var html = "<p style='font-style:initial'>" +
+                        '<label style = "color:#a3a8ac"> 车场管理 > <a  href="#" onclick=\"Back()\"> 车场设置</a> </label> > <a onclick="Back()">添加车道</a>' +
+                        '</p >';
+                    parent.document.getElementById('app-title').innerHTML = html;
+                }
+                else {
+                    $message('d', result.MessageContent)
+                }
+                _div.style.display = 'none';
+            });
+        }
+      
+    }
+
+    function back_ParkLot() {
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\"> 车场设置</a> " +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParklotIndex");
+    }
+
+
+</script>

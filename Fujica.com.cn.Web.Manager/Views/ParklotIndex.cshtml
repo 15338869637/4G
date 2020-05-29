@@ -1,0 +1,321 @@
+﻿
+
+@{
+    Layout = null;
+}
+ 
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+<style>
+    .btn-default {
+        color: #fff;
+        background-color: #b0b0b0;
+        border-color: transparent;
+    }
+    /*tr{
+            height:42px;
+        }*/
+    .empty-ico{
+        background: url('/picture/empty.png') no-repeat;
+        background-size:  100% 100%;
+        width: 60px;
+        height: 60px;
+        padding-top: 60px;
+        line-height: 30px;
+        margin-top: 50px;
+        text-align: center;
+        display: block;
+        color: #ccc;
+        left: 50%;
+        position: absolute;
+    }
+</style>
+<body>
+    <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <div class="row" style="height:40px;margin-top:10px">
+            <div class="col-sm-12 col-md-12" style="margin-top:15px;margin-left:15px">
+                <div class="dataTables_length" id="sampleTable_length">
+                    <div style="width:90%;float:left">
+                        <img src="/picture/zuobianlan.png">
+                        <label style="font-size:18px;font-weight:bold;margin-left:12px">车场管理</label>
+                    </div>
+                        <div style="width:10%;float:left;margin-top:-5px" id="div_Add">
+                            <a class="btn btn-info icon-btn mr-10" style="color:#e8f6ff;height:35px;margin-right:32px;width:120px;margin-top:5px" ; onclick="OpenParkLot_Add('')">
+                                <div style="margin-left:-10px">
+                                    <div style="width:35%;float:left;text-align:center">
+                                        <img src="/picture/addicon.png" />
+                                    </div>
+                                    <div style="width:65%;float:left">
+                                        <label>新增车场</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+
+            @*<div class="col-sm-12 col-md-12" style="display:block" id="div_Add">
+                <div id="sampleTable_filter" class="dataTables_filter" s>
+                    <a class="btn btn-info icon-btn mr-10" style="color:#e8f6ff;height:35px;margin-right:32px;width:120px;margin-top:5px" ; onclick="OpenParkLot_Add('')">
+                        <div style="margin-left:-10px">
+                            <div style="width:35%;float:left;text-align:center">
+                                <img src="/picture/addicon.png" />
+                            </div>
+                            <div style="width:65%;float:left">
+                                <label>新增车场</label>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>*@ 
+        </div>
+        <hr />
+        <div class="row ParklotIndex_div" >
+            <div class="col-sm-12">
+                <table style="text-align:center;cursor: default;" class="table table-striped table-bordered " id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                    <tbody id="tbody_1">
+                        <tr role="row" style="background-color:#e8f6ff;height:40px;font-weight:bold;font-size:15px;">
+                            <td>停车场名称</td>
+                            <td>首字母</td>
+                            <td>总车位数</td>
+                            <td>剩余车位数</td>
+                            <td>停车场类型</td>
+                            <td>停车场地址</td>
+                            <td>车场设置</td>
+                            <td>操作</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="empty-ico">
+                      暂无数据
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var ProjectGuid = $.cookie("ProjectGuid");
+    var RoleGuidList = ""; 
+    var carry = 0; 
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    var ParkCodeList = "";
+    $(function () {  
+
+        _div.style.display = 'block';  
+        ResultApiPost();  
+       
+    });
+    function ResultApiPost() {
+        GetRolePermission();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetParkLotList?ProjectGuid=" + ProjectGuid,
+            dataType: 'json',
+            method: 'GET',
+            contentType: "application/json;utf-8",
+            async: false,
+            success: function (data) { 
+                if (data.IsSuccess == true) {
+                    var html = "";
+                    var json = data.Result;
+                    for (var key in json) {
+                        var parkCode = json[key].ParkCode;
+                        for (var roleGuidList in RoleGuidList) {
+                            if (RoleGuidList[roleGuidList] == parkCode) {
+                                if (json[key].Existence == true) { 
+                                    var coun = ParkCodeList.search(parkCode);
+                                    ParkCodeList = ParkCodeList + parkCode + ",";
+                                    if (coun == -1) { 
+                                    var parkName = json[key].ParkName;
+                                    var arr = json[key].Prefix;
+                                    var prefix = "";
+                                    var projectGuid = json[key].ProjectGuid;
+                                    for (var i = 0; i < arr.length; i++) {
+                                        if (arr[i] != ",") {
+                                            prefix = prefix + arr[i];
+                                        }
+                                    }
+                                    var jsonObj = json[key].SiteAddress;
+                                    var obj = eval('(' + jsonObj + ')');
+                                    var strsiteAddress = "";
+                                    if (obj.province != null) {
+                                        var strsiteAddress = strsiteAddress + obj.province;
+                                    }
+                                    if (obj.city != null) {
+                                        var strsiteAddress = strsiteAddress + obj.city;
+                                    }
+                                    if (obj.Detailedaddress != null) {
+                                        var strsiteAddress = strsiteAddress + obj.Detailedaddress;
+                                    }
+                                    let state = json[key].type !== 1 ? '小区' : '商业';
+                                    html = html + '<tr role="row" style="height:30px;font-size:13px" class="odd" id="Id_' + key + '">' +
+                                        '<td class="sorting_1">' + parkName + '</td >' +
+                                        '<td>' + prefix + '</td>' +
+                                        '<td>' + json[key].SpacesNumber + '</td>' +
+                                        '<td>' + json[key].RemainingSpace + '</td>' +
+                                        '<td>' + state + '</td>' +
+                                        '<td>' + strsiteAddress + '</td>' +
+                                        "<td onmouseover=\"this.style.cursor = 'hand'\" style='width:380px; font - size: 13px'><a style='color:#0092ff;margin-right:30px' onclick='OpenAddNewParkLot(\"" + parkCode + "\",\"" + parkName + "\")'>车道设置</a>" +
+                                        "<a style='color:#0092ff;margin-right:30px' onclick='OpenSetCarType(\"" + parkCode + "\")'>车类设置</a>" +
+                                        "<a style = 'color:#0092ff;margin-right:30px' onclick = 'OpenSetBillingTemplate(\"" + parkCode + "\",\"" + parkName + "\")' > 计费设置</a >" +
+                                        "<a style = 'color:#0092ff;margin-right:30px' onclick = 'OpenParkLot_SetOther(\"" + parkCode + "\")' > 其他设置</a ></td > " +
+                                        "<td>" +
+                                        " <a class='btn btn-info icon-btn mr-10' style='color:#e8f6ff;margin:0px 15px 0px 15px;width:70px;height:30px;padding:0.15rem 0.75rem' onclick='OpenParkLot_Edit(\"" + parkCode + "\")'>编辑</a>" +
+                                        " <a class='btn btn-default' style='color:#e8f6ff;margin:0px 15px 0px 15px;width:70px;height:30px;padding:0.15rem 0.75rem' onclick='Delete(\"" + key + "\",\"" + parkCode + "\")'>删除</a>" +
+                                        '</td > ' +
+                                        '</tr >';
+                                }
+                            }
+                            }
+                        }
+                    }  
+                    $('#tbody_1').append(html);if (json.length) {
+                        $('.empty-ico').hide()
+                    } else {
+                        $('.empty-ico').show()
+                    }
+                }
+                _div.style.display = 'none';
+            },
+            error: function (xhr) {
+                _div.style.display = 'none';  
+                // 导致出错的原因较多，以后再研究
+                $message('d','error:' + JSON.stringify(xhr));
+            }
+        })
+    };
+
+    /** 禁用滚动条 **/
+    function unScroll() {
+        var top = $(document).scrollTop();
+        $(document).on('scroll.unable', function (e) {
+            $(document).scrollTop(top);
+        })
+    }
+    //获取角色权限api/Personnel/GetRolePermission?Guid={Guid}
+    function GetRolePermission() {
+        var RoleGuid = $.cookie("RoleGuid");
+        $.ajax({
+            url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + RoleGuid,
+            dataType: 'json',
+            method: 'GET',
+            async: false,
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.ParkingCodeList) {
+                    data.ParkingCodeList = [...(new Set(data.ParkingCodeList))]
+                }
+                if (data.IsSuccess == true) {
+                    RoleGuidList = data.ParkingCodeList;
+                    if (data.IsAdmin == false) {
+                        //$("#div_Add").hide();
+                    }
+                    else {
+                        $("#div_Add").show();
+                    }
+                }
+            },
+        })
+    }
+    
+    //车道设置
+    function OpenAddNewParkLot(parkCode, parkName) {
+        _div.style.display = 'block';  
+        parent.$('#mainIframe').attr('src', "/Home/Trans/AddNewParkLot?ParkingCode=" + parkCode + '&parkName=' + encodeURI(parkName));
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac"> 车场管理 > 车场设置 </label> > <a onclick="Back()">车道设置</a>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';
+    }
+    //车类设置
+    function OpenSetCarType(parkCode) {
+        _div.style.display = 'block';  
+        parent.$('#mainIframe').attr('src', "/Home/Trans/SetDefaultCarType?parkCode=" + parkCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 ></label> <a href="#" style="color:#9a9c9e" onclick="Back()"> 车场设置</a>> <label style="color:#0092ff">车类设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';  
+    }
+    //计费设置
+    function OpenSetBillingTemplate(parkCode, parkName) {
+        _div.style.display = 'block';  
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_SetBillingTemplate?parkingCode=" + parkCode + "&parkName=" + parkName);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';  
+    }
+    //其他设置
+    function OpenParkLot_SetOther(parkingCode) {
+        _div.style.display = 'block';  
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_SetOther?parkingCode=" + parkingCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 >  </label> <a  href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">其他设置</label>' +
+            '</p >';
+
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';  
+    }
+    //添加/编辑Parklot_Add.cshtml  ParkLot_MobileWatchHouse.cshtml
+    function OpenParkLot_Add(ParkingCode) {
+        _div.style.display = 'block';  
+        var title;
+        ParkingCode == "" ? title = "添加" : title = "修改";
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Parklot_Add");
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 > <a href="#" onclick=\"Back()\"> 车场设置</a> </label> > <label style="color:#0092ff">' + title + '</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';  
+    }
+    function OpenParkLot_Edit(ParkingCode) {
+        _div.style.display = 'block';  
+        var title;
+        ParkingCode == "" ? title = "添加" : title = "修改";
+        parent.$('#mainIframe').attr('src', "/Home/Trans/Parklot_Edit?ParkingCode=" + ParkingCode);
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 > 车场设置 </label> > <label style="color:#0092ff">' + title + '</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        _div.style.display = 'none';  
+    }
+
+    //删除
+    function Delete(key, ParkingCode) {
+        var data = {
+            "ParkingCode": ParkingCode, "ProjectGuid": ProjectGuid
+        };
+        $alert({
+            html: "您确定删除吗？",
+            confirm: function () {
+                _div.style.display = 'block';  
+                $.post("/Home/Maps/ParkLot/RemoveParkLot", data, function (result) {
+                    if (result.IsSuccess == true) {
+                        $message('s',"删除成功")
+                        $("#Id_" + key).remove();
+                        _div.style.display = 'none';
+                    }
+                    else {
+                        _div.style.display = 'none';
+                        $message('d',result.MessageContent);
+                    }
+                });
+            }
+        })
+    } 
+    function Back() {
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParklotIndex");
+    }
+
+    function ParkLot_MobileWatchHouse() {
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_MobileWatchHouse");
+    }
+</script>

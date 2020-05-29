@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="~/Scripts/common.js"></script>
+    <style type="text/css">
+        .dropdown-menu > .disabled > a:hover, .dropdown-menu > .disabled > a:focus {
+            color: #a81197;
+        }
+
+        hover, focus {
+            text-decoration: none;
+            background-color: transparent;
+            background-image: none;
+        }
+        /*/鼠标移动变色*/
+        .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #262a35;
+        }
+
+        .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+            color: #000000;
+            text-decoration: none;
+            outline: 0;
+            background-color: #a81197;
+        }
+
+        .dropdown-menu > li > a {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: 400;
+            line-height: 1.42857143;
+            color: #adadba;
+            white-space: nowrap;
+        }
+
+        .i_color {
+            color: #c0c0ca
+        }
+
+        .circle {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+        }
+
+        .bg {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+
+
+        .dropdown-menu > li > a > i > img:nth-child(1) {
+            /*visibility: hidden;*/
+            display: none;
+        }
+
+        .dropdown-menu > li > a > i > img:nth-child(2) {
+        }
+
+        .dropdown-menu > li > a:hover > i > img:nth-child(2) {
+            /*visibility: hidden;*/
+            display: none;
+        }
+
+        .dropdown-menu > li > a:hover > i > img:nth-child(1) {
+            display: inline-block;
+            /*visibility: visible;*/
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        body>.main {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+        }
+        body>.main main{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        body>.main main #app-content2 {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+        }
+        body>.main main #mainIframe {
+            flex: 1
+        }
+    </style>
+</head>
+<body class="app sidebar-mini rtl" style="background-color:#eff3f6;">
+    <!-- 头部 -->
+    <header class="app-header" style="height:72px;">
+        <a class="app-header__logo" href="#" onclick="Back()">
+            <img src="~/picture/logo.png" style="width:200px;height:50px" />
+        </a>
+        <ul class="app-nav">
+            <li class="app-search">
+                <i class="app-menu__icon" style="display: inline-block; font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased;">
+                    <img src="~/picture/UserIcon.png" />
+                </i>
+                <label>欢迎</label><span id="userName"> </span>
+                <a style="margin-left:44px" href="#" onclick="logout()">
+                    <i class="app-menu__icon" style="display: inline-block; font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased;">
+                        <img src="~/picture/tuichu.png" />
+                    </i>
+                    <label>退出</label>
+                </a>
+            </li>
+        </ul>
+    </header>
+    <div class="main">
+      <!-- 左边菜单栏 -->
+      <aside class="app-sidebar">
+          <div class="app-sidebar__user">
+              <div>
+                  <p class="app-sidebar__user-name"></p>
+                  <p class="app-sidebar__user-designation"></p>
+              </div>
+          </div>
+          <ul class="app-menu" id="app-menu" style=""></ul>
+      </aside>
+      <!-- 右边内容栏 -->
+      <main class="app-content" style="margin-top: 72px;">
+          <div class="app-title" style="border:1px solid #e6e6e6;height:1px;padding:0px">
+          </div>
+          <div class="app-title" style="height:48px;">
+              <div id="app-title">
+                  <p style="font-style:initial">
+                      <label style="color:#a3a8ac">首页</label>
+                  </p>
+              </div>
+          </div>
+          <div id="app-content2" style="background-color:#ffffff;overflow-y:hidden;">
+              <iframe frameborder="0" scrolling="no" id="mainIframe" ></iframe>
+          </div>
+      </main>
+    </div>
+    <!-- 加载中 -->
+    <div id="main_loading" style="display:block;position:fixed;top:0;left:0;width:100%;height:100%;background:#4c4c4c;opacity:0.6;z-index:1000;">
+        <div id="loading_gif" style="text-align:center;position:fixed;z-index: 9999;top:50%;left: 50%;">
+            <div class="sk-spinner sk-spinner-cube-grid" style="text-align:center">
+                @*<label style="color:#1d84dc;font-size:18px">加载中......</label>*@
+                <img src="~/picture/loader.gif"  style="margin-left:-50px;height:50px"/>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var OpenUpMenuSerial = "";
+        $(document.body).css({
+            "overflow-x": "hidden",
+            "overflow-y": "hidden"
+        });
+        $('.dropdown-menu').mouseleave(function () {
+            $(this).parent().removeClass('open');
+        });
+
+        $(document).ready(function () {
+            var UserGuid = $.cookie("UserGuid");
+            if (UserGuid == "") {
+                return logout();
+               
+            }
+
+            $(window).scrollTop(0);
+            var UserName = $.cookie("UserName");
+            $("#userName").text(UserName);
+            // Back();
+            GetProjectAllMenu();
+
+            var iframe = document.getElementById('mainIframe');
+            iframe.onload = function () {
+                iframe.contentDocument.onclick = function () {
+                    iframe.contentWindow.parent.hideZKZ();
+                };
+            }  
+        });
+
+        function hideZKZ() { 
+            $(".dropdown").removeClass('open');
+       
+        }
+
+        function onLeftMenu(href, text, parentText) {
+
+
+            $('#main_loading').show(); 
+           
+            // compare_hms(logDate);//判断是否超时
+            if (window != top)
+                top.location.href = location.href;
+            if (text == "语音指令" || text == "通行设置" || text == "手动开闸原因设置" || text == "密码设置") {
+                $('#mainIframe').attr('src', href);
+                var html = "<p style='font-style:initial'>" +
+                    '<label style = "color:#a3a8ac" >系统设置</label> > <label style="color:#0092ff">' + text + '</label>' +
+                    '</p >';
+                document.getElementById("app-title").innerHTML = html;
+            }
+            else if (text == "开卡" || text == "月卡管理" || text == "存储卡管理") {
+                $('#mainIframe').attr('src', href);
+                var html = "<p style='font-style:initial'>" +
+                    '<label style = "color:#a3a8ac" >卡务管理</label> > <label style="color:#0092ff">' + text + '</label>' +
+                    '</p >';
+                document.getElementById("app-title").innerHTML = html;
+            }
+            else if (text) {
+                $('#mainIframe').attr('src', href);
+                var html = "<p style='font-style:initial'>" +
+                    '<label style = "color:#a3a8ac" >' + parentText + '</label> > <label style="color:#0092ff">' + text + '</label>' +
+                    '</p >';
+                document.getElementById("app-title").innerHTML = html;
+            }
+            else {
+                logout();
+            }
+           $('#main_loading').hide();
+        }
+        //退出登录
+        function logout() {
+            $.post("/Home/Logout", {}, function (result) {
+                window.location.href = '/Home/Index';
+            })
+            return false;
+        }
+    </script>
+    <!-- 系统设置 卡务管理 菜单 设置 --> 
+    <script type="text/javascript"> 
+        function topTo() {
+            document.getElementById('mainIframe').scrollIntoView();
+        }
+        function MenuSet() {
+            this.dom = {
+                SystemSub: $('.system-group>ul li'),
+                CardManageSub: $('.cardmanage-group>ul li')
+            }
+            //初始化
+            this.init()
+        } 
+        MenuSet.prototype.init = function () {
+            this.subRouter()
+        }
+        const cardArr = ['开卡', '月卡管理', '存储卡管理']
+        const systemArr = ['语音指令', '通行设置', '手动门开闸设置', '密码设置']
+        MenuSet.prototype.subJump = function (doms,name) {
+            doms.each(function (i, o) {
+                $(o).click(function () {
+                    if (name == 'cardmanage') {
+                        onLeftMenu('/Home/Trans/VueSinglePage', cardArr[i])
+                    } else {
+                        onLeftMenu('/Home/Trans/VueSinglePage', systemArr[i])
+                    }
+                    localStorage.setItem('window', name + i)
+                })
+            })
+        }
+        MenuSet.prototype.subRouter = function () {
+            this.subJump(this.dom.SystemSub, 'system')
+            this.subJump(this.dom.CardManageSub, 'cardmanage')
+        }
+        var menus = new MenuSet() 
+        function Back() {
+            var html = "<p style='font-style:initial'>" +
+                '<label style = "color:#a3a8ac" > 车场管理</label> > <label style="color:#0092ff">车场设置</label>' +
+                '</p >';
+            document.getElementById("app-title").innerHTML = html;
+            parent.$('#mainIframe').attr('src', "/Home/Trans/ParklotIndex");
+        }
+
+
+        function back_ParkLot() {
+            var ParkingCode = $("#parkCode").val();
+            var projectGuid = $("#projectGuid").val();
+            var html = "<p style='font-style:initial'>" +
+                '<label style = "color:#a3a8ac" > 车场管理 ></label> <a href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+                '</p >';
+            parent.document.getElementById('app-title').innerHTML = html;
+            parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_SetBillingTemplate?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+        }
+        function setIframeHeight(iframe) {
+            // if (iframe) {
+            //     var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            //     if (iframeWin.document.body) {
+            //         iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+            //     }
+            // }
+        };
+
+        window.onload = function () {
+            // setIframeHeight(document.getElementById('mainIframe'));
+        };
+
+        function back_ParkLotBlackList() {
+
+            var html = "<p style='font-style:initial'>" +
+                "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\"> 黑名单车辆</a> " +
+                '</p >';
+            parent.document.getElementById('app-title').innerHTML = html;
+            parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_Blacklist");
+        }
+
+        //获取角色权限api/Personnel/GetRolePermission?Guid={Guid}
+        function GetRolePermission() {
+            var RoleGuid = $.cookie("RoleGuid");
+            $.ajax({
+                url: "/Home/Maps/Personnel/GetRolePermission?Guid=" + RoleGuid,
+                dataType: 'json',
+                method: 'GET',
+                async: false,
+                contentType: "application/json;utf-8",
+                success: function (data) {
+                    if (data.ParkingCodeList) {
+                        data.ParkingCodeList = [...(new Set(data.ParkingCodeList))]
+                    }
+                    if (data.IsSuccess == true && data.IsAdmin == true) {
+                        OpenUpMenuSerial = data.OpenUpMenuSerial;
+                    } else {
+                        var menuData = [];
+                        for (i in data.OpenUpMenuSerial) {
+                            if (data.OpenUpMenuSerial[i] != '201') {
+                                menuData.push(data.OpenUpMenuSerial[i])
+                            }
+                        }
+                        OpenUpMenuSerial = menuData;
+                    }
+                },
+            })
+        }
+        //获取所有菜单
+        function GetProjectAllMenu() {
+            //获取权限列表
+            GetRolePermission();
+            var projectGuid = $.cookie("ProjectGuid");
+            $.ajax({
+                url: "/Home/Maps/Personnel/GetProjectAllMenu?projectGuid=" + projectGuid,
+                dataType: 'json',
+                method: 'GET',
+                async: false,
+                contentType: "application/json;utf-8",
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        var menuList = data.Result.MenuList;
+                        var html = "";
+                        var menuName = "";
+                        var role = {
+                            arr: [],
+                            obj: {},
+                            all: {}
+                        };
+                        for (var index in menuList) {  //菜单列表
+                            var menuSerial = menuList[index].MenuSerial;
+                            menuName = menuList[index].MenuName;
+                            if (menuSerial != "0") {
+                                if (menuSerial.length == 1) {
+                                    for (var list in OpenUpMenuSerial) {  //权限列表
+                                        if ("00" + menuSerial == OpenUpMenuSerial[list]) {
+                                            if (menuList[index].PageUrl != "") {
+                                                html = html + '<li class="dropdown" style="height:50px">' +
+                                                    '<a class="app-menu__item" href="#" data-toggle="dropdown">' +
+                                                    '<i class="app-menu__icon" style="display: inline-block; font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased;">' +
+                                                    '<img src="' + menuList[index].PageUrl + '" />' +
+                                                    '</i>' +
+                                                    '<span class="app-menu__label">' + menuName + '</span>' +
+                                                    '<i class="treeview-indicator fa fa-angle-right">' +
+                                                    '</i>' +
+                                                    '</a>' +
+                                                    '<ul class="dropdown-menu pull-right" style="z-index:99999; margin-right:-278px;width:278px;background-color:#1e222b;">';
+
+                                                for (var MenuSeriallist in OpenUpMenuSerial) {
+                                                    if (OpenUpMenuSerial[MenuSeriallist].substring(0, 2) != "00") {
+                                                        for (var key in menuList) {
+                                                            if (menuList[key].MenuSerial.length == 3) {
+                                                                role.all[menuList[key].PageUrl] = true
+                                                                var OpenUpMenuSerialVal = OpenUpMenuSerial[MenuSeriallist];
+                                                                if (OpenUpMenuSerialVal == menuList[key].MenuSerial) {
+                                                                    var menu = menuList[key].MenuSerial.substring(0, 1);
+                                                                    var Name = menuList[key].MenuName;
+                                                                    var url = menuList[key].PageUrl;
+                                                                    if (url != "") {
+                                                                        if (menu == menuSerial) {
+                                                                            role.arr.push(url)
+                                                                            role.obj[url] = {Name,menuName}
+                                                                            html = html + "<li><a href='#" + url + "' id='" + url + "' style='height:60px;line-height: 50px' onclick='onLeftMenu(this.id,\"" + Name + "\",\"" + menuName + "\")'><i class='img_outer' style='margin-left:40px'><img src='/picture/ActiveItem.png' /><img src='/picture/oval.png' /> </i><label style='margin-left:10px'> " + Name + "</label></a></li>";
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                html = html + '<li><a href="#" style="height:10px;line-height: 50px"></a></li>' +
+                                                    '</ul>' +
+                                                    '</li>';
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        localStorage.setItem('role', JSON.stringify(role))
+                        $("#app-menu").html(html);
+                        init(role)
+                    }
+                },
+            })
+
+        }
+        function init(role) {
+            if (location.hash && role.arr.indexOf(location.hash.replace('#', '')) > -1) {
+              $('a[href="'+location.hash+'"]').click()
+            } else if (location.hash) {
+              $alert({
+                html: '您没有权限进入此页面。',
+                cancelName: false,
+                confirm: function () {
+                    $('a[href="#'+role.arr[0]+'"]').click()
+                }
+                })
+            } else {
+              $('a[href="#'+role.arr[0]+'"]').click()
+            }
+        }
+    </script>
+</body>
+</html>
+

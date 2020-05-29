@@ -1,0 +1,6 @@
+ProjectInitializeTools 是项目初始化工具
+Fujica.com.cn.BroadcastService 是广播服务工具
+Fujica.com.cn.EntryDataService 是处理MQ中进场数据工具
+Fujica.com.cn.ExitDataService 是处理MQ中出场数据工具
+HandlingEntryData 是手工处理MQ中进场数据
+HandlingExitData 是手工处理MQ中出场数据

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/common.js"></script>
+<div>
+    <button onclick="ResultApiPost()">  请求get数据</button>
+</div>
+<script type="text/javascript">
+
+    function ResultApiPost() {
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetParkLot?ParkingCode=17000107550001",
+            dataType: 'json',
+            method: 'GET',  
+            contentType: "application/json;utf-8",
+            success: function (data) {
+                if (data.Result == 1) {
+                    Console.log(data.Result)
+                } 
+            },
+            error: function (xhr) {
+                // 导致出错的原因较多，以后再研究
+                $message('d','error:' + JSON.stringify(xhr));
+
+            }
+        })
+    }
+</script>

@@ -1,0 +1,491 @@
+﻿@{
+    Layout = null;
+}
+@*新分段算费模型*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-timepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/common.js"></script>
+<style>
+    .textAlignRight {
+        text-align: right;
+    }
+
+    .h30 {
+        height: 30px;
+        margin-bottom: 10px;
+        line-height: 30px;
+        color: #6C7A8B;
+    }
+    label, select {
+        color: #6C7A8B;
+    }
+
+    .input-group-addon {
+        background-color: #E8F6FF;
+        border: 1px solid #E7E9ED;
+        color: #6C7A8B;
+    }
+
+    input.form-control {
+        border: 1px solid #E7E9ED;
+        color: #0092FF;
+        text-align: center;
+    }
+
+    .panel {
+        border-radius: 0px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+<form id="form" method="post" action="#" onsubmit="parent.SaveBtn();return false;">
+    <div style="height:0;overflow: hidden;"><input type="submit" value="submit" /></div>
+    <div style="margin-left:30px;width:100%;overflow:auto;height:100vh">
+        <div id="" style="margin-left:20px">
+        <input id="tempIndex" value="Gid" class="hidden" />
+        <input id="TemplateModelName" value="TemplateModelName" class="hidden" />
+        <div class="panel panel-primary" style="margin:0px -20px;border-color: #e7e9ed;">
+            <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                <label style="margin-left:10px;margin-top:5px;font-size:12px">公共设置</label>
+            </div>
+            <div class="panel-body">
+                <!--公共设置-->
+                <div class="row show-gridNew" style="margin-bottom:5px">
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">收费时段</label>
+                            <div class="col-md-6">
+                                <div class="input-group ">
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input id="BeginTime" type="text" class="form-control datetimepicker3" data-theme="TollTimeBeginTime" name="BeginTime" value="" style="height:30px;font-size:12px;width:70px">
+                                    </div>
+                                    <span class="input-group-addon" style="font-size:12px;height:26px">至</span>
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input id="EndTime" type="text" class="form-control datetimepicker3" data-theme="TollTimeEndTime" name="EndTime" value="" style="height:30px;font-size:12px;width:70px">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-5">
+                        <div class="form-group validateinput ">
+                            <label class="col-md-5 control-label textAlignRight">计费单位</label>
+                            <div class="col-md-7 radio-list">
+                                <label class="radio-inline">
+                                    <input type="radio" name="MonetaryUnit" value="1" id="Unit1" onclick="change()" checked><span style="font-size:14px">元</span>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="MonetaryUnit" id="Unit2" value="0" onclick="change()"> <span style="font-size:14px">角</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">超时分钟</label>
+                            <div class="col-md-6">
+                                <input type="number" name="Timeout" id="Timeout" class="form-control MaxNumDecText  NumText" style="height:28px;font-size:12px" value="0" min="0" max="99">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">免费分钟</label>
+                            <div class="col-md-6">
+                                <input type="number" name="FreeMinutes" id="FreeMinutes" class="form-control NumText MaxNumHaxText" style="height:28px;font-size:12px" min="0" max="255" value="30">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">每天最大收费</label>
+                            <div class="col-md-6">
+                                <input type="number" name="DayTopLimit" id="DayTopLimit" class="form-control required MaxNumText NumText" style="height:28px;font-size:12px" value="65535" min="0" max="65535">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom:5px">
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">白天段最大收费</label>
+                            <div class="col-md-6">
+                                <input type="number" name="DayTimeMaxAmount" id="DayTimeMaxAmount" class="form-control required MaxNumText NumText" style="height:28px;font-size:12px;margin-top:8px" value="999" min="0" max="65535">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">夜间段最大收费</label>
+                            <div class="col-md-6">
+                                <input type="number" name="NightTimeMaxAmount" id="NightTimeMaxAmount" class="form-control MaxNumText required NumText" style="height:28px;font-size:12px;margin-top:8px" value="999" min="0" max="65535">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">离场超时时间</label>
+                            <div class="col-md-6">
+                                <input class="form-control required MaxNumHaxText NumText" style="height:28px;font-size:12px;margin-top:8px"  type="number" min="0" max="65535" id="LeaveTimeout" name="LeaveTimeout" value="15">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom:10px;margin-top:10px">
+                    <div class="col-md-5">
+                        <div class="form-group validateinput h30">
+                            <label class="col-md-6 control-label textAlignRight">停车时间跨段处理方式</label>
+                            <div class="col-md-6" style="padding-left:16px">
+                                <select name="CrossSegmentsType" id="CrossSegmentsType" class="selectpicker" data-style="selectorinite" data-width="330px" style="height:30px;">
+                                    <option id="0" value="0" class="font-size-12 height-28">跨段时将两段停留时间分别计算，并将计算结果相加</option>
+                                    <option id="1" value="1" class="font-size-12 height-28">跨段时按停车时间逐段计算，最后将计算结果相加</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="row show-gridNew" style="margin-top:15px">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-4" style="padding-left:34px">
+                        <span id="SpNoSegmentedIsEnable">
+                            <input type="checkbox" class="input-small " id="NoSegmentedIsEnable" name="NoSegmentedIsEnable" value="0" onchange="NoSegmentedIsEnableChecked()">
+                        </span>
+                        <label class="font-size-12">无分段时按白天段处理</label>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="SpFreeTreatTypeIsEnable">
+                            <input type="checkbox"  class="input-small" id="FreeTreatTypeIsEnable" name="FreeTreatTypeIsEnable" value="0" onchange="FreeTreatTypeIsEnableChecked()">
+                        </span>
+                        <label class="font-size-12">免费时间的处理方式</label>
+                    </div>
+                </div>
+                <div class="row hide" style="border:1px solid #808080;margin:0px 5px 0px 0px; height:100px" id="FreeTreatTypeIsEnableDiv" >
+                    <div class="form-group h30">
+                        <label class="col-md-3 control-label textAlignRight" style="margin-top:10px;margin-bottom:0;">免费时间处理方式</label>
+                        <div class="col-md-9 radio-list" style="margin-top:10px;padding-left:32px">
+                            <label class="radio-inline" style="font-size:12px"> <input type="radio" name="FreeTreatType" id="0" value="0" checked> 总时间去掉免费时间再计算 </label>
+                            <label class="radio-inline" style="font-size:12px"> <input type="radio" name="FreeTreatType" id="1" value="1"> 分段处理免费时间 </label>
+                        </div>
+                    </div>
+                    <div class="form-group h30" >
+                        <label class="col-md-3 control-label textAlignRight"  style="margin-top:10px;margin-bottom:0;">跨段免费时间处理方式</label>
+                        <div class="col-md-9 radio-list" style="font-size:12px;margin-top:10px">
+                            <select name="CrossSegmentsFreeType" id="CrossSegmentsFreeType" class="selectpicker" data-style="selectorinite" data-width="350px" style="height:30px">
+                                <option id="0" value="0" class="font-size-12 height-28">白天段和晚上段都有免费分钟，但计算时不去掉免费分钟</option>
+                                <option id="1" value="1" class="font-size-12 height-28">白天段和晚上段都有免费分钟，但计算时去掉免费分钟</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary " style="margin: 0px -20px;border-color: #e7e9ed;">
+            <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                <label style="margin-left:10px;margin-top:5px;font-size:12px">日间段收费设置</label>
+            </div>
+            <div class="panel-body">
+                <!--日间段收费设置-->
+                <div class="row show-gridNew">
+                    <div class="col-md-5 validateinput">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始</span>
+                            <input type="text" class="form-control NumText required" id="DayTimeSt1" name="DayTimeSt1" max="24" onpaste="return false" style="ime-mode: disabled" value="1" onkeyup="keyUP()">
+                            <span class="input-group-addon">小时内</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="margin-left:-20px;margin-right:-20px;width:190px">
+                        <div class="input-group input-group-sm validateinputvalidateinput">
+                            <span class="input-group-addon">每</span>
+                            <input type="text" class="form-control NumText required NumHaxInputChange" onpaste="return false" style="ime-mode: disabled" name="DayTimeFt1" id="DayTimeFt1" value="1">
+                            <span class="input-group-addon">个半小时</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 validateinput">
+                        <div class="input-group input-group-sm validateinputvalidateinput">
+                            <span class="input-group-addon">收取费用</span>
+                            <input type="number" class="form-control required NumText NumHaxInputChange" value="1" name="DayTimeFee1" id="DayTimeFee1" min="0" max="255">
+                            <span class="input-group-addon classunit">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row show-gridNew">
+                    <div class="col-md-5">
+                        <div class="input-group  input-group-sm validateinput">
+                            <span class="input-group-addon " id="DayTimeSt2lable">&nbsp;&nbsp;超过<span style="color:red"></span>小时但在</span>
+                            <input type="text" name="DayTimeSt2" id="DayTimeSt2" class="form-control NumText NumHaxInputChange required" onpaste="return false" style="ime-mode: disabled" value="1" onkeyup="keyUP()">
+                            <span class="input-group-addon">小时内</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="margin-left:-20px;margin-right:-20px;width:190px">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">每</span>
+                            <input type="text" class="form-control NumText required NumHaxInputChange" onpaste="return false" style="ime-mode: disabled" value="1" name="DayTimeFt2" id="DayTimeFt2">
+                            <span class="input-group-addon">个半小时</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">收取费用</span>
+                            <input type="number" class="form-control required NumText NumHaxInputChange" min="0" max="255" value="1" name="DayTimeFee2" id="DayTimeFee2">
+                            <span class="input-group-addon classunit">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row show-gridNew">
+                    <div class="col-md-5">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon ">&nbsp;&nbsp;停车时间大于</span>
+                            <input type="text" class="form-control " readonly id="DayTimeSt3" name="DayTimeSt3" value="5">
+                            <span class="input-group-addon">小时内</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 " style="margin-left:-20px;margin-right:-20px;width:190px">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">每</span>
+                            <input type="text" class="form-control NumText required NumHaxInputChange" onpaste="return false" style="ime-mode: disabled" value="5" name="DayTimeFt3" id="DayTimeFt3">
+                            <span class="input-group-addon">个半小时</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">收取费用</span>
+                            <input type="number" class="form-control required NumText NumHaxInputChange" min="0" max="255" value="5" name="DayTimeFee3" id="DayTimeFee3">
+                            <span class="input-group-addon classunit">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary" style="margin: 0px -20px;border-color: #e7e9ed;">
+            <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                <label style="margin-left:10px;margin-top:5px;font-size:12px">夜间段收费设置</label>
+            </div>
+            <div class="panel-body">
+                <!--夜间段收费设置-->
+                <div class="row show-gridNew">
+                    <div class="col-md-5">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始</span>
+                            <input type="text" class="form-control NumText required" onpaste="return false" style="ime-mode: disabled" id="NightTimeSt1" value="1" name="NightTimeSt1" onkeyup="keyUP()">
+                            <span class="input-group-addon">小时内</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="margin-left:-20px;margin-right:-20px;width:190px">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">每</span>
+                            <input type="text" class="form-control NumText required NumHaxInputChange" onpaste="return false" style="ime-mode: disabled" name="NightTimeFt1" value="1" id="NightTimeFt1">
+                            <span class="input-group-addon">个半小时</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">收取费用</span>
+                            <input type="number" class="form-control required NumText NumHaxInputChange" min="0" max="255" name="NightTimeFee1" value="1" id="NightTimeFee1">
+                            <span class="input-group-addon classunit">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row show-gridNew">
+                    <div class="col-md-5">
+                        <div class="input-group  input-group-sm validateinput">
+                            <span class="input-group-addon " id="NightTimeSt2Lable">&nbsp;&nbsp;超过<span style="color:red"></span>小时但在</span>
+                            <input type="text" class="form-control NumText required" onpaste="return false" style="ime-mode: disabled" id="NightTimeSt2" value="1" name="NightTimeSt2" onkeyup="keyUP()">
+                            <span class="input-group-addon">小时内</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="margin-left:-20px;margin-right:-20px;width:190px">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">每</span>
+                            <input type="text" class="form-control NumText required NumHaxInputChange" onpaste="return false" style="ime-mode: disabled" value="1" name="NightTimeFt2" id="NightTimeFt2">
+                            <span class="input-group-addon">个半小时</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">收取费用</span>
+                            <input type="number" class="form-control required NumText NumHaxInputChange" min="0" max="255" value="1" name="NightTimeFee2" id="NightTimeFee2">
+                            <span class="input-group-addon classunit">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row show-gridNew">
+                    <div class="col-md-5">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon ">&nbsp;&nbsp;停车时间大于</span>
+                            <input type="text" class="form-control " readonly id="NightTimeSt3" value="1" name="NightTimeSt3">
+                            <span class="input-group-addon">小时内</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 " style="margin-left:-20px;margin-right:-20px;width:190px">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">每</span>
+                            <input type="text" class="form-control NumText required NumHaxInputChange" onpaste="return false" style="ime-mode: disabled" value="5" name="NightTimeFt3" id="NightTimeFt3">
+                            <span class="input-group-addon">个半小时</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm validateinput">
+                            <span class="input-group-addon">收取费用</span>
+                            <input type="number" class="form-control required NumText NumHaxInputChange" min="0" max="255" value="5" name="NightTimeFee3" id="NightTimeFee3" >
+                            <span class="input-group-addon classunit">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+<script>
+    $('.datetimepicker3').timepicker({
+        minuteStep: 1,
+        maxHours: 24,
+        showMeridian: false,
+        secondStep: 1,
+        showSeconds: false,
+    });
+    function FreeTreatTypeIsEnableChecked() {
+        $("#FreeTreatTypeIsEnable").val("0")
+        $("#FreeTreatTypeIsEnable:checked").val("1")
+    }
+    function NoSegmentedIsEnableChecked() {
+        if ($("#NoSegmentedIsEnable").is(":checked")) {
+            $("#FreeTreatTypeIsEnableDiv").removeClass("hide")
+            $("#NoSegmentedIsEnable:checked").val("1")
+        }
+        if (!($("#NoSegmentedIsEnable").is(":checked"))) {
+            $("#NoSegmentedIsEnable").val("0")
+            $("#FreeTreatTypeIsEnableDiv").addClass("hide")
+        }
+    }
+    function keyUP() {
+        $("#DayTimeSt2lable span").html($("#DayTimeSt1").val())
+        $("#NightTimeSt2Lable span").html($("#NightTimeSt1").val())
+        $("#DayTimeSt3").val($("#DayTimeSt2").val())
+        $("#NightTimeSt3").val($("#NightTimeSt2").val())
+    }
+</script>
+<script>
+
+    //获取carTypeGuid
+    var url = location.href
+    var num = url.split("?")[1]
+    var carTypeGuid = num.split("=")[1]
+    $.ajax({
+        url: "/Home/Maps/ParkLot/GetBillingTemplate?CarTypeGuid=" + carTypeGuid,
+        dataType: 'json',
+        method: 'GET',
+        contentType: "application/json;charset=utf-8",
+        success: function (res) {
+            if (res.IsSuccess == true) {
+                //请求成功判断是新增还是修改
+                if (res.Result !== null) {
+                    //修改
+                    $("#form").attr("flag", "1")
+                } else {
+                    //新增
+                    $("#form").attr("flag", "0")
+                }
+                if (res.Result !== null) {
+                    if (res.Result.ChargeMode == 9) {
+                        var data = JSON.parse(res.Result.TemplateJson)
+                        var MonetaryUnit = data.MonetaryUnit;
+                        if ($("input[name=MonetaryUnit]").eq(0).val() == MonetaryUnit) {
+                            $("input[name=MonetaryUnit]").eq(0).prop("checked", true)
+                            $("input[name=MonetaryUnit]").eq(1).prop("checked", false)
+                            change()
+                        } else if ($("input[name=MonetaryUnit]").eq(1).val() == MonetaryUnit) {
+                            $("input[name=MonetaryUnit]").eq(1).prop("checked", true)
+                            $("input[name=MonetaryUnit]").eq(0).prop("checked", false)
+                            change()
+                        } 
+                        $("#FreeTreatTypeIsEnable").val(data.FreeTreatTypeIsEnable)
+                        if (data.FreeTreatTypeIsEnable == "1") {
+                            $("#FreeTreatTypeIsEnable").prop("checked", true)
+                        } else if (data.FreeTreatTypeIsEnable == "0") {
+                            $("#FreeTreatTypeIsEnable").prop("checked", false)
+                        }
+                        $("#NoSegmentedIsEnable").val(data.NoSegmentedIsEnable)
+                        if (data.NoSegmentedIsEnable == "1") {
+                            $("#NoSegmentedIsEnable").prop("checked", true)
+                        } else if (data.NoSegmentedIsEnable == "0") {
+                            $("#NoSegmentedIsEnable").prop("checked", false)
+                        }
+                        if (data.NoSegmentedIsEnable == "0") {
+                            $("#FreeTreatTypeIsEnableDiv").addClass("hide")
+                            $("#NoSegmentedIsEnable").prop("checked", false)
+                            $("#NoSegmentedIsEnable").val("0")
+                        } else if (data.NoSegmentedIsEnable == "1") {
+                            $("#FreeTreatTypeIsEnableDiv").removeClass("hide")
+                            $("#NoSegmentedIsEnable").prop("checked", true)
+                            $("#NoSegmentedIsEnable").val("1")
+                        }
+                        if (data.FreeTreatType == "0") {
+                            $("input[id='0']").prop("checked", true)
+                        } else if (data.FreeTreatType == "1") {
+                            $("input[id='1']").prop("checked", true)
+                        }
+                        $("#BeginTime").val(data.BeginTime)
+                        $("#EndTime").val(data.EndTime)
+                        $("#DayTopLimit").val(data.DayTopLimit)
+                        $("#DayTimeMaxAmount").val(data.DayTimeMaxAmount)
+                        $("#NightTimeMaxAmount").val(data.NightTimeMaxAmount)
+                        $("#FreeMinutes").val(data.FreeMinutes)
+                        $("#LeaveTimeout").val(data.LeaveTimeout)
+                        $("#CrossSegmentsType").val(data.CrossSegmentsType)
+                        $("#FreeTreatTypeIsEnable").val(data.FreeTreatTypeIsEnable)
+                        $("#FreeTreatType").val(data.FreeTreatType)
+                        $("#CrossSegmentsFreeType").val(data.CrossSegmentsFreeType)
+                        $("#DayTimeSt1").val(data.DayTimeSt1)
+                        $("#DayTimeFt1").val(data.DayTimeFt1)
+                        $("#DayTimeFee1").val(data.DayTimeFee1)
+                        $("#DayTimeSt2").val(data.DayTimeSt2)
+                        $("#DayTimeFt2").val(data.DayTimeFt2)
+                        $("#DayTimeFee2").val(data.DayTimeFee2)
+                        $("#DayTimeSt3").val(data.DayTimeSt3)
+                        $("#DayTimeFt3").val(data.DayTimeFt3)
+                        $("#DayTimeFee3").val(data.DayTimeFee3)
+                        $("#NightTimeSt1").val(data.NightTimeSt1)
+                        $("#NightTimeFt1").val(data.NightTimeFt1)
+                        $("#NightTimeFee1").val(data.NightTimeFee1)
+                        $("#NightTimeSt2").val(data.NightTimeSt2)
+                        $("#NightTimeFt2").val(data.NightTimeFt2)
+                        $("#NightTimeFee2").val(data.NightTimeFee2)
+                        $("#NightTimeSt3").val(data.NightTimeSt3)
+                        $("#NightTimeFt3").val(data.NightTimeFt3)
+                        $("#NightTimeFee3").val(data.NightTimeFee3)
+                        $("#Timeout").val(data.Timeout)
+                        $("#DayTimeSt2lable span").html(data.DayTimeSt1)
+                        $("#NightTimeSt2Lable span").html(data.NightTimeSt1)
+                    }
+                }
+            }
+        }
+    })
+    function change() {
+        var value = $("input[name='MonetaryUnit']:checked").parent().find("span").html();
+        $(".classunit").html(value);
+    }
+</script>

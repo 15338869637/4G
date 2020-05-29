@@ -1,0 +1,552 @@
+﻿@{
+    Layout = null;
+}
+@*分段计费*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-timepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/common.js"></script>
+<style>
+    .lh30 {
+        line-height: 30px;
+    }
+
+    .padding-left-right-0 {
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: right;
+    }
+
+    .mb30 {
+        margin-bottom: 30px;
+    }
+
+    .mb40 {
+        margin-bottom: 40px;
+    }
+
+    label, select, .control-label {
+        color: #6C7A8B;
+    }
+
+    .input-group-addon {
+        background-color: #E8F6FF;
+        border: 1px solid #E7E9ED;
+        color: #6C7A8B;
+    }
+
+    input.form-control {
+        border: 1px solid #E7E9ED;
+        color: #0092FF;
+        text-align: center;
+    }
+
+    .panel {
+        border-radius: 0px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+</style>
+<form id="form" method="post" action="#" onsubmit="parent.SaveBtn();return false;">
+    <div style="height:0;overflow: hidden;"><input type="submit" value="submit" /></div>
+    <div style="margin-left:30px;width:100%;overflow:auto;height:100vh">
+        <div id="" style="margin-left:20px">
+            <div class="panel panel-primary" style="margin:0px -20px;border-color: #e7e9ed;">
+                <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                    <label style="margin-left:10px;margin-top:5px;font-size:12px">公共设置</label>
+                </div>
+                <div class="panel-body" style="padding-bottom:10px;padding-top:10px;">
+                    <!--公共设置-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-12 form-group validateinput" style="margin-bottom:30px;">
+                                <label class="col-md-3 control-label font-size-12">每天最高收费</label>
+                                <div class="col-md-5 input-group">
+                                    <input type="number" name="MaxDayMoney" id="MaxDayMoney" class="form-control required NumText MaxNumHaxText input-sm " min="0" max="255" value="255">
+                                    <span class="input-group-addon classunit">元</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 form-group validateinput margin-bottom-0">
+                                <div style="padding-top:5px;">
+                                    <div class="checker col-md-1">
+                                        <span id="SpFreeMiniteAll">
+                                            <input type="checkbox" class="input-small " id="FreeMiniteAll" name="FreeMiniteAll" value="" onclick="FreeMiniteAllChecked()">
+                                        </span>
+                                    </div>
+                                    <label class="col-md-7 font-size-12">跨段免费分钟继续有效</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group validateinput" style="margin-bottom:30px;">
+                                <label class="col-md-3 control-label font-size-12">计费单位</label>
+                                <div class="col-md-7 radio-list">
+                                    <label class="radio-inline">
+                                        <input name="MonetaryUnit" id="Unit1" value="1" type="radio" onclick="change()" checked><span class="font-size-12">元</span>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input name="MonetaryUnit" id="Unit2" value="0" type="radio" onclick="change()"> <span class="font-size-12">角</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group validateinput margin-bottom-0">
+                                <label class="col-md-3 control-label font-size-12">离场超时时间</label>
+                                <div class="col-md-5 input-group">
+                                    <input class="form-control required MaxNumDecText NumText input-sm" type="number" min="0" max="65535" id="LeaveTimeout" name="LeaveTimeout" value="30">
+                                    <span class="input-group-addon">分</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary " style="margin: 0px -20px;border-color: #e7e9ed;">
+                <div style="color: #6C7A8B; background-color: #f3f8fb; border-color: #e7e9ed;">
+                    <label style="margin-left:10px;margin-top:5px;font-size:12px">收费设置</label>
+                </div>
+                <div class="panel-body" style="padding-bottom:0px;padding-top:10px;">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group margin-bottom-10 margin-left-0 height-28" style="padding-top:7px;height:34px;line-height:34px;margin-bottom:5px;">
+                                <span class="input-xsmall control-label font-size-12">时间段1</span>
+                            </div>
+                            <div class="form-group margin-bottom-10 margin-left-0 height-28" style="padding-top:7px;height:34px;line-height:34px;margin-bottom:5px;">
+                                <span class="input-xsmall control-label font-size-12">时间段2</span>
+                            </div>
+                            <div class="form-group margin-bottom-10 margin-left-0 height-28" style="padding-top:7px;height:34px;line-height:34px;margin-bottom:5px;">
+                                <span class="input-xsmall control-label font-size-12">
+                                    时间段3
+                                    @*<span id="SpsetTime3">
+                                        <input type="checkbox" class="input-small " id="setTime3" name="setTime3" value="" />
+                                    </span>*@
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 padding-left-right-0">
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="control-label font-size-12 margin-right-10" style="float: left;">从</label>
+                                <div class="input-group col-md-3">
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input type="text" class="form-control datetimepicker3 height-28 font-size-12" data-theme="TimeSection1BeginTime" id="BeginTime1" name="BeginTime1" value="" style="width:60px">
+                                    </div>
+                                    <span class="input-group-addon" style="font-size:12px;height:26px">至</span>
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input type="text" class="form-control datetimepicker3 height-28 font-size-12" data-theme="TimeSection1EndTime" id="EndTime1" name="EndTime1" value="" style="width:60px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="control-label font-size-12 margin-right-10" style="float: left;">从</label>
+                                <div class="input-group col-md-3">
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input type="text" class="form-control datetimepicker3 height-28 font-size-12" data-theme="TimeSection2BeginTime" id="BeginTime2" name="BeginTime2" value="" style="width:60px">
+                                    </div>
+                                    <span class="input-group-addon" style="font-size:12px;height:26px">至</span>
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input type="text" class="form-control datetimepicker3 height-28 font-size-12" data-theme="TimeSection2EndTime" id="EndTime2" name="EndTime2" value="" style="width:60px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="control-label font-size-12 margin-right-10" style="float: left;">从</label>
+                                <div class="input-group col-md-3">
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input type="text" class="form-control datetimepicker3 height-28 font-size-12" data-theme="TimeSection3BeginTime" id="BeginTime3" name="BeginTime3" value="" style="width:60px">
+                                    </div>
+                                    <span class="input-group-addon" style="font-size:12px;height:26px">至</span>
+                                    <div class="bootstrap-timepicker timepicker">
+                                        <input type="text" class="form-control datetimepicker3 height-28 font-size-12" data-theme="TimeSection3EndTime" id="EndTime3" name="EndTime3" value="" style="width:60px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="margin-left: 5px;">
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="col-md-6 control-label font-size-12">免费分钟</label>
+                                <div class="col-md-6 input-group">
+                                    <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="FreeMinute1" id="FreeMinute1" min="0" max="255" value="30">
+                                </div>
+                            </div>
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="col-md-6 control-label font-size-12">免费分钟</label>
+                                <div class="col-md-6 input-group">
+                                    <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="FreeMinute2" id="FreeMinute2" min="0" max="255" value="30">
+                                </div>
+                            </div>
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="col-md-6 control-label font-size-12">免费分钟</label>
+                                <div class="col-md-6 input-group">
+                                    <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="FreeMinute3" id="FreeMinute3" min="0" max="255" value="30">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 padding-left-right-0" style="margin-left:5px">
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="col-md-4 control-label font-size-12">收费</label>
+                                <div class="col-md-8 input-group">
+                                    <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="Fee1" id="Fee1" min="0" max="255" value="5">
+                                    <span class="input-group-addon classunit">元</span>
+                                </div>
+                            </div>
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="col-md-4 control-label font-size-12">收费</label>
+                                <div class="col-md-8 input-group">
+                                    <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="Fee2" id="Fee2" min="0" max="255" value="10">
+                                    <span class="input-group-addon classunit">元</span>
+                                </div>
+                            </div>
+                            <div class="form-group validateinput" style="height:34px;line-height:34px;margin-bottom:5px;">
+                                <label class="col-md-4 control-label font-size-12">收费</label>
+                                <div class="col-md-8 input-group">
+                                    <input type="number" class="form-control NumText MaxNumHaxText input-sm required" name="Fee3" id="Fee3" min="0" max="255" value="5">
+                                    <span class="input-group-addon classunit">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border:1px solid #E0E0E0;border-bottom:0px;">
+                        <div class="col-md-2 margin-top-10">
+                            <div class="form-group margin-bottom-10 margin-left-0 height-28" style="padding-top:25px;">
+                                <span class="input-xsmall control-label font-size-12">同一时间段进出</span>
+                            </div>
+                        </div>
+                        <div class="col-md-10" style="border-left:1px solid #E0E0E0;padding-top: 10px;">
+                            <div class="row">
+                                <div class="form-group validateinput margin-bottom-10" style="height:20px">
+                                    <label class="col-md-1 control-label font-size-12">以</label>
+                                    <div class="col-md-3">
+                                        <input class="form-control required MaxNumDecText NumText input-sm " type="number" name="SameTimeFreeMinute" id="SameTimeFreeMinute" min="0" max="99" value="15">
+                                    </div>
+                                    <label class="col-md-6 control-label font-size-12" style="text-align: left;">分钟为超时(已超时按本段最高收费情况收费)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 padding-left-right-0">
+                                    <div class="row">
+                                        <div class="form-group validateinput margin-bottom-10">
+                                            <label class="col-md-5 control-label padding-left-right-0 font-size-12 lh30">时间段1收费</label>
+                                            <div class="col-md-5 input-group">
+                                                <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="SameTimeMoney1" id="SameTimeMoney1" min="0" max="255" value="10">
+                                                <span class="input-group-addon classunit">元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 padding-left-right-0">
+                                    <div class="row">
+                                        <div class="form-group validateinput margin-bottom-10">
+                                            <label class="col-md-5 control-label padding-left-right-0 font-size-12 lh30">时间段2收费</label>
+                                            <div class="col-md-5 input-group">
+                                                <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="SameTimeMoney2" id="SameTimeMoney2" min="0" max="255" value="10">
+                                                <span class="input-group-addon classunit font-size-12">元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 padding-left-right-0">
+                                    <div class="row">
+                                        <div class="form-group validateinput margin-bottom-10">
+                                            <label class="col-md-5 control-label padding-left-right-0 font-size-12 lh30">时间段3收费</label>
+                                            <div class="col-md-5 input-group">
+                                                <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="SameTimeMoney3" id="SameTimeMoney3" min="0" max="255" value="10">
+                                                <span class="input-group-addon classunit font-size-12">元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border:1px solid #E0E0E0;border-bottom:0px;">
+                        <div class="col-md-2 margin-top-10">
+                            <div class="form-group" style="padding-top: 45px;">
+                                <span class="input-xsmall control-label font-size-12">跨段不足一天</span>
+                            </div>
+                        </div>
+                        <div class="col-md-10" style="border-left:1px solid #E0E0E0; padding-top: 10px;">
+                            <div class="col-md-6">
+                                <div class="form-group validateinput">
+                                    <div class="row">
+                                        <label class="col-md-5 control-label font-size-12 padding-left-right-0" style="margin-left: -5px;">在出场时间段中以&nbsp;</label>
+                                        <div class="col-md-4 padding-left-right-0">
+                                            <input class="form-control required MaxNumDecText NumText input-sm" type="number" name="SpanFreeMinute" id="SpanFreeMinute" min="0" max="99" value="30">
+                                        </div>
+                                        <label class="control-label font-size-12 padding-left-right-0" style="float:left;">分钟为超时</label>
+                                    </div>
+                                </div>
+                                <div class="form-group validateinput margin-bottom-10">
+                                    <div class="row">
+                                        <label class="col-md-3 control-label font-size-12 padding-left-right-0">未超时</label>
+                                        <div class="col-md-9">
+                                            <select class="selectpicker" data-style="selectorinite" data-width="200px" name="SpanNoOut" id="SpanNoOut" style="height:25px">
+                                                <option id="0" class="font-size-12 height-28" value="0">补偿值</option>
+                                                <option id="1" class="font-size-12 height-28" value="1">前段收费+补收费用</option>
+                                                <option id="2" class="font-size-12 height-28" value="2">本段收费+补收费用</option>
+                                                <option id="3" class="font-size-12 height-28" value="3">最高收费+补收费用</option>
+                                                <option id="4" class="font-size-12 height-28" value="4">每天最高收费</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group validateinput margin-bottom-10">
+                                    <div class="row">
+                                        <label class="col-md-3 control-label font-size-12 padding-left-right-0">已超时</label>
+                                        <div class="col-md-9">
+                                            <select class="selectpicker" data-style="selectorinite" data-width="200px" name="SpanOut" id="SpanOut" style="height:25px">
+                                                <option id="0" class="font-size-12 height-28" value="0">补偿值</option>
+                                                <option id="1" class="font-size-12 height-28" value="1">前段收费+补收费用</option>
+                                                <option id="2" class="font-size-12 height-28" value="2">本段收费+补收费用</option>
+                                                <option id="3" class="font-size-12 height-28" value="3">最高收费+补收费用</option>
+                                                <option id="4" class="font-size-12 height-28" value="4">每天最高收费</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" style="padding-top:7px;">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-10" style="height:30px">
+                                        <span class="input-xsmall control-label font-size-12">
+                                            <span id="SpSpanAccount">
+                                                <input type="checkbox" class="input-small " id="SpanAccount" name="SpanAccount" value="" onclick="SpanAccountChecked()" />
+                                            </span>
+                                            各段累加后再处理出场段
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group validateinput margin-bottom-10">
+                                    <div class="row">
+                                        <label class="col-md-5 control-label padding-left-right-0 font-size-12 margin-right-10">未超时补收费用</label>
+                                        <div class="col-md-6 input-group">
+                                            <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="SpanNoOutMoney" id="SpanNoOutMoney" min="0" max="255" value="1">
+                                            <span class="input-group-addon classunit">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group validateinput margin-bottom-10">
+                                    <div class="row">
+                                        <label class="col-md-5 control-label padding-left-right-0 font-size-12 margin-right-10">超时补收费用</label>
+                                        <div class="col-md-6 input-group">
+                                            <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="SpanOutMoney" id="SpanOutMoney" min="0" max="255" value="60">
+                                            <span class="input-group-addon classunit font-size-12">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border:1px solid #E0E0E0;">
+                        <div class="col-md-2 margin-top-10">
+                            <div class="form-group margin-bottom-10 margin-left-0 height-28" style="padding-top: 60px;">
+                                <span class="input-xsmall control-label font-size-12">停车超过一天</span>
+                            </div>
+                        </div>
+                        <div class="col-md-10" style="border-left:1px solid #E0E0E0; padding-top: 10px;">
+                            <div class="row">
+                                <div class="form-group validateinput margin-bottom-10">
+                                    <div class="row">
+                                        <label class="col-md-2 control-label font-size-12  padding-left-right-0">收费模式</label>
+                                        <div class="col-md-7">
+                                            <select class="selectpicker" data-style="selectorinite" data-width="auto" name="OverFlag" id="OverFlag">
+                                                <option id="0" class="font-size-12 height-28" value="0">按天取余(小时)收费</option>
+                                                <option id="1" class="font-size-12 height-28" value="1">出场按对应段收费</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-bottom:30px;">
+                                <div class="col-md-6">
+                                    <div class="form-group validateinput mb40">
+                                        <label class="col-md-5 control-label font-size-12 padding-left-right-0">在出场时间段中以&nbsp;</label>
+                                        <div class="col-md-4 padding-left-right-0">
+                                            <input class="form-control required MaxNumDecText NumText input-sm" type="number" name="OverFreeMinute" id="OverFreeMinute" min="0" max="99" value="15">
+                                        </div>
+                                        <label class="control-label font-size-12 padding-left-right-0" style="float:left;">分钟为超时</label>
+                                    </div>
+                                    <div class="form-group validateinput" style="height:30px;">
+                                        <label class="col-md-3 control-label font-size-12 padding-left-right-0">未超时</label>
+                                        <div class="col-md-9">
+                                            <select class="selectpicker" data-style="selectorinite" data-width="200px" data-height="30px" name="OverNoOut" id="OverNoOut" style="height:25px;">
+                                                <option id="0" class="font-size-12 height-28" value="0">补偿值</option>
+                                                <option id="1" class="font-size-12 height-28" value="1">前段收费+补收费用</option>
+                                                <option id="2" class="font-size-12 height-28" value="2">本段收费+补收费用</option>
+                                                <option id="3" class="font-size-12 height-28" value="3">最高收费+补收费用</option>
+                                                <option id="4" class="font-size-12 height-28" value="4">每天最高收费</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group validateinput" style="height:30px;">
+                                        <label class="col-md-3 control-label font-size-12 padding-left-right-0">已超时</label>
+                                        <div class="col-md-9">
+                                            <select class="selectpicker" data-style="selectorinite" data-width="200px" data-height="30px" name="OverOut" id="OverOut" style="height:25px;">
+                                                <option id="0" class="font-size-12 height-28" value="0">补偿值</option>
+                                                <option id="1" class="font-size-12 height-28" value="1">前段收费+补收费用</option>
+                                                <option id="2" class="font-size-12 height-28" value="2">本段收费+补收费用</option>
+                                                <option id="3" class="font-size-12 height-28" value="3">最高收费+补收费用</option>
+                                                <option id="4" class="font-size-12 height-28" value="4">每天最高收费</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb30" style="padding-top:7px;">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-10">
+                                            <span class="input-xsmall control-label font-size-12">
+                                                <span id="SpOverMaxValuee">
+                                                    <input type="checkbox" class="input-small " id="OverMaxValue" name="OverMaxValue" value="" onclick="OverMaxValueChecked()" />
+                                                </span>
+                                                出场跨段强制最高段值
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group " style="height:30px;">
+                                        <label class="col-md-5 control-label padding-left-right-0 font-size-12 margin-right-10">未超时补收费用</label>
+                                        <div class="col-md-5 input-group">
+                                            <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="OverNoOutMoney" id="OverNoOutMoney" min="0" max="255" value="5">
+                                            <span class="input-group-addon classunit">元</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group " style="height:30px;">
+                                        <label class="col-md-5 control-label padding-left-right-0 font-size-12 margin-right-10">超时补收费用</label>
+                                        <div class="col-md-5 input-group">
+                                            <input class="form-control required MaxNumHaxText NumText input-sm " type="number" name="OverOutMoney" id="OverOutMoney" min="0" max="255" value="10">
+                                            <span class="input-group-addon classunit font-size-12">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $('.datetimepicker3').timepicker({
+        minuteStep: 1,
+        maxHours: 24,
+        showMeridian: false,
+        secondStep: 1,
+        showSeconds: false,
+    });
+    function SpanAccountChecked() {
+        $("#SpanAccount").val("")
+        $("#SpanAccount:checked").val("0")
+    }
+    function OverMaxValueChecked() {
+        $("#OverMaxValue").val("")
+        $("#OverMaxValue:checked").val("0")
+    }
+    function FreeMiniteAllChecked() {
+        $("#FreeMiniteAll").val("")
+        $("#FreeMiniteAll:checked").val("0")
+    }
+</script>
+<script>
+    //获取carTypeGuid
+    var url = location.href
+    var num = url.split("?")[1]
+    var carTypeGuid = num.split("=")[1]
+    $.ajax({
+        url: "/Home/Maps/ParkLot/GetBillingTemplate?CarTypeGuid=" + carTypeGuid,
+        dataType: 'json',
+        method: 'GET',
+        contentType: "application/json;charset=utf-8",
+        success: function (res) {
+            if (res.IsSuccess == true) {
+                //请求成功判断是新增还是修改
+                if (res.Result !== null) {
+                    //修改
+                    $("#form").attr("flag", "1")
+                } else {
+                    //新增
+                    $("#form").attr("flag", "0")
+                }
+                if (res.Result !== null) {
+                    if (res.Result.ChargeMode == 2) {
+                        var data = JSON.parse(res.Result.TemplateJson)
+                        var MonetaryUnit = data.MonetaryUnit;
+                        if ($("input[name=MonetaryUnit]").eq(0).val() == MonetaryUnit) {
+                            $("input[name=MonetaryUnit]").eq(0).prop("checked", true)
+                            $("input[name=MonetaryUnit]").eq(1).prop("checked", false)
+                            change()
+                        } else if ($("input[name=MonetaryUnit]").eq(1).val() == MonetaryUnit) {
+                            $("input[name=MonetaryUnit]").eq(1).prop("checked", true)
+                            $("input[name=MonetaryUnit]").eq(0).prop("checked", false)
+                            change()
+                        }
+
+                        $("#LeaveTimeout").val(data.LeaveTimeout)
+                        $("#MaxDayMoney").val(data.MaxDayMoney)
+                        $("#FreeMiniteAll").val(data.FreeMiniteAll)
+                        if (data.FreeMiniteAll == "0") {
+                            $("#FreeMiniteAll").prop("checked", true)
+                        } else if(!data.FreeMiniteAll){
+                            $("#FreeMiniteAll").prop("checked", false)
+                        }
+                        $("#BeginTime1").val(data.BeginTime1)
+                        $("#EndTime1").val(data.EndTime1)
+                        $("#BeginTime2").val(data.BeginTime2)
+                        $("#EndTime2").val(data.EndTime2)
+                        $("#BeginTime3").val(data.BeginTime3)
+                        $("#EndTime3").val(data.EndTime3)
+                        $("#FreeMinute1").val(data.FreeMinute1)
+                        $("#FreeMinute2").val(data.FreeMinute2)
+                        $("#FreeMinute3").val(data.FreeMinute3)
+                        $("#Fee1").val(data.Fee1)
+                        $("#Fee2").val(data.Fee2)
+                        $("#Fee3").val(data.Fee3)
+                        $("#SameTimeFreeMinute").val(data.SameTimeFreeMinute)
+                        $("#SameTimeMoney1").val(data.SameTimeMoney1)
+                        $("#SameTimeMoney2").val(data.SameTimeMoney2)
+                        $("#SameTimeMoney3").val(data.SameTimeMoney3)
+                        $("#SpanFreeMinute").val(data.SpanFreeMinute)
+                        $("#SpanAccount").val(data.SpanAccount)
+                        if (data.SpanAccount == "0") {
+                            $("#SpanAccount").prop("checked", true)
+                        } else if (!data.SpanAccount) {
+                            $("#SpanAccount").prop("checked", false)
+                        }
+                        $("#SpanNoOut").val(data.SpanNoOut)
+                        $("#SpanNoOutMoney").val(data.SpanNoOutMoney)
+                        $("#SpanOut").val(data.SpanOut)
+                        $("#SpanOutMoney").val(data.SpanOutMoney)
+                        $("#OverFlag").val(data.OverFlag)
+                        $("#OverFreeMinute").val(data.OverFreeMinute)
+                        $("#OverMaxValue").val(data.OverMaxValue)
+                        if (data.OverMaxValue == "0") {
+                            $("#OverMaxValue").prop("checked", true)
+                        } else if (!data.OverMaxValue) {
+                            $("#OverMaxValue").prop("checked", false)
+                        }
+                        $("#OverNoOut").val(data.OverNoOut)
+                        $("#OverNoOutMoney").val(data.OverNoOutMoney)
+                        $("#OverOut").val(data.OverOut)
+                        $("#OverOutMoney").val(data.OverOutMoney)
+                    }
+                }
+            }
+
+        }
+    })
+    function change() {
+        var value = $("input[name='MonetaryUnit']:checked").parent().find("span").html();
+        $(".classunit").html(value);
+    }
+</script>

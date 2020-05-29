@@ -1,0 +1,3574 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FujicaService.Module.Entitys</name>
+    </assembly>
+    <members>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.Request.Auth_BaseRequest.UserGid">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.Request.Auth_BaseRequest.RoleGid">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.Request.Auth_BaseRequest.MenuPath">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.Request.Auth_BaseRequest.FunName">
+            <summary>
+            功能名称
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.Gid">
+             <summary>
+             gid
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.DataName">
+            <summary>
+            数据名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.DataKey">
+            <summary>
+            数据键值
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Data.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign">
+            <summary>
+            数据权限分配
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.Gid">
+             <summary>
+             Gid
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.AssignToGid">
+            <summary>
+            分配给的对象
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.DataGid">
+            <summary>
+            数据Gid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.Enable">
+            <summary>
+            是否有效
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Dataassign.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group">
+            <summary>
+            部门信息
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.Gid">
+             <summary>
+             id自增长
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.GroupParentGid">
+            <summary>
+            组父id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.GroupName">
+            <summary>
+            组名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.GroupOrderNO">
+            <summary>
+            组排序
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Group.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc">
+            <summary>
+            菜单
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.Gid">
+             <summary>
+             id自增长
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.MenuParentGid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.MenuName">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.MenuPath">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.FuncName">
+            <summary>
+            功能名称 按钮
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.LastUpdateTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.LastUpdateBy">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufunc.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign">
+            <summary>
+            菜单权限分配
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.Gid">
+             <summary>
+             id自增长
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.AssignToGid">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.MenuFunGid">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.Enable">
+            <summary>
+            功能权限 二进制
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Menufuncassign.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu">
+            <summary>
+            角色菜单权限
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.Id">
+            <summary>
+            id自增长
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.MenuId">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.PermissionType">
+            <summary>
+            功能权限 二进制
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_RoleMenu.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.Gid">
+             <summary>
+             id自增长
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.OwnerGid">
+            <summary>
+            所属Gid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Roles.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.Gid">
+             <summary>
+             id自增长
+             </summary>
+            [IdentityPrimary]
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.IsSuperAdmin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.RoleGid">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.OwnerGid">
+            <summary>
+            所属
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.UserLoginName">
+            <summary>
+            登陆名
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.UserLoginPwd">
+            <summary>
+            登陆密码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.LastUpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.LastUpdateBy">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.AuthSystem.T_Auth_Users.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicEntity.IsValidate">
+            <summary>
+            用于实体对象是否为空的判断
+            true  代表有数据  false  代表对象为空
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.service_name">
+            <summary>
+            服务接口名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.appid">
+            <summary>
+            请求方的APPID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.time">
+            <summary>
+            请求耗时（单位毫秒）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.is_success">
+            <summary>
+            接口是否返回200的状态码 0、未返回200 1、返回200
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.is_error">
+            <summary>
+            接口是否报错 0、未报错 1、有报错
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.local_ip">
+            <summary>
+            本地IP
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceModel.timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.GetEnterpriseInfoRequest">
+            <summary>
+            获取第三方接入信息请求实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.GetEnterpriseInfoRequest.AppID">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.AddEnterpriseInfoRequest">
+            <summary>
+            添加第三方接入信息请求实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.AddEnterpriseInfoRequest.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.AddEnterpriseInfoRequest.PublicKey">
+            <summary>
+            PublicKey
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.AddEnterpriseInfoRequest.PrivateKey">
+            <summary>
+            PrivateKey
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.AddEnterpriseInfoRequest.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.AddEnterpriseInfoRequest.NeedVerify">
+            <summary>
+            是否需要验证,0-否,1-是
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest">
+            <summary>
+            更新第三方接入信息请求实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.AppID">
+            <summary>
+            AppID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.AppSecret">
+            <summary>
+            AppSecret
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.PublicKey">
+            <summary>
+            PublicKey
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.PrivateKey">
+            <summary>
+            PrivateKey
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.UpdateEnterpriseInfoRequest.NeedVerify">
+            <summary>
+            是否需要验证,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.ServiceName">
+            <summary>
+            服务接口名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.Appid">
+            <summary>
+            请求方的APPID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.Time">
+            <summary>
+            请求耗时（单位毫秒）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.IsSuccess">
+            <summary>
+            接口是否返回200的状态码 0、未返回200 1、返回200
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.LocalIp">
+            <summary>
+            本地IP地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.IsError">
+            <summary>
+            接口是否报错 0、未报错 1、有报错
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.ES_PerformanceRequest.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest">
+            <summary>
+            添加第三方接入信息请求实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.AppID">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.Secret">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.NeedVerify">
+            <summary>
+            是否需要验证,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextAddEnterpriseInfoRequest.CreateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest">
+            <summary>
+            更新第三方接入信息请求实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.AppID">
+            <summary>
+            AppID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.AppSecret">
+            <summary>
+            AppSecret
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.PublicKey">
+            <summary>
+            PublicKey
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.PrivateKey">
+            <summary>
+            PrivateKey
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextUpdateEnterpriseInfoRequest.NeedVerify">
+            <summary>
+            是否需要验证,0-否,1-是
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.GetEnterpriseInfoResponse">
+            <summary>
+            获取第三方接入信息响应实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.GetEnterpriseInfoResponse.Result">
+            <summary>
+            第三方接入信息实体
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.GetEnterpriseInfoListResponse">
+            <summary>
+            获取第三方接入信息响应实体列表
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.GetEnterpriseInfoListResponse.Result">
+            <summary>
+            第三方接入信息实体列表
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse">
+            <summary>
+            第三方接入信息实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.AppID">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.Secret">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.EnterpriseInfoResponse.NeedVerify">
+            <summary>
+            是否需要验证,1 时间戳验证、2 签名验证、 4 接口权限验证、 8参数验证
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse">
+            <summary>
+            获取第三方接入信息响应实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.AppID">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.Secret">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.TextGetEnterpriseInfoResponse.NeedVerify">
+            <summary>
+            是否需要验证,0-否,1-是
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo">
+            <summary>
+            第三方接入信息
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.AppID">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.Secret">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.Enable">
+            <summary>
+            是否允许第三方接入api,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.NeedVerify">
+            <summary>
+            是否需要验证,0-否,1-是
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.EnterpriseName">
+            <summary>
+            第三方企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.BasicResource.T_EnterpriseInfo.CreateTime">
+             <summary>
+             
+            Class1.cs </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel">
+            <summary>
+            开票记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Id">
+            <summary>
+            系统主键ParkingCode InvguId Md5组合
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.ThirdPartyInvoiceId">
+            <summary>
+            第三方开票id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.ParkingCode">
+            <summary>
+            停车编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Xfnsrsbh">
+            <summary>
+            销方纳税人识别号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Gfnsrsbh">
+            <summary>
+            购方纳税人识别号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Gfmc">
+            <summary>
+            购方纳税人名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Gfdzdh">
+            <summary>
+            购方地址电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Jehj">
+            <summary>
+            价税金额合计
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Spmc">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Phone">
+            <summary>
+            购方电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Memo">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Type">
+            <summary>
+            发票类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.DealNos">
+            <summary>
+            订单号 or 批量集合
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.InvguId">
+            <summary>
+            开票结果的唯一标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.KprId">
+            <summary>
+            网点标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Status">
+            <summary>
+            状态//2：成功 3：失败
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Reson">
+            <summary>
+            失败原因
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Fpdm">
+            <summary>
+            发票代码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Fphm">
+            <summary>
+            发票号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.PdfUrl">
+            <summary>
+            pdfurl
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.KpTime">
+            <summary>
+            开票时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.ElectronicInvoiceBussinessModel.IsRed">
+            <summary>
+            是否红冲发票
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest">
+            <summary>
+            中税的发票申请参数
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.DealNo">
+            <summary>
+            订单号（第三方提供）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Xfnsrsbh">
+            <summary>
+            销方纳税人识别号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Gfnsrsbh">
+            <summary>
+            购方纳税人识别号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Gfmc">
+            <summary>
+            购方纳税人名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Gfyhmczh">
+            <summary>
+            购方银行名称帐号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Gfdzdh">
+            <summary>
+            购方地址电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Jehj">
+            <summary>
+            价税金额合计
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Spmc">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Phone">
+            <summary>
+            购方电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Email">
+            <summary>
+            购方邮箱地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Wechat">
+            <summary>
+            购方微信用户号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Kpr">
+            <summary>
+            开票人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Skr">
+            <summary>
+            收款人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Fhr">
+            <summary>
+            复核人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Memo">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.Type">
+            <summary>
+            发票类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.KprId">
+            <summary>
+            开票人 id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.ApplyMediumTaxInvoiceRequest.SendUrl">
+            <summary>
+            开票成功需要推送的地址
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Request.ElectronicInvoiceRequest">
+            <summary>
+            存储电子发票请求实体
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest">
+            <summary>
+            电子发票查询请求实体(可排序字段:Status,KpTime)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.Id">
+            <summary>
+            电子发票主键编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.ParkingCode">
+            <summary>
+            停车编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.InvguId">
+            <summary>
+            开票结果的唯一标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.KprId">
+            <summary>
+            网点标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.Status">
+            <summary>
+            状态
+                2：成功 3：失败
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.Fpdm">
+            <summary>
+            发票代码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.Fphm">
+            <summary>
+            发票号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.KpStartTime">
+            <summary>
+            开票起始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceSearchRequest.KpEndTime">
+            <summary>
+            开票截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Request.InvoiceUpdateRequest">
+            <summary>
+            电子发票修改实体(带有UpdateKeyword属性的字段表示可以修改)
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.ApplyMediumTaxEntity">
+            <summary>
+            申请发票返回的实体
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.CompanyEntity">
+            <summary>
+            企业信息
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.CompanyEntity.nsrmc">
+            <summary>
+            企业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.CompanyEntity.nsrsbh">
+            <summary>
+            纳税人识别号
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Response.ElectronicInvoiceResponse">
+            <summary>
+            电子发票查询返回实体
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity">
+            <summary>
+            发票配置
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.InvoiceCode">
+            <summary>
+            发票信息表Code
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.InvoiceName">
+            <summary>
+            发票信息名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.PropertyCode">
+            <summary>
+            物业编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.PropertyName">
+            <summary>
+            物业名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.AisinoTaxNo">
+            <summary>
+            航信发票税号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.AisinoStationCode">
+            <summary>
+            航信开票点编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.AisinoGoodsNo">
+            <summary>
+            航信商品编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.AisinoAesKey">
+            <summary>
+            航信AES密钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.AisinoISVUrl">
+            <summary>
+            航信开票URL地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.AisinoInvoiceCode">
+            <summary>
+            航信发票编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.BaiWangGoodsSerial">
+            <summary>
+            百旺商品序号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.BaiWangMd5Key">
+            <summary>
+            百旺MD5签名密钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.BaiWangISVUrl">
+            <summary>
+            百旺开票URL地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.BaiWangMerchantId">
+            <summary>
+            百旺商户id
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.MediumTaxAppId">
+            <summary>
+            中税appid
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.MediumTaxAppSecret">
+            <summary>
+            中税密钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.MediumTaxAesKey">
+            <summary>
+            中税 加密key
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.MediumTaxGoodsNo">
+            <summary>
+            中税商品编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.MediumTaxGoodsName">
+            <summary>
+            中税商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.Response.InvoiceConfigEntity.MediumTaxISVUrl">
+            <summary>
+            中税开票url地址
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.Response.MediumTaxResponse`1">
+            <summary>
+            中税response
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.ParkingCode">
+            <summary>
+            停车编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.DealNo">
+            <summary>
+            订单号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.InvguId">
+            <summary>
+            开票结果的唯一标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.KprId">
+            <summary>
+            网点标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.Status">
+            <summary>
+            状态//2：成功 3：失败
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.Reson">
+            <summary>
+            失败原因
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.Fpdm">
+            <summary>
+            发票代码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.Fphm">
+            <summary>
+            发票号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.PdfUrl">
+            <summary>
+            pdfurl
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.InvoiceCallBackRecording.KpTime">
+            <summary>
+            开票时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity">
+            <summary>
+            商品详细实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.spbm">
+            <summary>
+            商品编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.spmc">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.yhzcbs">
+            <summary>
+            有无优惠政策标志
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.ggxh">
+            <summary>
+            规格型号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.qyspbm">
+            <summary>
+            企业商品编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.yhzcmc">
+            <summary>
+            优惠政策说明
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.dw">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.dj">
+            <summary>
+            单价
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.lslbz">
+            <summary>
+            零税率标识，空：非零税率
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxGoodsEntity.slv">
+            <summary>
+            税率
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxPkeyEntity">
+            <summary>
+            pkey实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxPkeyEntity.nsrmc">
+            <summary>
+            纳税人名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxPkeyEntity.nsrsbh">
+            <summary>
+            纳税人识别号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxPkeyEntity.expires">
+            <summary>
+            超时 时间秒 
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxPkeyEntity.pkey">
+            <summary>
+            请求密钥
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxTokenEntity.expires">
+            <summary>
+            超时时长
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ElectronicInvoice.MediumTaxTokenEntity.token">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel">
+            <summary>
+            储值车消费记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.Id">
+            车牌号 计费类型 入场时间 计费开始时间 计费截止时间 停车时长 扣款金额 余额 备注 值班人员
+            <summary>
+            消费记录ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.CarType">
+            <summary>
+            车类别(关联计费类型)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.AdmissionDate">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.BillingStartTime">
+            <summary>
+            计费开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.BillingDeadline">
+            <summary>
+            计费截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.DealNo">
+            <summary>
+            交易编码（线下）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.LongStop">
+            <summary>
+            停车时长（分钟）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.DeductionAmount">
+            <summary>
+            扣款金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.PreferentialAmount">
+            <summary>
+            优惠金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.Balance">
+            <summary>
+            余额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeRecordBussinessModel.ConsumeOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel">
+            <summary>
+            企业付款记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.Id">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.Subject">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.Body">
+            <summary>
+            商品描述 可空
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.AmountMoney">
+            <summary>
+            金额(元)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.PaymentType">
+            <summary>
+            支付类型
+                0-5 未知、微信、支付宝
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.OrderType">
+            <summary>
+            订单类型
+                15 企业付款(找零)
+                17 企业红包
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.UserCode">
+            <summary>
+            用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.DealNo">
+            <summary>
+            交易编码（微信、支付宝）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.OrderStauts">
+            <summary>
+            订单状态
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.PaymentTime">
+            <summary>
+            付款时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseRecordBussinessModel.OpenId">
+            <summary>
+            第三方用户ID（微信、支付宝、第三方）
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel">
+            <summary>
+            异常开闸记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.Id">
+            进出类型 通道名称 开闸时间 通行方式 开闸原因 值班人员
+             进出类型 通道名称 开闸时间 通行方式 识别相机 值班人员
+            <summary>
+            异常开闸编码（主键）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.EntranceType">
+            <summary>
+            进出类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.EquipmentCode">
+            <summary>
+            出入口设备机号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.DiscernCamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.ThroughType">
+            <summary>
+            通行方式
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.OpenGateTime">
+            <summary>
+            开闸时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.OpenGateReason">
+            <summary>
+            开闸原因
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.OpenGateOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateRecordBussinessModel.ImageUrl">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel">
+            <summary>
+            停车记录(出入场信息)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.Id">
+            <summary>
+            停车记录编码（主键）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.InImgUrl">
+            <summary>
+            入场车辆图片地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OutImgUrl">
+            <summary>
+            出场车辆图片地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.LongStop">
+            <summary>
+            停驶时间（分钟）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.Entrance">
+            <summary>
+            车道入口名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.Export">
+            <summary>
+            车道出口名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.AdmissionDate">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.AppearanceDate">
+            <summary>
+            出场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OfflineAdmissionDate">
+            <summary>
+            线下入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OfflineAppearanceDate">
+            <summary>
+            线下出场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OfflineRecordCode">
+            <summary>
+            线下停车记录编号
+            </summary>      
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.CarType">
+            <summary>
+            车类别（默认取大车场入场车类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.CardType">
+            <summary>
+            停车卡类型 1月卡  2储值卡 3 临时卡（默认取大车场入场卡类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.SpecialCar">
+            <summary>
+            特殊车辆标识（原组车标识） 
+            0、非特殊车辆
+            1、组车
+            2、组卡
+            4、深圳算费
+            5、4G通道
+            ------------------- 2018.12.19 以下使用二进制位进行判断 by qiao ----------------
+            16、借道车辆（用于判断是否借道车辆，判断借道免费时间）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.InEquipmentCode">
+            <summary>
+            入口设备机号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OutEquipmentCode">
+            <summary>
+            出口设备机号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.InDiscernCamera">
+            <summary>
+            入口识别相机
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OutDiscernCamera">
+            <summary>
+            出口识别相机
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.InThroughType">
+            <summary>
+            入口通行方式
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OutThroughType">
+            <summary>
+            出口通行方式
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.InParkingOperator">
+            <summary>
+            入场值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordBussinessModel.OutParkingOperator">
+            <summary>
+            出场值班人员
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel">
+            <summary>
+            缴费记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.Id">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.CarType">
+            <summary>
+            车类别(关联计费类型)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.AdmissionDate">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.BillingStartTime">
+            <summary>
+            计费开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.BillingDeadline">
+            <summary>
+            计费截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.PaymentTime">
+            <summary>
+            支付时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.UserCode">
+            <summary>
+            用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.OpenId">
+            <summary>
+            第三方用户ID（微信、支付宝、第三方）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.DealNo">
+            <summary>
+            交易编码（微信、支付宝、银联、线下、第三方等）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.PhoneNumber">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.Subject">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.Body">
+            <summary>
+            商品描述 可空
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.AmountReceivable">
+            <summary>
+            应收金额(元)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.AmountReceived">
+            <summary>
+            实收金额(元) (线上支付金额)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.AuthCode">
+            <summary>
+            授权码(主扫,刷卡支付必传)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.PaymentType">
+            <summary>
+            支付类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.OrderType">
+            <summary>
+            订单类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.TollOperator">
+            <summary>
+            计费操作员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.OrderStauts">
+            <summary>
+            订单状态
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.InvoiceCode">
+            <summary>
+            发票编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.InvoiceState">
+            <summary>
+            发票领取状态
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.InvoiceTime">
+            <summary>
+            发票领取时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentRecordBussinessModel.FreeAdmission">
+            <summary>
+            人工免费
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel">
+            <summary>
+            在场记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.Id">
+            <summary>
+            停车记录编码（主键）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.InImgUrl">
+            <summary>
+            入场车辆图片地址
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.UserCode">
+            <summary>
+            第三方用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.Entrance">
+            <summary>
+            车道入口名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.OfflineRecordCode">
+            <summary>
+            线下停车记录编号
+            </summary>      
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.CarType">
+            <summary>
+            车类别（默认取大车场入场车类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.CardType">
+            <summary>
+            停车卡类型 1月卡  2储值卡 3 临时卡（默认取大车场入场卡类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.CustomDate">
+            <summary>
+            客户端时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.AdmissionDate">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.OfflineAdmissionDate">
+            <summary>
+            线下入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.SpecialCar">
+            <summary>
+            特殊车辆标识（原组车标识） 
+            0、非特殊车辆
+            1、组车
+            2、组卡
+            4、深圳算费
+            5、4G通道
+            ------------------- 2018.12.19 以下使用二进制位进行判断 by qiao ----------------
+            16、借道车辆（用于判断是否借道车辆，判断借道免费时间）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.InEquipmentCode">
+            <summary>
+            入口设备机号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.DiscernCamera">
+            <summary>
+            识别相机
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.ThroughType">
+            <summary>
+            通行方式
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordBussinessModel.ParkingOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel">
+            <summary>
+            充值记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.Id">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.ParkName">
+            <summary>
+            车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.RechargeAmount">
+            <summary>
+            充值金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.CurrentBalance">
+            <summary>
+            储值卡当前余额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.ExpirationTime">
+            <summary>
+            月卡当前过期时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.RenewalType">
+            <summary>
+            月卡续费类型
+            1、天 2、月 3、年
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.RenewalValue">
+            <summary>
+            月卡续费值
+             </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.PaymentType">
+            <summary>
+            支付类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.OrderType">
+            <summary>
+            订单类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.CardType">
+            <summary>
+            卡类
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.CarType">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.UserCode">
+            <summary>
+            用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.OpenId">
+            <summary>
+            第三方用户ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.TransactionCode">
+            <summary>
+            交易编码（微信、支付宝、第三方、线下..）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.TransactionTime">
+            <summary>
+            充值完成时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.OrderStauts">
+            <summary>
+            订单状态
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.InvoiceCode">
+            <summary>
+            发票编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.InvoiceState">
+            <summary>
+            发票领取状态
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.InvoiceTime">
+            <summary>
+            发票领取时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.GroupParkingCode">
+            <summary>
+            组车编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.OperatType">
+            <summary>
+            操作类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.RechargeOperator">
+            <summary>
+            收费人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.PhoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeRecordBussinessModel.OwnerName">
+            <summary>
+            车主名
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest">
+            <summary>
+            储值卡扣费查询(可排序字段:AdmissionDate,BillingStartTime,BillingDeadline,LongStop)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.Id">
+            <summary>
+            消费记录ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.CarType">
+            <summary>
+            车类别(关联计费类型)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.DealNo">
+            <summary>
+            交易编码（线下）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.ConsumeOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.BillingStartTime">
+            <summary>
+            计费开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.BillingDeadline">
+            <summary>
+            计费截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.AdmissionStartDate">
+            <summary>
+            入场开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ConsumeSearchRequest.AdmissionEndDate">
+            <summary>
+            入场截止时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.EnterprisePaymentRecordRequest">
+            <summary>
+            企业付款记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest">
+            <summary>
+            企业付款记录(可以排序字段:PaymentTime,AmountMoney)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.Id">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.UserCode">
+            <summary>
+            用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.OpenId">
+            <summary>
+            第三方用户ID（微信、支付宝、第三方）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.DealNo">
+            <summary>
+            交易编码（微信、支付宝）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.Subject">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.PaymentType">
+            <summary>
+            支付类型 
+            未知 = 0,WEB微信网页 = 1,APP微信 = 2,WEB支付宝 = 3,APP支付宝 = 4,WEB建设银行 = 5,APP建设银行 = 6,WEB民生银行 = 7,
+            APP民生银行 = 8,WEB招商银行 = 9,APP招商银行 = 10,WEB银联 = 11,APP银联 = 12,WEB蜂鸟 = 13,蜂鸟 = 14,第三方自定义支付类型1 = 15,
+            第三方自定义支付类型2 = 16,第三方自定义支付类型3 = 17,第三方自定义支付类型4 = 18,第三方自定义支付类型5 = 19,第三方自定义支付类型6 = 20,WEB海纳蜂鸟 = 21,APP海纳蜂鸟 = 22,线下 = 99,
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.OrderType">
+            <summary>
+            订单类型 对应OrderTypeEnum
+            标准扫码 = 10,生成二维码 = 11,刷授权码 = 12,免密支付 = 13,
+            出口车道码付款 = 14,企业付款 = 15, 优惠券 = 16,企业红包 = 17,
+            无感支付 = 18,第三方支付 = 20,余额 = 98,现金 = 99,
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.PaymentStartDate">
+            <summary>
+            付款开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.EnterpriseSearchRequest.PaymentEndDate">
+            <summary>
+            付款截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.Request.EnterpriseUpdateRequest">
+            <summary>
+            企业付款记录修改实体(带有UpdateKeyword属性的字段表示可以修改)
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.Request.ParkingUpdateRequest">
+            <summary>
+            停车记录修改实体(带有UpdateKeyword属性的字段表示可以修改)
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.Request.PaymentUpdateRequest">
+            <summary>
+            缴费记录修改实体(带有UpdateKeyword属性的字段表示可以修改)
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.Request.PresentUpdateRequest">
+            <summary>
+            在场记录修改实体(带有UpdateKeyword属性的字段表示可以修改)
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.Request.RechargeUpdateRequest">
+            <summary>
+            充值记录修改实体(带有UpdateKeyword属性的字段表示可以修改)
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest">
+            <summary>
+            异常开闸记录查询(可排序字段:OpenGateTime)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.Id">
+            <summary>
+            车辆在场记录编码（主键）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.EntranceType">
+            <summary>
+            进出类型
+            入场=0,出场=1
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.ThroughName">
+            <summary>
+            通道名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.ThroughType">
+            <summary>
+            通行方式
+            自动开闸=1、手动开闸=2、免费开闸=3
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.OpenGateOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.OpenGateStartTime">
+            <summary>
+            开闸开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.OpenGateSearchRequest.OpenGateEndTime">
+            <summary>
+            开闸截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ParkingRecordRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordRequest.PiecewiseDetail">
+            <summary>
+            分段记录明细
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel">
+            <summary>
+            分段明细
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.SmallParkingCode">
+            <summary>
+            小车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.SmallParkingName">
+            <summary>
+            小停车场名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.IsIndependentCost">
+            <summary>
+            是否独立收费
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.Entrance">
+            <summary>
+            入口
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.ParkingCard">
+            <summary>
+            卡位
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.BeginTime">
+            <summary>
+            车辆的入场时间或者上一次变更时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.CarType">
+            <summary>
+            车类，对应车辆模板类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.CarTypeName">
+            <summary>
+            车类名称，对应车辆模板类型
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.IsFinalPayment">
+            <summary>
+            是否已经缴费 
+            0,尚未缴费；1,缴费完成；2，超时缴费
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.FinalPaymentTime">
+            <summary>
+            最后一次缴费时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.Template">
+            <summary>
+            计费模板
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.OvertimeTemplate">
+            <summary>
+            超时计费模板 可为空
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.CardType">
+            <summary>
+            停车卡类型 
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.SpanServer">
+            <summary>
+            线上和线下服务器时间差值,精确到秒
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.HadPayFee">
+            <summary>
+            已经交费用
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.ParkFee">
+            <summary>
+            停车费
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.OverFee">
+            <summary>
+            超时费
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.Balance">
+            <summary>
+            储值卡余额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PiecewiseDetailModel.BeginTimeOffLine">
+            <summary>
+            线下车辆入场时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ParkingSearchRequest">
+            <summary>
+            停车记录查询参数(可排序字段:AdmissionDate,AppearanceDate,LongStop,CardType)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.Id">
+            <summary>
+            停车记录编码（主键）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.Entrance">
+            <summary>
+            车道入口
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.Export">
+            <summary>
+            车道出口
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.CarType">
+            <summary>
+            车类别
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.CardType">
+            <summary>
+            停车卡类型 1月卡  2储值卡 3 临时卡（默认取大车场入场卡类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.InThroughType">
+            <summary>
+            入口通行方式
+            自动开闸=1、手动开闸=2、免费开闸=3
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.OutThroughType">
+            <summary>
+            出口通行方式
+            自动开闸=1、手动开闸=2、免费开闸=3
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.InParkingOperator">
+            <summary>
+            入场值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.OutParkingOperator">
+            <summary>
+            出场值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.SpecialCar">
+            <summary>
+            特殊车辆标识（原组车标识） 
+            0、非特殊车辆
+            1、组车
+            2、组卡
+            4、深圳算费
+            5、4G通道
+            ------------------- 2018.12.19 以下使用二进制位进行判断 by qiao ----------------
+            16、借道车辆（用于判断是否借道车辆，判断借道免费时间）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.AdmissionStartDate">
+            <summary>
+            入场开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.AppearanceStartDate">
+            <summary>
+            出场开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.AdmissionEndDate">
+            <summary>
+            入场截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingSearchRequest.AppearanceEndDate">
+            <summary>
+            出场截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PaymentRecordRequest">
+            <summary>
+            缴费记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PaymentSearchRequest">
+            <summary>
+            缴费记录(可以排序字段:AdmissionDate,BillingStartTime,BillingDeadline,PaymentTime,AmountReceivable,AmountReceived)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.Id">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.ParkingRecordCode">
+            <summary>
+            停车记录编号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.CarType">
+            <summary>
+            车类别(关联计费类型)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.DealNo">
+            <summary>
+            交易编码（微信、支付宝、银联、线下、第三方等）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.UserCode">
+            <summary>
+            用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.OpenId">
+            <summary>
+            第三方用户ID（微信、支付宝、第三方）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.PhoneNumber">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.Subject">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.TollOperator">
+            <summary>
+            计费操作员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.InvoiceCode">
+            <summary>
+            发票编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.InvoiceState">
+            <summary>
+            发票领取状态
+            未领取 = 0,待确认 = 1,成功领取 = 2,回调失败 = 3
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.PaymentType">
+            <summary>
+            支付类型 对应PaymentTypeEnum
+            未知 = 0,WEB微信网页 = 1,APP微信 = 2,WEB支付宝 = 3,APP支付宝 = 4,WEB建设银行 = 5,APP建设银行 = 6,WEB民生银行 = 7,
+            APP民生银行 = 8,WEB招商银行 = 9,APP招商银行 = 10,WEB银联 = 11,APP银联 = 12,WEB蜂鸟 = 13,蜂鸟 = 14,第三方自定义支付类型1 = 15,
+            第三方自定义支付类型2 = 16,第三方自定义支付类型3 = 17,第三方自定义支付类型4 = 18,第三方自定义支付类型5 = 19,第三方自定义支付类型6 = 20,WEB海纳蜂鸟 = 21,APP海纳蜂鸟 = 22,线下 = 99,
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.OrderType">
+            <summary>
+            订单类型 对应OrderTypeEnum
+            标准扫码 = 10,生成二维码 = 11,刷授权码 = 12,免密支付 = 13,
+            出口车道码付款 = 14,企业付款 = 15, 优惠券 = 16,企业红包 = 17,
+            无感支付 = 18,第三方支付 = 20,余额 = 98,现金 = 99,
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.AdmissionStartDate">
+            <summary>
+            入场开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.AdmissionEndDate">
+            <summary>
+            入场截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.BillingStartTime">
+            <summary>
+            计费开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.BillingDeadline">
+            <summary>
+            计费截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.PaymentStartDate">
+            <summary>
+            支付开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.PaymentEndDate">
+            <summary>
+            支付截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.InvoiceStartTime">
+            <summary>
+            发票领取开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PaymentSearchRequest.InvoiceEndTime">
+            <summary>
+            发票领取截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PresentSearchRequest">
+            <summary>
+            车辆在场记录查询(可排序字段:AdmissionDate)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.Id">
+            <summary>
+            车辆在场记录编码（主键）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.LicensePlate">
+            <summary>
+            凭证号码（车牌号或卡号）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.SpecialCar">
+            <summary>
+            特殊车辆标识（原组车标识） 
+            0、非特殊车辆
+            1、组车
+            2、组卡
+            4、深圳算费
+            5、4G通道
+            ------------------- 2018.12.19 以下使用二进制位进行判断 by qiao ----------------
+            16、借道车辆（用于判断是否借道车辆，判断借道免费时间）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.ThroughType">
+            <summary>
+            通行方式
+            自动开闸=1、手动开闸=2、免费开闸=3
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.ParkingOperator">
+            <summary>
+            值班人员
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.CarType">
+            <summary>
+            车类别（默认取大车场入场车类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.CardType">
+            <summary>
+            停车卡类型 1月卡  2储值卡 3 临时卡（默认取大车场入场卡类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.AdmissionDateStartDate">
+            <summary>
+            入场开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentSearchRequest.AdmissionDateEndDate">
+            <summary>
+            入场截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.RechargeRecordRequest">
+            <summary>
+            充值记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.RechargeSearchRequest">
+            <summary>
+            充值记录(可排序字段:RechargeAmount,RenewalType,RenewalValue,CardType,TransactionTime,CreateTime)
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.Id">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.LicensePlate">
+            <summary>
+            车牌或卡号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.TransactionCode">
+            <summary>
+            交易编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.UserCode">
+            <summary>
+            用户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.OpenId">
+            <summary>
+            第三方用户ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.GroupParkingCode">
+            <summary>
+            组车编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.RechargeOperator">
+            <summary>
+            收费人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.InvoiceCode">
+            <summary>
+            发票编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.PhoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.OwnerName">
+            <summary>
+            车主名
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.CarType">
+            <summary>
+            车类
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.RenewalType">
+            <summary>
+            充值类型
+            1、天 2、月 3、年
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.PaymentType">
+            <summary>
+            支付类型 对应PaymentTypeEnum
+            未知 = 0,WEB微信网页 = 1,APP微信 = 2,WEB支付宝 = 3,APP支付宝 = 4,WEB建设银行 = 5,APP建设银行 = 6,WEB民生银行 = 7,
+            APP民生银行 = 8,WEB招商银行 = 9,APP招商银行 = 10,WEB银联 = 11,APP银联 = 12,WEB蜂鸟 = 13,蜂鸟 = 14,第三方自定义支付类型1 = 15,
+            第三方自定义支付类型2 = 16,第三方自定义支付类型3 = 17,第三方自定义支付类型4 = 18,第三方自定义支付类型5 = 19,第三方自定义支付类型6 = 20,WEB海纳蜂鸟 = 21,APP海纳蜂鸟 = 22,线下 = 99,
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.OrderType">
+            <summary>
+            订单类型 对应OrderTypeEnum
+            标准扫码 = 10,生成二维码 = 11,刷授权码 = 12,免密支付 = 13,
+            出口车道码付款 = 14,企业付款 = 15, 优惠券 = 16,企业红包 = 17,
+            无感支付 = 18,第三方支付 = 20,余额 = 98,现金 = 99,
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.CardType">
+            <summary>
+            停车卡类型 1月卡  2储值卡 3 临时卡（默认取大车场入场卡类）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.OrderStauts">
+            <summary>
+            订单状态 对应OrderStautsEnum
+            支付完成 = 1,支付失败 = 2,未支付 = 3,线下确认 = 4
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.OperatType">
+            <summary>
+            操作类型
+            开卡=0,充值=1,退卡=2
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.InvoiceState">
+            <summary>
+            发票领取状态
+            未领取 = 0,待确认 = 1,成功领取 = 2,回调失败 = 3
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.TransactionStartTime">
+            <summary>
+            交易开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.TransactionEndTime">
+            <summary>
+            交易截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.ExpirationStartTime">
+            <summary>
+            月卡当前过期开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.ExpirationEndTime">
+            <summary>
+            月卡当前过期截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.CreateStartTime">
+            <summary>
+            创建开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.CreateEndTime">
+            <summary>
+            创建截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.InvoiceStartTime">
+            <summary>
+            发票领取开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.RechargeSearchRequest.InvoiceEndTime">
+            <summary>
+            发票领取截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.EnterprisePaymentRecordResponse">
+            <summary>
+            企业付款记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ParkingRecordResponse">
+            <summary>
+            停车记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.ParkingRecordResponse.PiecewiseDetail">
+            <summary>
+            分段明细
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PaymentRecordResponse">
+            <summary>
+            缴费记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.RechargeRecordResponse">
+            <summary>
+            充值记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.PresentRecordResponse">
+            <summary>
+            在场记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.Parking.PresentRecordResponse.ParkInfoChangeCollections">
+            <summary>
+            分段明细
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.OpenGateRecordResponse">
+            <summary>
+            异常开闸记录
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.Parking.ConsumeRecordResponse">
+            <summary>
+            储值卡扣费记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetRecordListResponse`1.TotalCount">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetRecordListResponse`1.NextToken">
+            <summary>
+            获取下一页的Token 获取报表或时间段内所有数据时 适合使用此参数
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetRecordListResponse`1.PaperCouponList">
+            <summary>
+            返回数据的列表
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse">
+            <summary>
+            酒店优惠券商户充值记录实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.Id">
+            <summary>
+            主键ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.MerchantCode">
+            <summary>
+            商户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.MerchantPhone">
+            <summary>
+            商户电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.PayCount">
+            <summary>
+            充值金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.PayGive">
+            <summary>
+            赠送金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.PayType">
+            <summary>
+            充值类型 1 微信 2 支付宝 3 现金
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.RechargeOrderNo">
+            <summary>
+            订单号 现金充值无订单号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.RechargeOperator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.RechargePhone">
+            <summary>
+            操作人电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.RechargeTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelRechargeRecordResponse.Status">
+            <summary>
+            状态 1支付成功 2 支付失败 3 未支付
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.Id">
+            <summary>
+            主键ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.MerchantCode">
+            <summary>
+            商户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.MerchantPhone">
+            <summary>
+            商户电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeOperator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributePhone">
+            <summary>
+            操作人电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeCarNo">
+            <summary>
+            优惠车牌号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeCount">
+            <summary>
+            优惠限制最大使用次数 值为0 则不限制次数
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeUseCount">
+            <summary>
+            优惠使用次数
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributePrice">
+            <summary>
+            优惠限制最大使用金额 值为0 则不限制金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeUsePrice">
+            <summary>
+            优惠已使用金额
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeStartTime">
+            <summary>
+            优惠起始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.DistributeEndTime">
+            <summary>
+            优惠结束时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.Status">
+            <summary>
+            状态 1 使用中 2 已使用 3 已失效 4 余额不足 5 暂停使用 6 已注销
+            
+                已使用：当酒店优惠券超出过期时间 或 剩余次数、最大优惠金额达到最大限额时
+                已失效：当商户点击取消操作时          
+                余额不足：当预存账户不足时        
+                暂停使用：当物业关闭商户的预存账户时        
+                已注销：当物业注销商户时
+                
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelDistributeRecordResponse.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse">
+            <summary>
+            酒店优惠券车牌使用记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.Id">
+            <summary>
+            主键ID
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.DistributeId">
+            <summary>
+            分配记录的主键
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.TradingCode">
+            <summary>
+            交易记录编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.MerchantCode">
+            <summary>
+            商户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.MerchantPhone">
+            <summary>
+            商户电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.DistributeCarNo">
+            <summary>
+            优惠的车牌号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.StartTime">
+            <summary>
+            入场时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.PayTime">
+            <summary>
+            支付时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordResponse.DistributeAmout">
+            <summary>
+            当次优惠费用
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.SearchQueryBasis">
+            <summary>
+            查询基类
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.SearchQueryBasis.NextToken">
+            <summary>
+            下一页token
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.SearchQueryBasis.PageIndex">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.SearchQueryBasis.PageSize">
+            <summary>
+            页大小
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.SearchQueryBasis.Sort">
+            <summary>
+            排序方式 0 正序 1 倒序
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.SearchQueryBasis.FieldSort">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest">
+            <summary>
+            电子券查询实体
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.CarNoOrCard">
+            <summary>
+            车牌或卡号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.ElecouopnCode">
+            <summary>
+            电子券编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.TradingCode">
+            <summary>
+            交易编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.FatherCode">
+            <summary>
+            父级编码 商户编码/车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.ShowName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.ElecouponInfoCode">
+            <summary>
+            外键 电子优惠券信息Code
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.StartDate">
+            <summary>
+            创建开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetEleCouponListRequest.EndDate">
+            <summary>
+            创建截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList">
+            <summary>
+            查询纸质券列表
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.CarNoOrCard">
+            <summary>
+            车牌或卡号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.PaperCouponCode">
+            <summary>
+            纸质优惠券编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.TradingCode">
+            <summary>
+            交易编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.CompanyName">
+            <summary>
+            公司名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.CouponMark">
+            <summary>
+            优惠券标识
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.StartDate">
+            <summary>
+            创建开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetPagePaperCouponList.EndDate">
+            <summary>
+            创建截止时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest">
+            <summary>
+            充值记录查询
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.MerchantCode">
+            <summary>
+            商户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.MerchantPhone">
+            <summary>
+            商户电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.PayType">
+            <summary>
+            充值类型 1 微信 2 支付宝 3 现金
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.RechargeOrderNo">
+            <summary>
+            订单号 现金充值无订单号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.RechargeOperator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.Status">
+            <summary>
+            状态 1支付成功 2 支付失败 3 未支付
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.StartDate">
+            <summary>
+            操作时间 开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelRechargeRecordRequest.EndDate">
+            <summary>
+            操作时间 截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest">
+            <summary>
+            获取商户分配记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.ParkingCode">
+            <summary>
+            停车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.DistributeCarNo">
+            <summary>
+            优惠车牌号码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.MerchantCode">
+            <summary>
+            商户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.MerchantName">
+            <summary>
+            商户名称
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.MerchantPhone">
+            <summary>
+            商户电话
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.DistributeOperator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.Status">
+            <summary>
+            状态 1 使用中 2 已使用 3 已失效
+                超过结束时间时 更改状态为 已使用
+                剩余次数 或 达到最大限额是 更改状态为 已使用
+            
+                关闭商户 或 预存账户不足时 批量更新状态为 已失效
+                商户点击取消操作时 更改状态为 已失效
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.StartDate">
+            <summary>
+            操作时间 开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.EndDate">
+            <summary>
+            操作时间 截至时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.DiscountsStartDate">
+            <summary>
+            优惠 开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.GetHotelDistributeRecordRequest.DiscountsEndDate">
+            <summary>
+            优惠 截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest">
+            <summary>
+            获取酒店优惠券车牌使用记录
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.DistributeId">
+            <summary>
+            分配记录的主键
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.ParkingCode">
+            <summary>
+            车场编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.TradingCode">
+            <summary>
+            交易记录编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.MerchantCode">
+            <summary>
+            商户编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.DistributeCarNo">
+            <summary>
+            优惠的车牌号
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.StartDate">
+            <summary>
+            支付时间 开始时间
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ReportForms.HotelUseRecordModelRequest.EndDate">
+            <summary>
+            支付时间 截至时间
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.RequestBase">
+            <summary>
+            业务请求基类
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.RequestBase.Token">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FujicaService.Module.Entitys.ResponseBase">
+            <summary>
+            业务响应基类
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ResponseBase.Redirect">
+            <summary>
+            服务端指定wap跳转到指定页面（第三方定制界面开发需求）
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ResponseBase.IsSuccess">
+            <summary>
+            是否执行成功
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ResponseBase.MessageCode">
+            <summary>
+            响应结果编码
+            </summary>
+        </member>
+        <member name="P:FujicaService.Module.Entitys.ResponseBase.MessageContent">
+            <summary>
+            响应结果信息
+            </summary>
+        </member>
+    </members>
+</doc>

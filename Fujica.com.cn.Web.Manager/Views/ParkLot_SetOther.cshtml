@@ -1,0 +1,804 @@
+﻿
+@{
+    ViewBag.Title = "ParkLot_SetOther";
+    Layout = null;
+}
+<link href="~/Content/main.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="~/Content/build.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/common.js"></script>
+
+<style>
+    .fieldset {
+        /*padding: .35em .625em .75em;*/
+        margin: 0 2px;
+        border: 1px solid silver;
+        text-align: left;
+    }
+
+    .legend {
+        padding: .5em;
+        border: 0;
+        width: auto;
+        font-size: 14px
+    }
+
+    .fieldset_div {
+        padding: 10px;
+        width: 40%;
+        float: left
+    }
+
+    .fieldset_di2 {
+        width: 30%;
+        float: left;
+        padding: 6px;
+        text-align: center
+    }
+
+    .fieldset_di3 {
+        width: 40%;
+        float: left;
+        padding: 0px;
+        text-align: center
+    }
+
+    .fieldset_div4 {
+        width: 33%;
+        float: left;
+        text-align: center
+    }
+
+    .fieldset_div5 {
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin-left: 15px;
+    }
+
+    .magic-radio {
+        position: absolute;
+        display: none;
+    }
+
+
+
+        .magic-radio + label {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+            .magic-radio + label:hover:before {
+                animation-duration: 0.4s;
+                animation-fill-mode: both;
+                animation-name: hover-color;
+            }
+
+            .magic-radio + label.radio5:before {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                content: '';
+                border: 2px solid #259af2;
+            }
+
+            .magic-radio + label.radio2:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                content: '';
+                border: 2px solid #C30C22;
+            }
+
+            .magic-radio + label.radio3:before {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                content: '';
+                border: 2px solid #259af2;
+            }
+
+            .magic-radio + label:after {
+                position: absolute;
+                display: none;
+                content: '';
+            }
+
+        .magic-radio[disabled] + label {
+            cursor: not-allowed;
+            color: #e4e4e4;
+        }
+
+        .magic-radio:checked + label:before {
+            animation-name: none;
+        }
+
+        .magic-radio:checked + label:after {
+            display: block;
+        }
+
+        .magic-radio + label:before {
+            border-radius: 50%;
+        }
+
+        .magic-radio + label.radio5:after {
+            top: 6px;
+            left: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #259af2;
+        }
+
+        .magic-radio + label.radio2:after {
+            top: 6px;
+            left: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff00;
+        }
+
+        .magic-radio + label.radio3:after {
+            top: 6px;
+            left: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #259af2;
+        }
+</style>
+@*<link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.min.js"></script>
+    <link href="~/Content/build.css" rel="stylesheet" />*@
+
+<div class="row" style="height:45px;padding:10px;">
+    <div class="col-sm-12 col-md-6">
+        <div class="dataTables_length" id="sampleTable_length" style="line-height:53px">
+            <img src="~/picture/zuobianlan.png" />
+            <label style="font-size:18px;font-weight:bold;margin-left:12px">其他设置</label>
+        </div>
+    </div>
+
+</div>
+<hr />
+<div  class="FunctionPoint">
+<div class="row" style="padding:10px">
+    <div class="col-lg-3">
+        <div class="bs-component">
+            <div style="border-color: #ddd;height:119px;text-align:center;" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label>  月租车延期方式</label>
+                </div>
+                <div style="padding: 15px;">
+                    <div class="fieldset_div">
+                        @*<input type="radio" name="optionsRadios_1" id="optionsRadios1" value="0" checked="checked"> <label> 顺延</label>*@
+                        <input class="magic-radio" type="radio" name="optionsRadios_1" id="optionsRadios1" value="0" checked="checked">
+                        <label for="optionsRadios1" class="radio5">顺延</label>
+
+                    </div>
+                    <div class="fieldset_div">
+                        <input class="magic-radio" type="radio" name="optionsRadios_1" id="optionsRadios2" value="1">
+                        <label for="optionsRadios2" class="radio3">跳延</label>
+                        @*<input type="radio" name="optionsRadios_1" id="optionsRadios2" value="1"><label> 跳延</label>*@
+                    </div>
+                </div>
+            </div> 
+            @*月租车过期处理方式*@
+            <div style="border-color: #ddd;height:162px;text-align:center;margin-top:20px" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label>  月租车过期处理方式</label>
+                </div>
+                <div style="padding: 15px;">
+                    <div class="fieldset_div5" style="height:30px">
+                        <input class="magic-radio" type="radio" name="optionsRadios_2" id="optionsRadios3" value="0" checked="checked">
+                        <label for="optionsRadios3" class="radio5">月租车过期按临时车收费</label>
+                        @*<input type="radio" name="optionsRadios_2" id="optionsRadios1" value="option1"><label>月租车过期禁止出入场</label>*@
+                    </div>
+                    <div class="fieldset_div5" style="height:30px">
+                        <input class="magic-radio" type="radio" name="optionsRadios_2" id="optionsRadios4" value="-1">
+                        <label for="optionsRadios4" class="radio5">月租车过期禁止出入场</label>
+                        @*<input type="radio" name="optionsRadios_2" id="optionsRadios1" value="option1" checked="checked"><label>月租车过期按临时车收费</label>*@
+                    </div>
+                    <div class="fieldset_div5">
+                        <div style="width:25%;float:left;margin-top:5px">
+                            <input class="magic-radio" type="radio" name="optionsRadios_2" id="optionsRadios5" value="2">
+                            <label for="optionsRadios5" class="radio5">低于</label>
+                        </div>
+                        <div style="width:40%;float:left">
+                            <input type="text"  value="1" id="Days" class="form-control" style="width:90px;height:30px"/>
+                            
+                        </div>
+                        <div style="width:35%;float:left;margin-top:5px">
+                           <label>后禁止出入场</label>
+                        </div>
+                         
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="bs-component">
+            <div style="border-color: #ddd;height:299px;text-align:center;" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label> 不同颜色车牌收费设置</label>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="width:100%;float:left;height:45px">
+                        <div style="float:left;width:32%;margin-top:0px">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox_Blue" class="styled" type="checkbox">
+                                <label for="checkbox_Blue" style="padding-left:10px">
+                                    蓝牌车按
+                                </label>
+                            </div>
+                        </div>
+                        <div style="float:left;width:40%;">
+                            <select class="form-control" id="select_Blue" style="width:100%;height:35px"></select>
+                        </div>
+                        <div style="float:left;width:20%;margin-top:5px">
+                            <label>收费</label>
+                        </div>
+                    </div>
+                    <div style="width:100%;float:left;height:45px">
+                        <div style="float:left;width:32%;margin-top:0px">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox_Yellow" class="styled" type="checkbox" >
+                                <label for="checkbox_Yellow" style="padding-left:10px">
+                                    黄牌车按
+                                </label>
+                            </div>
+                        </div>
+                        <div style="float:left;width:40%;">
+                            <select class="form-control" id="select_Yellow" style="width:100%;height:35px"></select>
+                        </div>
+                        <div style="float:left;width:20%;margin-top:5px">
+                            <label>收费</label>
+                        </div>
+                    </div>
+
+                    <div style="width:100%;float:left;height:45px">
+                        <div style="float:left;width:32%;margin-top:0px">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox_White" a="white" class="styled colorChecked" type="checkbox" >
+                                <label for="checkbox_White" style="padding-left:10px">
+                                    白牌车按
+                                </label>
+                            </div>
+                        </div>
+                        <div style="float:left;width:40%;">
+                            <select class="form-control" id="select_White" style="width:100%;height:35px"></select>
+                        </div>
+                        <div style="float:left;width:20%;margin-top:5px">
+                            <label>收费</label>
+                        </div>
+                    </div>
+
+                    <div style="width:100%;float:left;height:45px">
+                        <div style="float:left;width:32%;margin-top:0px">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox_Green"  a="Green" class="styled colorChecked"  type="checkbox" >
+                                <label for="checkbox_Green" style="padding-left:10px">
+                                    绿牌车按
+                                </label>
+                            </div>
+                        </div>
+                        <div style="float:left;width:40%;">
+                            <select class="form-control" id="select_Green" style="width:100%;height:35px"></select>
+                        </div>
+                        <div style="float:left;width:20%;margin-top:5px">
+                            <label>收费</label>
+                        </div>
+                    </div>
+                    <div style="width:100%;float:left;height:45px">
+                        <div style="float:left;width:32%;margin-top:0px">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox_Black" class="styled" type="checkbox" >
+                                <label for="checkbox_Black" style="padding-left:10px">
+                                    黑牌车按
+                                </label>
+                            </div>
+                        </div>
+                        <div style="float:left;width:40%;">
+                            <select class="form-control" id="select_Black" style="width:100%;height:35px"></select>
+                        </div>
+                        <div style="float:left;width:20%;margin-top:5px">
+                            <label>收费</label>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="bs-component">
+            <div style="border-color: #ddd;height:299px;text-align:center;" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label>  车场满位禁止入场</label>
+                </div>
+                <div style="padding: 15px;height:250px;overflow-y:auto;overflow-x:hidden">
+                    <div id="div_checkbox" style="margin-left:37px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="bs-component">
+           
+            <div style="border-color: #ddd;height:299px;text-align:center;" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label>  剩余车位统计</label>
+                </div>
+                <div style="padding: 15px;height:250px;overflow-y:auto;overflow-x:hidden">
+                    <div id="div_radio"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding:10px">
+    <div class="col-lg-3">
+        <div class="bs-component">
+            <div style="border-color: #ddd;height:110px;text-align:center;" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label>  月租车延期提醒</label>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="float:left;width:15%;margin-top:6px">
+                        <label>
+                            低于
+                        </label>
+                    </div>
+                    <div style="float:left;width:25%">
+                        <input type="text" id="MonthCarPostponeRemind" value="0" class="form-control" style="width:100%">
+
+                    </div>
+                    <div style="float:left;width:55%;margin-top:6px">
+                        <label>天时，提醒用户延期</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bs-component" style="margin-top:20px"> 
+            <div style="border-color: #ddd;height:110px;text-align:center;" class="fieldset">
+                <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                    <label>  储值车充值提醒</label>
+                </div>
+                <div style="padding: 15px;">
+
+                    <div style="float:left;width:15%;margin-top:6px">
+                        <label>
+                            低于
+                        </label>
+                    </div>
+                    <div style="float:left;width:30%">
+                        <input type="text" id="ValueCarPostponeRemind" value="0" class="form-control" style="width:98%">
+
+                    </div>
+                    <div style="float:left;width:55%;margin-top:6px">
+                        <label>元时，提醒用户充值</label>
+                    </div>
+
+                 
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="col-lg-3" >
+        <div class="bs-component">
+            <div class="bs-component">
+                <div style="border-color: #ddd;height:259px;text-align:center;" class="fieldset">
+                    <div style="color:#333333;background-color:#f3f8fb;border-color:#ddd;height:44px;border-bottom: 1px solid #dbe1e6;line-height:40px">
+                        <label>  车类开闸设置</label>
+                    </div>
+                    <div style="padding: 15px;height:210px;overflow-y:auto;overflow-x:hidden">
+                        <div id="div_OpenGate"></div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+            </div>
+        </div>
+   
+<div class="row" style="text-align:center;height:60px;">
+    <div class="tile-footer" style="width:100%">
+        <hr />
+        <div style="margin-top:-10px">
+            <a class="btn " href="#" onclick="back_ParkLot()" style="width:120px;background-color:#d7d8d9;color:#4a4848"><i class="fa fa-fw fa-lg fa-times-circle"></i>返回</a>&nbsp;&nbsp;&nbsp;
+            <button class="btn " type="button" onclick="Sava()" style="width:120px;background-color:#2196F3;color:#ffffff"><i class="fa fa-fw fa-lg fa-check-circle"></i>确定</button>
+        </div>
+    </div>
+    <input type="hidden" id="parkingCode" value="" />
+    <input type="hidden" id="projectGuid" value="" />
+</div>
+
+    </div>
+<script type="text/javascript">
+    var projectGuid = $.cookie("ProjectGuid");
+    var _iframe = window.parent;
+    var _div = _iframe.document.getElementById('main_loading');
+    $(document).ready(function () {
+        _div.style.display = 'block';    
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 0) {  //大于1 是修改  否则是添加
+            var value = "";
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    $("#" + name).val(decodeURI(value));
+                }
+            }
+        }
+        GetCarTypeList();
+        _div.style.display = 'none';  
+    })
+    var abc = '';
+    function GetCarTypeList() {
+        var parkingCode = $("#parkingCode").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + parkingCode + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    var html_checkbox = "";
+                    var html_radio = "";
+                    var optionsRadios1 = "";
+                    var optionsRadios2 = "";
+                    var OpenGate_guid2 = "";
+                    var OpenGate_guid = "";
+                    
+                    var jsonData = "";
+                    var OpenGate_html = ""; //车类开闸设置
+                    $.ajaxSettings.async = false;
+                    $.ajax({
+                        url: "/Home/Maps/ParkLot/GetFunctionPoint?ParkingCode=" + parkingCode,
+                        dataType: '',
+                        method: '',
+                        contentType: '',
+                        success: function (data2) {
+                            if (data2.IsSuccess == true) {
+                                jsonData = data2.Result;
+                            }
+                        }
+
+                    })
+                    //设置月租车延期提醒和储值车充值提醒默认值
+                    $("#MonthCarPostponeRemind").val(jsonData.MinDays);
+                    $("#ValueCarPostponeRemind").val(jsonData.MinBalance); 
+                    $("#Days").val(jsonData.PastDueMode);
+                    switch (jsonData.PastDueMode) {
+                        case 0:
+                            $("input[name=optionsRadios_2]:eq(0)").attr("checked", 'checked');
+                            break;
+                        case -1:
+                            $("input[name=optionsRadios_2]:eq(1)").attr("checked", 'checked');
+                            break;
+                        default:
+                            $("input[name=optionsRadios_2]:eq(2)").attr("checked", 'checked');
+                    }  
+
+                    $("input[name=optionsRadios_1]:eq(" + jsonData.PostponeMode + ")").attr("checked", 'checked');
+                    for (var key = 0;key < json.length;key++) {
+                        var guid = json[key].Guid;
+                        var carTypeName = json[key].CarTypeName;
+                        optionsRadios1 = guid + 1;
+                        optionsRadios2 = guid + 2;
+                        OpenGate_guid = guid + 3;
+                        OpenGate_guid2 = guid + 4;
+                        if (json[key].CarType === 0) {
+                            if (jsonData.BluePlateCarTypeGuid == guid) {
+                                $("#checkbox_Blue").attr("checked", "checked");
+                                $("#select_Blue").append("<option value='" + guid + "' selected='selected'>" + carTypeName + "</option>");
+                            }
+                            else {
+                                $("#select_Blue").append("<option value='" + guid + "' >" + carTypeName + "</option>");
+                            }
+                            if (jsonData.YellowPlateCarTypeGuid == guid) {
+                                $("#checkbox_Yellow").attr("checked", "checked");
+                                $("#select_Yellow").append("<option value='" + guid + "' selected='selected'>" + carTypeName + "</option>");
+                            }
+                            else {
+                                $("#select_Yellow").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                            }
+                            if (jsonData.WhitePlateCarTypeGuid == guid) {
+                                $("#checkbox_White").attr("checked", "checked");
+                                $("#select_White").append("<option value='" + guid + "'  selected='selected'>" + carTypeName + "</option>");
+                            }
+                            else {
+                                $("#select_White").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                            }
+                            if (jsonData.GreenPlateCarTypeGuid == guid) {
+                                $("#checkbox_Green").attr("checked", "checked");
+                                $("#select_Green").append("<option value='" + guid + "' selected='selected'>" + carTypeName + "</option>");
+                            }
+                            else {
+                                $("#select_Green").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                            }
+                            if (jsonData.BlackPlateCarTypeGuid == guid) {
+                                $("#checkbox_Black").attr("checked", "checked");
+                                $("#select_Black").append("<option value='" + guid + "'  selected='selected'>" + carTypeName + "</option>");
+                            }
+                            else {
+                                $("#select_Black").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                            }
+                        }
+
+                        var index = 0;
+                        for (var item in jsonData.BarredEntryCarTypeOnParkingFull) {
+                            var barredEntryCarTypeOnParkingFull = jsonData.BarredEntryCarTypeOnParkingFull[item];
+                            if (barredEntryCarTypeOnParkingFull == guid) {
+                                index++;
+                                html_checkbox = html_checkbox + '<div style="float:left;width:50%;margin-top:0px;text-align:left">' +
+                                    '<div class="checkbox checkbox-primary">' +
+                                    '<input id="' + guid + '" class="styled div5checkbox" type="checkbox" checked="checked" value="' + guid + '" name="' + guid + '">' +
+                                    '<label for="' + guid + '" style="padding-left:10px">' + carTypeName +
+                                    '</label></div></div>';
+                            }
+
+                        }
+                        if (index == 0) {
+                            html_checkbox = html_checkbox + '<div style="float:left;width:50%;margin-top:0px;text-align:left">' +
+                                '<div class="checkbox checkbox-primary">' +
+                                '<input id="' + guid + '" class="styled div5checkbox" type="checkbox"  value="' + guid + '" name="' + guid + '">' +
+                                '<label for="' + guid + '" style="padding-left:10px">' + carTypeName +
+                                '</label></div></div>';
+                        }
+                        var count = 0;
+                        for (var index in jsonData.RemainingSpaceCarType) {
+                            var guidCarType = jsonData.RemainingSpaceCarType[index];
+                            if (guidCarType == guid) {
+                                count++;
+                                html_radio = html_radio + ' <div class="fieldset_div4"  style="text-align:right">' +
+                                    '<label>' + carTypeName + '</label>' +
+                                    ' </div>' +
+                                    '<div class="fieldset_div4">' +
+                                    '<input class="magic-radio div4Radio" checked="" type="radio" name="' + guid + '" id="' + optionsRadios1 + '" value="' + guid + '" >' +
+                                    '<label for="' + optionsRadios1 + '" class="radio5" > 统计</label >' +
+                                    '</div>' +
+                                    '<div class="fieldset_div4">' +
+                                    '<input class="magic-radio div4Radio" type="radio" name="' + guid + '" id="' + optionsRadios2 + '" value="" >' +
+                                    '<label for="' + optionsRadios2 + '" class="radio5">未统计</label >' +
+                                    '</div>';
+
+                            }
+                        }
+
+                        if (count == 0) {
+                            html_radio = html_radio + ' <div class="fieldset_div4"  style="text-align:right">' +
+                                '<label>' + carTypeName + '</label>' +
+                                ' </div>' +
+                                '<div class="fieldset_div4">' +
+                                '<input class="magic-radio div4Radio"type="radio" name="' + guid + '" id="' + optionsRadios1 + '" value="' + guid + '" >' +
+                                '<label for="' + optionsRadios1 + '" class="radio5" > 统计</label >' +
+                                '</div>' +
+                                '<div class="fieldset_div4">' +
+                                '<input class="magic-radio div4Radio"  checked=""  type="radio" name="' + guid + '" id="' + optionsRadios2 + '" value="" >' +
+                                '<label for="' + optionsRadios2 + '" class="radio5">未统计</label >' +
+                                '</div>';
+                        }
+
+                        //车类开闸设置
+                        var count = 0;
+                        for (var index in jsonData.ManualOpenGateGuid) {
+                            var guidCarType = jsonData.ManualOpenGateGuid[index];
+                            if (guidCarType == guid) {
+                                count++;
+                                OpenGate_html = OpenGate_html + ' <div class="fieldset_div4"  style="text-align:right">' +
+                                    '<label>' + carTypeName + '</label>' +
+                                    ' </div>' +
+                                    '<div class="fieldset_div4">' +
+                                    '<input class="magic-radio div5Radio"  type="radio" name=OpenGate_"' + guid + '" id="' + OpenGate_guid + '" value="" >' +
+                                    '<label for="' + OpenGate_guid + '" class="radio5" > 自动开闸</label >' +
+                                    '</div>' +
+                                    '<div class="fieldset_div4">' +
+                                    '<input class="magic-radio div5Radio" checked="" type="radio" name=OpenGate_"' + guid + '" id="' + OpenGate_guid2 + '" value="' + guid + '" >' +
+                                    '<label for="' + OpenGate_guid2 + '" class="radio5">确认开闸</label >' +
+                                    '</div>';
+
+                            }
+                        }
+                        if (count == 0) {
+                            OpenGate_html = OpenGate_html + ' <div class="fieldset_div4"  style="text-align:right">' +
+                                '<label>' + carTypeName + '</label>' +
+                                ' </div>' +
+                                '<div class="fieldset_div4">' +
+                                '<input class="magic-radio div5Radio"   checked=""   type="radio" name=OpenGate_"' + guid + '" id="' + OpenGate_guid + '" value="" >' +
+                                '<label for="' + OpenGate_guid + '" class="radio5" > 自动开闸</label >' +
+                                '</div>' +
+                                '<div class="fieldset_div4">' +
+                                '<input class="magic-radio div5Radio"  type="radio" name=OpenGate_"' + guid + '" id="' + OpenGate_guid2 + '" value="' + guid + '" >' +
+                                '<label for="' + OpenGate_guid2 + '" class="radio5">确认开闸</label >' +
+                                '</div>';
+                        }
+
+
+                    }
+                    $("#div_checkbox").append(html_checkbox); // 临时车车牌按颜色设置收费类型
+
+
+                    $("#div_radio").append(html_radio); //剩余车位统计
+                    $("#div_OpenGate").append(OpenGate_html); //剩余车位统计
+                }
+            }
+        })
+    }
+
+    //put请求
+    function putJSON(url, data, mess) {
+        $.ajax({
+            async: false,
+            url: url,
+            type: 'put',
+            data: data,
+            success: function (msg) {
+                if (msg.IsSuccess == false) {
+                    return $message('d',mess);
+                }
+                else {
+                    return $message('s',"设置成功");
+                }
+            }
+        });
+    }
+
+    //post请求
+    function postJSON(url, data, mess) {
+        $.ajax({
+            async: false,
+            url: url,
+            type: 'post',
+            data: data,
+            success: function (msg) {
+                if (msg.IsSuccess == false) {
+                    //alert(mess)
+                }
+            }
+        });
+    }
+  
+    //保存
+    function Sava() {
+        _div.style.display = 'block';    
+        var parkingCode = $("#parkingCode").val(); 
+        //设置固定车过期处理方式 -1=禁止入场 0=看做临时车 大于等于N(N>=1) 过期N天后禁止入场
+        var dialCheckResult = $("input:radio[name='optionsRadios_2']:checked").val();
+        if (dialCheckResult == 2) {
+            dialCheckResult = $("#Days").val();
+        }
+        //设置月卡车延期提醒
+        var MonthCarPostponeRemind = $("#MonthCarPostponeRemind ").val();
+        var ValueCarPostponeRemind = $("#ValueCarPostponeRemind").val();
+        //不同颜色车牌收费设置
+        var select_Blue = "";
+        //设置蓝车牌收费车类
+        if ($("#checkbox_Blue").is(":checked") == true) {
+              select_Blue = $("#select_Blue").val();
+        }
+        //设置黄色车牌收费车类
+        var select_Yellow = "";
+        if ($("#checkbox_Yellow").is(":checked") == true) {
+              select_Yellow = $("#select_Yellow").val();
+        }
+        //设置白色车牌收费车类
+        var select_White = "";
+        if ($("#checkbox_White").is(":checked") == true) {
+            var select_White = $("#select_White").val();
+        }
+        //设置绿色车牌收费车类
+        var select_Green = "";
+        if ($("#checkbox_Green").is(":checked") == true) {
+              select_Green = $("#select_Green").val();
+        }
+        //设置黑色车牌收费车类
+        var select_Black = "";
+        if ($("#checkbox_Black").is(":checked") == true) {
+              select_Black = $("#select_Black").val();
+            var data = {
+                "Base64args": encodeBase64(select_Black), "ParkingCode": parkingCode, "ProjectGuid": projectGuid
+            };
+        } 
+        var substringColorCarTypeguid = "";
+        //车场满位禁止入场 PUT api/ParkLot/SetBlackPlateColorCarType
+
+        var substringCarTypeguid = "";
+        var substringColorCarTypeguid = new Array();
+        $('.div5checkbox:checked').each(function () {
+            //ColorCarTypeguid += $(this).val() + ',';
+            substringColorCarTypeguid.push($(this).val())
+        });
+      
+       // putJSON("/Home/Maps/ParkLot/SetBarredEntryOnParkingFull", data, "车场满位禁止入场不成功！") 
+        var substringCarTypeguid = "";
+        //剩余车位统计api/ParkLot/SetRemainingSpaceCarType
+        var substringCarTypeguid = new Array();
+        $('.div4Radio:checked').each(function () {
+            if ($(this).val() != "") { 
+                // CarTypeguid += $(this).val() + ',';
+                substringCarTypeguid.push($(this).val());
+            }
+        });
+       
+        //手动开闸车类guid集合 
+        var substringManualOpenGateGuid = []; 
+        $('.div5Radio:checked').each(function () {
+            if ($(this).val() != "") { 
+                substringManualOpenGateGuid.push($(this).val())
+            }
+        }); 
+        var url = "/Home/Maps/ParkLot/SetFunctionPoint";
+        var PostponeMode = $("input:radio[name='optionsRadios_1']:checked").val(); //月卡延期模式 0=顺延 1=跳延(仅当 cartype=1 也即月租车时候有效)
+         var data = {
+             "ParkingCode": parkingCode, "ProjectGuid": projectGuid, "PostponeMode": PostponeMode, "PastDueMode": dialCheckResult, "BarredEntryCarTypeOnParkingFull": JSON.stringify(substringColorCarTypeguid), "RemainingSpaceCarType": JSON.stringify(substringCarTypeguid), "BluePlateCarTypeGuid": select_Blue, "YellowPlateCarTypeGuid": select_Yellow, "WhitePlateCarTypeGuid": select_White, "GreenPlateCarTypeGuid": select_Green, "BlackPlateCarTypeGuid": select_Black, "MinDays": MonthCarPostponeRemind, "MinBalance": ValueCarPostponeRemind, "ManualOpenGateGuid": JSON.stringify(substringManualOpenGateGuid)
+        }
+        $.ajax({
+            async: false,
+            url: url,
+            type: 'post',
+            data: data,
+            success: function (msg) {
+                if (msg.IsSuccess == true) {
+                    $message('s',"其他设置成功");
+                    window.location.reload();
+                }
+                else {
+                    $message('d',msg.MessageContent);
+                }
+                _div.style.display = 'none';  
+            }
+
+        });
+       
+    }
+    //加密方法。没有过滤首尾空格，即没有trim.
+    //加密可以加密N次，对应解密N次就可以获取明文
+    function encodeBase64(mingwen) {
+        // 创建Base64对象
+        var Base64 = { _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", encode: function (e) { var t = ""; var n, r, i, s, o, u, a; var f = 0; e = Base64._utf8_encode(e); while (f < e.length) { n = e.charCodeAt(f++); r = e.charCodeAt(f++); i = e.charCodeAt(f++); s = n >> 2; o = (n & 3) << 4 | r >> 4; u = (r & 15) << 2 | i >> 6; a = i & 63; if (isNaN(r)) { u = a = 64 } else if (isNaN(i)) { a = 64 } t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a) } return t }, decode: function (e) { var t = ""; var n, r, i; var s, o, u, a; var f = 0; e = e.replace(/[^A-Za-z0-9+/=]/g, ""); while (f < e.length) { s = this._keyStr.indexOf(e.charAt(f++)); o = this._keyStr.indexOf(e.charAt(f++)); u = this._keyStr.indexOf(e.charAt(f++)); a = this._keyStr.indexOf(e.charAt(f++)); n = s << 2 | o >> 4; r = (o & 15) << 4 | u >> 2; i = (u & 3) << 6 | a; t = t + String.fromCharCode(n); if (u != 64) { t = t + String.fromCharCode(r) } if (a != 64) { t = t + String.fromCharCode(i) } } t = Base64._utf8_decode(t); return t }, _utf8_encode: function (e) { e = e.replace(/rn/g, "n"); var t = ""; for (var n = 0; n < e.length; n++) { var r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r) } else if (r > 127 && r < 2048) { t += String.fromCharCode(r >> 6 | 192); t += String.fromCharCode(r & 63 | 128) } else { t += String.fromCharCode(r >> 12 | 224); t += String.fromCharCode(r >> 6 & 63 | 128); t += String.fromCharCode(r & 63 | 128) } } return t }, _utf8_decode: function (e) { var t = ""; var n = 0; var r = c1 = c2 = 0; while (n < e.length) { r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r); n++ } else if (r > 191 && r < 224) { c2 = e.charCodeAt(n + 1); t += String.fromCharCode((r & 31) << 6 | c2 & 63); n += 2 } else { c2 = e.charCodeAt(n + 1); c3 = e.charCodeAt(n + 2); t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63); n += 3 } } return t } }
+        var encodedString = Base64.encode(mingwen)
+        return encodedString;
+
+    }
+    function back_ParkLot() {
+        _div.style.display = 'block';    
+        var html = "<p style='font-style:initial'>" +
+            "<label style ='color:#a3a8ac'> 车场管理><a  href='#' onclick=\"Back()\"> 车场设置</a> " +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParklotIndex");  
+        _div.style.display = 'none';
+    }
+</script>

@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "ParkLot_AddBillingTemplate";
+    Layout = null;
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/common.js"></script>
+<div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+    <div class="col-md-12"> 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header" style="height:40px;margin-top:10px">
+                    <h4><img src="/picture/zuobianlan.png"><label id="lbl_tiele" style="margin-left:10px">新增车类</label></h4>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="tile-body">
+            <form class="form-horizontal">
+                <div class="form-group row">
+                    <label class="control-label col-md-4" style="text-align:right">缴费模式</label>
+                    <div class="col-md-6">
+                        <div class="form-group" style="width:370px">
+                            <select class="form-control" id="CarTypeGuid"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-4" style="text-align:right">月数</label>
+                    <div class="col-md-6">
+                        <div class="form-group" style="width:370px">
+                            <select class="form-control" id="Months">
+                                <option selected="" value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-4" style="text-align:right">金额</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" id="Amount" style="width:370px">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tile-footer">
+            <div class="row">
+                <div class="col-md-10" style="text-align:center">
+                    <button class="btn btn-primary" type="button" onclick="Save()" style="width:120px">
+                        <i class="fa fa-fw fa-lg fa-check-circle">
+                        </i>确认
+                    </button>
+                    
+                    
+                    &nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#" onclick="back_ParkLot()" style="width:120px">
+                        <i class="fa fa-fw fa-lg fa-times-circle">
+                        </i>取消
+                    </a>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="parkingCode" value="" />
+        <input type="hidden" id="projectGuid" value="" />
+        <input type="hidden" id="carTypeGuid" value="" />
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+        var arr = str.split("&"); //各个参数放到数组里
+        if (arr.length > 1) {  //大于1 是修改  否则是添加
+            var value = "";
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    value = arr[i].substr(num + 1);
+                    $("#" + name).val(decodeURI(value));
+                }
+            }
+        }
+        GetCarTypeModel();
+    })
+
+    //获取卡列表
+    function GetCarTypeModel() {
+        var ParkingCode = $("#parkingCode").val();
+        var carTypeGuid = $("#carTypeGuid").val();
+        $.ajax({
+            url: "/Home/Maps/ParkLot/GetCarTypeList?ParkingCode=" + ParkingCode + '&projectGuid=' + $.cookie("ProjectGuid"),
+            dataType: '',
+            method: '',
+            contentType: '',
+            success: function (data) {
+                if (data.IsSuccess == true) {
+                    var json = data.Result;
+                    for (var key in json) {
+                        var guid = json[key].guid;
+                        var carTypeName = json[key].carTypeName;
+                        if (json[key].carType != 0 && json[key].enable == true) {
+                            if (carTypeGuid == guid) {
+                                $("#CarTypeGuid").append("<option value='" + guid + "' selected='selected'>" + carTypeName + "</option>");
+                            }
+                            else {
+                                $("#CarTypeGuid").append("<option value='" + guid + "'>" + carTypeName + "</option>");
+                            }
+                        }
+
+                    }
+                }
+            }
+        })
+    }
+
+    //保存
+    function Save() {
+        var ProjectGuid = $.cookie("ProjectGuid");
+        var UserName = $.cookie("UserName")
+        var Months = $("#Months").val();
+        var Amount = $("#Amount").val();
+        var ParkingCode = $("#parkingCode").val();
+        var CarTypeGuid = $("#CarTypeGuid").val();
+        var data = {
+            "Months": Months, "Amount": Amount, "ParkingCode": ParkingCode, "ProjectGuid": ProjectGuid, "CarTypeGuid": CarTypeGuid, "OperateUser": UserName
+        };
+        $.post("/Home/Maps/ParkLot/SetPostponeTemplate", data, function (result) {
+            if (result.IsSuccess == true) {
+                $message('s',"操作成功！")
+                parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_SetBillingTemplate?projectGuid=" + ProjectGuid + "&parkingCode=" + ParkingCode);
+            }
+        });
+    }
+
+    function back_ParkLot() {
+        var ParkingCode = $("#parkCode").val();
+        var projectGuid = $("#projectGuid").val(); 
+        var html = "<p style='font-style:initial'>" +
+            '<label style = "color:#a3a8ac" > 车场管理 ></label> <a href="#" onclick="Back()" style="color:#9a9c9e"> 车场设置</a>> <label style="color:#0092ff">计费设置</label>' +
+            '</p >';
+        parent.document.getElementById('app-title').innerHTML = html;
+        parent.$('#mainIframe').attr('src', "/Home/Trans/ParkLot_SetBillingTemplate?projectGuid=" + projectGuid + "&parkCode=" + ParkingCode);
+
+
+
+    }
+
+    
+</script>
